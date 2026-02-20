@@ -1,0 +1,1230 @@
+/* =========================================================
+   TOM SOX V3.6 - FULL PAGE CSS (HERO + TICKER + FOOTER)
+   - UPDATED: Home game cards with green styling
+   - UPDATED: Ticker subtitle added
+   ========================================================= */
+
+/* --- GLOBAL & ROOT VARIABLES --- */
+:root {
+    --green: #84BD00;
+    --navy: #1b365d;
+    --white: #ffffff;
+    --orange: #FF5A1F;
+    --light-gray: #a7a8aa;
+    --dark-gray: #333333;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.2);
+    --font-heading: 'Oswald', sans-serif;
+    --font-body: 'Arimo', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--dark-gray);
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: inline-block;
+}
+
+/* ============================================
+   HERO SECTION - DESKTOP
+   ============================================ */
+.ts-hero-v2 {
+    position: relative;
+    height: 80vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: var(--navy);
+}
+
+.ts-hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/6952fbb9659d9ecf84eab150.webp');
+    background-size: cover;
+    background-position: center;
+    z-index: 2;
+}
+
+.ts-hero-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(27, 54, 93, 0.85) 0%, rgba(27, 54, 93, 0.6) 50%, rgba(132, 189, 0, 0.3) 100%);
+    z-index: 3;
+}
+
+.ts-hero-content-v2 {
+    position: relative;
+    z-index: 4;
+    max-width: 1200px;
+    padding: 0 40px;
+    text-align: center;
+    color: var(--white);
+}
+
+/* TEMPORARILY HIDDEN - Next Game Badge */
+.ts-next-game-badge {
+    display: none !important;
+}
+
+.badge-label {
+    font-size: 0.8rem;
+    opacity: 0.9;
+}
+
+.badge-info {
+    font-size: 1.15rem;
+    font-weight: 800;
+}
+
+.ts-hero-headline {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
+    letter-spacing: -0.5px;
+}
+
+.ts-hero-subheadline {
+    font-family: var(--font-body);
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    opacity: 0.95;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ts-hero-cta {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+/* TEMPORARILY HIDDEN - Primary CTA Button */
+.ts-btn-primary {
+    display: none !important;
+}
+
+.ts-btn-secondary {
+    display: inline-block;
+    padding: 16px 40px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: var(--shadow-md);
+    font-family: var(--font-heading);
+    background-color: transparent;
+    color: var(--white);
+    border: 3px solid var(--white);
+}
+
+.ts-btn-secondary:hover {
+    background-color: var(--white);
+    color: var(--navy);
+}
+
+/* TEMPORARILY HIDDEN - Hero Stats */
+.ts-hero-stats {
+    display: none !important;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.9;
+}
+
+/* Hide scroll indicator if not styled */
+.ts-scroll-indicator {
+    display: none;
+}
+
+/* ============================================
+   GAME TICKER SECTION - DESKTOP
+   ============================================ */
+.ts-game-ticker {
+    padding: 50px 0;
+    position: relative;
+    background-color: #f8f9fa;
+}
+
+.ticker-header {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.ticker-header h2 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    color: var(--green);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.ticker-view-all {
+    color: var(--navy);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    font-family: var(--font-body);
+    transition: color 0.2s ease;
+}
+
+.ticker-view-all:hover {
+    color: var(--green);
+}
+
+/* NEW: Ticker subtitle */
+.ticker-subtitle {
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.0rem;
+    color: #84BD00;
+    margin-top: -15px;
+    margin-bottom: 20px;
+    font-family: var(--font-body);
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+}
+
+.ticker-btn, .ticker-dots {
+    display: none;
+}
+
+.ticker-track {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+    overflow: visible;
+}
+
+.ticker-track-wrapper {
+    overflow: visible;
+}
+
+.ticker-game-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: var(--dark-gray);
+    padding: 20px 12px;
+    background-color: var(--white);
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    height: 100%;
+}
+
+.ticker-game-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--green);
+}
+
+/* NEW: Home game styling - green tint + border */
+.ticker-game-card.home-game {
+    background: linear-gradient(to bottom, rgba(132, 189, 0, 0.20), #ffffff);
+    border: 3px solid #84BD00;
+}
+
+.ticker-game-card.home-game:hover {
+    border-color: var(--navy);
+    box-shadow: 0 6px 20px rgba(132, 189, 0, 0.3);
+}
+
+.card-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.card-logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.card-details {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.card-day {
+    font-weight: 700;
+    color: var(--navy);
+}
+
+.card-date-loc {
+    color: var(--dark-gray);
+    font-size: 0.85rem;
+}
+
+.card-bottom {
+    margin-top: auto;
+    padding-top: 15px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    width: 100%;
+    font-family: var(--font-heading);
+    color: var(--navy);
+}
+
+/* Game card status styles */
+.card-bottom.final {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.result-badge-simple {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.result-badge-simple.win {
+    background-color: var(--green);
+    color: var(--white);
+}
+
+.result-badge-simple.loss {
+    background-color: #dc3545;
+    color: var(--white);
+}
+
+.result-badge-simple.tie {
+    background-color: var(--light-gray);
+    color: var(--white);
+}
+
+.score-text {
+    font-size: 1rem;
+    color: var(--dark-gray);
+}
+
+.card-bottom.postponed,
+.card-bottom.cancelled {
+    color: #dc3545;
+    font-style: italic;
+}
+
+.card-bottom.upcoming {
+    color: var(--green);
+}
+
+/* --- MOBILE - GENERAL HOME PAGE STYLES --- */
+@media (max-width: 768px) {
+    
+    /* --- DEFINITIVE GAME DAY BANNER CENTERING FIX --- */
+    .gameday-banner-container.active a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        gap: inherit;
+    }
+
+    /* --- DEFINITIVE MOBILE HERO STYLES & CENTERING FIX --- */
+    .ts-hero-v2 {
+        min-height: 95vh;
+        height: auto;
+    }
+
+    .ts-hero-content-v2 {
+        padding: 0 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    .ts-hero-headline {
+        font-size: 2.5rem;
+        width: 100%;
+    }
+
+    .ts-hero-subheadline {
+        font-size: 1.25rem;
+        margin-bottom: 30px;
+    }
+
+    .ts-hero-cta {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        width: 100%;
+        max-width: 350px;
+        margin-bottom: 35px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .ts-hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .stat-value {
+        font-size: 2.2rem;
+        margin-bottom: 2px;
+    }
+
+    .stat-label {
+        font-size: 0.75rem;
+    }
+
+    /* --- MOBILE GAME TICKER REDESIGN (SINGLE VERTICAL CARD) --- */
+    .ts-game-ticker {
+        padding: 40px 0;
+    }
+
+    .ticker-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        margin-bottom: 20px;
+        padding: 0 20px;
+    }
+
+    .ticker-header h2 {
+        font-size: 1.8rem;
+        color: var(--dark-gray);
+        line-height: 1.2;
+    }
+
+    .ticker-view-all {
+        font-size: 1rem;
+    }
+
+    .ticker-subtitle {
+        font-size: 0.85rem;
+        margin-top: -10px;
+        margin-bottom: 15px;
+    }
+
+    .ticker-controls {
+        padding: 0 20px;
+    }
+
+    .ticker-btn {
+        display: none;
+    }
+
+    .ticker-track-wrapper {
+        overflow: hidden;
+    }
+
+    .ticker-track {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 0;
+    }
+
+    .ticker-game-card {
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+        padding: 12px;
+        width: 100%;
+        min-width: 100%;
+    }
+
+    .ticker-game-card:not(:last-child) {
+        border-bottom: 1px solid #e0e0e0;
+        padding-bottom: 16px;
+        margin-bottom: 16px;
+    }
+
+    /* Mobile home game styling */
+    .ticker-game-card.home-game {
+        background: linear-gradient(to right, rgba(132, 189, 0, 0.2), #ffffff);
+        border-left: 4px solid #84BD00;
+    }
+
+    .card-top {
+        display: contents;
+    }
+
+    .card-logo {
+        flex: 0 0 60px;
+        width: 60px;
+        height: 60px;
+    }
+
+    .card-details {
+        flex: 1;
+        text-align: left;
+    }
+
+    .card-bottom {
+        margin-left: auto;
+        white-space: nowrap;
+    }
+}
+
+/* --- SMALL MOBILE REFINEMENTS - HOME PAGE --- */
+@media (max-width: 480px) {
+    .ts-hero-headline {
+        font-size: 2rem;
+    }
+
+    .ts-hero-subheadline {
+        font-size: 1.1rem;
+    }
+
+    .stat-value {
+        font-size: 1.8rem;
+    }
+}
+
+/* =========================================
+   PRODUCT SECTION - CUSTOM CLASSES
+   ========================================= */
+/* --- SECTION CONTAINER --- */
+.ts-product-section {
+    padding: 80px 20px;
+    background-color: #f8f9fa;
+}
+
+/* --- SECTION HEADLINE --- */
+.ts-product-headline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #1B365D;
+    text-align: center;
+    margin: 0 0 15px 0;
+    line-height: 1.2;
+}
+
+/* --- SECTION SUBHEADLINE --- */
+.ts-product-subheadline {
+    font-family: 'Arimo', sans-serif;
+    font-size: 1.25rem;
+    color: #333333;
+    text-align: center;
+    margin: 0 0 60px 0;
+    line-height: 1.5;
+}
+
+/* --- PRODUCT CARD CONTAINER --- */
+.ts-product-card {
+    background: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ts-product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    border-color: #84BD00;
+}
+
+/* --- PRODUCT IMAGE --- */
+.ts-product-image {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.ts-product-card:hover .ts-product-image {
+    transform: scale(1.05);
+}
+
+/* --- PRODUCT TITLE --- */
+.ts-product-title {
+    font-family: 'Arimo', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1B365D;
+    margin: 0 0 10px 0;
+    line-height: 1.3;
+}
+
+/* --- PRODUCT PRICE --- */
+.ts-product-price {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #84BD00;
+    margin: 0;
+    font-style: italic;
+}
+
+/* --- SHOP ALL BUTTON (Optional) --- */
+.ts-shop-all-btn {
+    display: inline-block;
+    background-color: #84BD00;
+    color: #1B365D;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 18px 50px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-top: 40px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.ts-shop-all-btn:hover {
+    background-color: #6a9600;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(132, 189, 0, 0.4);
+}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 992px) {
+    .ts-product-headline {
+        font-size: 2.5rem;
+    }
+
+    .ts-product-subheadline {
+        font-size: 1.1rem;
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .ts-product-section {
+        padding: 60px 20px;
+    }
+
+    .ts-product-headline {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+
+    .ts-product-subheadline {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+
+    .ts-product-card {
+        margin-bottom: 20px;
+    }
+
+    .ts-product-price {
+        font-size: 1.3rem;
+    }
+
+    .ts-shop-all-btn {
+        padding: 14px 35px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .ts-product-headline {
+        font-size: 1.75rem;
+    }
+
+    .ts-product-subheadline {
+        font-size: 0.95rem;
+    }
+
+    .ts-product-title {
+        font-size: 1rem;
+    }
+
+    .ts-product-price {
+        font-size: 1.2rem;
+    }
+}
+/* =========================================
+   CONNECT WITH US SECTION - GHL SOCIAL ICONS
+   ========================================= */
+
+/* --- SECTION CONTAINER --- */
+.ts-social-section {
+    padding: 80px 20px;
+    background-color: #84BD00;
+    text-align: center;
+}
+
+/* --- SECTION HEADLINE --- */
+.ts-social-headline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #FFFFFF;
+    margin: 0 0 40px 0;
+    line-height: 1.2;
+}
+
+/* --- TARGET GHL SOCIAL ICONS ELEMENT --- */
+/* Increase icon size from default 40px */
+.ts-social-icons svg,
+.ts-social-icons i {
+    width: 70px !important;
+    height: 70px !important;
+    font-size: 70px !important;
+}
+
+/* Add circular background to icons */
+.ts-social-icons a {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 90px !important;
+    height: 90px !important;
+    border-radius: 50% !important;
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    transition: all 0.3s ease !important;
+    margin: 0 10px !important;
+}
+
+/* Hover effect on icon containers */
+.ts-social-icons a:hover {
+    background-color: #FFFFFF !important;
+    transform: translateY(-5px) scale(1.1) !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Icon color change on hover (for black icons like X/Twitter) */
+.ts-social-icons a:hover svg path,
+.ts-social-icons a:hover i {
+    fill: #84BD00 !important;
+    color: #84BD00 !important;
+}
+
+/* =========================================
+   SPONSORS SECTION (unchanged)
+   ========================================= */
+
+.ts-sponsors-section {
+    padding: 80px 20px;
+    background-color: #FFFFFF;
+    text-align: center;
+}
+
+.ts-sponsors-headline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #1B365D;
+    margin: 0 0 20px 0;
+    line-height: 1.2;
+}
+
+.ts-sponsors-subheadline {
+    font-family: 'Arimo', sans-serif;
+    font-size: 1.2rem;
+    color: #333333;
+    margin: 0 0 50px 0;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+}
+
+.ts-sponsors-carousel {
+    margin-bottom: 50px;
+}
+
+.ts-sponsor-cta-btn {
+    display: inline-block;
+    background-color: #84BD00;
+    color: #1B365D;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 18px 50px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.ts-sponsor-cta-btn:hover {
+    background-color: #6a9600;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(132, 189, 0, 0.4);
+}
+
+/* =========================================
+   RESPONSIVE ADJUSTMENTS
+   ========================================= */
+
+@media (max-width: 992px) {
+    .ts-social-headline,
+    .ts-sponsors-headline {
+        font-size: 2.5rem;
+    }
+
+    .ts-sponsors-subheadline {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .ts-social-section,
+    .ts-sponsors-section {
+        padding: 60px 20px;
+    }
+
+    .ts-social-headline {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    .ts-sponsors-headline {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+
+    .ts-sponsors-subheadline {
+        font-size: 1rem;
+        margin-bottom: 40px;
+    }
+
+    .ts-social-icons a {
+        width: 70px !important;
+        height: 70px !important;
+        margin: 0 8px !important;
+    }
+
+    .ts-social-icons svg,
+    .ts-social-icons i {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 50px !important;
+    }
+
+    .ts-sponsor-cta-btn {
+        padding: 14px 35px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .ts-social-headline,
+    .ts-sponsors-headline {
+        font-size: 1.75rem;
+    }
+
+    .ts-sponsors-subheadline {
+        font-size: 0.95rem;
+    }
+
+    .ts-social-icons a {
+        width: 60px !important;
+        height: 60px !important;
+        margin: 0 6px !important;
+    }
+
+    .ts-social-icons svg,
+    .ts-social-icons i {
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 40px !important;
+    }
+
+    .ts-sponsor-cta-btn {
+        padding: 12px 30px;
+        font-size: 0.95rem;
+    }
+}
+/* TEMPORARILY HIDE HERO ELEMENTS */
+.ts-next-game-badge {
+    display: none !important;
+}
+
+.ts-btn-primary {
+    display: none !important;
+}
+
+.ts-hero-stats {
+    display: none !important;
+}
+/* =========================================
+   COUNTDOWN TIMER SECTION - TOM SOX
+   ========================================= */
+
+/* --- SECTION CONTAINER --- */
+.ts-countdown-section {
+    padding: 0;
+    background-color: #f8f9fa;
+    position: relative;
+}
+
+/* --- COUNTDOWN CONTAINER --- */
+.ts-countdown-container {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: var(--white);
+    border-top: 3px solid var(--green);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    padding: 30px 20px;
+    position: relative;
+    transform: translateY(-20px);
+}
+
+/* --- HEADLINE --- */
+.ts-countdown-headline {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--navy);
+    text-align: center;
+    margin: 0 0 25px 0;
+    letter-spacing: 0.3px;
+}
+
+/* --- COUNTDOWN GRID --- */
+.ts-countdown-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+    align-items: center;
+    justify-items: center;
+    gap: 15px;
+}
+
+/* --- COUNTDOWN UNIT --- */
+.countdown-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+/* --- COUNTDOWN NUMBER --- */
+.countdown-number {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1;
+    transition: opacity 0.3s ease;
+    min-width: 70px;
+    text-align: center;
+}
+
+/* --- COUNTDOWN LABEL --- */
+.countdown-label {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--dark-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* --- DIVIDER --- */
+.countdown-divider {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: #e0e0e0;
+    line-height: 1;
+    margin: 0 5px;
+}
+
+/* --- EXPIRED STATE --- */
+.ts-countdown-expired {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.expired-message {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--green);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+.expired-submessage {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--dark-gray);
+    font-weight: 500;
+}
+
+/* --- NUMBER UPDATE ANIMATION --- */
+.countdown-number.updating {
+    opacity: 0.5;
+}
+
+/* =========================================
+   RESPONSIVE: TABLET
+   ========================================= */
+@media (max-width: 992px) {
+    .ts-countdown-container {
+        max-width: 650px;
+        padding: 25px 20px;
+    }
+
+    .ts-countdown-headline {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+
+    .countdown-number {
+        font-size: 2.5rem;
+        min-width: 60px;
+    }
+
+    .countdown-label {
+        font-size: 0.7rem;
+    }
+
+    .countdown-divider {
+        font-size: 2rem;
+    }
+
+    .expired-message {
+        font-size: 2rem;
+    }
+}
+
+/* =========================================
+   RESPONSIVE: MOBILE (2x2 Grid)
+   ========================================= */
+@media (max-width: 768px) {
+    .ts-countdown-container {
+        padding: 25px 15px;
+        transform: translateY(-15px);
+    }
+
+    .ts-countdown-headline {
+        font-size: 0.95rem;
+        margin-bottom: 18px;
+    }
+    
+    /* Switch to 2x2 grid layout */
+    .ts-countdown-grid {
+        grid-template-columns: 1fr auto 1fr;
+        grid-template-rows: auto auto;
+        gap: 12px 10px;
+        max-width: 350px;
+        margin: 0 auto;
+    }
+    
+    /* Position units in grid */
+    .countdown-unit:nth-of-type(1) {
+ /* Days */
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .countdown-divider:nth-of-type(1) {
+ /* First divider */
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .countdown-unit:nth-of-type(2) {
+ /* Hours */
+        grid-column: 3;
+        grid-row: 1;
+    }
+
+    .countdown-divider:nth-of-type(2) {
+ /* Second divider - hide */
+        display: none;
+    }
+
+    .countdown-unit:nth-of-type(3) {
+ /* Minutes */
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .countdown-divider:nth-of-type(3) {
+ /* Third divider */
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    .countdown-unit:nth-of-type(4) {
+ /* Seconds */
+        grid-column: 3;
+        grid-row: 2;
+    }
+
+    .countdown-number {
+        font-size: 2.2rem;
+        min-width: 55px;
+    }
+
+    .countdown-label {
+        font-size: 0.65rem;
+    }
+
+    .countdown-divider {
+        font-size: 1.8rem;
+    }
+
+    .expired-message {
+        font-size: 1.8rem;
+    }
+
+    .expired-submessage {
+        font-size: 0.9rem;
+    }
+}
+
+/* =========================================
+   RESPONSIVE: SMALL MOBILE
+   ========================================= */
+@media (max-width: 480px) {
+    .ts-countdown-container {
+        padding: 20px 12px;
+    }
+
+    .ts-countdown-headline {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
+
+    .ts-countdown-grid {
+        gap: 10px 8px;
+        max-width: 320px;
+    }
+
+    .countdown-number {
+        font-size: 2rem;
+        min-width: 50px;
+    }
+
+    .countdown-label {
+        font-size: 0.6rem;
+    }
+
+    .countdown-divider {
+        font-size: 1.6rem;
+        margin: 0 3px;
+    }
+
+    .expired-message {
+        font-size: 1.6rem;
+    }
+
+    .expired-submessage {
+        font-size: 0.85rem;
+    }
+}
+
+.card-opponent-full {
+    display: inline;
+ /* Desktop: show full name */
+}
+
+.card-opponent-short {
+    display: none;
+ /* Desktop: hide short name */
+}
+
+@media (max-width: 768px) {
+    .card-opponent-full {
+        display: none;
+ /* Mobile: hide full name */
+    }
+
+    .card-opponent-short {
+        display: inline;
+ /* Mobile: show short name */
+    }
+}

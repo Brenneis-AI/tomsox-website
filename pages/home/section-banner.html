@@ -1,0 +1,150 @@
+<!-- =============== START: GAME DAY BANNER (V6.1: Confirmed Correct Code) =============== -->
+
+<div id="gameDayBanner" class="gameday-banner-container"></div>
+
+<style>
+    /*
+     * Banner Styles V6.1 (MODIFIED FOR NON-STICKY BEHAVIOR)
+     * If changes are not appearing, clear your website's server-side cache.
+     * This is often a button in your WordPress dashboard or hosting panel.
+    */
+    /* =============== GAME DAY BANNER - FIXED Z-INDEX =============== */
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.gameday-banner-container {
+    display: none;
+}
+
+.gameday-banner-container.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    background: linear-gradient(180deg, #91cf00, #76a800);
+    color: #0d2c4e;
+    padding: 15px 20px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
+    position: relative;
+    width: 100%;
+    z-index: 1001; /* <<< INCREASED FROM 1 TO 1001 - Above sticky header */
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.gameday-banner-icon {
+    height: 1.8em;
+    width: auto;
+    flex-shrink: 0;
+    animation: spin 5s linear infinite;
+}
+
+.gameday-banner-text,
+.gameday-banner-container a {
+    color: #0d2c4e;
+    text-decoration: none;
+    border-bottom: 3px solid #0d2c4e;
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.gameday-banner-container a:hover {
+    color: #000;
+    border-color: #000;
+}
+
+@media (max-width: 768px) {
+    .gameday-banner-container.active {
+        font-size: 1rem;
+        padding: 12px 10px;
+        letter-spacing: 1px;
+        gap: 15px;
+    }
+}
+</style>
+<script>
+(function() {
+    const workerBaseUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSel5a7jlW41WyAERTJVyta-yh88PkFCqRIVq_37jeuWkDhedBkQ_PQVpkUo_Ke_zPPrjc5v4aN6_A6/pub?output=csv';
+    const bannerSheetGID = '1448110381';
+
+    const bannerContainer = document.getElementById('gameDayBanner');
+    if (!bannerContainer) return;
+
+    const baseballIconHTML = `<img src="https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/68a0cb4363e2ad7b7d8af377.png" alt="Spinning Baseball" class="gameday-banner-icon">`;
+
+    async function fetchAndDisplayBanner() {
+        try {
+            // Enhanced fetch with CORS mode and headers
+            const response = await fetch(`${workerBaseUrl}&gid=${bannerSheetGID}`, {
+                mode: 'cors',
+                credentials: 'omit',
+                headers: {
+                    'Accept': 'text/csv'
+                }
+            });
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const csvText = await response.text();
+            
+            if (!csvText || csvText.trim() === '') {
+                throw new Error('Empty CSV response');
+            }
+            
+            const rows = csvText.trim().split(/\r?\n/);
+            
+            if (rows.length < 2) {
+                throw new Error('Invalid CSV format - not enough rows');
+            }
+            
+            const headers = rows[0].split(',').map(h => h.trim());
+            const data = rows[1].split(',');
+            const bannerData = headers.reduce((obj, header, i) => {
+                obj[header] = (data[i] || '').trim();
+                return obj;
+            }, {});
+            
+            const isActive = bannerData.IsActive && bannerData.IsActive.toUpperCase() === 'TRUE';
+            
+            if (isActive && bannerData.Message) {
+                let bannerHTML;
+                if (bannerData.Link) {
+                    bannerHTML = `<a href="${bannerData.Link}" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; gap: 30px; text-decoration: none;">${baseballIconHTML}<span class="gameday-banner-text">${bannerData.Message}</span>${baseballIconHTML}</a>`;
+                } else {
+                    bannerHTML = `${baseballIconHTML}<span class="gameday-banner-text">${bannerData.Message}</span>${baseballIconHTML}`;
+                }
+                
+                bannerContainer.innerHTML = bannerHTML;
+                bannerContainer.classList.add('active');
+                console.log('✅ Game day banner activated:', bannerData.Message);
+            } else {
+                bannerContainer.innerHTML = '';
+                bannerContainer.classList.remove('active');
+                console.log('ℹ️ Game day banner is inactive or missing message');
+            }
+        } catch (error) {
+            console.error('❌ Could not fetch game day banner:', error);
+            console.error('Error details:', {
+                message: error.message,
+                url: `${workerBaseUrl}&gid=${bannerSheetGID}`
+            });
+            bannerContainer.classList.remove('active');
+        }
+    }
+    
+    fetchAndDisplayBanner();
+    setInterval(fetchAndDisplayBanner, 60000); // Refresh every 60 seconds
+})();
+</script>
