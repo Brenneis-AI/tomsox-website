@@ -1,0 +1,394 @@
+/* =========================================================
+   TOM SOX WEBSITE - COMPLETE CUSTOM CSS
+   Version: 2.0 - Sponsors Page Updated to Donation Model
+   ========================================================= */
+
+/* =========================================================
+   GLOBAL STYLES & FONT IMPORTS
+   ========================================================= */
+
+/* 1. Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Open+Sans:wght@400;700&display=swap');
+
+/* 2. Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* 3. Body Baseline */
+body {
+    /* Use Open Sans as the primary body font for consistency */
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+:root {
+    --brand-green: #84BD00;
+    --dark-blue-bg: #1b365d;
+    --light-text: #ffffff;
+    --subtle-text: #a9b3d1;
+    --error-red: #e74c3c;
+    --success-green: #2ecc71;
+}
+
+/* INFIELD DIRT */
+.infield-dirt {
+    background-color: #a1662f;
+    position: relative;
+    z-index: 0;
+}
+
+.infield-dirt::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://storage.googleapis.com/msgsndr/xPpGvlvaXWhYtIJUg0CZ/media/686e62f4879662a5cb44bef2.jpeg');
+    opacity: 0.15;
+    z-index: -1;
+}
+
+/* =========================================================
+   TOM SOX SPONSORS PAGE CSS - UPDATED DONATION MODEL
+   ========================================================= */
+
+/* ============================================
+   SPONSORS SECTION
+   ============================================ */
+.sponsors-section {
+    background: transparent;
+    padding: 80px 20px 100px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.sponsors-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   HERO HEADER
+   ============================================ */
+.sponsors-hero {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.sponsors-headline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: white;
+    margin: 0 0 20px 0;
+    line-height: 1.2;
+}
+
+.sponsors-subtitle {
+    font-size: 1.125rem;
+    color: white;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* ============================================
+   SPONSORS GRID - 3x3 SQUARE CARDS
+   ============================================ */
+.sponsors-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    align-items: stretch;
+}
+
+/* ============================================
+   INDIVIDUAL SPONSOR CARD - SQUARE FORMAT
+   ============================================ */
+.sponsor-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 12px;
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: 1 / 1;
+    min-height: 400px;
+}
+
+/* Hover Effect - Lift & Glow */
+.sponsor-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(132, 189, 0, 0.3);
+    border-color: rgba(132, 189, 0, 0.6);
+    background: rgba(255, 255, 255, 0.22);
+}
+
+/* Featured Card (Field Sponsor) - Premium Styling */
+.sponsor-card.featured {
+    border: 2px solid rgba(132, 189, 0, 0.7);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 12px 40px rgba(132, 189, 0, 0.25), 0 0 60px rgba(132, 189, 0, 0.15);
+}
+
+.sponsor-card.featured:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 60px rgba(132, 189, 0, 0.4), 0 0 80px rgba(132, 189, 0, 0.2);
+    border-color: rgba(132, 189, 0, 0.9);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* ============================================
+   CARD HEADER
+   ============================================ */
+.card-header {
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(132, 189, 0, 0.3);
+}
+
+.sponsor-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 12px 0;
+    color: #ffffff;
+    line-height: 1.3;
+    min-height: 2.6em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sponsor-price {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #84BD00;
+    margin: 8px 0;
+}
+
+.availability-badge {
+    display: inline-block;
+    background: rgba(132, 189, 0, 0.2);
+    color: #84BD00;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    margin-top: 8px;
+    border: 1px solid rgba(132, 189, 0, 0.4);
+}
+
+/* ============================================
+   BENEFITS SECTION
+   ============================================ */
+.card-benefits {
+    flex: 1;
+    margin-bottom: 20px;
+    overflow-y: auto;
+}
+
+.benefits-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.benefits-list li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    font-size: 0.8rem;
+    color: #f3f4f6;
+    line-height: 1.4;
+}
+
+.check-icon {
+    color: #84BD00;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-right: 8px;
+    flex-shrink: 0;
+    line-height: 1.3;
+}
+
+/* ============================================
+   CTA BUTTON
+   ============================================ */
+.sponsor-cta-btn {
+    display: block;
+    width: 100%;
+    background: #84BD00;
+    color: #ffffff;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-align: center;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    border: 2px solid #84BD00;
+    margin-top: auto;
+}
+
+.sponsor-cta-btn:hover {
+    background: #1B365D;
+    border-color: #1B365D;
+    transform: scale(1.02);
+}
+
+/* Featured Card CTA */
+.featured .sponsor-cta-btn {
+    background: #1B365D;
+    border-color: #1B365D;
+}
+
+.featured .sponsor-cta-btn:hover {
+    background: #84BD00;
+    border-color: #84BD00;
+}
+
+/* ============================================
+   SPONSORS PAGE - RESPONSIVE TABLET
+   ============================================ */
+@media (max-width: 1200px) {
+    .sponsors-container {
+        max-width: 1100px;
+    }
+
+    .sponsors-grid {
+        gap: 25px;
+    }
+
+    .sponsor-card {
+        padding: 25px;
+        min-height: 380px;
+    }
+
+    .sponsor-title {
+        font-size: 1.15rem;
+    }
+
+    .sponsor-price {
+        font-size: 1.75rem;
+    }
+
+    .benefits-list li {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .sponsors-section {
+        padding: 60px 20px 80px;
+    }
+
+    .sponsors-hero {
+        margin-bottom: 50px;
+    }
+
+    .sponsors-headline {
+        font-size: 2.25rem;
+    }
+
+    .sponsors-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .sponsor-card {
+        min-height: 420px;
+    }
+}
+
+/* ============================================
+   SPONSORS PAGE - RESPONSIVE MOBILE
+   ============================================ */
+@media (max-width: 768px) {
+    .sponsors-section {
+        padding: 50px 15px 70px;
+    }
+
+    .sponsors-headline {
+        font-size: 1.85rem;
+    }
+
+    .sponsors-subtitle {
+        font-size: 1rem;
+    }
+
+    .sponsors-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        max-width: 500px;
+    }
+
+    .sponsor-card {
+        padding: 30px 25px;
+        min-height: 450px;
+        aspect-ratio: auto;
+    }
+
+    .sponsor-title {
+        font-size: 1.25rem;
+        min-height: auto;
+    }
+
+    .sponsor-price {
+        font-size: 2rem;
+    }
+
+    .benefits-list li {
+        font-size: 0.85rem;
+        margin-bottom: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sponsors-headline {
+        font-size: 1.6rem;
+    }
+
+    .sponsor-card {
+        padding: 25px 20px;
+        min-height: 400px;
+    }
+
+    .sponsor-title {
+        font-size: 1.15rem;
+    }
+
+    .sponsor-price {
+        font-size: 1.75rem;
+    }
+
+    .benefits-list li {
+        font-size: 0.8rem;
+    }
+}
