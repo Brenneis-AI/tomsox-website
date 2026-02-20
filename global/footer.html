@@ -1,0 +1,385 @@
+<!-- ============================================================= -->
+<!-- ===  CHARLOTTESVILLE TOM SOX - GLOBAL FOOTER v2.2 === -->
+<!-- ============================================================== -->
+
+<!-- ====== 1. STYLES ====== -->
+<style>
+.site-footer {
+    background: radial-gradient(ellipse at top, #1B365D 0%, #0d1a2d 100%);
+    color: #e0e0e0;
+    font-family: 'Open Sans', sans-serif;
+    padding: 80px 0 60px;
+    line-height: 1.6;
+    border-top: 3px solid #84BD00;
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.footer-grid-final {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 60px;
+    align-items: start;
+    margin-bottom: 20px;
+}
+
+.footer-newsletter .footer-heading {
+    font-family: 'Oswald', sans-serif;
+    color: #84BD00;
+    font-size: 1.75rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin: 0 0 12px 0;
+}
+
+.footer-newsletter .footer-subheading {
+    font-size: 0.9rem;
+    color: #e0e0e0;
+    margin: 0 0 0 0;
+    max-width: 400px;
+    line-height: 1.5;
+}
+
+.footer-form-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    height: 280px;
+    overflow: hidden;
+}
+
+.ghl-footer-form {
+    position: absolute;
+    top: -60px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.footer-links-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.footer-column .footer-column-title {
+    font-family: 'Oswald', sans-serif;
+    color: #84BD00;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 0 0 20px 0;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column li {
+    margin-bottom: 12px;
+}
+
+.footer-column a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+    display: inline-block;
+}
+
+.footer-column a:hover {
+    color: #84BD00;
+    text-decoration: underline;
+    transform: translateX(2px);
+}
+
+.footer-social-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-social-list a {
+    font-size: 1.5rem;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.footer-social-list a:hover {
+    color: #84BD00;
+    transform: translateY(-2px);
+}
+
+.footer-powered-by {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-powered-by a {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-powered-by img {
+    height: 80px;
+    width: auto;
+    opacity: 0.85;
+    transition: all 0.3s ease;
+}
+
+.footer-powered-by span {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.footer-powered-by a:hover img {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+.footer-powered-by a:hover span {
+    color: #84BD00;
+}
+
+.footer-bottom-final {
+    padding-top: 20px;
+    margin-top: -20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-partners {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.footer-partners img {
+    max-height: 60px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.footer-partners img:hover {
+    opacity: 1;
+}
+
+.footer-legal {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+    text-align: right;
+}
+
+.footer-legal p {
+    margin: 0;
+}
+
+/* ===== RESPONSIVE STYLES ===== */
+
+@media (max-width: 992px) {
+    .site-footer {
+        padding: 70px 0 50px;
+    }
+
+    .footer-grid-final {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .footer-links-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .site-footer {
+        padding: 60px 0 40px;
+    }
+
+    .footer-newsletter .footer-heading {
+        font-size: 1.5rem;
+    }
+
+    .footer-bottom-final {
+        flex-direction: column;
+        justify-content: center;
+        gap: 30px;
+        padding-top: 40px;
+        margin-top: 40px;
+    }
+
+    .footer-partners {
+        justify-content: center;
+    }
+
+    .footer-legal {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-footer {
+        padding: 50px 0 35px;
+    }
+
+    .footer-links-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-newsletter .footer-heading {
+        font-size: 1.35rem;
+    }
+
+    .footer-partners {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+</style>
+
+<!-- ====== 2. HTML STRUCTURE ====== -->
+<footer class="site-footer">
+    <div class="footer-container">
+        
+        <!-- Top Section: Newsletter & Links -->
+        <div class="footer-grid-final">
+            
+            <!-- Left Side: Newsletter Form -->
+            <div class="footer-newsletter">
+                <h3 class="footer-heading">Don't Miss An Inning!</h3>
+                <p class="footer-subheading">Get the latest news, schedules, and promotions delivered to your inbox.</p>
+                
+                <div class="footer-form-container">
+                    <iframe
+                        src="https://link.bai-demo.com/widget/form/VqpXfe7WLkP0tUk7lIHY"
+                        style="width:100%;height:100%;border:none;border-radius:0px"
+                        class="ghl-footer-form"
+                        id="inline-VqpXfe7WLkP0tUk7lIHY" 
+                        data-layout="{'id':'INLINE'}"
+                        data-trigger-type="alwaysShow"
+                        data-trigger-value=""
+                        data-activation-type="alwaysActivated"
+                        data-activation-value=""
+                        data-deactivation-type="neverDeactivate"
+                        data-deactivation-value=""
+                        data-form-name="Footer Newsletter Signup Form"
+                        data-height="400"
+                        data-layout-iframe-id="inline-VqpXfe7WLkP0tUk7lIHY"
+                        data-form-id="VqpXfe7WLkP0tUk7lIHY"
+                        title="Footer Newsletter Signup Form">
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- Right Side: Navigation Links -->
+            <div class="footer-links-grid">
+                
+                <!-- Column 1 -->
+                <div class="footer-column">
+                    <h4 class="footer-column-title">Get Involved</h4>
+                    <ul>
+                        <li><a href="/donate">Donate Now</a></li>
+                        <li><a href="/sponsors">Become a Sponsor</a></li>
+                        <li><a href="/host-families">Host a Player</a></li>
+                        <li><a href="/volunteers">Volunteer</a></li>
+                        <li><a href="/internships">Internships</a></li>
+                      <li><a href="/get-tickets">Game Tickets</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 2 -->
+                <div class="footer-column">
+                    <h4 class="footer-column-title">About The Sox</h4>
+                    <ul>
+                        <li><a href="/mission">Our Mission</a></li>
+                        <li><a href="/team">Team Roster</a></li>
+                        <li><a href="/staff">Our Staff & Board</a></li>
+                        <li><a href="/news">News</a></li>
+                        <li><a href="/schedule">Game Schedule</a></li>
+                        <li><a href="/team-records">Tom Sox Stats</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3 -->
+                <div class="footer-column">
+                    <h4 class="footer-column-title">Quick Links</h4>
+                    <ul>
+                        <li><a href="/ballpark">Directions</a></li>
+                        <li><a href="https://teamlocker.squadlocker.com/#/lockers/charlottesville-tom-sox/landing" target="_blank" rel="noopener noreferrer">Shop Merch</a></li>
+                        <li><a href="/privacy-policy">Privacy Policy</a></li>
+                        <li><a href="/terms">Terms of Use</a></li>
+                        <li><a href="/cookie-policy">Cookie Policy</a></li>
+                        <li><a href="/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Social Media + Powered By -->
+                <div class="footer-column">
+                    <h4 class="footer-column-title">Follow Us</h4>
+                    <ul class="social-links">
+                        <li style="display:inline-block; margin-right:15px;"><a href="https://www.facebook.com/CvilleTomSox" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f" style="font-size: 20px;"></i></a></li>
+                        <li style="display:inline-block; margin-right:15px;"><a href="https://www.instagram.com/cvilletomsox" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram" style="font-size: 20px;"></i></a></li>
+                        <li style="display:inline-block; margin-right:15px;"><a href="https://www.youtube.com/@cvilletomsox" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube" style="font-size: 20px;"></i></a></li>
+                        <br>
+                        <li style="display:inline-block; margin-right:15px; margin-top:10px;"><a href="https://x.com/cvilletomsox" target="_blank" rel="noopener noreferrer"><i class="fab fa-x-twitter" style="font-size: 20px;"></i></a></li>
+                        <li style="display:inline-block; margin-right:15px; margin-top:10px;"><a href="https://www.tiktok.com/@cvilletomsox" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok" style="font-size: 20px;"></i></a></li>
+                    </ul>
+                    
+                    <!-- Powered By Five Tool Digital -->
+                    <div class="footer-powered-by">
+                        <a href="https://fivetooldigital.com" target="_blank" rel="noopener noreferrer">
+                            <img src="https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/6963cee598efbdd2b1ea2d50.webp" alt="Five Tool Digital">
+                            <span>Powered by<br>Five Tool Digital</span>
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- Bottom Section: Logos & Copyright -->
+        <div class="footer-bottom-final">
+            
+            <div class="footer-partners">
+                <img src="https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/6888e0168934ceb1ac001633.png" alt="Tom Sox">
+                <img src="https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/6888e0168934ce87ae001632.png" alt="League Logo">
+                <img src="https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/6888e016f3ce8340e74dbfc5.png" alt="NACSB">
+            </div>
+
+            <div class="footer-legal">
+                <p>&copy; 2026 CHARLOTTESVILLE COMMUNITY BASEBALL INC. ALL RIGHTS RESERVED.</p>
+                <p>CHARLOTTESVILLE COMMUNITY BASEBALL, INC. IS A 501(C)(3) NON-PROFIT ORGANIZATION.</p>
+            </div>
+            
+        </div>
+    </div>
+</footer>
+
+<!-- ====== 3. REQUIRED SCRIPTS ====== -->
+<script src="https://link.bai-demo.com/js/form_embed.js"></script>
+
+<!-- ===================================================================== -->
+<!-- ===                  END OF FOOTER CODE v2.2                      === -->
+<!-- ===================================================================== -->
