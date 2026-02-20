@@ -1,0 +1,1462 @@
+/* =========================================================
+   TOM SOX ROSTER - FINAL WORLD-CLASS EDITION
+   Simplified
+
+ All-in-one card design
+   ========================================================= */
+
+/* =========================================================
+   GLOBAL STYLES & FONT IMPORTS
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Open+Sans:wght@400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f4f4f7;
+    color: #333;
+    line-height: 1.6;
+}
+
+:root {
+    --brand-green: #84BD00;
+    --dark-blue-bg: #1b365d;
+    --dark-hover: #2a4a7a;
+    --light-bg: #f4f4f7;
+    --light-text: #ffffff;
+    --text-dark: #333;
+    --text-light: #777;
+    --white: #ffffff;
+    --animation-speed: 500ms;
+    /* Year badge colors */
+    --year-freshman: #FFD700;
+    --year-sophomore: #C0C0C0;
+    --year-junior: #CD7F32;
+    --year-senior: #84BD00;
+}
+
+/* =========================================================
+   ROSTER OVERLAY TOGGLE SYSTEM
+   ========================================================= */
+
+.roster-overlay-content {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    text-align: center;
+    padding: 40px;
+}
+
+.roster-page-container.roster-locked .roster-overlay-content {
+    display: flex;
+}
+
+.roster-page-container.roster-locked::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    z-index: 9998;
+}
+
+.roster-overlay-content > div {
+    background: rgba(27, 54, 93, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    max-width: 600px;
+}
+
+.roster-overlay-content h2 {
+    font-size: 3em;
+    font-weight: 500;
+    margin: 0 0 20px 0;
+    color: #ffffff;
+}
+
+.roster-overlay-content p {
+    font-size: 1.5em;
+    color: #ffffff;
+    margin: 0;
+}
+
+/* =========================================================
+   LOADING STATES
+   ========================================================= */
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 700px;
+    padding: 30px;
+}
+
+.skeleton-card {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 12px;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.loading-container p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    font-weight: 600;
+    text-align: center;
+}
+
+/* =========================================================
+   MAIN ROSTER CONTAINER
+   ========================================================= */
+
+.roster-page-container {
+    display: flex;
+    min-height: 90vh;
+    gap: 10px;
+    background-color: var(--light-bg);
+    overflow: visible;
+    position: relative;
+}
+
+/* =========================================================
+   LEFT SIDEBAR MENU - FULL HEIGHT
+   ========================================================= */
+
+.roster-left-menu {
+    flex: 0 0 15%;
+    background-color: var(--dark-blue-bg);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh;
+}
+
+.menu-header {
+    flex-shrink: 0;
+    padding-bottom: 12px;
+}
+
+.player-list-wrapper {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+}
+
+.search-container {
+    margin-bottom: 10px;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-family: 'Open Sans', sans-serif;
+    background-color: rgba(255,255,255,0.1);
+    color: var(--white);
+    transition: all 0.3s ease;
+}
+
+.search-container input::placeholder {
+    color: rgba(255,255,255,0.5);
+}
+
+.search-container input:focus {
+    outline: 2px solid var(--brand-green);
+    background-color: rgba(255,255,255,0.15);
+}
+
+.filter-container {
+    margin-bottom: 8px;
+}
+
+.filter-container label {
+    display: block;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+}
+
+.filter-container select {
+    width: 100%;
+    padding: 7px 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-family: 'Open Sans', sans-serif;
+    background-color: rgba(255,255,255,0.1);
+    color: var(--white);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-container select:focus {
+    outline: 2px solid var(--brand-green);
+    background-color: rgba(255,255,255,0.15);
+}
+
+.filter-container select option {
+    background-color: var(--dark-blue-bg);
+    color: var(--white);
+}
+
+.filter-controls-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.clear-filters-btn {
+    width: 100%;
+    padding: 7px 10px;
+    background-color: transparent;
+    color: var(--brand-green);
+    border: 1px solid var(--brand-green);
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 6px;
+}
+
+.clear-filters-btn:hover {
+    background-color: var(--brand-green);
+    color: var(--dark-blue-bg);
+}
+
+.favorites-filter {
+    margin-top: 6px;
+    margin-bottom: 10px;
+}
+
+.favorites-filter button {
+    width: 100%;
+    padding: 8px 10px;
+    background-color: rgba(255,255,255,0.1);
+    color: var(--white);
+    border: 1px solid var(--dark-hover);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-family: 'Open Sans', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.favorites-filter button:hover {
+    background-color: rgba(255,255,255,0.15);
+    border-color: var(--brand-green);
+}
+
+.favorites-filter button.active {
+    background-color: var(--brand-green);
+    border-color: var(--brand-green);
+    font-weight: 700;
+}
+
+.favorites-filter button svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+}
+
+.player-count {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 8px 0;
+    border-top: 1px solid var(--dark-hover);
+    margin-top: 8px;
+    flex-shrink: 0;
+}
+
+.roster-left-menu a {
+    display: block;
+    padding: 8px 10px;
+    color: var(--white);
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.85rem;
+    border-bottom: 1px solid var(--dark-hover);
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    margin-bottom: 3px;
+    position: relative;
+}
+
+.roster-left-menu a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background-color: var(--brand-green);
+    transform: translateX(-3px);
+    transition: transform 0.3s ease;
+}
+
+.roster-left-menu a:hover {
+    background-color: var(--dark-hover);
+    transform: translateX(3px);
+}
+
+.roster-left-menu a:hover::before {
+    transform: translateX(0);
+}
+
+.roster-left-menu a.active {
+    background-color: var(--brand-green);
+    font-weight: 700;
+    transform: translateX(3px);
+}
+
+.roster-left-menu a.active::before {
+    transform: translateX(0);
+}
+
+.roster-left-menu a.hidden {
+    display: none;
+}
+
+.player-list-wrapper::-webkit-scrollbar {
+    width: 6px;
+}
+
+.player-list-wrapper::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.05);
+    border-radius: 3px;
+}
+
+.player-list-wrapper::-webkit-scrollbar-thumb {
+    background: var(--brand-green);
+    border-radius: 3px;
+}
+
+.player-list-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #9dd615;
+}
+
+/* =========================================================
+   RIGHT CONTENT AREA
+   ========================================================= */
+
+.roster-right-content {
+    flex: 1;
+    position: relative;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+}
+
+#player-cards-container {
+    position: relative;
+    width: 100%;
+    min-height: 750px;
+    margin-bottom: 20px;
+    overflow: visible;
+}
+
+/* =========================================================
+   PLAYER CARD - FINAL SIMPLIFIED DESIGN
+   ========================================================= */
+
+.player-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 750px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(100%);
+    transition: transform var(--animation-speed) ease-in-out, opacity calc(var(--animation-speed) * 0.8) ease-in-out;
+    background-size: cover;
+    background-position: center center;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.player-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.20) 100%);
+    border-radius: 12px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.player-card.active {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 2;
+    transform: translateX(0);
+}
+
+.player-card.slide-left {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.player-card.slide-right {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+/* Player header with jersey badge */
+.player-header {
+    position: relative;
+    z-index: 2;
+    padding: 30px 30px 20px 120px;
+}
+
+.jersey-badge {
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    width: 70px;
+    height: 70px;
+    background-color: var(--brand-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 10;
+}
+
+.jersey-badge span {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--dark-blue-bg);
+    line-height: 1;
+}
+
+.player-header h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+    margin: 0 0 12px 0;
+    color: var(--brand-green);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.college-logo-inline {
+    height: 70px;
+    width: 70px;
+    object-fit: contain;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+    background-color: white;
+    border-radius: 50%;
+    padding: 2px;
+    border: 2px solid rgba(255,255,255,0.3);
+}
+
+.college-link {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.8rem;
+    color: var(--brand-green);
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: 0;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+    transition: all 0.3s ease;
+}
+
+.college-link:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.player-header-line1 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    margin: 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.player-header-line1 .position {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.player-header-line1 .separator {
+    color: var(--brand-green);
+    font-weight: 700;
+}
+
+.player-header-line2 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.95rem;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    margin: 6px 0 12px 0;
+    font-weight: 600;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.player-header-line2 span {
+    white-space: nowrap;
+}
+
+/* Year badge */
+.year-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--dark-blue-bg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.year-badge.freshman {
+    background-color: var(--year-freshman);
+}
+
+.year-badge.sophomore {
+    background-color: var(--year-sophomore);
+}
+
+.year-badge.junior {
+    background-color: var(--year-junior);
+}
+
+.year-badge.senior {
+    background-color: var(--year-senior);
+    color: white;
+}
+
+/* Social icons */
+.player-social-icons {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.social-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--dark-blue-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.social-icon:hover {
+    background-color: var(--brand-green);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+.social-icon svg {
+    width: 18px;
+    height: 18px;
+    fill: white;
+}
+
+/* Image spacer */
+.player-image-spacer {
+    flex: 1;
+    min-height: 300px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Stats banner integrated */
+.player-stats-integrated {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    background: linear-gradient(135deg, var(--dark-blue-bg) 0%, #2a4a7a 100%);
+    color: var(--white);
+    padding: 25px 30px;
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.2);
+}
+
+.stat-item {
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-3px);
+}
+
+.stat-item strong {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: 1;
+    display: block;
+    color: var(--brand-green);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.stat-item span {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: #aaa;
+    letter-spacing: 0.05em;
+    margin-top: 5px;
+    display: block;
+}
+
+/* Bio at bottom */
+.player-bio-bottom {
+    position: relative;
+    z-index: 2;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    min-height: 100px;
+}
+
+.bio-text-content {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #222;
+    padding-right: 180px;
+}
+
+.player-headshot-corner {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 120px;
+    height: 150px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 4px solid var(--brand-green);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.player-headshot-corner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Top right elements */
+.tom-sox-logo-container {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    z-index: 4;
+    transition: transform 0.3s ease;
+}
+
+.tom-sox-logo-container:hover {
+    transform: rotate(5deg) scale(1.05);
+}
+
+.tom-sox-logo-container img {
+    height: 120px;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+}
+
+.favorite-btn {
+    position: absolute;
+    top: 160px;
+    right: 30px;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid var(--dark-blue-bg);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    pointer-events: auto;
+}
+
+.favorite-btn:hover {
+    transform: scale(1.1);
+}
+
+.favorite-btn:active {
+    transform: scale(0.95);
+}
+
+.favorite-btn svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--dark-blue-bg);
+    fill: none;
+    stroke-width: 2;
+}
+
+.favorite-btn.favorited svg {
+    fill: var(--brand-green);
+    stroke: var(--brand-green);
+}
+
+@keyframes favoritePulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+#navigation-arrows {
+    text-align: center;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+#navigation-arrows button {
+    background-color: var(--dark-blue-bg);
+    color: var(--white);
+    border: none;
+    padding: 12px 24px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+#navigation-arrows button:hover {
+    background-color: var(--brand-green);
+    transform: translateY(-2px);
+}
+
+.player-indicator {
+    font-size: 1rem;
+    color: var(--text-light);
+    font-weight: 600;
+}
+
+/* =========================================================
+   MOBILE-ONLY ELEMENTS (Hidden on Desktop)
+   ========================================================= */
+
+.mobile-player-dropdown,
+.mobile-headshot-section,
+.mobile-headshot-circle,
+.mobile-jersey-badge,
+.mobile-action-image,
+.mobile-stats-row-1,
+.mobile-stats-row-2 {
+    display: none;
+}
+
+/* =========================================================
+   COACHING STAFF
+   ========================================================= */
+
+.coaching-staff-section {
+    width: 100%;
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 3px solid var(--dark-blue-bg);
+}
+
+.coaching-staff-header {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--dark-blue-bg);
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.coaching-staff-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.coach-card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.coach-card:hover {
+    transform: translateY(-4px);
+}
+
+.coach-headshot {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto 16px;
+    overflow: hidden;
+    border: 4px solid var(--brand-green);
+}
+
+.coach-headshot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.coach-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark-blue-bg);
+}
+
+.coach-title {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--brand-green);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.coach-bio-preview {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text-light);
+}
+
+/* =========================================================
+   MOBILE - COMPLETE RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 1024px) {
+    .roster-page-container {
+        flex-direction: column;
+    }
+
+    .roster-left-menu {
+        flex: 0 0 auto;
+        max-height: none;
+        padding: 15px;
+    }
+
+    .player-list-wrapper {
+        display: none !important;
+    }
+
+    .menu-header {
+        display: block;
+        padding-bottom: 10px;
+    }
+
+    .desktop-only {
+        display: none !important;
+    }
+
+    .mobile-player-dropdown {
+        display: block !important;
+        width: 100%;
+        padding: 12px 15px;
+        font-size: 1rem;
+        font-family: 'Open Sans', sans-serif;
+        background-color: var(--dark-blue-bg);
+        color: var(--white);
+        border: 2px solid var(--brand-green);
+        border-radius: 8px;
+        cursor: pointer;
+        margin-bottom: 10px;
+        font-weight: 600;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2384BD00' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 20px;
+        padding-right: 40px;
+    }
+
+    .player-count {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255,255,255,0.2);
+    }
+}
+
+@media (max-width: 768px) {
+    #player-cards-container {
+        min-height: auto;
+        height: auto;
+    }
+
+    .player-card {
+        position: relative !important;
+        min-height: auto;
+        height: auto;
+        transform: none !important;
+        opacity: 0;
+        display: none;
+        background-image: none !important;
+        background-color: white;
+    }
+
+    .player-card::before {
+        display: none;
+    }
+
+    .player-card.active {
+        opacity: 1 !important;
+        display: flex !important;
+        position: relative !important;
+        transform: none !important;
+    }
+
+    .player-card.slide-left,
+    .player-card.slide-right {
+        display: none !important;
+    }
+    
+    /* Mobile headshot at top */
+    .mobile-headshot-section {
+        display: block;
+        position: relative;
+        padding: 30px 20px 20px 20px;
+        text-align: center;
+        background: linear-gradient(to bottom, #f8f9fa 0%, white 100%);
+        flex-shrink: 0;
+    }
+
+    .mobile-headshot-circle {
+        display: block;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0 auto 15px auto;
+        border: 5px solid var(--brand-green);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        position: relative;
+    }
+
+    .mobile-headshot-circle img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .mobile-jersey-badge {
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 65px;
+        height: 65px;
+        background-color: var(--brand-green);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        border: 3px solid white;
+    }
+
+    .mobile-jersey-badge span {
+        font-family: 'Oswald', sans-serif;
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--dark-blue-bg);
+        line-height: 1;
+    }
+
+    .player-header {
+        padding: 20px 15px 15px 15px;
+        background: white;
+        flex-shrink: 0;
+    }
+
+    .jersey-badge {
+        display: none;
+    }
+
+    .player-header h2 {
+        font-size: 2rem;
+        margin: 0 0 12px 0;
+        justify-content: center;
+        text-align: center;
+        flex-wrap: wrap;
+        color: var(--dark-blue-bg);
+        text-shadow: none;
+    }
+
+    .college-logo-inline {
+        height: 45px;
+        width: auto;
+    }
+
+    .college-link {
+        font-size: 0.8rem;
+        text-align: center;
+        display: block;
+        width: 100%;
+        margin-top: 8px;
+        color: var(--brand-green);
+    }
+
+    .player-header-line1 {
+        font-size: 1rem;
+        justify-content: center;
+        text-align: center;
+        margin: 8px 0;
+        flex-wrap: wrap;
+        color: var(--dark-blue-bg);
+        text-shadow: none;
+    }
+
+    .player-header-line2 {
+        font-size: 0.85rem;
+        justify-content: center;
+        text-align: center;
+        gap: 12px;
+        margin: 8px 0 12px 0;
+        flex-wrap: wrap;
+        color: var(--text-dark);
+        text-shadow: none;
+    }
+
+    .year-badge {
+        font-size: 0.8rem;
+        padding: 4px 12px;
+    }
+
+    .player-social-icons {
+        justify-content: center;
+        margin-top: 12px;
+        gap: 12px;
+    }
+
+    .social-icon {
+        width: 44px;
+        height: 44px;
+    }
+
+    .social-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .player-image-spacer {
+        display: none;
+    }
+
+    .tom-sox-logo-container {
+        display: none;
+    }
+
+    .favorite-btn {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 48px;
+        height: 48px;
+        background: white;
+        border: 2px solid var(--brand-green);
+    }
+
+    .favorite-btn svg {
+        width: 24px;
+        height: 24px;
+    }
+    
+    /* Stats grid - 3 column + 2 column layout */
+    .player-stats-integrated {
+        display: block;
+        padding: 20px 15px;
+        background: linear-gradient(135deg, var(--dark-blue-bg) 0%, #2a4a7a 100%);
+        flex-shrink: 0;
+    }
+    
+    /* Hide desktop stats on mobile */
+    .player-stats-integrated > .stat-item {
+        display: none;
+    }
+
+    .mobile-stats-row-1 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 12px;
+        margin-bottom: 12px;
+    }
+
+    .mobile-stats-row-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .stat-item {
+        background: rgba(255,255,255,0.1);
+        padding: 12px;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    .stat-item strong {
+        font-size: 1.75rem;
+        display: block;
+        color: var(--brand-green);
+        margin-bottom: 4px;
+    }
+
+    .stat-item span {
+        font-size: 0.7rem;
+        color: rgba(255,255,255,0.9);
+        text-transform: uppercase;
+    }
+    
+    /* Bio section */
+    .player-bio-bottom {
+        padding: 20px 15px;
+        background: white;
+        flex-shrink: 0;
+    }
+
+    .bio-text-content {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: var(--text-dark);
+        padding: 0;
+        margin: 0;
+    }
+
+    .player-headshot-corner {
+        display: none;
+    }
+    
+    /* Mobile action image at bottom */
+    .mobile-action-image {
+        display: block;
+        width: 100%;
+        flex-shrink: 0;
+        background: #f8f9fa;
+        padding: 0;
+    }
+
+    .mobile-action-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 0;
+    }
+
+    #navigation-arrows {
+        margin: 20px 0;
+        gap: 15px;
+        background: white;
+        padding: 15px;
+    }
+
+    #navigation-arrows button {
+        padding: 12px 24px;
+        font-size: 20px;
+    }
+
+    .coaching-staff-section {
+        margin-top: 30px;
+        padding: 20px 15px;
+    }
+
+    .coaching-staff-header {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .coaching-staff-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+#navigation-arrows {
+    margin: 15px 0;
+    gap: 12px;
+}
+
+#navigation-arrows button {
+    padding: 10px 20px;
+    font-size: 20px;
+}
+
+.coaching-staff-section {
+    margin-top: 30px;
+    padding-top: 20px;
+}
+
+.coaching-staff-header {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.coaching-staff-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+}
+
+@media (max-width: 480px) {
+    .roster-right-content {
+        padding: 10px;
+    }
+
+    .player-header {
+        padding: 75px 15px 15px 15px;
+    }
+
+    .jersey-badge {
+        width: 65px;
+        height: 65px;
+        top: 15px;
+    }
+
+    .jersey-badge span {
+        font-size: 1.85rem;
+    }
+
+    .player-header h2 {
+        font-size: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .college-logo-inline {
+        height: 38px;
+        width: 38px;
+        padding: 4px;
+    }
+
+    .college-link {
+        font-size: 0.7rem;
+    }
+
+    .player-header-line1 {
+        font-size: 1rem;
+    }
+
+    .player-header-line2 {
+        font-size: 0.85rem;
+        gap: 10px;
+    }
+
+    .year-badge {
+        font-size: 0.75rem;
+        padding: 3px 10px;
+    }
+
+    .social-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .social-icon svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .player-image-spacer {
+        min-height: 200px;
+    }
+
+    .tom-sox-logo-container img {
+        height: 75px;
+    }
+
+    .favorite-btn {
+        width: 44px;
+        height: 44px;
+        top: 100px;
+    }
+
+    .favorite-btn svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .player-stats-integrated {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        padding: 15px 10px;
+    }
+
+    .stat-item strong {
+        font-size: 1.75rem;
+    }
+
+    .stat-item span {
+        font-size: 0.7rem;
+    }
+
+    .player-bio-bottom {
+        padding: 15px 10px;
+    }
+
+    .bio-text-content {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        padding-bottom: 130px;
+    }
+
+    .player-headshot-corner {
+        width: 95px;
+        height: 120px;
+        bottom: 10px;
+        right: 10px;
+    }
+
+    #navigation-arrows button {
+        padding: 8px 16px;
+        font-size: 18px;
+    }
+
+    .coaching-staff-header {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 414px) {
+    /* iPhone 11 Pro Max and similar */
+    .player-header h2 {
+        font-size: 1.85rem;
+    }
+
+    .player-header-line1 {
+        font-size: 0.95rem;
+    }
+
+    .player-header-line2 {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 375px) {
+    /* iPhone SE, iPhone 12 Mini */
+    .player-header h2 {
+        font-size: 1.75rem;
+    }
+
+    .jersey-badge {
+        width: 60px;
+        height: 60px;
+    }
+
+    .jersey-badge span {
+        font-size: 1.7rem;
+    }
+
+    .stat-item strong {
+        font-size: 1.6rem;
+    }
+}
+
+/* =========================================================
+   UTILITY
+   ========================================================= */
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
