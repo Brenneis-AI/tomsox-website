@@ -358,9 +358,21 @@
             
             currentPlayerIndex = -1;
             buildRoster(sortBy);
-            
+
+            // Restore filter UI state after buildRoster rebuilds the DOM (fixes dropdown display bug)
+            const positionSelect = document.getElementById('filter-position');
+            const collegeSelect = document.getElementById('filter-college');
+            const yearSelect = document.getElementById('filter-year');
+            const searchInput = document.getElementById('player-search');
+            if (positionSelect) positionSelect.value = currentFilters.position;
+            if (collegeSelect) collegeSelect.value = currentFilters.college;
+            if (yearSelect) yearSelect.value = currentFilters.year;
+            if (searchInput) searchInput.value = currentFilters.search;
+
+            // Always re-attach listeners after buildRoster rebuilds the DOM (fixes Clear Filters when 0 results)
+            setupEventListeners();
+
             if (filteredPlayers.length > 0) {
-                setupEventListeners();
                 setTimeout(() => showPlayer(0), 50);
             } else {
                 const message = showingFavoritesOnly ? 
