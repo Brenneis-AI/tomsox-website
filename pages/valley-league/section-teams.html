@@ -1,549 +1,184 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meet the Valley League | Charlottesville Tom Sox</title>
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-  
-  <style>
-    /* ==================== RESET & BASE ==================== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Open Sans', sans-serif;
-      background: #ffffff;
-      color: #333;
-      line-height: 1.6;
-    }
-    
-    /* ==================== PAGE CONTAINER ==================== */
-    .valley-league-page {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 60px 20px 80px;
-    }
-    
-    /* ==================== PAGE HEADER ==================== */
-    .page-header {
-      text-align: center;
-      margin-bottom: 50px;
-      padding-bottom: 30px;
-      border-bottom: 2px solid #e8e8e8;
-    }
-    
-    .page-title {
-      font-family: 'Oswald', sans-serif;
-      font-size: 3.5rem;
-      font-weight: 700;
-      color: #0d2c4e;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 15px;
-    }
-    
-    .page-subtitle {
-      font-family: 'Open Sans', sans-serif;
-      font-size: 1.2rem;
-      color: #666;
-      max-width: 700px;
-      margin: 0 auto;
-      line-height: 1.7;
-    }
-    
-    /* ==================== VALLEY LEAGUE BANNER CARD ==================== */
-    .league-banner-card {
-      background: linear-gradient(135deg, #163d78 0%, #1a4d94 100%);
-      border-radius: 12px;
-      padding: 40px 50px;
-      margin-bottom: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 30px;
-      box-shadow: 0 8px 24px rgba(22, 61, 120, 0.15);
-      cursor: pointer;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
-      text-decoration: none;
-      border: 3px solid transparent;
-    }
-    
-    /* Animated background accent */
-    .league-banner-card::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(253, 240, 23, 0.1) 0%, transparent 70%);
-      transition: transform 0.6s ease;
-    }
-    
-    .league-banner-card:hover::before {
-      transform: translate(-25%, -25%);
-    }
-    
-    .league-banner-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(22, 61, 120, 0.25);
-      border-color: #fdf017;
-    }
-    
-    .league-banner-content {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-      flex: 1;
-      position: relative;
-      z-index: 1;
-    }
-    
-    .league-banner-logo {
-      width: 120px;
-      height: 120px;
-      flex-shrink: 0;
-      background: #ffffff;
-      border-radius: 50%;
-      padding: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-    
-    .league-banner-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-    
-    .league-banner-text {
-      flex: 1;
-    }
-    
-    .league-banner-title {
-      font-family: 'Oswald', sans-serif;
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: #ffffff;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
-    }
-    
-    .league-banner-meta {
-      font-family: 'Open Sans', sans-serif;
-      font-size: 1rem;
-      color: #fdf017;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-    }
-    
-    .league-banner-cta {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-family: 'Open Sans', sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      color: #fdf017;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    
-    .league-banner-arrow {
-      font-size: 1.5rem;
-      transition: transform 0.3s ease;
-    }
-    
-    .league-banner-card:hover .league-banner-arrow {
-      transform: translateX(8px);
-    }
-    
-    /* ==================== TEAM CARDS GRID ==================== */
-    .teams-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 25px;
-    }
-    
-    .team-card {
-      background: var(--team-primary);
-      border: 6px solid transparent;
-      border-radius: 10px;
-      padding: 30px 20px;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      text-decoration: none;
-      color: #ffffff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      aspect-ratio: 3/4;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
-    
-    .team-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
-      border-color: var(--team-secondary);
-    }
-    
-    .team-logo-container {
-      width: 100px;
-      height: 100px;
-      margin-bottom: 20px;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #ffffff;
-      border-radius: 50%;
-      padding: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-      transition: transform 0.3s ease;
-    }
-    
-    .team-card:hover .team-logo-container {
-      transform: scale(1.1);
-    }
-    
-    .team-logo-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-    
-    .team-name {
-      font-family: 'Oswald', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #ffffff;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 12px;
-      line-height: 1.2;
-    }
-    
-    .team-info {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 8px;
-    }
-    
-    .team-stadium {
-      font-family: 'Open Sans', sans-serif;
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.9);
-      line-height: 1.4;
-    }
-    
-    .team-established {
-      font-family: 'Open Sans', sans-serif;
-      font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.8);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    
-    /* Bio placeholder space - hidden for now, ready to add content */
-    .team-bio {
-      display: none; /* Will be shown when bio content is added */
-      font-family: 'Open Sans', sans-serif;
-      font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.85);
-      line-height: 1.5;
-      margin-top: 12px;
-      padding-top: 12px;
-      border-top: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    
-    /* ==================== RESPONSIVE DESIGN ==================== */
-    @media (max-width: 1024px) {
-      .teams-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-      }
-    }
-    
-    @media (max-width: 768px) {
-      .valley-league-page {
-        padding: 40px 15px 60px;
-      }
-      
-      .page-title {
-        font-size: 2.5rem;
-      }
-      
-      .page-subtitle {
-        font-size: 1rem;
-      }
-      
-      .league-banner-card {
-        flex-direction: column;
-        padding: 30px 25px;
-        text-align: center;
-      }
-      
-      .league-banner-content {
-        flex-direction: column;
-        text-align: center;
-      }
-      
-      .league-banner-logo {
-        width: 100px;
-        height: 100px;
-      }
-      
-      .league-banner-title {
-        font-size: 1.8rem;
-      }
-      
-      .teams-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 18px;
-      }
-      
-      .team-card {
-        padding: 25px 15px;
-      }
-      
-      .team-logo-container {
-        width: 80px;
-        height: 80px;
-      }
-      
-      .team-name {
-        font-size: 1.2rem;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .page-title {
-        font-size: 2rem;
-      }
-      
-      .league-banner-card {
-        padding: 25px 20px;
-      }
-      
-      .league-banner-logo {
-        width: 80px;
-        height: 80px;
-      }
-      
-      .league-banner-title {
-        font-size: 1.5rem;
-      }
-      
-      .teams-grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
-      }
-      
-      .team-card {
-        aspect-ratio: auto;
-        padding: 30px 20px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="valley-league-page">
-    
-    <!-- PAGE HEADER -->
-    <header class="page-header">
-      <h1 class="page-title">Meet the Valley League</h1>
-      <p class="page-subtitle">
-        Twelve teams across central and western Virginia competing in one of the nation's oldest collegiate summer baseball leagues
-      </p>
-    </header>
-    
-    <!-- VALLEY LEAGUE BANNER CARD -->
-    <a href="https://valleybaseballleague.com//" target="_blank" rel="noopener noreferrer" class="league-banner-card">
-      <div class="league-banner-content">
-        <div class="league-banner-logo">
-          <img src="https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/694983f7eb54327c3ba8a0b6.png" alt="Valley Baseball League">
-        </div>
-        <div class="league-banner-text">
-          <h2 class="league-banner-title">Valley Baseball League</h2>
-          <p class="league-banner-meta">Established 1897 • 12 Teams</p>
-        </div>
+<!--
+  File: section-teams.html
+  Page: valley-league
+  Section: Page header, Valley Baseball League banner card, and 12-team card grid
+  Last Updated: 2026-02-21
+-->
+
+<div class="valley-league-page">
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <h1 class="page-title">Meet the Valley League</h1>
+    <p class="page-subtitle">
+      Twelve teams across central and western Virginia competing in one of the nation's oldest collegiate summer baseball leagues
+    </p>
+  </header>
+
+  <!-- VALLEY LEAGUE BANNER CARD -->
+  <a href="https://valleybaseballleague.com/" target="_blank" rel="noopener noreferrer" class="league-banner-card">
+    <div class="league-banner-content">
+      <div class="league-banner-logo">
+        <img src="https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/694983f7eb54327c3ba8a0b6.png" alt="Valley Baseball League logo">
       </div>
-      <div class="league-banner-cta">
-        Visit Website
-        <span class="league-banner-arrow">→</span>
+      <div class="league-banner-text">
+        <h2 class="league-banner-title">Valley Baseball League</h2>
+        <p class="league-banner-meta">Established 1897 &bull; 12 Teams</p>
+      </div>
+    </div>
+    <div class="league-banner-cta">
+      Visit Website
+      <span class="league-banner-arrow">&#8594;</span>
+    </div>
+  </a>
+
+  <!-- TEAM CARDS GRID -->
+  <div class="teams-grid">
+
+    <!-- Charlottesville Tom Sox — Home Team -->
+    <a href="https://www.tomsox.org" target="_blank" rel="noopener noreferrer" class="team-card team-card--home" style="--team-primary: #1f375c; --team-secondary: #8cbc0d;">
+      <div class="team-logo-container">
+        <img src="https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/689908ddd580d6c26157bbf5.png" alt="Charlottesville Tom Sox logo" loading="lazy">
+      </div>
+      <h3 class="team-name">Charlottesville Tom Sox</h3>
+      <div class="team-info">
+        <p class="team-stadium">CHO Field at Charlottesville High School</p>
+        <p class="team-established">Est. 2015</p>
       </div>
     </a>
-    
-    <!-- TEAM CARDS GRID -->
-    <div class="teams-grid">
-      
-      <!-- Charlottesville Tom Sox -->
-      <a href="https://www.tomsox.org" target="_blank" rel="noopener noreferrer" class="team-card" style="--team-primary: #1f375c; --team-secondary: #8cbc0d;">
-        <div class="team-logo-container">
-          <img src="https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/689908ddd580d6c26157bbf5.png" alt="Charlottesville Tom Sox">
-        </div>
-        <h3 class="team-name">Charlottesville Tom Sox</h3>
-        <div class="team-info">
-          <p class="team-stadium">CHO Field at Charlottesville High School</p>
-          <p class="team-established">Est. 2015</p>
-        </div>
-      </a>
-      
-      <!-- Covington Lumberjacks -->
-      <a href="https://www.covingtonlumberjacks.com" target="_blank" rel="noopener noreferrer" class="team-card" style="--team-primary: #142a40; --team-secondary: #2f89c8;">
-        <div class="team-logo-container">
-          <img src="https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/689908dcefa0f0541e76d97a.png" alt="Covington Lumberjacks">
-        </div>
-        <h3 class="team-name">Covington Lumberjacks</h3>
-        <div class="team-info">
-          <p class="team-stadium">Casey Field</p>
-          <p class="team-established">Est. 2001</p>
-        </div>
-      </a>
-      
-      <!-- Culpeper Cavaliers -->
-      <a href="https://culpepercavaliers.org" target="_blank" rel="noopener noreferrer" class="team-card" style="--team-primary: #041937; --team-secondary: #f0d848;">
-        <div class="team-logo-container">
-          <img src="https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/689908dcefa0f0580a76d977.webp" alt="Culpeper Cavaliers">
-        </div>
-        <h3 class="team-name">Culpeper Cavaliers</h3>
-        <div class="team-info">
-          <p class="team-stadium">Culpeper County High School</p>
-          <p class="team-established">Est. 2023</p>
-        </div>
-      </a>
-      
-      <!-- Front Royal Cardinals -->
-      <a href="https://www.frontroyalcardinals.org/" target="_blank" rel="noopener noreferrer" class="team-card" style="--team-primary: #f10008; --team-secondary: #000000;">
-        <div class="team-logo-container">
-          <img src="https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/689908dc861757379e3e7a85.png" alt="Front Royal Cardinals">
-        </div>
-        <h3 class="team-name">Front Royal Cardinals</h3>
-        <div class="team-info">
-          <p class="team-stadium">David L. Wines Field at Bing Crosby Stadium</p>
-          <p class="team-established">Est. 1984</p>
-        </div>
-      </a>
-      
-      <!-- Harrisonburg Turks -->
-      <a href="https://harrisonburgturks.com" target="_blank" rel="noopener noreferrer" class="team-card" style="--team-primary: #df001c; --team-secondary: #000000;">
-        <div class="team-logo-container">
-          <img src="https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/6985555a0a7fd15ec99f2c25.png" alt="Harrisonburg Turks">
-        </div>
-        <h3 class="team-name">Harrisonburg Turks</h3>
-        <div class="team-info">
-          <p class="team-stadium">Veterans Memorial Stadium</p>
-          <p class="team-established">Est. 1915</p>
-        </div>
-      </a>
-      
-      <!-- New Market Rebels -->
-      <a href="https://www.newmarketrebels.com/" target="_blank" rel="noopener noreferrer" class="team-card" style="--team-primary: #0726a1; --team-secondary: #0726a1;">
-        <div class="team-logo-container">
-          <img src="https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/689908ddd580d65f1a57bbf6.png" alt="New Market Rebels">
-        </div>
-        <h3 class="team-name">New Market Rebels</h3>
-        <div class="team-info">
-          <p class="team-stadium">Rebel Park</p>
-          <p class="team-established">Est. 2015</p>
-        </div>
-      </a>
-      
-      <!-- Purcellville Cannons -->
-      <a href="https://www.purcellvillecannons.org/" target="_blank" rel="noopener noreferrer" class="team-card" style="--team-primary: #47232f; --team-secondary: #c2ad81;">
-        <div class="team-logo-container">
-          <img src="https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/689908ddd580d6c64057bbf7.png" alt="Purcellville Cannons">
-        </div>
-        <h3 class="team-name">Purcellville Cannons</h3>
-        <div class="team-info">
-          <p class="team-stadium">Fireman's Field</p>
-          <p class="team-established">Est. 2016</p>
-        </div>
-      </a>
-      
-      <!-- Strasburg Express -->
-      <a href="https://strasburgexpress.org" target="_blank" rel="noopener noreferrer" class="team-card" style="--team-primary: #8518d6; --team-secondary: #4b2c83;">
-        <div class="team-logo-container">
-          <img src="https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/689908dcefa0f0956d76d976.png" alt="Strasburg Express">
-        </div>
-        <h3 class="team-name">Strasburg Express</h3>
-        <div class="team-info">
-          <p class="team-stadium">First Bank Park</p>
-          <p class="team-established">Est. 2011</p>
-        </div>
-      </a>
-      
-      <!-- Staunton Braves -->
-      <a href="https://www.stauntonbravesbaseball.com" target="_blank" rel="noopener noreferrer" class="team-card" style="--team-primary: #2833f1; --team-secondary: #d70017;">
-        <div class="team-logo-container">
-          <img src="https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/69853d500a7fd1eebd9bc89f.png" alt="Staunton Braves">
-        </div>
-        <h3 class="team-name">Staunton Braves</h3>
-        <div class="team-info">
-          <p class="team-stadium">Ted Bosiak Field at John Moxie Memorial Stadium</p>
-          <p class="team-established">Est. 1915</p>
-        </div>
-      </a>
-      
-      <!-- Waynesboro Generals -->
-      <a href="https://www.waynesborogenerals.net/" target="_blank" rel="noopener noreferrer" class="team-card" style="--team-primary: #cd0024; --team-secondary: #39196b;">
-        <div class="team-logo-container">
-          <img src="https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/689908dcefa0f0bfb976d979.png" alt="Waynesboro Generals">
-        </div>
-        <h3 class="team-name">Waynesboro Generals</h3>
-        <div class="team-info">
-          <p class="team-stadium">Prosperity Home Mortgage Park</p>
-          <p class="team-established">Est. 1950</p>
-        </div>
-      </a>
-      
-      <!-- Winchester Royals -->
-      <a href="https://winchesterroyals.org/" target="_blank" rel="noopener noreferrer" class="team-card" style="--team-primary: #164a02; --team-secondary: #bbae6f;">
-        <div class="team-logo-container">
-          <img src="https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/689908dc91bb123249e33c6a.png" alt="Winchester Royals">
-        </div>
-        <h3 class="team-name">Winchester Royals</h3>
-        <div class="team-info">
-          <p class="team-stadium">Bridgeforth Stadium</p>
-          <p class="team-established">Est. 1979</p>
-        </div>
-      </a>
-      
-      <!-- Woodstock River Bandits -->
-      <a href="http://woodstockriverbandits.org/" target="_blank" rel="noopener noreferrer" class="team-card" style="--team-primary: #123a11; --team-secondary: #e1542b;">
-        <div class="team-logo-container">
-          <img src="https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/689908dc0d42f97efe9924f4.png" alt="Woodstock River Bandits">
-        </div>
-        <h3 class="team-name">Woodstock River Bandits</h3>
-        <div class="team-info">
-          <p class="team-stadium">Falcon Field</p>
-          <p class="team-established">Est. 2004</p>
-        </div>
-      </a>
-      
-    </div>
-    
+
+    <!-- Covington Lumberjacks -->
+    <a href="https://www.covingtonlumberjacks.com" target="_blank" rel="noopener noreferrer" class="team-card" style="--team-primary: #142a40; --team-secondary: #2f89c8;">
+      <div class="team-logo-container">
+        <img src="https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/689908dcefa0f0541e76d97a.png" alt="Covington Lumberjacks logo" loading="lazy">
+      </div>
+      <h3 class="team-name">Covington Lumberjacks</h3>
+      <div class="team-info">
+        <p class="team-stadium">Casey Field</p>
+        <p class="team-established">Est. 2001</p>
+      </div>
+    </a>
+
+    <!-- Culpeper Cavaliers -->
+    <a href="https://culpepercavaliers.org" target="_blank" rel="noopener noreferrer" class="team-card" style="--team-primary: #041937; --team-secondary: #f0d848;">
+      <div class="team-logo-container">
+        <img src="https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/689908dcefa0f0580a76d977.webp" alt="Culpeper Cavaliers logo" loading="lazy">
+      </div>
+      <h3 class="team-name">Culpeper Cavaliers</h3>
+      <div class="team-info">
+        <p class="team-stadium">Culpeper County High School</p>
+        <p class="team-established">Est. 2023</p>
+      </div>
+    </a>
+
+    <!-- Front Royal Cardinals -->
+    <a href="https://www.frontroyalcardinals.org/" target="_blank" rel="noopener noreferrer" class="team-card" style="--team-primary: #f10008; --team-secondary: #000000;">
+      <div class="team-logo-container">
+        <img src="https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/689908dc861757379e3e7a85.png" alt="Front Royal Cardinals logo" loading="lazy">
+      </div>
+      <h3 class="team-name">Front Royal Cardinals</h3>
+      <div class="team-info">
+        <p class="team-stadium">David L. Wines Field at Bing Crosby Stadium</p>
+        <p class="team-established">Est. 1984</p>
+      </div>
+    </a>
+
+    <!-- Harrisonburg Turks -->
+    <a href="https://harrisonburgturks.com" target="_blank" rel="noopener noreferrer" class="team-card" style="--team-primary: #df001c; --team-secondary: #000000;">
+      <div class="team-logo-container">
+        <img src="https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/6985555a0a7fd15ec99f2c25.png" alt="Harrisonburg Turks logo" loading="lazy">
+      </div>
+      <h3 class="team-name">Harrisonburg Turks</h3>
+      <div class="team-info">
+        <p class="team-stadium">Veterans Memorial Stadium</p>
+        <p class="team-established">Est. 1915</p>
+      </div>
+    </a>
+
+    <!-- New Market Rebels — secondary color corrected from duplicate #0726a1 to gold -->
+    <a href="https://www.newmarketrebels.com/" target="_blank" rel="noopener noreferrer" class="team-card" style="--team-primary: #0726a1; --team-secondary: #c8a52e;">
+      <div class="team-logo-container">
+        <img src="https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/689908ddd580d65f1a57bbf6.png" alt="New Market Rebels logo" loading="lazy">
+      </div>
+      <h3 class="team-name">New Market Rebels</h3>
+      <div class="team-info">
+        <p class="team-stadium">Rebel Park</p>
+        <p class="team-established">Est. 2015</p>
+      </div>
+    </a>
+
+    <!-- Purcellville Cannons -->
+    <a href="https://www.purcellvillecannons.org/" target="_blank" rel="noopener noreferrer" class="team-card" style="--team-primary: #47232f; --team-secondary: #c2ad81;">
+      <div class="team-logo-container">
+        <img src="https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/689908ddd580d6c64057bbf7.png" alt="Purcellville Cannons logo" loading="lazy">
+      </div>
+      <h3 class="team-name">Purcellville Cannons</h3>
+      <div class="team-info">
+        <p class="team-stadium">Fireman's Field</p>
+        <p class="team-established">Est. 2016</p>
+      </div>
+    </a>
+
+    <!-- Strasburg Express -->
+    <a href="https://strasburgexpress.org" target="_blank" rel="noopener noreferrer" class="team-card" style="--team-primary: #8518d6; --team-secondary: #4b2c83;">
+      <div class="team-logo-container">
+        <img src="https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/689908dcefa0f0956d76d976.png" alt="Strasburg Express logo" loading="lazy">
+      </div>
+      <h3 class="team-name">Strasburg Express</h3>
+      <div class="team-info">
+        <p class="team-stadium">First Bank Park</p>
+        <p class="team-established">Est. 2011</p>
+      </div>
+    </a>
+
+    <!-- Staunton Braves -->
+    <a href="https://www.stauntonbravesbaseball.com" target="_blank" rel="noopener noreferrer" class="team-card" style="--team-primary: #2833f1; --team-secondary: #d70017;">
+      <div class="team-logo-container">
+        <img src="https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/69853d500a7fd1eebd9bc89f.png" alt="Staunton Braves logo" loading="lazy">
+      </div>
+      <h3 class="team-name">Staunton Braves</h3>
+      <div class="team-info">
+        <p class="team-stadium">Ted Bosiak Field at John Moxie Memorial Stadium</p>
+        <p class="team-established">Est. 1915</p>
+      </div>
+    </a>
+
+    <!-- Waynesboro Generals -->
+    <a href="https://www.waynesborogenerals.net/" target="_blank" rel="noopener noreferrer" class="team-card" style="--team-primary: #cd0024; --team-secondary: #39196b;">
+      <div class="team-logo-container">
+        <img src="https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/689908dcefa0f0bfb976d979.png" alt="Waynesboro Generals logo" loading="lazy">
+      </div>
+      <h3 class="team-name">Waynesboro Generals</h3>
+      <div class="team-info">
+        <p class="team-stadium">Prosperity Home Mortgage Park</p>
+        <p class="team-established">Est. 1950</p>
+      </div>
+    </a>
+
+    <!-- Winchester Royals -->
+    <a href="https://winchesterroyals.org/" target="_blank" rel="noopener noreferrer" class="team-card" style="--team-primary: #164a02; --team-secondary: #bbae6f;">
+      <div class="team-logo-container">
+        <img src="https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/689908dc91bb123249e33c6a.png" alt="Winchester Royals logo" loading="lazy">
+      </div>
+      <h3 class="team-name">Winchester Royals</h3>
+      <div class="team-info">
+        <p class="team-stadium">Bridgeforth Stadium</p>
+        <p class="team-established">Est. 1979</p>
+      </div>
+    </a>
+
+    <!-- Woodstock River Bandits — URL corrected to HTTPS -->
+    <a href="https://woodstockriverbandits.org/" target="_blank" rel="noopener noreferrer" class="team-card" style="--team-primary: #123a11; --team-secondary: #e1542b;">
+      <div class="team-logo-container">
+        <img src="https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/689908dc0d42f97efe9924f4.png" alt="Woodstock River Bandits logo" loading="lazy">
+      </div>
+      <h3 class="team-name">Woodstock River Bandits</h3>
+      <div class="team-info">
+        <p class="team-stadium">Falcon Field</p>
+        <p class="team-established">Est. 2004</p>
+      </div>
+    </a>
+
   </div>
-</body>
-</html>
+
+</div>

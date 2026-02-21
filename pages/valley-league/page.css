@@ -1,57 +1,761 @@
-/* =========================================================
-   TOM SOX WEBSITE - COMPLETE CUSTOM CSS
-   Version: 2.0 - Donation Page Added
-   ========================================================= */
+/*
+  File: page.css
+  Page: valley-league
+  Description: All styles for the Valley League page — teams grid and interactive map
+  Last Updated: 2026-02-21
+*/
 
-/* =========================================================
-   GLOBAL STYLES & FONT IMPORTS
-   ========================================================= */
+/* ============================================================
+   FONT IMPORT
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap');
 
-/* 1. Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Open+Sans:wght@400;700&display=swap');
 
-/* 2. Global Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-/* 3. Body Baseline */
-body {
-    font-family: 'Open Sans', sans-serif;
-    color: #333;
-    line-height: 1.6;
-}
-
+/* ============================================================
+   CSS VARIABLES
+   ============================================================ */
 :root {
-    --brand-green: #84BD00;
-    --dark-blue-bg: #1b365d;
-    --light-text: #ffffff;
-    --subtle-text: #a9b3d1;
-    --error-red: #e74c3c;
-    --success-green: #2ecc71;
+  --vl-navy:       #1b365d;
+  --vl-green:      #84BD00;
+  --vl-white:      #ffffff;
+  --vl-text:       #333333;
+  --vl-muted:      #666666;
+  --vl-border:     #e8e8e8;
+  --vl-shadow-sm:  0 4px 12px rgba(0, 0, 0, 0.10);
+  --vl-shadow-md:  0 8px 24px rgba(0, 0, 0, 0.14);
+  --vl-shadow-lg:  0 12px 40px rgba(0, 0, 0, 0.20);
+  --vl-radius:     10px;
+  --vl-transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* INFIELD DIRT */
-.infield-dirt {
-    background-color: #a1662f;
-    position: relative;
-    z-index: 0;
+
+/* ============================================================
+   BASE
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-.infield-dirt::before {
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: var(--vl-text);
+  line-height: 1.6;
+}
+
+
+/* ============================================================
+   SECTION-TEAMS — PAGE CONTAINER
+   ============================================================ */
+.valley-league-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px 80px;
+}
+
+
+/* ============================================================
+   SECTION-TEAMS — PAGE HEADER
+   ============================================================ */
+.page-header {
+  text-align: center;
+  margin-bottom: 50px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid var(--vl-border);
+}
+
+.page-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--vl-navy);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+}
+
+.page-subtitle {
+  font-size: 1.2rem;
+  color: var(--vl-muted);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+
+/* ============================================================
+   SECTION-TEAMS — VALLEY LEAGUE BANNER CARD
+   ============================================================ */
+.league-banner-card {
+  background: linear-gradient(135deg, #163d78 0%, #1a4d94 100%);
+  border-radius: 12px;
+  padding: 40px 50px;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  box-shadow: var(--vl-shadow-md);
+  cursor: pointer;
+  transition: var(--vl-transition);
+  text-decoration: none;
+  border: 3px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated radial highlight on hover */
+.league-banner-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(253, 240, 23, 0.10) 0%, transparent 70%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+}
+
+.league-banner-card:hover::before {
+  transform: translate(-25%, -25%);
+}
+
+.league-banner-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--vl-shadow-lg);
+  border-color: #fdf017;
+}
+
+.league-banner-card:focus-visible {
+  outline: 3px solid #fdf017;
+  outline-offset: 4px;
+}
+
+.league-banner-content {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.league-banner-logo {
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+  background: var(--vl-white);
+  border-radius: 50%;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--vl-shadow-sm);
+}
+
+.league-banner-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.league-banner-text {
+  flex: 1;
+}
+
+.league-banner-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--vl-white);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.league-banner-meta {
+  font-size: 1rem;
+  color: #fdf017;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.league-banner-cta {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fdf017;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.league-banner-arrow {
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.league-banner-card:hover .league-banner-arrow {
+  transform: translateX(8px);
+}
+
+
+/* ============================================================
+   SECTION-TEAMS — TEAM CARDS GRID
+   ============================================================ */
+.teams-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+.team-card {
+  background: var(--team-primary, #1a1a1a);
+  border: 6px solid transparent;
+  border-radius: var(--vl-radius);
+  padding: 30px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--vl-transition);
+  text-decoration: none;
+  color: var(--vl-white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  aspect-ratio: 3 / 4;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--vl-shadow-sm);
+}
+
+.team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--vl-shadow-lg);
+  border-color: var(--team-secondary, #ffffff);
+}
+
+.team-card:focus-visible {
+  outline: 3px solid var(--vl-white);
+  outline-offset: 4px;
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.35);
+}
+
+/* Home team diagonal ribbon */
+.team-card--home::before {
+  content: 'Home Team';
+  position: absolute;
+  top: 18px;
+  right: -28px;
+  background: var(--team-secondary, #8cbc0d);
+  color: var(--vl-white);
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 4px 38px;
+  transform: rotate(45deg);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  z-index: 2;
+}
+
+.team-logo-container {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--vl-white);
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.team-card:hover .team-logo-container {
+  transform: scale(1.1);
+}
+
+.team-logo-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.team-name {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--vl-white);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.team-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.team-stadium {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.4;
+}
+
+.team-established {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+
+/* ============================================================
+   SECTION-MAP — SECTION CONTAINER
+   ============================================================ */
+.visit-section {
+  padding: 80px 20px;
+  position: relative;
+}
+
+.visit-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.visit-vbl-map {
+  background-color: var(--vl-white);
+}
+
+
+/* ============================================================
+   SECTION-MAP — SECTION HEADER
+   ============================================================ */
+.section-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 60px;
+}
+
+.ts-section-headline {
+  font-family: 'Oswald', sans-serif;
+  font-size: 3.5rem;
+  color: var(--vl-navy);
+  line-height: 1.1;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ts-section-headline::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--vl-green);
+  margin: 15px auto 0;
+}
+
+.ts-section-subheadline {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.2rem;
+  color: #545454;
+  font-weight: 500;
+}
+
+
+/* ============================================================
+   SECTION-MAP — MAP WRAPPER & CONTAINERS
+   ============================================================ */
+.vbl-map-wrapper {
+  position: relative;
+  width: 100%;
+  height: clamp(420px, 62vh, 680px);
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background-color: #eee;
+  overflow: hidden;
+  box-shadow: var(--vl-shadow-md);
+}
+
+.vbl-map-container,
+#vblMap {
+  width: 100%;
+  height: 100%;
+}
+
+
+/* ============================================================
+   SECTION-MAP — CUSTOM TOOLTIP
+   ============================================================ */
+.vbl-custom-tooltip {
+  position: fixed;
+  background-color: #2a2a2a;
+  color: var(--vl-white);
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.9rem;
+  pointer-events: none;
+  display: none;
+  z-index: 10000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.30);
+  border-left: 4px solid var(--vl-green);
+  white-space: nowrap;
+  transform: translateY(-100%);
+  margin-top: -10px;
+}
+
+
+/* ============================================================
+   SECTION-MAP — SLIDE-IN TEAM PANEL
+   ============================================================ */
+.vbl-team-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 380px;
+  height: 100%;
+  background-color: var(--vl-white);
+  z-index: 10;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
+  transform: translateX(-100%);
+  transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.vbl-team-panel.vbl-panel-open {
+  transform: translateX(0);
+}
+
+/* Panel: header bar (colored by JS) */
+.vbl-panel-header-actions {
+  padding: 15px 18px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  transition: background-color 0.3s ease;
+}
+
+/* Panel: close/back button */
+.vbl-panel-close {
+  background: transparent;
+  border: none;
+  color: var(--vl-white);
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: opacity 0.2s;
+  padding: 4px 0;
+}
+
+.vbl-panel-close:hover {
+  opacity: 0.8;
+}
+
+.vbl-panel-close:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Panel: scrollable content area */
+.vbl-panel-content {
+  flex: 1;
+  padding: 28px 28px 20px;
+  overflow-y: auto;
+  opacity: 1;
+  transition: opacity 0.25s ease-in-out;
+}
+
+.vbl-panel-content.fade-out {
+  opacity: 0;
+}
+
+/* Panel: team header */
+.vbl-team-header {
+  text-align: center;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--vl-border);
+}
+
+.vbl-team-logo {
+  width: 110px;
+  height: auto;
+  margin-bottom: 14px;
+}
+
+.vbl-team-header h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.vbl-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--vl-white);
+  letter-spacing: 0.5px;
+}
+
+/* Panel: detail rows */
+.detail-row {
+  margin-bottom: 18px;
+}
+
+.detail-row strong {
+  display: block;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detail-row span {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.5;
+}
+
+/* Panel: website link */
+.vbl-website-link {
+  display: block;
+  margin-top: 24px;
+  text-align: center;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 10px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.vbl-website-link:hover {
+  text-decoration: underline;
+}
+
+.vbl-website-link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+/* Panel: footer with directions button */
+.vbl-panel-footer {
+  padding: 18px 20px;
+  background-color: #f7f7f7;
+  border-top: 1px solid var(--vl-border);
+  flex-shrink: 0;
+}
+
+.vbl-panel-directions-btn {
+  width: 100%;
+  color: var(--vl-white);
+  border: none;
+  padding: 14px 20px;
+  border-radius: 50px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.25s ease, transform 0.2s ease;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+.vbl-panel-directions-btn:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.vbl-panel-directions-btn:focus-visible {
+  outline: 3px solid var(--vl-navy);
+  outline-offset: 3px;
+}
+
+
+/* ============================================================
+   RESPONSIVE — TABLET (1024px)
+   ============================================================ */
+@media (max-width: 1024px) {
+  .teams-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .vbl-team-panel {
+    width: 340px;
+  }
+}
+
+
+/* ============================================================
+   RESPONSIVE — MOBILE (768px)
+   ============================================================ */
+@media (max-width: 768px) {
+  .valley-league-page {
+    padding: 40px 15px 60px;
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+  }
+
+  .page-subtitle {
+    font-size: 1rem;
+  }
+
+  .league-banner-card {
+    flex-direction: column;
+    padding: 30px 25px;
+    text-align: center;
+  }
+
+  .league-banner-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .league-banner-logo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .league-banner-title {
+    font-size: 1.8rem;
+  }
+
+  .teams-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  .team-card {
+    padding: 25px 15px;
+  }
+
+  .team-logo-container {
+    width: 80px;
+    height: 80px;
+  }
+
+  .team-name {
+    font-size: 1.2rem;
+  }
+
+  .visit-section {
+    padding: 50px 15px;
+  }
+
+  .ts-section-headline {
+    font-size: 2.4rem;
+  }
+
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  /* Mobile map: panel slides up from bottom as a bottom sheet */
+  .vbl-map-wrapper {
+    height: clamp(380px, 72vh, 580px);
+  }
+
+  .vbl-team-panel {
+    width: 100%;
+    height: 62%;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    transform: translateY(105%);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.18);
+    border-radius: 12px 12px 0 0;
+  }
+
+  .vbl-team-panel.vbl-panel-open {
+    transform: translateY(0);
+  }
+
+  /* Pull handle indicator above bottom sheet */
+  .vbl-panel-header-actions::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('https://storage.googleapis.com/msgsndr/xPpGvlvaXWhYtIJUg0CZ/media/686e62f4879662a5cb44bef2.jpeg');
-    opacity: 0.15;
-    z-index: -1;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 36px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.45);
+    border-radius: 2px;
+  }
+}
+
+
+/* ============================================================
+   RESPONSIVE — SMALL MOBILE (480px)
+   ============================================================ */
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 2rem;
+  }
+
+  .league-banner-card {
+    padding: 25px 18px;
+  }
+
+  .league-banner-logo {
+    width: 80px;
+    height: 80px;
+  }
+
+  .league-banner-title {
+    font-size: 1.5rem;
+  }
+
+  .teams-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .team-card {
+    aspect-ratio: auto;
+    padding: 28px 20px;
+  }
+
+  .ts-section-headline {
+    font-size: 2rem;
+  }
 }
