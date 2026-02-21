@@ -1,51 +1,580 @@
+/*
+  File: page.css
+  Page: Schedule
+  Last Updated: 2026-02-21
+*/
+
 /* =========================================================
-   GLOBAL STYLES & FONT IMPORTS
+   FONT IMPORTS & CSS VARIABLES
    ========================================================= */
 
-/* 1. Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Open+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Arimo:ital,wght@0,400;0,600;0,700&display=swap');
 
-/* 2. Global Reset */
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-/* 3. Body Baseline */
-body {
-    /* Use Open Sans as the primary body font for consistency */
-    font-family: 'Open Sans', sans-serif;
-    color: #333;
-    line-height: 1.6;
 }
 
 :root {
     --brand-green: #84BD00;
+    --brand-green-dark: #6fa800;
     --dark-blue-bg: #1b365d;
-    --light-text: #ffffff;
-    --subtle-text: #a9b3d1;
+    --dark-blue-hover: #2a4a7a;
+    --white: #ffffff;
+    --text-dark: #333;
+    --text-muted: #666;
+    --border-light: #e0e0e0;
+    --red-loss: #d9534f;
 }
 
-/* INFIELD DIRT */
-.infield-dirt {
-    background-color: #a1662f;
-    position: relative;
-    z-index: 0;
+/* =========================================================
+   PAGE CONTAINER
+   ========================================================= */
+
+.schedule-page-container {
+    font-family: 'Arimo', Arial, sans-serif;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 15px;
 }
 
-.infield-dirt::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('https://storage.googleapis.com/msgsndr/xPpGvlvaXWhYtIJUg0CZ/media/686e62f4879662a5cb44bef2.jpeg');
-    opacity: 0.15;
-    z-index: -1;
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.schedule-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    gap: 16px;
+}
+
+.schedule-title-section h1 {
+    font-family: 'Oswald', 'Impact', 'Arial Black', sans-serif;
+    font-size: 3rem;
+    color: var(--dark-blue-bg);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.sponsor-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.sponsor-logo span {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #555;
+    font-family: 'Arimo', sans-serif;
+}
+
+.sponsor-logo img {
+    height: 100px;
+    width: auto;
+}
+
+/* =========================================================
+   CONTROLS
+   ========================================================= */
+
+.schedule-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.schedule-btn {
+    padding: 8px 15px;
+    border: 1px solid var(--brand-green);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background-color: var(--brand-green);
+    color: var(--white);
+    font-weight: 700;
+    font-family: 'Arimo', sans-serif;
+    transition: background-color 0.2s ease;
+    line-height: 1;
+}
+
+.schedule-btn:hover {
+    background-color: var(--brand-green-dark);
+    border-color: var(--brand-green-dark);
+}
+
+.schedule-btn svg {
+    flex-shrink: 0;
+}
+
+.schedule-btn:disabled {
+    background-color: #ccc;
+    border-color: #999;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.jump-to-game-btn {
+    padding: 8px 15px;
+    border: 1px solid var(--dark-blue-bg);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background-color: var(--dark-blue-bg);
+    color: var(--white);
+    font-weight: 700;
+    font-family: 'Arimo', sans-serif;
+    transition: background-color 0.2s ease;
+    line-height: 1;
+}
+
+.jump-to-game-btn:hover {
+    background-color: var(--dark-blue-hover);
+    border-color: var(--dark-blue-hover);
+}
+
+.jump-to-game-btn:disabled {
+    background-color: #ccc;
+    border-color: #999;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.historical-link {
+    padding: 8px 15px;
+    border: 1px solid var(--dark-blue-bg);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background-color: transparent;
+    color: var(--dark-blue-bg);
+    font-weight: 600;
+    font-family: 'Arimo', sans-serif;
+    transition: all 0.2s ease;
+}
+
+.historical-link:hover {
+    background-color: var(--dark-blue-bg);
+    color: var(--white);
+}
+
+.historical-link svg {
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+}
+
+.historical-link:hover svg {
+    transform: translateX(3px);
+}
+
+/* =========================================================
+   STATS BAR
+   ========================================================= */
+
+.stats-bar {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    border: 1px solid var(--border-light);
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.stat-item {
+    padding: 15px 10px;
+    border-right: 1px solid var(--border-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 90px;
+}
+
+.stat-item:last-child {
+    border-right: none;
+}
+
+.stat-item span {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    font-family: 'Arimo', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.stat-item strong {
+    font-family: 'Oswald', 'Impact', 'Arial Black', sans-serif;
+    color: var(--dark-blue-bg);
+    font-size: 2.2rem;
+    line-height: 1;
+    font-weight: 700;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* =========================================================
+   GAME CARDS
+   ========================================================= */
+
+.game-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.game-item {
+    border: 1px solid var(--border-light);
+    border-radius: 5px;
+    background-color: var(--white);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border-left: 5px solid #ddd;
+}
+
+.game-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.game-item.is-home {
+    border-left-color: var(--brand-green);
+}
+
+.game-item.is-away {
+    border-left-color: var(--dark-blue-bg);
+}
+
+.game-main-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 20px;
+}
+
+.game-info-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.game-location {
+    text-align: center;
+    flex-shrink: 0;
+    font-family: 'Arimo', sans-serif;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.game-result {
+    flex-shrink: 0;
+    min-width: 120px;
+    text-align: right;
+}
+
+.game-logo {
+    flex-shrink: 0;
+}
+
+.game-logo img {
+    width: 60px;
+    height: auto;
+}
+
+.game-details {
+    font-family: 'Arimo', sans-serif;
+}
+
+.game-title {
+    font-weight: 700;
+    color: var(--dark-blue-bg);
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.game-date-time {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+}
+
+.game-opponent-info {
+    font-size: 1rem;
+}
+
+.game-at-vs {
+    font-weight: 700;
+    color: var(--brand-green);
+    margin-right: 5px;
+}
+
+.game-at-vs.at {
+    color: var(--dark-blue-bg);
+}
+
+.game-opponent-name {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+/* =========================================================
+   RESULT BADGES
+   ========================================================= */
+
+.result-badge,
+.result-score {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--white);
+    padding: 8px 15px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    display: inline-block;
+    min-width: 100px;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.result-forfeit-win,
+.result-score {
+    background-color: var(--brand-green);
+}
+
+.result-forfeit-loss,
+.result-score.loss {
+    background-color: var(--red-loss);
+}
+
+.result-cancelled {
+    background-color: #6c757d;
+}
+
+.result-postponed {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #5d4303;
+    background-color: #ffc107;
+    padding: 8px 15px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    display: inline-block;
+    min-width: 100px;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 0.5px;
+}
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 1024px) {
+    .schedule-page-container {
+        max-width: 100%;
+        padding: 15px 20px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+    .schedule-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .schedule-controls {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    /* Stats bar: 6-column grid so 3+2 layout centers bottom row */
+    .stats-bar {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    .stat-item:nth-child(1) { grid-column: 1 / 3; }
+    .stat-item:nth-child(2) { grid-column: 3 / 5; }
+    .stat-item:nth-child(3) { grid-column: 5 / 7; }
+    .stat-item:nth-child(4) { grid-column: 2 / 4; }
+    .stat-item:nth-child(5) { grid-column: 4 / 6; }
+
+    .stat-item {
+        min-height: 70px;
+    }
+
+    .stat-item strong {
+        font-size: 1.8rem;
+    }
+
+    .game-main-info {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+        padding: 16px;
+    }
+
+    .game-info-left {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .game-result {
+        text-align: center;
+        min-width: unset;
+    }
+
+    .game-location {
+        font-size: 0.85rem;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE — SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+    .schedule-page-container {
+        padding: 10px;
+        margin: 10px auto;
+    }
+
+    .schedule-title-section h1 {
+        font-size: 2rem;
+    }
+
+    .sponsor-logo img {
+        height: 70px;
+    }
+
+    .schedule-controls {
+        gap: 6px;
+    }
+
+    .schedule-btn,
+    .jump-to-game-btn,
+    .historical-link {
+        font-size: 0.8rem;
+        padding: 7px 10px;
+    }
+
+    .stat-item strong {
+        font-size: 1.5rem;
+    }
+
+    .stat-item span {
+        font-size: 0.7rem;
+    }
+
+    .game-title {
+        font-size: 1rem;
+    }
+
+    .result-badge,
+    .result-score,
+    .result-postponed {
+        font-size: 1rem;
+        padding: 6px 12px;
+        min-width: 80px;
+    }
+}
+
+@media (max-width: 375px) {
+    .schedule-title-section h1 {
+        font-size: 1.75rem;
+    }
+
+    .schedule-btn,
+    .jump-to-game-btn,
+    .historical-link {
+        font-size: 0.75rem;
+        padding: 6px 8px;
+    }
+}
+
+/* =========================================================
+   PRINT STYLES
+   ========================================================= */
+
+@media print {
+    /* Hide site chrome and chat widgets */
+    header, footer, .header, .footer, #header, #footer,
+    .schedule-controls, chat-widget, .chat-widget, #lewie-chat-widget,
+    .chat-bubble, iframe[src*="chat"], div[id*="chat"], div[class*="chat"] {
+        display: none !important;
+    }
+
+    /* Hide opponent logos */
+    .game-logo {
+        display: none !important;
+    }
+
+    /* Full width */
+    .schedule-page-container {
+        max-width: 100% !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Compact header */
+    .schedule-title-section h1 { font-size: 1.8rem !important; }
+    .sponsor-logo img { height: 40px !important; }
+
+    /* Compact stats bar */
+    .stats-bar { margin-bottom: 10px !important; }
+    .stat-item { min-height: 40px !important; padding: 5px !important; }
+    .stat-item strong { font-size: 1.2rem !important; }
+
+    /* Compact game cards */
+    .game-list { gap: 4px !important; }
+    .game-item {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        border: 1px solid #ccc !important;
+    }
+    .game-main-info { padding: 6px 12px !important; gap: 10px !important; }
+    .game-details { font-size: 0.85rem !important; }
+    .game-title { font-size: 0.85rem !important; margin-bottom: 1px !important; }
+    .game-date-time { font-size: 0.75rem !important; margin-bottom: 1px !important; }
+    .game-location { font-size: 0.75rem !important; }
+
+    /* Force color retention */
+    .game-item.is-home {
+        border-left: 6px solid #84BD00 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    .game-item.is-away {
+        border-left: 6px solid #1b365d !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
 }
