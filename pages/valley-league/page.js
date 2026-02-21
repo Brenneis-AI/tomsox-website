@@ -189,6 +189,7 @@ const vblTeams = [
 let map;
 let markers = [];
 let currentTeam = null;
+let pendingDeepLinkTeam = null; // holds team if map wasn't ready when deep link fired
 
 
 // ============================================================
@@ -209,21 +210,27 @@ function parseDeepLink() {
 }
 
 function handleDeepLink() {
-  const team = parseDeepLink();
+  var team = parseDeepLink();
   if (!team) return;
 
-  const section = document.getElementById('vbl-map');
+  // Scroll to the map section using an explicit pixel offset so GHL
+  // cannot override it with its own hash-based scroll restoration.
+  var section = document.getElementById('vbl-map');
   if (section) {
-    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    var top = section.getBoundingClientRect().top + window.pageYOffset - 20;
+    window.scrollTo({ top: top, behavior: 'smooth' });
   }
 
-  // Short delay lets the scroll animation begin before the panel opens
+  // Open the panel after scroll has begun
   setTimeout(function() {
     openTeamPanel(team);
     if (map) {
       map.panTo({ lat: team.lat, lng: team.lng });
+    } else {
+      // Map API still loading — save team so initMap() can pan when ready
+      pendingDeepLinkTeam = team;
     }
-  }, 420);
+  }, 500);
 }
 
 
@@ -321,8 +328,11 @@ function initMap() {
   var directionsBtn = document.getElementById('panelDirections');
   if (directionsBtn) directionsBtn.addEventListener('click', openDirections);
 
-  // Process any deep link in the current URL
-  handleDeepLink();
+  // If handleDeepLink() already ran before the map was ready, pan now
+  if (pendingDeepLinkTeam) {
+    map.panTo({ lat: pendingDeepLinkTeam.lat, lng: pendingDeepLinkTeam.lng });
+    pendingDeepLinkTeam = null;
+  }
 }
 
 
@@ -413,8 +423,16 @@ function isColorLight(hex) {
 // ============================================================
 // BOOT
 // ============================================================
+
+// Load the Maps API as early as possible
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', loadGoogleMapsAPI);
 } else {
   loadGoogleMapsAPI();
 }
+
+// Fire deep link AFTER window.load so GHL's own scroll
+// initialization has fully settled before we move the viewport.
+window.addEventListener('load', function() {
+  setTimeout(handleDeepLink, 650);
+});
