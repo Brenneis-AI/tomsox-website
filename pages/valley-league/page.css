@@ -1,0 +1,57 @@
+/* =========================================================
+   TOM SOX WEBSITE - COMPLETE CUSTOM CSS
+   Version: 2.0 - Donation Page Added
+   ========================================================= */
+
+/* =========================================================
+   GLOBAL STYLES & FONT IMPORTS
+   ========================================================= */
+
+/* 1. Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Open+Sans:wght@400;700&display=swap');
+
+/* 2. Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* 3. Body Baseline */
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+:root {
+    --brand-green: #84BD00;
+    --dark-blue-bg: #1b365d;
+    --light-text: #ffffff;
+    --subtle-text: #a9b3d1;
+    --error-red: #e74c3c;
+    --success-green: #2ecc71;
+}
+
+/* INFIELD DIRT */
+.infield-dirt {
+    background-color: #a1662f;
+    position: relative;
+    z-index: 0;
+}
+
+.infield-dirt::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://storage.googleapis.com/msgsndr/xPpGvlvaXWhYtIJUg0CZ/media/686e62f4879662a5cb44bef2.jpeg');
+    opacity: 0.15;
+    z-index: -1;
+}

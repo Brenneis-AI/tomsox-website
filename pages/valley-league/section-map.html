@@ -1,0 +1,462 @@
+<!-- =========================================
+     VBL INTERACTIVE MAP - STANDALONE SECTION
+     ========================================= -->
+
+<section class="visit-section visit-vbl-map">
+    <div class="visit-container">
+        <div class="section-header">
+            <h2 class="ts-section-headline">VALLEY BASEBALL LEAGUE</h2>
+            <p class="ts-section-subheadline">Click any marker to explore all 12 VBL teams across Virginia's beautiful Shenandoah Valley</p>
+        </div>
+
+        <!-- Map Wrapper -->
+        <div class="vbl-map-wrapper">
+            
+            <!-- Custom Tooltip -->
+            <div id="vbl-map-tooltip" class="vbl-custom-tooltip"></div>
+
+            <!-- Slide-in Team Panel -->
+            <div class="vbl-team-panel" id="vblTeamPanel">
+                <div class="vbl-panel-header-actions" id="panelHeader">
+                    <button class="vbl-panel-close" id="panelClose" aria-label="Close panel">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Back to Map
+                    </button>
+                </div>
+
+                <div class="vbl-panel-content" id="panelContent">
+                    <!-- Dynamic content -->
+                </div>
+
+                <div class="vbl-panel-footer">
+                     <button class="vbl-panel-directions-btn" id="panelDirections">
+                        Get Directions
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left: 8px;">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Google Maps Container -->
+            <div class="vbl-map-container">
+                <div id="vblMap"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- VBL Map JavaScript -->
+<script>
+// ===== GOOGLE MAPS API KEY =====
+const GOOGLE_MAPS_API_KEY = 'AIzaSyCX3lGKd8JzKiReHrwlQe5AtxjIelCKN5M'; 
+// ================================
+
+const vblTeams = [
+    // South Division
+    { name: "Charlottesville Tom Sox", color1: "#1f375c", color2: "#8cbc0d", ballpark: "CHO Airport Field", address: "1400 Melbourne Street, Charlottesville, VA 22901", website: "https://tomsox.org", logo: "https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/689908ddd580d6c26157bbf5.png", division: "South", lat: 38.0409, lng: -78.4736 },
+    { name: "Harrisonburg Turks", color1: "#df001c", color2: "#000000", ballpark: "Veterans Memorial Park", address: "270 Veterans Memorial Dr., Harrisonburg, VA 22801", website: "https://harrisonburgturks.com/", logo: "https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/6985555a0a7fd15ec99f2c25.png", division: "South", lat: 38.4496, lng: -78.8689 },
+    { name: "Staunton Braves", color1: "#2833f1", color2: "#d70017", ballpark: "John Moxie Memorial Stadium", address: "Thornrose Drive, Staunton, VA", website: "https://stauntonbravesbaseball.com", logo: "https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/69853d500a7fd1eebd9bc89f.png", division: "South", lat: 38.1496, lng: -79.0717 },
+    { name: "Waynesboro Generals", color1: "#cd0024", color2: "#39196b", ballpark: "Kate Collins Field", address: "1625 Ivy Street, Waynesboro, VA", website: "https://www.waynesborogenerals.net/", logo: "https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/689908dcefa0f0bfb976d979.png", division: "South", lat: 38.0685, lng: -78.8895 },
+    { name: "Covington Lumberjacks", color1: "#142a40", color2: "#2f89c8", ballpark: "Casey Field", address: "1390 S. Craig Street, Covington, VA 24426", website: "https://www.facebook.com/LumberjacksBaseball/", logo: "https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/689908dcefa0f0541e76d97a.png", division: "South", lat: 37.7779, lng: -79.9939 },
+    { name: "Culpeper Cavaliers", color1: "#041937", color2: "#f0d848", ballpark: "Culpeper County High School", address: "14240 Achievement Drive, Culpeper, VA 22701", website: "https://culpepercavaliers.org/", logo: "https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/689908dcefa0f0580a76d977.webp", division: "South", lat: 38.4732, lng: -77.9947 },
+    // North Division
+    { name: "New Market Rebels", color1: "#0726a1", color2: "#0726a1", ballpark: "Rebel Park", address: "Dixie Lane, New Market, VA", website: "https://www.newmarketrebels.com/", logo: "https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/689908ddd580d65f1a57bbf6.png", division: "North", lat: 38.6479, lng: -78.6719 },
+    { name: "Woodstock River Bandits", color1: "#123a11", color2: "#e1542b", ballpark: "Woodstock Sports Complex", address: "1147 Susan Avenue, Woodstock, VA 22664", website: "https://woodstockriverbandits.org/", logo: "https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/689908dc0d42f97efe9924f4.png", division: "North", lat: 38.8818, lng: -78.5058 },
+    { name: "Strasburg Express", color1: "#8518d6", color2: "#4b2c83", ballpark: "Strasburg Town Park", address: "162 Stickley Loop, Strasburg, VA", website: "https://strasburgexpress.org/", logo: "https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/689908dcefa0f0956d76d976.png", division: "North", lat: 38.9887, lng: -78.3586 },
+    { name: "Purcellville Cannons", color1: "#47232f", color2: "#c2ad81", ballpark: "Fireman's Field", address: "250 Nursery Street, Purcellville, VA", website: "https://www.purcellvillecannons.org/", logo: "https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/689908ddd580d6c64057bbf7.png", division: "North", lat: 39.1368, lng: -77.7147 },
+    { name: "Winchester Royals", color1: "#164a02", color2: "#bbae6f", ballpark: "Bridgewater College Field", address: "1037 Cork Street, Winchester, VA", website: "https://winchesterroyals.org/", logo: "https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/689908dc91bb123249e33c6a.png", division: "North", lat: 39.1857, lng: -78.1633 },
+    { name: "Front Royal Cardinals", color1: "#f10008", color2: "#000000", ballpark: "Bing Crosby Stadium", address: "50 Stadium Drive, Front Royal, VA", website: "https://www.frontroyalcardinals.org/", logo: "https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/689908dc861757379e3e7a85.png", division: "North", lat: 38.9181, lng: -78.1944 }
+];
+
+let map;
+let markers = [];
+let currentTeam = null;
+
+function loadGoogleMapsAPI() {
+    if (window.google && window.google.maps) { initMap(); return; }
+    const script = document.createElement('script');
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&callback=initMap`;
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
+}
+
+function initMap() {
+    map = new google.maps.Map(document.getElementById('vblMap'), {
+        zoom: 8,
+        center: { lat: 38.5, lng: -78.5 },
+        styles: [{ featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }] }],
+        mapTypeControl: false,
+        streetViewControl: false,
+        fullscreenControl: true,
+        zoomControl: true
+    });
+    
+    const tooltip = document.getElementById('vbl-map-tooltip');
+    
+    vblTeams.forEach((team) => {
+        const pinColor = team.division === 'North' ? '#1b365d' : '#84BD00';
+        
+        const markerIcon = {
+            url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
+                <svg width="50" height="70" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 25,70 Q 20,65 25,65 Q 30,65 25,70" fill="rgba(0,0,0,0.3)"/>
+                    <path d="M 25,65 C 10,40 2,35 2,23 C 2,10.3 12.3,0 25,0 C 37.7,0 48,10.3 48,23 C 48,35 40,40 25,65 Z" fill="${pinColor}" stroke="white" stroke-width="2"/>
+                    <circle cx="25" cy="23" r="14" fill="white"/>
+                    <path d="M 18,12 Q 22,23 18,34" fill="none" stroke="#FF0000" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M 32,12 Q 28,23 32,34" fill="none" stroke="#FF0000" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M 18,15 L 19,15 M 18,19 L 20,19 M 19,23 L 21,23 M 18,27 L 20,27 M 18,31 L 19,31" stroke="#FF0000" stroke-width="1"/>
+                    <path d="M 32,15 L 31,15 M 32,19 L 30,19 M 31,23 L 29,23 M 32,27 L 30,27 M 32,31 L 31,31" stroke="#FF0000" stroke-width="1"/>
+                </svg>
+            `),
+            scaledSize: new google.maps.Size(45, 60),
+            anchor: new google.maps.Point(22.5, 60)
+        };
+        
+        const marker = new google.maps.Marker({
+            position: { lat: team.lat, lng: team.lng },
+            map: map,
+            icon: markerIcon,
+            optimized: false
+        });
+        
+        marker.addListener('click', () => {
+            openTeamPanel(team);
+            map.panTo({lat: team.lat, lng: team.lng}); 
+        });
+
+        marker.addListener('mouseover', (e) => {
+            tooltip.innerHTML = `<strong>${team.name}</strong><br><span style="font-size:0.85em; opacity:0.9;">${team.ballpark}</span>`;
+            tooltip.style.display = 'block';
+            tooltip.style.borderColor = team.color1;
+        });
+
+        marker.addListener('mousemove', (e) => {
+           if (e.domEvent) {
+               tooltip.style.left = (e.domEvent.clientX + 15) + 'px';
+               tooltip.style.top = (e.domEvent.clientY - 45) + 'px';
+           }
+        });
+
+        marker.addListener('mouseout', () => {
+            tooltip.style.display = 'none';
+        });
+
+        markers.push(marker);
+    });
+
+    const closeBtn = document.getElementById('panelClose');
+    if(closeBtn) closeBtn.addEventListener('click', closeTeamPanel);
+    
+    const directionsBtn = document.getElementById('panelDirections');
+    if(directionsBtn) directionsBtn.addEventListener('click', openDirections);
+}
+
+function openTeamPanel(team) {
+    currentTeam = team;
+    const content = document.getElementById('panelContent');
+    const panel = document.getElementById('vblTeamPanel');
+    const header = document.getElementById('panelHeader');
+    const dirBtn = document.getElementById('panelDirections');
+    
+    header.style.backgroundColor = team.color1;
+    dirBtn.style.backgroundColor = team.color2;
+    
+    const newHtml = `
+        <div class="vbl-team-header">
+            <img src="${team.logo}" alt="${team.name}" class="vbl-team-logo" onerror="this.style.display='none'">
+            <h3 style="color:${team.color1}">${team.name}</h3>
+            <span class="vbl-badge" style="background-color:${team.color1}">${team.division} Division</span>
+        </div>
+        <div class="vbl-team-details">
+            <div class="detail-row">
+                <strong style="color:${team.color1}">Ballpark:</strong>
+                <span>${team.ballpark}</span>
+            </div>
+            <div class="detail-row">
+                <strong style="color:${team.color1}">Address:</strong>
+                <span>${team.address}</span>
+            </div>
+            <a href="${team.website}" target="_blank" class="vbl-website-link" style="color:${team.color1}">Visit Team Website &raquo;</a>
+        </div>
+    `;
+    
+    if (panel.classList.contains('vbl-panel-open')) {
+        content.classList.add('fade-out');
+        setTimeout(() => {
+            content.innerHTML = newHtml;
+            content.classList.remove('fade-out');
+        }, 250);
+    } else {
+        content.innerHTML = newHtml;
+        panel.classList.add('vbl-panel-open');
+    }
+}
+
+function closeTeamPanel() {
+    document.getElementById('vblTeamPanel').classList.remove('vbl-panel-open');
+}
+
+function openDirections() {
+    if (currentTeam) {
+        window.open(`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(currentTeam.address)}`, '_blank');
+    }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadGoogleMapsAPI);
+} else {
+    loadGoogleMapsAPI();
+}
+</script>
+
+<style>
+/* =========================================
+   VBL MAP STYLES - STANDALONE
+   ========================================= */
+
+/* Section Container */
+.visit-section {
+    padding: 80px 20px;
+    position: relative;
+}
+
+.visit-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Section Header */
+.section-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 60px;
+}
+
+.ts-section-headline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3.5rem;
+    color: #1b365d;
+    line-height: 1.1;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.ts-section-headline::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #84BD00;
+    margin: 15px auto 0;
+}
+
+.ts-section-subheadline {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    color: #545454;
+    font-weight: 500;
+}
+
+/* Map Section Background */
+.visit-vbl-map {
+    background-color: #ffffff;
+}
+
+/* Map Wrapper */
+.vbl-map-wrapper {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: #eee;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Custom Tooltip */
+.vbl-custom-tooltip {
+    position: fixed;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    pointer-events: none;
+    display: none;
+    z-index: 10000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    border-left: 4px solid #84BD00;
+    white-space: nowrap;
+    font-family: 'Montserrat', sans-serif;
+    transform: translateY(-100%);
+}
+
+/* Map Container */
+.vbl-map-container, #vblMap {
+    width: 100%;
+    height: 100%;
+}
+
+/* Team Panel */
+.vbl-team-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 380px;
+    height: 100%;
+    background-color: #ffffff;
+    z-index: 10;
+    box-shadow: 4px 0 15px rgba(0,0,0,0.15);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.vbl-team-panel.vbl-panel-open {
+    transform: translateX(0);
+}
+
+.vbl-panel-content {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+    opacity: 1;
+    transition: opacity 0.25s ease-in-out;
+}
+
+.vbl-panel-content.fade-out {
+    opacity: 0;
+}
+
+.vbl-panel-header-actions {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.vbl-panel-close {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: opacity 0.2s;
+}
+
+.vbl-panel-close:hover {
+    opacity: 0.8;
+}
+
+.vbl-team-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.vbl-team-logo {
+    width: 120px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.vbl-team-header h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.8rem;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.vbl-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: white;
+}
+
+.detail-row {
+    margin-bottom: 20px;
+}
+
+.detail-row strong {
+    display: block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+.vbl-website-link {
+    display: block;
+    margin-top: 25px;
+    text-align: center;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.vbl-website-link:hover {
+    text-decoration: underline;
+}
+
+.vbl-panel-footer {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #eee;
+}
+
+.vbl-panel-directions-btn {
+    width: 100%;
+    color: #ffffff;
+    border: none;
+    padding: 15px;
+    border-radius: 50px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.vbl-panel-directions-btn:hover {
+    opacity: 0.9;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .vbl-map-wrapper {
+        height: 500px;
+    }
+
+    .vbl-team-panel {
+        width: 100%;
+    }
+    
+    .ts-section-headline {
+        font-size: 2.5rem;
+    }
+}
+</style>
