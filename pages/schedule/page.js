@@ -264,10 +264,17 @@ function createGameItemHTML(game, isNextGame) {
         ? `<div class="game-rescheduled-note">Rescheduled: ${game.RescheduledDate}</div>`
         : '';
 
-    /* --- Opponent city (shown on away games) --- */
-    const cityHTML = (!isHome && game.OpponentCity && game.OpponentCity.trim())
-        ? `<span class="game-opponent-city">${game.OpponentCity}</span>`
-        : '';
+    /* --- Venue line (below opponent name) --- */
+    const venueName = (game.LocationName || '').trim();
+    const venueURL = (game.LocationMapURL || '').trim();
+    let venueHTML = '';
+    if (venueName) {
+        const pinIcon = `<svg fill="currentColor" viewBox="0 0 16 16" height="0.85em" width="0.85em" aria-hidden="true" style="flex-shrink:0;position:relative;top:-1px"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>`;
+        const venueInner = venueURL
+            ? `<a href="${venueURL}" target="_blank" rel="noopener" class="game-venue-link">${pinIcon} ${venueName}</a>`
+            : `<span class="game-venue-text">${pinIcon} ${venueName}</span>`;
+        venueHTML = `<div class="game-venue">${venueInner}</div>`;
+    }
 
     /* --- Next Game banner --- */
     const nextGameBanner = isNextGame
@@ -292,12 +299,11 @@ function createGameItemHTML(game, isNextGame) {
                         <div class="game-opponent-info">
                             <span class="game-at-vs ${isHome ? 'vs' : 'at'}">${isHome ? 'VS' : 'AT'}</span>
                             <span class="game-opponent-name">${game.OpponentName}</span>
-                            ${cityHTML}
                         </div>
+                        ${venueHTML}
                         ${reschedHTML}
                     </div>
                 </div>
-                <div class="game-location">${game.LocationName || ''}</div>
                 <div class="game-result-col">${resultHTML}</div>
             </div>
             ${mediaLinksHTML}

@@ -358,13 +358,26 @@
     min-width: 0;
 }
 
-.game-location {
-    text-align: center;
-    flex-shrink: 0;
+.game-venue {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.game-venue-link,
+.game-venue-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.82rem;
     font-family: 'Arimo', sans-serif;
     color: var(--text-muted);
-    font-size: 0.9rem;
-    max-width: 160px;
+    text-decoration: none;
+}
+
+.game-venue-link:hover {
+    color: var(--dark-blue-bg);
+    text-decoration: underline;
 }
 
 .game-result-col {
@@ -436,11 +449,6 @@
     color: var(--text-dark);
 }
 
-.game-opponent-city {
-    font-size: 0.85rem;
-    font-weight: 400;
-    color: var(--text-muted);
-}
 
 /* Rescheduled date note */
 .game-rescheduled-note {
@@ -665,10 +673,6 @@
         width: 100%;
     }
 
-    .game-location {
-        max-width: none;
-        font-size: 0.82rem;
-    }
 
     .game-result-col {
         text-align: left;
@@ -791,7 +795,6 @@
     .game-details { font-size: 0.85rem !important; }
     .game-title-badge { font-size: 0.65rem !important; }
     .game-date-line { font-size: 0.75rem !important; margin-bottom: 1px !important; }
-    .game-location { font-size: 0.75rem !important; }
     .game-group-header { margin: 12px 0 6px !important; }
 
     /* Force color retention */
