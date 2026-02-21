@@ -1,36 +1,17 @@
-/* =========================================================
-   TOM SOX ROSTER - FINAL WORLD-CLASS EDITION
-   Simplified
+/*
+  File: page.css
+  Page: Roster
+  Last Updated: 2026-02-20
+*/
 
- All-in-one card design
+/* =========================================================
+   FONT IMPORTS & CSS VARIABLES
    ========================================================= */
 
-/* =========================================================
-   GLOBAL STYLES & FONT IMPORTS
-   ========================================================= */
-
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Open+Sans:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Arimo:ital,wght@0,400;0,600;0,700&display=swap');
 
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-html, body {
-    overflow-x: hidden;
-    max-width: 100%;
-}
-
-body {
-    font-family: 'Open Sans', sans-serif;
-    background-color: #f4f4f7;
-    color: #333;
-    line-height: 1.6;
 }
 
 :root {
@@ -143,6 +124,10 @@ body {
     text-align: center;
 }
 
+.skeleton-text-short {
+    width: 60%;
+}
+
 /* =========================================================
    MAIN ROSTER CONTAINER
    ========================================================= */
@@ -190,7 +175,7 @@ body {
     border: none;
     border-radius: 6px;
     font-size: 0.9rem;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Arimo', sans-serif;
     background-color: rgba(255,255,255,0.1);
     color: var(--white);
     transition: all 0.3s ease;
@@ -225,7 +210,7 @@ body {
     border: none;
     border-radius: 6px;
     font-size: 0.85rem;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Arimo', sans-serif;
     background-color: rgba(255,255,255,0.1);
     color: var(--white);
     cursor: pointer;
@@ -257,7 +242,7 @@ body {
     border: 1px solid var(--brand-green);
     border-radius: 6px;
     font-size: 0.8rem;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Arimo', sans-serif;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -282,7 +267,7 @@ body {
     border: 1px solid var(--dark-hover);
     border-radius: 6px;
     font-size: 0.85rem;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Arimo', sans-serif;
     cursor: pointer;
     transition: all 0.3s ease;
     display: flex;
@@ -323,7 +308,7 @@ body {
     padding: 8px 10px;
     color: var(--white);
     text-decoration: none;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Arimo', sans-serif;
     font-size: 0.85rem;
     border-bottom: 1px solid var(--dark-hover);
     transition: all 0.3s ease;
@@ -517,7 +502,7 @@ body {
 }
 
 .college-link {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Arimo', sans-serif;
     font-size: 0.8rem;
     color: var(--brand-green);
     text-decoration: none;
@@ -534,7 +519,7 @@ body {
 }
 
 .player-header-line1 {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Arimo', sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #ffffff;
@@ -558,7 +543,7 @@ body {
 }
 
 .player-header-line2 {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Arimo', sans-serif;
     font-size: 0.95rem;
     color: #ffffff;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
@@ -677,7 +662,7 @@ body {
 }
 
 .stat-item span {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Arimo', sans-serif;
     font-size: 0.9rem;
     text-transform: uppercase;
     color: #aaa;
@@ -697,7 +682,7 @@ body {
 }
 
 .bio-text-content {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Arimo', sans-serif;
     font-size: 1.05rem;
     line-height: 1.8;
     color: #222;
@@ -778,16 +763,6 @@ body {
 .favorite-btn.favorited svg {
     fill: var(--brand-green);
     stroke: var(--brand-green);
-}
-
-@keyframes favoritePulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.2);
-    }
 }
 
 /* =========================================================
@@ -903,7 +878,7 @@ body {
 }
 
 .coach-title {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Arimo', sans-serif;
     font-size: 0.95rem;
     font-weight: 600;
     color: var(--brand-green);
@@ -950,7 +925,7 @@ body {
         width: 100%;
         padding: 12px 15px;
         font-size: 1rem;
-        font-family: 'Open Sans', sans-serif;
+        font-family: 'Arimo', sans-serif;
         background-color: var(--dark-blue-bg);
         color: var(--white);
         border: 2px solid var(--brand-green);
@@ -1005,7 +980,7 @@ body {
     .player-card.slide-right {
         display: none !important;
     }
-    
+
     /* Mobile headshot at top */
     .mobile-headshot-section {
         display: block;
@@ -1156,7 +1131,7 @@ body {
         width: 24px;
         height: 24px;
     }
-    
+
     /* Stats grid - 3 column + 2 column layout */
     .player-stats-integrated {
         display: block;
@@ -1164,7 +1139,7 @@ body {
         background: linear-gradient(135deg, var(--dark-blue-bg) 0%, #2a4a7a 100%);
         flex-shrink: 0;
     }
-    
+
     /* Hide desktop stats on mobile */
     .player-stats-integrated > .stat-item {
         display: none;
@@ -1202,7 +1177,7 @@ body {
         color: rgba(255,255,255,0.9);
         text-transform: uppercase;
     }
-    
+
     /* Bio section */
     .player-bio-bottom {
         padding: 20px 15px;
@@ -1221,7 +1196,7 @@ body {
     .player-headshot-corner {
         display: none;
     }
-    
+
     /* Mobile action image at bottom */
     .mobile-action-image {
         display: block;
@@ -1264,32 +1239,6 @@ body {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-}
-
-#navigation-arrows {
-    margin: 15px 0;
-    gap: 12px;
-}
-
-#navigation-arrows button {
-    padding: 10px 20px;
-    font-size: 20px;
-}
-
-.coaching-staff-section {
-    margin-top: 30px;
-    padding-top: 20px;
-}
-
-.coaching-staff-header {
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
-
-.coaching-staff-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-}
 }
 
 @media (max-width: 480px) {
@@ -1411,7 +1360,6 @@ body {
 }
 
 @media (max-width: 414px) {
-    /* iPhone 11 Pro Max and similar */
     .player-header h2 {
         font-size: 1.85rem;
     }
@@ -1426,7 +1374,6 @@ body {
 }
 
 @media (max-width: 375px) {
-    /* iPhone SE, iPhone 12 Mini */
     .player-header h2 {
         font-size: 1.75rem;
     }
