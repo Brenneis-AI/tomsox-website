@@ -1,0 +1,40 @@
+<!--
+  File: section-countdown.html
+  Page: Home
+  Section: Countdown Timer — counts down to the 2026 season opener
+  Last Updated: 2026-02-20
+-->
+
+<section class="ts-countdown-section">
+    <div class="ts-countdown-container">
+        <h2 class="ts-countdown-headline">2026 Season Starts In</h2>
+
+        <div class="ts-countdown-grid" id="countdownGrid">
+            <div class="countdown-unit">
+                <span class="countdown-number" id="countdownDays">--</span>
+                <span class="countdown-label">Days</span>
+            </div>
+            <div class="countdown-divider" aria-hidden="true">|</div>
+            <div class="countdown-unit">
+                <span class="countdown-number" id="countdownHours">--</span>
+                <span class="countdown-label">Hours</span>
+            </div>
+            <div class="countdown-divider" aria-hidden="true">|</div>
+            <div class="countdown-unit">
+                <span class="countdown-number" id="countdownMinutes">--</span>
+                <span class="countdown-label">Mins</span>
+            </div>
+            <div class="countdown-divider" aria-hidden="true">|</div>
+            <div class="countdown-unit">
+                <span class="countdown-number" id="countdownSeconds">--</span>
+                <span class="countdown-label">Secs</span>
+            </div>
+        </div>
+
+        <!-- Shown when countdown expires -->
+        <div class="ts-countdown-expired" id="countdownExpired" style="display: none;">
+            <div class="expired-message">It's Game Time!</div>
+            <div class="expired-submessage">2026 Season Underway</div>
+        </div>
+    </div>
+</section>

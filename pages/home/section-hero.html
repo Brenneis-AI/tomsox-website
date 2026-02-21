@@ -1,118 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charlottesville Tom Sox - Home</title>
-</head>
-<body>
-    
-    <!-- HEADER HAS BEEN REMOVED FROM THIS SECTION -->
-    <!-- HERO SECTION -->
-    <section class="ts-hero-v2" id="home">
-        <div class="ts-hero-video-container" id="videoContainer"></div>
-        <div class="ts-hero-image" id="heroImage"></div>
-        <div class="ts-hero-gradient"></div>
-        
-        <div class="ts-hero-content-v2">
-            <!-- Next Game Badge - Currently Hidden in CSS -->
-            <div class="ts-next-game-badge" id="nextGameBadge">
-                <span class="badge-label">Next Game</span>
-                <span class="badge-info" id="nextGameInfo">Loading...</span>
-            </div>
-            
-            <h1 class="ts-hero-headline" id="heroHeadline">
-                New Date: Saturday, March 28th!<br><br>Go All In for the Tom Sox
-            </h1>
-            
-            <p class="ts-hero-subheadline" id="heroSubheadline">
-               Join us for our Annual Poker Tournament! High stakes, cold drinks, and big support for our 2026 season.
-            </p>
-            
-            <div class="ts-hero-cta">
-                <!-- Primary CTA - Currently Hidden in CSS -->
-                <a href="#tickets" class="ts-btn-primary" id="primaryCTA">Reserve Your Seat</a>
-                
-                <a href="https://cvilletomsox.betterworld.org/events/tom-sox-annual-poker-tournament" class="ts-btn-secondary" target="_blank" rel="noopener noreferrer">Reserve Your Seat</a>
-            </div>
-            
-            <!-- Hero Stats - Currently Hidden in CSS -->
-            <div class="ts-hero-stats" id="heroStats"></div>
-        </div>
-        
-        <div class="ts-scroll-indicator">
-            <span>Scroll</span>
-            <div class="scroll-arrow"></div>
-        </div>
-    </section>
-  
-    <!-- COUNTDOWN TIMER SECTION -->
-<!-- Insert this between the hero section and game ticker section -->
+<!--
+  File: section-hero.html
+  Page: Home
+  Section: Hero — full-bleed background image with headline, subheadline, and CTA button
+  Last Updated: 2026-02-20
+-->
 
-<section class="ts-countdown-section">
-    <div class="ts-countdown-container">
-        <h3 class="ts-countdown-headline">2026 Season Starts In</h3>
-        
-        <div class="ts-countdown-grid" id="countdownGrid">
-            <div class="countdown-unit">
-                <span class="countdown-number" id="countdownDays">--</span>
-                <span class="countdown-label">Days</span>
-            </div>
-            <div class="countdown-divider">|</div>
-            <div class="countdown-unit">
-                <span class="countdown-number" id="countdownHours">--</span>
-                <span class="countdown-label">Hours</span>
-            </div>
-            <div class="countdown-divider">|</div>
-            <div class="countdown-unit">
-                <span class="countdown-number" id="countdownMinutes">--</span>
-                <span class="countdown-label">Mins</span>
-            </div>
-            <div class="countdown-divider">|</div>
-            <div class="countdown-unit">
-                <span class="countdown-number" id="countdownSeconds">--</span>
-                <span class="countdown-label">Secs</span>
-            </div>
+<section class="ts-hero-v2" id="home">
+    <div class="ts-hero-video-container" id="videoContainer"></div>
+    <div class="ts-hero-image" id="heroImage"></div>
+    <div class="ts-hero-gradient"></div>
+
+    <div class="ts-hero-content-v2">
+        <!-- Next Game Badge — currently hidden via CSS -->
+        <div class="ts-next-game-badge" id="nextGameBadge">
+            <span class="badge-label">Next Game</span>
+            <span class="badge-info" id="nextGameInfo">Loading...</span>
         </div>
-        
-        <!-- Expired state (hidden by default) -->
-        <div class="ts-countdown-expired" id="countdownExpired" style="display: none;">
-            <div class="expired-message">It's Game Time!</div>
-            <div class="expired-submessage">2026 Season Underway</div>
+
+        <h1 class="ts-hero-headline" id="heroHeadline">
+            New Date: Saturday, March 28th!<br><br>Go All In for the Tom Sox
+        </h1>
+
+        <p class="ts-hero-subheadline" id="heroSubheadline">
+            Join us for our Annual Poker Tournament! High stakes, cold drinks, and big support for our 2026 season.
+        </p>
+
+        <div class="ts-hero-cta">
+            <!-- Primary CTA — currently hidden via CSS -->
+            <a href="#tickets" class="ts-btn-primary" id="primaryCTA">Reserve Your Seat</a>
+
+            <a href="https://cvilletomsox.betterworld.org/events/tom-sox-annual-poker-tournament" class="ts-btn-secondary" target="_blank" rel="noopener noreferrer">Reserve Your Seat</a>
         </div>
+
+        <!-- Hero Stats — currently hidden via CSS -->
+        <div class="ts-hero-stats" id="heroStats"></div>
+    </div>
+
+    <div class="ts-scroll-indicator" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="scroll-arrow"></div>
     </div>
 </section>
-    <!-- HORIZONTAL GAME TICKER -->
-    <section class="ts-game-ticker" id="gameTicker">
-        <div class="ticker-header">
-            <h2>Recent & Upcoming Games</h2>
-            <a href="/schedule" class="ticker-view-all">View Full Schedule →</a>
-        </div>
-        
-        <!-- NEW: Subtitle to explain home game highlighting -->
-      <p class="ticker-subtitle"><em>Home games in green</em></p>
-        
-        <div class="ticker-controls">
-            <button class="ticker-btn ticker-prev" id="tickerPrev" aria-label="Previous games">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="15 18 9 12 15 6"></polyline>
-                </svg>
-            </button>
-            
-            <div class="ticker-track-wrapper">
-                <div class="ticker-track" id="tickerTrack">
-                    <div class="ticker-loading">Loading games...</div>
-                </div>
-            </div>
-            
-            <button class="ticker-btn ticker-next" id="tickerNext" aria-label="Next games">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-            </button>
-        </div>
-        
-        <div class="ticker-dots" id="tickerDots"></div>
-    </section>
-</body>
-</html>

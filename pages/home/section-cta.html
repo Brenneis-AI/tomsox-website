@@ -1,269 +1,46 @@
+<!--
+  File: section-cta.html
+  Page: Home
+  Section: Support CTA — hierarchical call-to-action buttons for donation, sponsorship, volunteering, etc.
+  Last Updated: 2026-02-20
+-->
+
 <section class="support-section" id="support-cta">
-  <div class="support-container">
+    <div class="support-container">
 
-    <!-- 1. HEADLINE AND SUB-COPY -->
-    <div class="support-header" data-aos="fade-up">
-      <h1 class="support-title">Charlottesville's Championship Baseball</h1>
-      <p class="support-subtitle">
-        The Tom Sox are more than a team; we're a non-profit community tradition. 
-        Your support fuels our winning legacy and keeps summer baseball thriving for years to come.
-      </p>
+        <div class="support-header">
+            <h2 class="support-title">Charlottesville's Championship Baseball</h2>
+            <p class="support-subtitle">
+                The Tom Sox are more than a team; we're a non-profit community tradition.
+                Your support fuels our winning legacy and keeps summer baseball thriving for years to come.
+            </p>
+        </div>
+
+        <div class="support-call-to-action">
+            <h3 class="support-subheading">Step Up to the Plate for Your Team</h3>
+
+            <div class="support-grid">
+
+                <!-- TIER 1: PRIMARY ACTION -->
+                <div class="tier-one">
+                    <a href="/donate" class="support-button donate-button">Donate Now</a>
+                </div>
+
+                <!-- TIER 2: MAJOR ACTIONS -->
+                <div class="tier-two">
+                    <a href="/sponsors" class="support-button">Become a Sponsor</a>
+                    <a href="/host-families" class="support-button">Become a Host Family</a>
+                </div>
+
+                <!-- TIER 3: OTHER ACTIONS -->
+                <div class="tier-three">
+                    <a href="/volunteer" class="support-button">Volunteer With Us</a>
+                    <a href="/internship" class="support-button">Apply for an Internship</a>
+                    <a href="/shop" class="support-button">Shop Tom Sox Gear</a>
+                </div>
+
+            </div>
+        </div>
+
     </div>
-
-    <!-- 2. CALL TO ACTION GROUP -->
-    <div class="support-call-to-action" data-aos="fade-up" data-aos-delay="200">
-      <h2 class="support-subheading">Step Up to the Plate for Your Team</h2>
-
-      <!-- 3. HIERARCHICAL BUTTON GRID -->
-      <div class="support-grid">
-        
-        <!-- TIER 1: PRIMARY ACTION -->
-        <div class="tier-one">
-          <a href="/donate" class="support-button donate-button">Donate Now</a>
-        </div>
-
-        <!-- TIER 2: MAJOR ACTIONS -->
-        <div class="tier-two">
-          <a href="/sponsors" class="support-button">Become a Sponsor</a>
-          <a href="/host-families" class="support-button">Become a Host Family</a>
-        </div>
-
-        <!-- TIER 3: OTHER ACTIONS -->
-        <div class="tier-three">
-          <a href="/volunteer" class="support-button">Volunteer With Us</a>
-          <a href="/internship" class="support-button">Apply for an Internship</a>
-          <a href="/shop" class="support-button">Shop Tom Sox Gear</a>
-        </div>
-
-      </div>
-    </div>
-  </div>
 </section>
-
-<style>
-  /* =================================================== */
-  /*            SECTION & CONTAINER STYLING              */
-  /* =================================================== */
-  .support-section {
-    background: transparent; /* GHL gradient applied in section background */
-    padding: 2rem 1.5rem;
-    color: #ffffff;
-    text-align: center;
-  }
-  
-  .support-container {
-    max-width: 950px;
-    margin: 0 auto;
-  }
-
-  /* =================================================== */
-  /*                 TYPOGRAPHY STYLING                  */
-  /* =================================================== */
-  .support-header {
-    margin-bottom: 1.5rem;
-  }
-  
-  .support-title {
-    font-family: 'Oswald', sans-serif;
-    font-size: 2.75rem;
-    font-weight: 700;
-    line-height: 1.2;
-    margin: 0 0 0.75rem 0;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .support-subtitle {
-    font-family: 'Arimo', sans-serif;
-    font-size: 1.25rem;
-    line-height: 1.5;
-    max-width: 700px;
-    margin: 0 auto;
-    opacity: 0.95;
-  }
-  
-  .support-subheading {
-    font-family: 'Oswald', sans-serif;
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  }
-
-  /* =================================================== */
-  /*             HIERARCHICAL BUTTON GRID                */
-  /* =================================================== */
-  .support-grid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.25rem;
-  }
-  
-  .tier-one, .tier-two, .tier-three {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.25rem;
-  }
-
-  /* =================================================== */
-  /*                  BUTTON STYLING                     */
-  /* =================================================== */
-  .support-button {
-    display: inline-block;
-    background-color: #84BD00; /* Official Tom Sox Green */
-    color: #1B365D; /* Official Tom Sox Blue */
-    border: 2px solid rgba(27, 54, 93, 0.15);
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 700;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s ease-out;
-  }
-  
-  .support-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(132, 189, 0, 0.35);
-    background-color: #96d400;
-  }
-
-  .support-button:focus {
-    outline: 3px solid #FFFFFF;
-    outline-offset: 3px;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(132, 189, 0, 0.35);
-  }
-
-  /* --- Tier-Specific Button Sizes --- */
-  .tier-one .support-button {
-    padding: 1.1rem 2rem;
-    font-size: 1.4rem;
-    width: 380px;
-    max-width: 100%;
-  }
-
-  .tier-one .donate-button {
-    box-shadow: 0 6px 16px rgba(132, 189, 0, 0.3);
-    font-weight: 800;
-  }
-
-  .tier-one .donate-button:hover {
-    box-shadow: 0 8px 28px rgba(132, 189, 0, 0.5);
-  }
-  
-  .tier-two .support-button {
-    padding: 1rem 1.5rem;
-    font-size: 1.15rem;
-    width: 300px;
-    max-width: 100%;
-  }
-  
-  .tier-three .support-button {
-    padding: 0.9rem 1.2rem;
-    font-size: 1rem;
-    width: 240px;
-    max-width: 100%;
-  }
-
-  /* =================================================== */
-  /*                  RESPONSIVE DESIGN                  */
-  /* =================================================== */
-  @media (max-width: 992px) {
-    .support-container {
-      max-width: 100%;
-      padding: 0 1rem;
-    }
-    
-    .support-title { 
-      font-size: 2.25rem; 
-    }
-    
-    .support-subtitle {
-      font-size: 1.15rem;
-    }
-    
-    .support-subheading { 
-      font-size: 1.75rem;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .support-section {
-      padding: 2rem 1rem;
-    }
-    
-    .support-title { 
-      font-size: 2rem; 
-      margin-bottom: 0.5rem;
-    }
-    
-    .support-subtitle {
-      font-size: 1.1rem;
-      line-height: 1.4;
-    }
-    
-    .support-subheading { 
-      font-size: 1.6rem;
-      margin-bottom: 1.25rem;
-    }
-    
-    .support-grid {
-      gap: 1rem;
-    }
-
-    /* Stack all buttons vertically on mobile */
-    .tier-two, .tier-three {
-      flex-direction: column;
-      width: 100%;
-      gap: 1rem;
-    }
-    
-    .tier-one .support-button,
-    .tier-two .support-button,
-    .tier-three .support-button {
-      width: 100%;
-      max-width: 400px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .support-title { 
-      font-size: 1.75rem;
-    }
-    
-    .support-subtitle {
-      font-size: 1rem;
-    }
-    
-    .support-subheading { 
-      font-size: 1.4rem;
-    }
-    
-    /* Further reduce button font sizes on small mobile */
-    .tier-one .support-button {
-      font-size: 1.2rem;
-      padding: 1rem 1.5rem;
-    }
-    
-    .tier-two .support-button,
-    .tier-three .support-button {
-      font-size: 1rem;
-      padding: 0.9rem 1.2rem;
-    }
-  }
-</style>
-
-<script>
-  // AOS Animation Initialization
-  document.addEventListener('DOMContentLoaded', function() {
-    if (typeof AOS !== 'undefined') {
-      AOS.init({ 
-        duration: 800, 
-        easing: 'ease-out', 
-        once: true, 
-        offset: 100 
-      });
-    }
-  });
-</script>

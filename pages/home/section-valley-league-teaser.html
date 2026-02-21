@@ -1,308 +1,57 @@
-<!-- =============== VALLEY LEAGUE TEASER SECTION =============== -->
-<!-- Expert-designed credibility band for Tom Sox home page -->
-<!-- Placement: Bottom of home page, before footer -->
+<!--
+  File: section-valley-league-teaser.html
+  Page: Home
+  Section: Valley League Teaser — credibility section about the Valley Baseball League
+  Last Updated: 2026-02-20
+-->
 
-<style>
-/* ========== FONTS (Add if not already in your page) ========== */
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap');
-
-/* ========== VALLEY LEAGUE SECTION ========== */
-.valley-league-section {
-  background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
-  border-top: 1px solid #e8e8e8;
-  padding: 80px 20px;
-  margin-top: 60px;
-}
-
-.valley-league-container {
-  max-width: 1100px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-/* League badge/divider */
-.league-badge-divider {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 25px;
-  opacity: 0.6;
-}
-
-.league-badge-divider::before,
-.league-badge-divider::after {
-  content: '';
-  width: 40px;
-  height: 1px;
-  background: linear-gradient(to right, transparent, #0d2c4e, transparent);
-}
-
-.league-badge-icon {
-  font-size: 1.2rem;
-  color: #0d2c4e;
-}
-
-/* Headline */
-.valley-league-headline {
-  font-family: 'Oswald', sans-serif;
-  font-size: 2.5rem;
-  font-weight: 600;
-  color: #0d2c4e;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin: 0 0 20px 0;
-  line-height: 1.2;
-}
-
-/* Supporting paragraph */
-.valley-league-description {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: #555;
-  max-width: 750px;
-  margin: 0 auto 50px auto;
-}
-
-/* Stat cards / highlights */
-.valley-league-highlights {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  max-width: 900px;
-  margin: 0 auto 45px auto;
-}
-
-.highlight-card {
-  background: #ffffff;
-  border: 1px solid #e8e8e8;
-  border-radius: 8px;
-  padding: 35px 15px;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.04);
-  aspect-ratio: 3/4;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.highlight-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
-  border-color: #8cc63f;
-}
-
-.highlight-icon {
-  font-size: 2.2rem;
-  margin-bottom: 12px;
-  display: block;
-}
-
-.highlight-value {
-  font-family: 'Oswald', sans-serif;
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: #0d2c4e;
-  display: block;
-  margin-bottom: 5px;
-  letter-spacing: 0.5px;
-  text-align: center;
-}
-
-.highlight-label {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 0.85rem;
-  color: #777;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-weight: 600;
-  text-align: center;
-}
-
-/* CTA Row */
-.valley-league-ctas {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.valley-cta-primary {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  padding: 15px 35px;
-  background-color: #8cc63f;
-  color: #ffffff;
-  border: 2px solid #8cc63f;
-  border-radius: 6px;
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 4px 12px rgba(140, 198, 63, 0.2);
-}
-
-.valley-cta-primary:hover {
-  background-color: #7ab430;
-  border-color: #7ab430;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(140, 198, 63, 0.3);
-}
-
-.valley-cta-secondary {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  padding: 15px 30px;
-  background-color: transparent;
-  color: #0d2c4e;
-  border: 2px solid #0d2c4e;
-  border-radius: 6px;
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.valley-cta-secondary:hover {
-  background-color: #0d2c4e;
-  color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(13, 44, 78, 0.2);
-}
-
-.cta-icon {
-  font-size: 1.1rem;
-  transition: transform 0.3s ease;
-}
-
-.valley-cta-primary:hover .cta-icon,
-.valley-cta-secondary:hover .cta-icon {
-  transform: translateX(4px);
-}
-
-/* External link icon */
-.external-icon {
-  font-size: 0.9rem;
-}
-
-/* ========== RESPONSIVE DESIGN ========== */
-@media (max-width: 768px) {
-  .valley-league-section {
-    padding: 60px 20px;
-  }
-  
-  .valley-league-headline {
-    font-size: 2rem;
-  }
-  
-  .valley-league-description {
-    font-size: 1rem;
-    margin-bottom: 40px;
-  }
-  
-  .valley-league-highlights {
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-bottom: 35px;
-  }
-  
-  .highlight-card {
-    padding: 30px 15px;
-  }
-  
-  .highlight-icon {
-    font-size: 2rem;
-  }
-  
-  .highlight-value {
-    font-size: 1.5rem;
-  }
-  
-  .valley-cta-primary {
-    padding: 14px 30px;
-  }
-}
-
-@media (max-width: 480px) {
-  .valley-league-section {
-    padding: 50px 15px;
-  }
-  
-  .valley-league-headline {
-    font-size: 1.6rem;
-  }
-  
-  .valley-league-highlights {
-    grid-template-columns: 1fr;
-  }
-}
-</style>
-
-<!-- ========== HTML STRUCTURE ========== -->
 <section class="valley-league-section">
-  <div class="valley-league-container">
-    
-    <!-- Badge/Divider -->
-    <div class="league-badge-divider">
-      <span class="league-badge-icon">⚾</span>
-    </div>
-    
-    <!-- Headline -->
-    <h2 class="valley-league-headline">
-      Competing in the Valley Baseball League
-    </h2>
-    
-    <!-- Supporting Paragraph -->
-    <p class="valley-league-description">
-      The Charlottesville Tom Sox are proud members of the Valley Baseball League, a premier collegiate summer baseball league featuring 12 teams across central and western Virginia. The league is dedicated to high-level competition, player development, and strengthening the communities each team represents.
-    </p>
-    
-    <!-- League Highlights -->
-    <div class="valley-league-highlights">
-      <div class="highlight-card">
-        <span class="highlight-icon">🏟️</span>
-        <span class="highlight-value">12</span>
-        <span class="highlight-label">Teams</span>
-      </div>
-      
-      <div class="highlight-card">
-        <span class="highlight-icon">📍</span>
-        <span class="highlight-value">Virginia</span>
-        <span class="highlight-label">Central &amp; Western</span>
-      </div>
-      
-      <div class="highlight-card">
-        <span class="highlight-icon">🎓</span>
-        <span class="highlight-value">Collegiate</span>
-        <span class="highlight-label">Summer Baseball</span>
-      </div>
-      
-      <div class="highlight-card">
-        <span class="highlight-icon">🤝</span>
-        <span class="highlight-value">Community</span>
-        <span class="highlight-label">Focused</span>
-      </div>
-    </div>
-    
-    <!-- CTAs -->
-    <div class="valley-league-ctas">
-      <a href="/valley-league" class="valley-cta-primary">
-        Explore the Valley League
-        <span class="cta-icon">→</span>
-      </a>
-    </div>
-    
-  </div>
-</section>
+    <div class="valley-league-container">
 
-<!-- =============== END: VALLEY LEAGUE TEASER SECTION =============== -->
+        <div class="league-badge-divider" aria-hidden="true">
+            <span class="league-badge-icon">⚾</span>
+        </div>
+
+        <h2 class="valley-league-headline">
+            Competing in the Valley Baseball League
+        </h2>
+
+        <p class="valley-league-description">
+            The Charlottesville Tom Sox are proud members of the Valley Baseball League, a premier collegiate
+            summer baseball league featuring 12 teams across central and western Virginia. The league is
+            dedicated to high-level competition, player development, and strengthening the communities
+            each team represents.
+        </p>
+
+        <div class="valley-league-highlights">
+            <div class="highlight-card">
+                <span class="highlight-icon" aria-hidden="true">🏟️</span>
+                <span class="highlight-value">12</span>
+                <span class="highlight-label">Teams</span>
+            </div>
+            <div class="highlight-card">
+                <span class="highlight-icon" aria-hidden="true">📍</span>
+                <span class="highlight-value">Virginia</span>
+                <span class="highlight-label">Central &amp; Western</span>
+            </div>
+            <div class="highlight-card">
+                <span class="highlight-icon" aria-hidden="true">🎓</span>
+                <span class="highlight-value">Collegiate</span>
+                <span class="highlight-label">Summer Baseball</span>
+            </div>
+            <div class="highlight-card">
+                <span class="highlight-icon" aria-hidden="true">🤝</span>
+                <span class="highlight-value">Community</span>
+                <span class="highlight-label">Focused</span>
+            </div>
+        </div>
+
+        <div class="valley-league-ctas">
+            <a href="/valley-league" class="valley-cta-primary">
+                Explore the Valley League
+                <span class="cta-icon" aria-hidden="true">→</span>
+            </a>
+        </div>
+
+    </div>
+</section>

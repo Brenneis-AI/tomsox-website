@@ -1,255 +1,53 @@
-<!-- =========================================
-     PLAN YOUR VISIT TEASER - HOME PAGE
-     ========================================= -->
+<!--
+  File: section-plan-your-visit-teaser.html
+  Page: Home
+  Section: Plan Your Visit Teaser — promotes the visitor guide for Charlottesville
+  Last Updated: 2026-02-20
+-->
 
 <section class="ts-visit-teaser">
     <div class="ts-visit-teaser-container">
+
         <div class="ts-visit-teaser-content">
             <div class="ts-visit-badge">EXPLORE C'VILLE</div>
             <h2 class="ts-visit-headline">PLAN YOUR VISIT</h2>
             <p class="ts-visit-description">
-                Experience America's Most Beautiful Main Street alongside premier summer baseball. 
-                Discover partner hotels, local attractions, dining, and everything you need to make 
+                Experience America's Most Beautiful Main Street alongside premier summer baseball.
+                Discover partner hotels, local attractions, dining, and everything you need to make
                 the most of your trip to Charlottesville.
             </p>
-            
+
             <div class="ts-visit-highlights">
                 <div class="ts-visit-highlight-item">
-                    <span class="ts-visit-icon">🏨</span>
+                    <span class="ts-visit-icon" aria-hidden="true">🏨</span>
                     <span class="ts-visit-label">Partner Hotels</span>
                 </div>
                 <div class="ts-visit-highlight-item">
-                    <span class="ts-visit-icon">🗺️</span>
+                    <span class="ts-visit-icon" aria-hidden="true">🗺️</span>
                     <span class="ts-visit-label">Getting Here</span>
                 </div>
                 <div class="ts-visit-highlight-item">
-                    <span class="ts-visit-icon">🍷</span>
-                    <span class="ts-visit-label">Food & Drink</span>
+                    <span class="ts-visit-icon" aria-hidden="true">🍷</span>
+                    <span class="ts-visit-label">Food &amp; Drink</span>
                 </div>
                 <div class="ts-visit-highlight-item">
-                    <span class="ts-visit-icon">⛰️</span>
+                    <span class="ts-visit-icon" aria-hidden="true">⛰️</span>
                     <span class="ts-visit-label">Outdoor Adventures</span>
                 </div>
             </div>
-            
+
             <a href="/plan-your-visit" class="ts-visit-cta-btn">
                 EXPLORE THE GUIDE
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="margin-left: 8px; vertical-align: middle;">
+                <svg class="ts-visit-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
             </a>
         </div>
-        
+
         <div class="ts-visit-teaser-image">
             <img src="https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/697992fa4d506d541d7b027e.webp" alt="Charlottesville Downtown Mall">
-            <div class="ts-visit-image-overlay"></div>
+            <div class="ts-visit-image-overlay" aria-hidden="true"></div>
         </div>
+
     </div>
 </section>
-
-<style>
-/* =========================================
-   PLAN YOUR VISIT TEASER - HOME PAGE (CORRECTED)
-   ========================================= */
-
-.ts-visit-teaser {
-    background: #f8f9fa;
-    padding: 100px 20px;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Subtle decorative element */
-.ts-visit-teaser::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 6px;
-    background: linear-gradient(90deg, #84BD00 0%, #1b365d 100%);
-}
-
-.ts-visit-teaser-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-}
-
-.ts-visit-teaser-content {
-    padding-right: 20px;
-}
-
-.ts-visit-badge {
-    display: inline-block;
-    background: #84BD00;
-    color: #1b365d;
-    padding: 8px 20px;
-    border-radius: 30px;
-    font-family: 'Oswald', sans-serif;
-    font-weight: 700;
-    font-size: 0.85rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-}
-
-.ts-visit-headline {
-    font-family: 'Oswald', sans-serif;
-    font-size: 3.5rem;
-    font-weight: 700;
-    color: #1b365d;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    line-height: 1.1;
-    margin-bottom: 25px;
-}
-
-.ts-visit-description {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.1rem;
-    color: #545454;
-    line-height: 1.7;
-    margin-bottom: 40px;
-}
-
-.ts-visit-highlights {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-bottom: 40px;
-}
-
-.ts-visit-highlight-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 15px;
-    background: white;
-    border-radius: 8px;
-    border-left: 4px solid #84BD00;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-}
-
-.ts-visit-highlight-item:hover {
-    transform: translateX(5px);
-    box-shadow: 0 4px 12px rgba(132, 189, 0, 0.2);
-}
-
-.ts-visit-icon {
-    font-size: 1.8rem;
-    line-height: 1;
-}
-
-.ts-visit-label {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: #1b365d;
-}
-
-.ts-visit-cta-btn {
-    display: inline-flex;
-    align-items: center;
-    background-color: #1b365d;
-    color: #ffffff;
-    padding: 18px 45px;
-    border-radius: 4px;
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(27, 54, 93, 0.3);
-}
-
-.ts-visit-cta-btn:hover {
-    background-color: #84BD00;
-    color: #1b365d;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(132, 189, 0, 0.4);
-}
-
-.ts-visit-teaser-image {
-    position: relative;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-    height: 500px;
-}
-
-.ts-visit-teaser-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.ts-visit-teaser:hover .ts-visit-teaser-image img {
-    transform: scale(1.05);
-}
-
-.ts-visit-image-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(27, 54, 93, 0.2) 0%, rgba(132, 189, 0, 0.1) 100%);
-    pointer-events: none;
-}
-
-/* --- RESPONSIVE --- */
-@media (max-width: 992px) {
-    .ts-visit-teaser {
-        padding: 80px 20px;
-    }
-    
-    .ts-visit-teaser-container {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-    
-    .ts-visit-headline {
-        font-size: 3rem;
-    }
-    
-    .ts-visit-teaser-image {
-        height: 400px;
-    }
-}
-
-@media (max-width: 768px) {
-    .ts-visit-teaser {
-        padding: 60px 20px;
-    }
-    
-    .ts-visit-headline {
-        font-size: 2.5rem;
-    }
-    
-    .ts-visit-description {
-        font-size: 1rem;
-    }
-    
-    .ts-visit-highlights {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-    
-    .ts-visit-teaser-image {
-        height: 300px;
-    }
-    
-    .ts-visit-cta-btn {
-        width: 100%;
-        justify-content: center;
-    }
-}
-</style>
