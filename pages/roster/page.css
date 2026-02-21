@@ -108,10 +108,10 @@
 }
 
 .roster-baseball {
-    width: 90px;
-    height: 90px;
+    font-size: 80px;
+    line-height: 1;
+    display: block;
     animation: roster-spin 1.2s linear infinite;
-    filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.12));
 }
 
 @keyframes roster-spin {
