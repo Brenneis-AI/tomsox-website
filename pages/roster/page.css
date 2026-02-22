@@ -305,7 +305,7 @@
 @media (max-width: 1024px) {
     .mobile-favorites-bar {
         display: flex;
-        justify-content: flex-end;
+        justify-content: center;
         padding: 0 0 8px 0;
     }
 
