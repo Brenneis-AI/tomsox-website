@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ballpark A-Z Guide</title>
+    <style>
+      /* =========================================================
+   BALLPARK A-Z GUIDE ACCORDION - BRANDED (NO BODY STYLES)
+   ========================================================= */
+
+/* Remove body styling - it conflicts with GHL page container */
+/* body styles removed */
+
+.guide-accordion {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 20px; /* Move padding here instead of body */
+    border-radius: 0;
+    overflow: visible;
+    box-shadow: none;
+    font-family: 'Open Sans', sans-serif; /* Move font here */
+    background-color: transparent; /* Transparent instead of #fafbfc */
+}
+
+.guide-accordion details {
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-left: 4px solid #84BD00; /* GREEN ACCENT */
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+}
+
+.guide-accordion details:hover {
+    box-shadow: 0 4px 16px rgba(132, 189, 0, 0.15);
+    border-left-color: #6fa000;
+}
+
+.guide-accordion details[open] {
+    border-left-width: 5px;
+    box-shadow: 0 6px 20px rgba(132, 189, 0, 0.2);
+}
+
+.guide-accordion details:last-of-type {
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 0;
+}
+
+.guide-accordion summary {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    padding: 20px 60px 20px 24px;
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+    transition: background-color 0.2s ease-in-out;
+    color: #1B365D;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.guide-accordion summary::-webkit-details-marker {
+    display: none;
+}
+
+.guide-accordion summary:hover {
+    background-color: #f8f9fa;
+}
+
+.guide-accordion summary::after {
+    content: '+';
+    font-size: 2rem;
+    font-weight: 300;
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+    color: #84BD00;
+}
+
+.guide-accordion details[open] summary::after {
+    content: '−';
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.guide-accordion details[open] summary {
+    background-color: #f5f7f9;
+    border-bottom: 2px solid #e5e5e5;
+}
+
+.accordion-content {
+    padding: 28px 24px 32px;
+    line-height: 1.7;
+}
+
+.accordion-content h4 {
+    font-family: 'Oswald', sans-serif;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #1B365D;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.accordion-content h4:first-child {
+    margin-top: 0;
+}
+
+.accordion-content p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding-left: 0;
+    border-left: none;
+    color: #444444;
+    font-size: 0.9375rem;
+}
+
+.accordion-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+    .guide-accordion {
+        padding: 10px;
+    }
+    
+    .guide-accordion summary {
+        font-size: 1rem;
+        padding: 18px 50px 18px 20px;
+    }
+    
+    .guide-accordion summary::after {
+        right: 20px;
+        font-size: 1.75rem;
+    }
+    
+    .accordion-content {
+        padding: 24px 20px 28px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .guide-accordion details {
+        border-left-width: 3px;
+    }
+    
+    .guide-accordion summary {
+        font-size: 0.9375rem;
+        padding: 16px 45px 16px 16px;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <!-- Start of A-Z Guide Accordion HTML -->
+    <div class="guide-accordion">
+
+        <!-- 1. Game Day & Arrival -->
+        <details>
+            <summary>Game Day & Arrival</summary>
+            <div class="accordion-content">
+                <h4>Address & Directions</h4>
+                <p>The ballpark is located at 1400 Melbourne Rd, Charlottesville, VA 22901. Detailed driving directions can be found using the Google Map below.</p>
+
+                <h4>Parking</h4>
+                <p>Free parking is available on-site. Please follow the signs and instructions from our parking staff to find designated fan parking areas.</p>
+
+                <h4>Gates Open</h4>
+                <p>Gates open to the public one (1) hour prior to the scheduled first pitch.</p>
+
+                <h4>Rain Policy / Rain Checks</h4>
+                <p>In the event of a rainout, your ticket can be exchanged for a ticket of equal or lesser value to any remaining home game. Please check our website and social media for the latest updates on game status during inclement weather.</p>
+            </div>
+        </details>
+
+        <!-- 2. Tickets & Seating -->
+        <details>
+            <summary>Tickets & Seating</summary>
+            <div class="accordion-content">
+                <h4>Tickets</h4>
+                <p>Tickets can be purchased online through our official ticketing partner or at the ballpark box office on game days. The box office opens two (2) hours before first pitch.</p>
+                
+                <h4>Will Call</h4>
+                <p>The Will Call window is located at the main entrance ticket booth. A valid photo ID is required to pick up tickets.</p>
+
+                <h4>Seating Policy</h4>
+                <p>Fans with reserved tickets must sit in their assigned seats. General admission tickets are valid for the lawn and designated standing room areas. Stadium re-entry is permitted; please have your ticket ready for scanning upon re-entry.</p>
+            </div>
+        </details>
+        
+        <!-- 3. Ballpark Rules & Prohibited Items -->
+        <details>
+            <summary>Ballpark Rules & Prohibited Items</summary>
+            <div class="accordion-content">
+                <h4>Alcoholic Beverages</h4>
+                <p>No outside alcoholic beverages are permitted. A selection of beer is available for purchase for fans 21 and older with a valid ID.</p>
+
+                <h4>Bags</h4>
+                <p>To ensure fan safety, all bags are subject to search upon entry. Clear bags are preferred to expedite entry.</p>
+
+                <h4>Bottles and Cans</h4>
+                <p>No outside bottles, cans, or coolers are permitted inside the ballpark. Each fan may bring in one (1) sealed plastic water bottle.</p>
+
+                <h4>Prohibited Items</h4>
+                <p>Prohibited items include, but are not limited to: weapons of any kind, outside food and beverages (except for one sealed water bottle), coolers, and laser pointers. A full list can be obtained at Guest Services.</p>
+
+                <h4>Smoking Policy</h4>
+                <p>The ballpark is a smoke-free facility. Smoking, including e-cigarettes and vaping, is only permitted in designated areas outside the main gates.</p>
+            </div>
+        </details>
+
+        <!-- 4. Amenities & Guest Services -->
+        <details>
+            <summary>Amenities & Guest Services</summary>
+            <div class="accordion-content">
+                <h4>Animals</h4>
+                <p>Certified service animals are welcome at the ballpark. All other pets are not permitted, except on designated "Bark in the Park" promotional nights.</p>
+
+                <h4>Concessions</h4>
+                <p>Our concession stands offer a variety of ballpark classics, including hot dogs, popcorn, and cold beverages. Credit cards are accepted.</p>
+
+                <h4>First Aid</h4>
+                <p>A first aid station is located behind the main grandstand. If you need immediate medical assistance, please contact the nearest usher or staff member.</p>
+
+                <h4>Lost and Found</h4>
+                <p>Lost and found is located at the Guest Services booth near the main entrance. To inquire about a lost item after a game, please contact our main office.</p>
+
+                <h4>Merchandise</h4>
+                <p>Official Tom Sox gear is available at the team store located on the main concourse. The store is open from the time gates open until the end of the 7th inning.</p>
+            </div>
+        </details>
+
+        <!-- 5. Fan Experience & On-Field Action -->
+        <details>
+            <summary>Fan Experience & On-Field Action</summary>
+            <div class="accordion-content">
+                <h4>Autographs</h4>
+                <p>Players may be available to sign autographs along the railing near the dugouts before and after the game. Please be respectful of players as they prepare for the game.</p>
+                
+                <h4>Foul Balls</h4>
+                <p>Fans are welcome to keep any foul ball hit into the stands. Please be aware and stay alert for balls leaving the field of play at all times.</p>
+
+                <h4>On-Field Access</h4>
+                <p>Access to the field is restricted to authorized personnel only. Any fan entering the field of play without permission will be subject to immediate ejection.</p>
+
+                <h4>Special Announcements</h4>
+                <p>To request a birthday or special announcement on the video board, please visit the Guest Services booth before the 3rd inning. A small donation to the team's foundation may be required.</p>
+            </div>
+        </details>
+
+    </div>
+    <!-- End of Accordion HTML -->
+
+</body>
+</html>

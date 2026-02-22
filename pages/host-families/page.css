@@ -1,0 +1,649 @@
+/* =========================================================
+   GLOBAL STYLES & FONT IMPORTS
+   ========================================================= */
+
+/* 1. Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Open+Sans:wght@400;700&display=swap');
+
+/* 2. Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* 3. Body Baseline */
+body {
+    /* Use Open Sans as the primary body font for consistency */
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+:root {
+    --brand-green: #84BD00;
+ /* The vibrant green from your image */
+    --dark-blue-bg: #1b365d;
+  /* The dark blue from your image */
+    --light-text: #ffffff;
+    --subtle-text: #a9b3d1;
+ /* A softer text color for less important info */
+    --error-red: #e74c3c;
+    --success-green: #2ecc71;
+}
+
+/* INFIELD DIRT */
+.infield-dirt {
+    background-color: #a1662f;
+    position: relative;
+    z-index: 0;
+}
+
+.infield-dirt::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://storage.googleapis.com/msgsndr/xPpGvlvaXWhYtIJUg0CZ/media/686e62f4879662a5cb44bef2.jpeg');
+    opacity: 0.15;
+    z-index: -1;
+}
+/* =========================================================
+   HOST FAMILIES PAGE - CUSTOM STYLES
+   ========================================================= */
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.host-hero-content {
+    padding: 40px 60px 40px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 500px;
+}
+
+.host-hero-headline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3.75rem;
+    color: #ffffff !important;
+    letter-spacing: 2.5px;
+    line-height: 1.05;
+    margin: 0 0 28px 0 !important;
+    text-transform: uppercase;
+}
+
+.host-hero-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.1875rem;
+    color: #ffffff !important;
+    line-height: 1.75;
+    margin: 0 0 36px 0 !important;
+    opacity: 0.96;
+    max-width: 100%;
+}
+
+.host-hero-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.host-hero-btn-primary {
+    display: inline-block;
+    background: #84BD00 !important;
+    color: #ffffff !important;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 16px 40px !important;
+    border-radius: 6px;
+    text-decoration: none !important;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(132, 189, 0, 0.3);
+    border: none !important;
+    cursor: pointer;
+}
+
+.host-hero-btn-primary:hover {
+    background: #6fa000 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(132, 189, 0, 0.4);
+    color: #ffffff !important;
+}
+
+.host-hero-btn-secondary {
+    display: inline-block;
+    background: transparent !important;
+    color: #ffffff !important;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 16px 40px !important;
+    border-radius: 6px;
+    text-decoration: none !important;
+    transition: all 0.3s ease;
+    border: 2px solid #ffffff !important;
+}
+
+.host-hero-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+}
+
+.host-hero-image {
+    position: relative;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.host-hero-image img {
+    width: 90%;
+    height: auto;
+    border-radius: 8px;
+    border: 4px solid #84BD00;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    display: block;
+}
+
+/* ============================================
+   BENEFITS SECTION
+   ============================================ */
+.host-benefits-section {
+    text-align: center;
+    padding: 80px 20px;
+    background: #ffffff;
+}
+
+.host-benefits-headline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    color: #1B365D !important;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin: 0 0 60px 0 !important;
+    line-height: 1.2;
+}
+
+.host-benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.host-benefit-card {
+    background: #ffffff;
+    padding: 40px 28px;
+    border-radius: 8px;
+    border: 1px solid #e5e5e5;
+    border-top: 4px solid #84BD00;
+    transition: all 0.3s ease;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.host-benefit-card:hover {
+    border-top-color: #6fa000;
+    border-color: #84BD00;
+    box-shadow: 0 8px 24px rgba(132, 189, 0, 0.2);
+    transform: translateY(-6px);
+}
+
+.host-benefit-card .benefit-icon {
+    font-size: 3rem;
+    margin: 0 0 20px 0;
+    line-height: 1;
+}
+
+.host-benefit-card .benefit-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.125rem;
+    color: #1B365D !important;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    margin: 0 0 16px 0 !important;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+.host-benefit-card .benefit-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9375rem;
+    color: #5a5a5a !important;
+    line-height: 1.7;
+    margin: 0 !important;
+}
+
+/* ============================================
+   EXPECTATIONS SECTION
+   ============================================ */
+.host-expectations-section {
+    padding: 80px 20px;
+    background: #f8f9fa;
+}
+
+.host-expectations-headline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    color: #1B365D !important;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin: 0 0 60px 0 !important;
+    text-align: center;
+}
+
+.host-expectations-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 60px;
+    max-width: 1100px;
+    margin: 0 auto 50px;
+    padding: 0 20px;
+}
+
+.expectations-column {
+    background: #ffffff;
+    padding: 40px 36px;
+    border-radius: 8px;
+    border-left: 4px solid #84BD00;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.expectations-column-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.25rem;
+    color: #1B365D !important;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin: 0 0 24px 0 !important;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #e5e5e5;
+}
+
+.expectations-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.expectations-list li {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9375rem;
+    color: #444444 !important;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    padding-left: 28px;
+    position: relative;
+}
+
+.expectations-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #84BD00;
+    font-weight: 700;
+    font-size: 1.125rem;
+}
+
+.host-timeline {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 40px;
+    background: #1B365D;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.host-timeline p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.0625rem;
+    color: #ffffff !important;
+    line-height: 1.8;
+    margin: 0 !important;
+}
+
+.host-timeline strong {
+    color: #84BD00 !important;
+}
+
+/* ============================================
+   ACCORDION SECTION
+   ============================================ */
+.host-accordion-section {
+    padding: 80px 20px;
+    background: #ffffff;
+    text-align: center;
+}
+
+.host-accordion-headline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    color: #1B365D !important;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin: 0 0 16px 0 !important;
+}
+
+.host-accordion-subtext {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.0625rem;
+    color: #666666 !important;
+    margin: 0 0 50px 0 !important;
+}
+
+.host-accordion {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.host-accordion details {
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-left: 4px solid #84BD00;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+}
+
+.host-accordion details:hover {
+    box-shadow: 0 4px 16px rgba(132, 189, 0, 0.15);
+    border-left-color: #6fa000;
+}
+
+.host-accordion details[open] {
+    border-left-width: 5px;
+    box-shadow: 0 6px 20px rgba(132, 189, 0, 0.2);
+}
+
+.host-accordion summary {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    padding: 20px 60px 20px 24px;
+    cursor: pointer;
+    color: #1B365D;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    list-style: none;
+    position: relative;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.host-accordion summary::-webkit-details-marker {
+    display: none;
+}
+
+.host-accordion summary:hover {
+    background: #f8f9fa;
+}
+
+.host-accordion details[open] summary {
+    background: #f5f7f9;
+    border-bottom: 2px solid #e5e5e5;
+}
+
+.host-accordion summary::after {
+    content: '+';
+    font-size: 2rem;
+    font-weight: 300;
+    color: #84BD00;
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+}
+
+.host-accordion details[open] summary::after {
+    content: '−';
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.host-accordion .accordion-content {
+    padding: 28px 24px 32px;
+    line-height: 1.7;
+    font-family: 'Open Sans', sans-serif;
+    color: #444444;
+    font-size: 0.9375rem;
+    text-align: left;
+}
+
+.host-accordion .accordion-content p {
+    margin-bottom: 1rem;
+    color: #444444;
+}
+
+.host-accordion .accordion-content p:last-child {
+    margin-bottom: 0;
+}
+
+.host-accordion .accordion-content strong {
+    color: #1B365D;
+    font-weight: 700;
+}
+
+/* ============================================
+   CTA BANNER
+   ============================================ */
+.host-cta-banner {
+    padding: 60px 20px;
+    background: transparent;
+    text-align: center;
+}
+
+.host-cta-headline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.75rem;
+    color: #1B365D !important;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin: 0 0 20px 0 !important;
+}
+
+.host-cta-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25rem;
+    color: #1B365D !important;
+    margin: 0 0 36px 0 !important;
+    opacity: 0.95;
+}
+
+.host-cta-btn {
+    display: inline-block;
+    background: #1B365D !important;
+    color: #ffffff !important;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.125rem;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    padding: 20px 56px !important;
+    border-radius: 6px;
+    border: none !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    font-weight: 700;
+}
+
+.host-cta-btn:hover {
+    background: #f5f5f5 !important;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   MODAL STYLES (Same as internships)
+   ============================================ */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-content {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    line-height: 1;
+    cursor: pointer;
+    color: #999999;
+    transition: color 0.2s ease;
+}
+
+.modal-close-btn:hover {
+    color: #333333;
+}
+
+#modal-host-title {
+    font-family: 'Oswald', sans-serif;
+    color: #1B365D;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 3px solid #84BD00;
+    padding-bottom: 16px;
+    margin: 0 0 24px 0;
+    padding-right: 30px;
+}
+
+#host-form-container {
+    min-height: 400px;
+}
+
+/* ============================================
+   RESPONSIVE - TABLET
+   ============================================ */
+@media (max-width: 992px) {
+    .host-hero-headline {
+        font-size: 3rem;
+    }
+
+    .host-benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .host-expectations-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+}
+
+/* ============================================
+   RESPONSIVE - MOBILE
+   ============================================ */
+@media (max-width: 767px) {
+    .host-hero-content {
+        padding: 40px 24px 20px;
+        min-height: auto;
+        text-align: center;
+    }
+
+    .host-hero-headline {
+        font-size: 2.5rem;
+        margin-bottom: 24px !important;
+    }
+
+    .host-hero-text {
+        font-size: 1.0625rem;
+    }
+
+    .host-hero-buttons {
+        justify-content: center;
+    }
+
+    .host-hero-btn-primary,
+    .host-hero-btn-secondary {
+        width: 100%;
+        text-align: center;
+    }
+
+    .host-hero-image {
+        padding: 20px 24px 40px;
+    }
+
+    .host-hero-image img {
+        width: 100%;
+        max-width: 500px;
+        border-width: 3px;
+    }
+
+    .host-benefits-headline,
+    .host-expectations-headline,
+    .host-accordion-headline {
+        font-size: 2rem;
+    }
+
+    .host-cta-headline {
+        font-size: 2rem;
+    }
+
+    .host-cta-text {
+        font-size: 1.0625rem;
+    }
+
+    .host-accordion summary {
+        font-size: 1rem;
+        padding: 18px 50px 18px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .host-hero-headline {
+        font-size: 2rem;
+    }
+
+    .host-benefits-headline,
+    .host-expectations-headline,
+    .host-accordion-headline {
+        font-size: 1.75rem;
+    }
+}
+
+/* =========================================================
+   END HOST FAMILIES PAGE STYLES
+   ========================================================= */

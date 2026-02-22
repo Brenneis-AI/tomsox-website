@@ -1,0 +1,539 @@
+/* =========================================================
+   GLOBAL STYLES & FONT IMPORTS
+   ========================================================= */
+
+/* 1. Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Open+Sans:wght@400;700&display=swap');
+
+/* 2. Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* 3. Body Baseline */
+body {
+    /* Use Open Sans as the primary body font for consistency */
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* 1. The main container */
+.image-wrapper {
+    position: relative;
+ /* This is essential for positioning the overlay on top */
+    display: block;
+     /* Makes the link behave like a container */
+    cursor: pointer;
+    overflow: hidden;
+   /* Hides anything that might spill out */
+    aspect-ratio: 1 / 1;
+ /* Optional: Makes the container a perfect square */
+}
+
+/* 2. The image itself */
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+ /* Ensures the image fills the container without stretching */
+}
+
+:root {
+    --brand-green: #84BD00;
+    --dark-blue-bg: #1b365d;
+    --light-text: #ffffff;
+    --subtle-text: #a9b3d1;
+    --error-red: #e74c3c;
+    --success-green: #2ecc71;
+}
+
+/* INFIELD DIRT */
+.infield-dirt {
+    background-color: #a1662f;
+    position: relative;
+    z-index: 0;
+}
+
+.infield-dirt::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://storage.googleapis.com/msgsndr/xPpGvlvaXWhYtIJUg0CZ/media/686e62f4879662a5cb44bef2.jpeg');
+    opacity: 0.15;
+    z-index: -1;
+}
+/* =========================================================
+   BALLPARK PAGE - COMPLETE CUSTOM CSS
+   ========================================================= */
+
+/* Import fonts if not already imported globally */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Open+Sans:wght@400;600;700&display=swap');
+
+/* ============================================
+   BORDER FIX
+   ============================================ */
+.hl_page-preview--content,
+.page-container,
+[class*="page-wrapper"],
+[class*="content-wrapper"],
+section,
+.section,
+[class*="section-"] {
+    border: none !important;
+}
+
+* {
+    border-left: none !important;
+    border-right: none !important;
+}
+
+/* ============================================
+   HERO CAPTION
+   ============================================ */
+.ballpark-hero-caption {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.125rem;
+    color: #ffffff !important;
+    background: rgba(27, 54, 93, 0.9);
+    padding: 24px 40px;
+    text-align: center;
+    font-style: italic;
+    line-height: 1.7;
+    max-width: 1200px;
+    margin: -80px auto 0;
+    position: relative;
+    z-index: 10;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   STATS SECTION
+   ============================================ */
+.ballpark-stats-section {
+    padding: 90px 20px;
+    background: #ffffff;
+}
+
+.ballpark-stats-headline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.75rem;
+    color: #1B365D !important;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0 0 70px 0 !important;
+    line-height: 1.2;
+}
+
+.ballpark-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 30px 20px;
+    background: #fafbfc;
+    border-radius: 8px;
+    border: 1px solid #e5e5e5 !important;
+    border-top: 4px solid #84BD00 !important;
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    border-top-color: #6fa000 !important;
+    box-shadow: 0 6px 20px rgba(132, 189, 0, 0.15);
+    transform: translateY(-4px);
+    background: #ffffff;
+}
+
+.stat-icon {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    line-height: 1;
+}
+
+.stat-number {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3.5rem;
+    color: #1B365D !important;
+    font-weight: 700;
+    line-height: 1;
+    margin: 0 0 12px 0 !important;
+    letter-spacing: -1px;
+}
+
+.stat-label {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9375rem;
+    color: #666666 !important;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 600;
+    margin: 0 0 8px 0 !important;
+}
+
+.stat-detail {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.875rem;
+    color: #84BD00 !important;
+    font-style: italic;
+    margin: 0 !important;
+}
+
+/* ============================================
+   HOME RECORD SECTION
+   ============================================ */
+.home-record-section {
+    padding: 90px 20px;
+    background: transparent;
+}
+
+.home-record-headline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.75rem;
+    color: #1B365D !important;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0 0 16px 0 !important;
+    line-height: 1.2;
+}
+
+.home-record-subtext {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25rem;
+    color: white !important;
+    text-align: center;
+    margin: 0 0 60px 0 !important;
+    font-style: italic;
+}
+
+.record-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+    background: #ffffff;
+    padding: 50px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.record-item {
+    text-align: center;
+    padding: 28px 16px;
+    border: 2px solid #e5e5e5 !important;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background: #fafbfc;
+}
+
+.record-item:hover {
+    border-color: #84BD00 !important;
+    box-shadow: 0 4px 16px rgba(132, 189, 0, 0.15);
+    transform: translateY(-3px);
+    background: #ffffff;
+}
+
+.record-item.championship {
+    border: 3px solid #84BD00 !important;
+    background: linear-gradient(135deg, #f9fff0 0%, #ffffff 100%);
+}
+
+.record-item.championship:hover {
+    border-color: #6fa000 !important;
+    box-shadow: 0 6px 24px rgba(132, 189, 0, 0.25);
+}
+
+.record-year {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.375rem;
+    color: #1B365D !important;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    margin: 0 0 16px 0 !important;
+}
+
+.record-result {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    color: #333333 !important;
+    font-weight: 700;
+    line-height: 1;
+    margin: 0 0 8px 0 !important;
+}
+
+.record-badge {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.75rem;
+    color: #84BD00 !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    margin-top: 12px;
+}
+
+.record-footnote {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.875rem;
+    color: white !important;
+    text-align: center;
+    margin: 30px 0 0 0 !important;
+    font-style: italic;
+}
+
+/* ============================================
+   MAP SECTION
+   ============================================ */
+.map-section {
+    padding: 90px 20px;
+    background: #ffffff;
+}
+
+.map-grid {
+    display: grid;
+    grid-template-columns: 58% 42%;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 450px;
+    border: 0 !important;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.map-info h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.25rem;
+    color: #1B365D !important;
+    margin: 0 0 32px 0 !important;
+    line-height: 1.3;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.map-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding: 16px;
+    background: #F8F9FA;
+    border-radius: 6px;
+    border-left: 3px solid #84BD00 !important;
+}
+
+.map-detail-icon {
+    font-size: 2rem;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.map-detail-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9375rem;
+    color: #444444 !important;
+    line-height: 1.6;
+}
+
+.map-detail-text strong {
+    font-family: 'Oswald', sans-serif;
+    color: #1B365D !important;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.map-directions-btn {
+    display: inline-block;
+    background: #84BD00 !important;
+    color: #ffffff !important;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 16px 40px !important;
+    border-radius: 6px;
+    text-decoration: none !important;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(132, 189, 0, 0.3);
+    margin-top: 16px;
+    border: none !important;
+}
+
+.map-directions-btn:hover {
+    background: #6fa000 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(132, 189, 0, 0.4);
+    color: #ffffff !important;
+}
+
+/* ============================================
+   RESPONSIVE - TABLET
+   ============================================ */
+@media (max-width: 992px) {
+    .ballpark-hero-caption {
+        font-size: 1rem;
+        padding: 20px 30px;
+        margin: -60px 20px 0;
+    }
+
+    .ballpark-stats-section,
+    .home-record-section,
+    .map-section {
+        padding: 70px 20px;
+    }
+
+    .ballpark-stats-headline,
+    .home-record-headline {
+        font-size: 2.25rem;
+        margin-bottom: 50px !important;
+    }
+
+    .ballpark-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px 30px;
+    }
+
+    .stat-number {
+        font-size: 3rem;
+    }
+
+    .record-grid {
+        grid-template-columns: repeat(3, 1fr);
+        padding: 40px 30px;
+        gap: 20px;
+    }
+
+    .record-result {
+        font-size: 2.25rem;
+    }
+
+    .map-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .map-container iframe {
+        height: 400px;
+    }
+}
+
+/* ============================================
+   RESPONSIVE - MOBILE
+   ============================================ */
+@media (max-width: 767px) {
+    .ballpark-hero-caption {
+        font-size: 1rem;
+        padding: 20px 24px;
+        margin: -60px 20px 0;
+    }
+
+    .ballpark-stats-section,
+    .home-record-section,
+    .map-section {
+        padding: 60px 16px;
+    }
+
+    .ballpark-stats-headline,
+    .home-record-headline {
+        font-size: 2rem;
+        margin-bottom: 40px !important;
+    }
+
+    .ballpark-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 0 10px;
+    }
+
+    .stat-item {
+        padding: 28px 20px;
+    }
+
+    .stat-icon {
+        font-size: 3rem;
+    }
+
+    .stat-number {
+        font-size: 2.75rem;
+    }
+
+    .home-record-subtext {
+        font-size: 1rem;
+        margin-bottom: 40px !important;
+    }
+
+    .record-grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 30px 20px;
+        gap: 16px;
+    }
+
+    .record-item {
+        padding: 24px 12px;
+    }
+
+    .record-year {
+        font-size: 1.125rem;
+        margin-bottom: 12px !important;
+    }
+
+    .record-result {
+        font-size: 2rem;
+    }
+
+    .record-badge {
+        font-size: 0.6875rem;
+    }
+
+    .map-info h2 {
+        font-size: 1.75rem;
+        margin-bottom: 24px !important;
+    }
+
+    .map-container iframe {
+        height: 350px;
+    }
+
+    .map-directions-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .record-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================================
+   END BALLPARK PAGE CSS
+   ========================================================= */

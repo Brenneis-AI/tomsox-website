@@ -1,0 +1,811 @@
+/* =========================================================
+   GLOBAL STYLES & FONT IMPORTS
+   ========================================================= */
+
+/* 1. Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Open+Sans:wght@400;700&display=swap');
+
+/* 2. Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* 3. Body Baseline */
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+:root {
+    --brand-green: #84BD00;
+    --dark-blue-bg: #1b365d;
+    --light-text: #ffffff;
+    --subtle-text: #a9b3d1;
+    --error-red: #e74c3c;
+    --success-green: #2ecc71;
+}
+
+/* SUMMER CAMP BACKGROUND */
+.infield-dirt {
+    background-color: #a1662f;
+    position: relative;
+    z-index: 0;
+}
+
+.infield-dirt::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://storage.googleapis.com/msgsndr/xPpGvlvaXWhYtIJUg0CZ/media/686e62f4879662a5cb44bef2.jpeg');
+    opacity: 0.15;
+    z-index: -1;
+}
+
+/* =========================================================
+   SUMMER CAMP PAGE - CUSTOM STYLES
+   ========================================================= */
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.camp-hero {
+    padding: 60px 40px;
+    background-color: #1b365d;
+}
+
+.camp-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.camp-hero-content {
+    padding: 40px 60px 40px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 500px;
+}
+
+.camp-hero-headline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3.75rem;
+    color: #ffffff !important;
+    letter-spacing: 2.5px;
+    line-height: 1.05;
+    margin: 0 0 28px 0 !important;
+    text-transform: uppercase;
+}
+
+.camp-hero-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.1875rem;
+    color: #ffffff !important;
+    line-height: 1.75;
+    margin: 0 0 36px 0 !important;
+    opacity: 0.96;
+    max-width: 100%;
+}
+
+.camp-hero-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.camp-hero-btn-primary {
+    display: inline-block;
+    background: #84BD00 !important;
+    color: #ffffff !important;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 16px 40px !important;
+    border-radius: 6px;
+    text-decoration: none !important;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(132, 189, 0, 0.3);
+    border: none !important;
+    cursor: pointer;
+}
+
+.camp-hero-btn-primary:hover {
+    background: #6fa000 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(132, 189, 0, 0.4);
+    color: #ffffff !important;
+}
+
+.camp-hero-image {
+    position: relative;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.camp-hero-image img {
+    width: 135%;
+    height: auto;
+    border-radius: 8px;
+    border: 4px solid #84BD00;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    display: block;
+}
+
+/* ============================================
+   CAMP INFO SECTION (Ages, Time, Price)
+   ============================================ */
+.camp-info-section {
+    padding: 80px 20px;
+    background: #ffffff;
+}
+
+.camp-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto 40px;
+}
+
+.info-card {
+    background: #ffffff;
+    padding: 40px 28px;
+    border-radius: 8px;
+    border: 1px solid #e5e5e5;
+    border-top: 4px solid #84BD00;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.info-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 24px rgba(132, 189, 0, 0.2);
+    border-top-color: #6fa000;
+    border-color: #84BD00;
+}
+
+.info-icon {
+    font-size: 3rem;
+    margin: 0 0 20px 0;
+    line-height: 1;
+}
+
+.info-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    color: #1B365D !important;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    margin: 0 0 16px 0 !important;
+    font-weight: 700;
+}
+
+.info-value {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    color: #84BD00 !important;
+    margin: 0 0 8px 0 !important;
+    font-weight: 700;
+}
+
+.info-detail {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9375rem;
+    color: #666666 !important;
+    margin: 0 !important;
+    line-height: 1.5;
+}
+
+.camp-info-note {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 32px;
+    background: #1B365D;
+    border-radius: 8px;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.0625rem;
+    color: #ffffff !important;
+}
+
+.camp-info-note strong {
+    color: #84BD00 !important;
+}
+
+/* ============================================
+   EXPERIENCE SECTION
+   ============================================ */
+.camp-experience-section {
+    padding: 80px 20px;
+    background: #f8f9fa;
+}
+
+.experience-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.experience-headline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    color: #1B365D !important;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin: 0 0 16px 0 !important;
+}
+
+.experience-subtext {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.0625rem;
+    color: #666666 !important;
+    margin: 0 0 50px 0 !important;
+    max-width: 800px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    line-height: 1.75;
+}
+
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 36px;
+    text-align: left;
+}
+
+.experience-card {
+    background: #ffffff;
+    padding: 36px 28px;
+    border-radius: 8px;
+    border: 1px solid #e5e5e5;
+    border-left: 4px solid #84BD00;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.experience-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 24px rgba(132, 189, 0, 0.2);
+    border-left-color: #6fa000;
+    border-color: #84BD00;
+}
+
+.experience-icon {
+    font-size: 2.5rem;
+    margin: 0 0 20px 0;
+    line-height: 1;
+}
+
+.experience-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.125rem;
+    color: #1B365D !important;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    margin: 0 0 16px 0 !important;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+.experience-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9375rem;
+    color: #5a5a5a !important;
+    line-height: 1.7;
+    margin: 0 !important;
+}
+
+/* ============================================
+   SCHEDULE SECTION
+   ============================================ */
+.camp-schedule-section {
+    padding: 80px 20px;
+    background: #ffffff;
+}
+
+.schedule-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.schedule-headline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    color: #1B365D !important;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin: 0 0 16px 0 !important;
+    text-align: center;
+}
+
+.schedule-subtext {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    color: #666666 !important;
+    text-align: center;
+    margin: 0 0 40px 0 !important;
+    font-style: italic;
+}
+
+.schedule-timeline {
+    position: relative;
+    padding-left: 160px;
+    margin-bottom: 40px;
+}
+
+.schedule-timeline::before {
+    content: '';
+    position: absolute;
+    left: 140px;
+    top: 20px;
+    bottom: 20px;
+    width: 3px;
+    background: linear-gradient(to bottom, #84BD00, #6fa000);
+}
+
+.schedule-item {
+    position: relative;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.schedule-item::before {
+    content: '';
+    position: absolute;
+    left: -28px;
+    top: 8px;
+    width: 16px;
+    height: 16px;
+    background: #84BD00;
+    border: 3px solid #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px #84BD00;
+}
+
+.schedule-time {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    color: #84BD00 !important;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 700;
+    width: 100px;
+    flex-shrink: 0;
+    margin-right: 40px;
+    text-align: right;
+    position: absolute;
+    left: -150px;
+    top: 0;
+}
+
+.schedule-content {
+    background: #f8f9fa;
+    padding: 20px 24px;
+    border-radius: 8px;
+    border-left: 3px solid #84BD00;
+    flex: 1;
+}
+
+.schedule-content h4 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.125rem;
+    color: #1B365D !important;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0 0 10px 0 !important;
+}
+
+.schedule-content p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9375rem;
+    color: #444444 !important;
+    line-height: 1.65;
+    margin: 0 !important;
+}
+
+.schedule-note {
+    background: #1B365D;
+    padding: 28px 32px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.schedule-note p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.0625rem;
+    color: #ffffff !important;
+    line-height: 1.7;
+    margin: 0 !important;
+}
+
+.schedule-note strong {
+    color: #84BD00 !important;
+}
+
+/* ============================================
+   FAQ ACCORDION SECTION
+   ============================================ */
+.camp-faq-section {
+    padding: 80px 20px;
+    background: #f8f9fa;
+    text-align: center;
+}
+
+.camp-faq-headline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    color: #1B365D !important;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin: 0 0 16px 0 !important;
+}
+
+.camp-faq-subtext {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.0625rem;
+    color: #666666 !important;
+    margin: 0 0 50px 0 !important;
+}
+
+.camp-accordion {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.camp-accordion details {
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-left: 4px solid #84BD00;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+}
+
+.camp-accordion details:hover {
+    box-shadow: 0 4px 16px rgba(132, 189, 0, 0.15);
+    border-left-color: #6fa000;
+}
+
+.camp-accordion details[open] {
+    border-left-width: 5px;
+    box-shadow: 0 6px 20px rgba(132, 189, 0, 0.2);
+}
+
+.camp-accordion summary {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    padding: 20px 60px 20px 24px;
+    cursor: pointer;
+    color: #1B365D;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    list-style: none;
+    position: relative;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.camp-accordion summary::-webkit-details-marker {
+    display: none;
+}
+
+.camp-accordion summary:hover {
+    background: #f8f9fa;
+}
+
+.camp-accordion details[open] summary {
+    background: #f5f7f9;
+    border-bottom: 2px solid #e5e5e5;
+}
+
+.camp-accordion summary::after {
+    content: '+';
+    font-size: 2rem;
+    font-weight: 300;
+    color: #84BD00;
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+}
+
+.camp-accordion details[open] summary::after {
+    content: '−';
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.camp-accordion .accordion-content {
+    padding: 28px 24px 32px;
+    line-height: 1.7;
+    font-family: 'Open Sans', sans-serif;
+    color: #444444;
+    font-size: 0.9375rem;
+    text-align: left;
+}
+
+.camp-accordion .accordion-content p {
+    margin: 0;
+    color: #444444;
+}
+
+.camp-accordion .accordion-content strong {
+    color: #1B365D;
+    font-weight: 700;
+}
+
+/* ============================================
+   CTA SECTION
+   ============================================ */
+.camp-cta-section {
+    padding: 80px 20px;
+    text-align: center;
+    background: transparent;
+}
+
+.camp-cta-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.camp-cta-headline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.75rem;
+    color: #1B365D !important;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin: 0 0 20px 0 !important;
+}
+
+.camp-cta-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25rem;
+    color: #1B365D !important;
+    margin: 0 0 20px 0 !important;
+    opacity: 0.95;
+}
+
+.camp-cta-weeks {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.125rem;
+    color: #1B365D !important;
+    margin: 0 0 32px 0 !important;
+    font-weight: 600;
+}
+
+.camp-cta-buttons {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.camp-cta-btn {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #1b365d !important;
+    color: #ffffff !important;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    padding: 20px 48px !important;
+    border-radius: 6px;
+    border: none !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(27, 54, 93, 0.3);
+    font-weight: 700;
+    text-decoration: none !important;
+    min-width: 220px;
+}
+
+.camp-cta-btn .btn-week {
+    font-size: 1.25rem;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.camp-cta-btn .btn-dates {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    opacity: 0.9;
+    font-weight: 600;
+}
+
+.camp-cta-btn:hover {
+    background: #0f1f35 !important;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(27, 54, 93, 0.4);
+    color: #ffffff !important;
+}
+
+/* ============================================
+   RESPONSIVE - TABLET
+   ============================================ */
+@media (max-width: 992px) {
+    .camp-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .camp-hero-content {
+        padding: 40px 24px 20px;
+        min-height: auto;
+        text-align: center;
+    }
+
+    .camp-hero-buttons {
+        justify-content: center;
+    }
+
+    .camp-hero-headline {
+        font-size: 3rem;
+    }
+
+    .camp-info-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        max-width: 500px;
+    }
+
+    .experience-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+    }
+
+    .schedule-timeline {
+        padding-left: 0;
+    }
+
+    .schedule-timeline::before {
+        display: none;
+    }
+
+    .schedule-item::before {
+        display: none;
+    }
+
+    .schedule-time {
+        position: static;
+        width: auto;
+        text-align: left;
+        margin-bottom: 8px;
+    }
+
+    .schedule-item {
+        flex-direction: column;
+    }
+}
+
+/* ============================================
+   RESPONSIVE - MOBILE
+   ============================================ */
+@media (max-width: 767px) {
+    .camp-hero {
+        padding: 40px 20px;
+    }
+
+    .camp-hero-content {
+        padding: 40px 24px 20px;
+        min-height: auto;
+        text-align: center;
+    }
+
+    .camp-hero-headline {
+        font-size: 2.5rem;
+        margin-bottom: 24px !important;
+    }
+
+    .camp-hero-text {
+        font-size: 1.0625rem;
+    }
+
+    .camp-hero-buttons {
+        justify-content: center;
+    }
+
+    .camp-hero-btn-primary {
+        width: 100%;
+        text-align: center;
+    }
+
+    .camp-hero-image {
+        padding: 20px 24px 40px;
+    }
+
+    .camp-hero-image img {
+        width: 100%;
+        max-width: 500px;
+        border-width: 3px;
+    }
+
+    .camp-info-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        max-width: 400px;
+    }
+
+    .experience-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .experience-headline,
+    .schedule-headline,
+    .camp-faq-headline {
+        font-size: 2rem;
+    }
+
+    .camp-cta-headline {
+        font-size: 2rem;
+    }
+
+    .camp-cta-text {
+        font-size: 1.0625rem;
+    }
+
+    .camp-accordion summary {
+        font-size: 1rem;
+        padding: 18px 50px 18px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .camp-hero-headline {
+        font-size: 2rem;
+    }
+
+    .experience-headline,
+    .schedule-headline,
+    .camp-faq-headline {
+        font-size: 1.75rem;
+    }
+
+    .info-value {
+        font-size: 1.75rem;
+    }
+
+    .camp-cta-btn {
+        width: 100%;
+        padding: 18px 32px !important;
+    }
+
+    .camp-cta-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .camp-cta-btn .btn-week {
+        font-size: 1.125rem;
+    }
+
+    .camp-cta-btn .btn-dates {
+        font-size: 0.9375rem;
+    }
+}
+
+/* =========================================================
+   END SUMMER CAMP PAGE STYLES
+   ========================================================= */

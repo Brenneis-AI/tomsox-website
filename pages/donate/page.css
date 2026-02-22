@@ -1,0 +1,770 @@
+/* =========================================================
+   TOM SOX WEBSITE - COMPLETE CUSTOM CSS
+   Version: 2.0 - Donation Page Added
+   ========================================================= */
+
+/* =========================================================
+   GLOBAL STYLES & FONT IMPORTS
+   ========================================================= */
+
+/* 1. Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Open+Sans:wght@400;700&display=swap');
+
+/* 2. Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* 3. Body Baseline */
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+:root {
+    --brand-green: #84BD00;
+    --dark-blue-bg: #1b365d;
+    --light-text: #ffffff;
+    --subtle-text: #a9b3d1;
+    --error-red: #e74c3c;
+    --success-green: #2ecc71;
+}
+
+/* INFIELD DIRT */
+.infield-dirt {
+    background-color: #a1662f;
+    position: relative;
+    z-index: 0;
+}
+
+.infield-dirt::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://storage.googleapis.com/msgsndr/xPpGvlvaXWhYtIJUg0CZ/media/686e62f4879662a5cb44bef2.jpeg');
+    opacity: 0.15;
+    z-index: -1;
+}
+
+/* =========================================================
+   DONATION PAGE - HERO SECTION
+   ========================================================= */
+
+.donate-hero {
+    position: relative;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/6908e36edb58b4e9b1c5adcb.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(27, 54, 93, 0.85) 0%, rgba(13, 26, 45, 0.75) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+    padding: 0 20px;
+}
+
+.hero-headline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 4.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #ffffff;
+    margin: 0 0 25px 0;
+    line-height: 1.1;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.hero-subheadline {
+    font-size: 1.35rem;
+    color: #f3f4f6;
+    margin: 0 0 40px 0;
+    line-height: 1.7;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-cta-btn {
+    display: inline-block;
+    background: #84BD00;
+    color: #ffffff;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 20px 50px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(132, 189, 0, 0.4);
+}
+
+.hero-cta-btn:hover {
+    background: #9fd400;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(132, 189, 0, 0.6);
+}
+
+/* =========================================================
+   DONATION PAGE - IMPACT SECTION
+   ========================================================= */
+
+.impact-section {
+    background: #f9fafb;
+    padding: 100px 20px;
+}
+
+.impact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.impact-heading {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #1B365D;
+    text-align: center;
+    margin: 0 0 20px 0;
+}
+
+.impact-subheading {
+    font-size: 1.125rem;
+    color: #6b7280;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 60px;
+    line-height: 1.7;
+}
+
+.impact-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.impact-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 2px solid transparent;
+}
+
+.impact-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(132, 189, 0, 0.2);
+    border-color: #84BD00;
+}
+
+.impact-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.impact-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #1B365D;
+    margin: 0 0 15px 0;
+}
+
+.impact-description {
+    font-size: 0.95rem;
+    color: #6b7280;
+    line-height: 1.6;
+}
+/* =========================================================
+   DONATION PAGE - DONATION FORM SECTION (UPDATED)
+   ========================================================= */
+
+.donation-section {
+    background: #ffffff;
+    padding: 100px 20px;
+}
+
+.donation-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.donation-heading {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #1B365D;
+    text-align: center;
+    margin: 0 0 20px 0;
+}
+
+.donation-subheading {
+    font-size: 1.125rem;
+    color: #6b7280;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 50px;
+    line-height: 1.7;
+}
+
+.donation-button-container {
+    text-align: center;
+    padding: 60px 40px;
+    background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.better-world-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    background: linear-gradient(135deg, #84BD00 0%, #9fd400 100%);
+    color: #ffffff;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 25px 60px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 30px rgba(132, 189, 0, 0.4);
+    border: 3px solid transparent;
+}
+
+.better-world-btn:hover {
+    background: linear-gradient(135deg, #1B365D 0%, #2d5a8f 100%);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(27, 54, 93, 0.5);
+    border-color: #84BD00;
+}
+
+.btn-icon {
+    font-size: 2rem;
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.btn-text {
+    font-size: 1.5rem;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.secure-notice {
+    margin-top: 25px;
+    font-size: 0.875rem;
+    color: #6b7280;
+    font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .donation-button-container {
+        padding: 40px 25px;
+    }
+
+    .better-world-btn {
+        font-size: 1.25rem;
+        padding: 20px 45px;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-icon {
+        font-size: 2.5rem;
+    }
+
+    .btn-text {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .better-world-btn {
+        padding: 18px 35px;
+    }
+}
+
+/* =========================================================
+   DONATION PAGE - TRANSPARENCY SECTION
+   ========================================================= */
+
+.transparency-section {
+    background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+    padding: 100px 20px;
+}
+
+.transparency-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.transparency-heading {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #1B365D;
+    text-align: center;
+    margin: 0 0 20px 0;
+}
+
+.transparency-subheading {
+    font-size: 1.125rem;
+    color: #6b7280;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 60px;
+    line-height: 1.7;
+}
+
+/* Impact Amounts Grid */
+.impact-amounts-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-bottom: 80px;
+}
+
+.amount-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 35px 25px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 2px solid #f3f4f6;
+}
+
+.amount-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(132, 189, 0, 0.15);
+    border-color: #84BD00;
+}
+
+.amount-value {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #84BD00;
+    margin-bottom: 15px;
+}
+
+.amount-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.amount-description {
+    font-size: 0.95rem;
+    color: #6b7280;
+    line-height: 1.5;
+}
+
+/* Expenses Breakdown */
+.expenses-breakdown {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 50px 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 60px;
+}
+
+.expenses-heading {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #1B365D;
+    text-align: center;
+    margin: 0 0 15px 0;
+}
+
+.expenses-intro {
+    font-size: 1rem;
+    color: #6b7280;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 40px;
+}
+
+.expenses-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.expense-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.expense-icon-bg {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.expense-icon-bg.travel {
+    background: rgba(59, 130, 246, 0.1);
+}
+
+.expense-icon-bg.equipment {
+    background: rgba(132, 189, 0, 0.1);
+}
+
+.expense-icon-bg.players {
+    background: rgba(249, 115, 22, 0.1);
+}
+
+.expense-icon-bg.experience {
+    background: rgba(168, 85, 247, 0.1);
+}
+
+.expense-icon {
+    font-size: 1.75rem;
+}
+
+.expense-details {
+    flex: 1;
+}
+
+.expense-category {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #1B365D;
+    margin: 0 0 12px 0;
+}
+
+.expense-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.expense-list li {
+    font-size: 0.95rem;
+    color: #6b7280;
+    margin-bottom: 8px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.expense-list li:before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #84BD00;
+    font-weight: 700;
+}
+
+.expense-item {
+    background: #fafbfc;
+    padding: 25px;
+    border-radius: 8px;
+    border-left: 4px solid #84BD00;
+}
+/* Success Story Callout */
+.success-story {
+    background: linear-gradient(135deg, #84BD00 0%, #9fd400 100%);
+    border-radius: 12px;
+    padding: 40px;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    box-shadow: 0 8px 30px rgba(132, 189, 0, 0.3);
+    margin-bottom: 60px;
+}
+
+.success-icon {
+    font-size: 4rem;
+    flex-shrink: 0;
+}
+
+.success-content {
+    flex: 1;
+}
+
+.success-headline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #ffffff;
+    margin: 0 0 12px 0;
+}
+
+.success-text {
+    font-size: 1.05rem;
+    color: #ffffff;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* Transparency CTA */
+.transparency-cta {
+    text-align: center;
+}
+
+.cta-text {
+    font-size: 1.125rem;
+    color: #6b7280;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    line-height: 1.7;
+}
+
+.secondary-cta-btn {
+    display: inline-block;
+    background: #84BD00;
+    color: #ffffff;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.125rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 18px 45px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(27, 54, 93, 0.3);
+}
+
+.secondary-cta-btn:hover {
+    background: #1B365D;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(132, 189, 0, 0.4);
+}
+
+/* =========================================================
+   DONATION PAGE - THANK YOU SECTION (Optional)
+   ========================================================= */
+
+.thankyou-section {
+    background: linear-gradient(135deg, #1B365D 0%, #0d1a2d 100%);
+    padding: 120px 20px;
+    text-align: center;
+}
+
+.thankyou-container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.thankyou-icon {
+    font-size: 5rem;
+    margin-bottom: 30px;
+}
+
+.thankyou-heading {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ffffff;
+    margin: 0 0 25px 0;
+}
+
+.thankyou-message {
+    font-size: 1.25rem;
+    color: #f3f4f6;
+    line-height: 1.8;
+    margin: 0 0 40px 0;
+}
+
+.thankyou-btn {
+    display: inline-block;
+    background: #84BD00;
+    color: #ffffff;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.125rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 18px 45px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.thankyou-btn:hover {
+    background: #9fd400;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(132, 189, 0, 0.4);
+}
+
+/* =========================================================
+   DONATION PAGE - RESPONSIVE DESIGN
+   ========================================================= */
+
+/* Tablet */
+@media (max-width: 992px) {
+    .donate-hero {
+        min-height: 500px;
+        background-attachment: scroll;
+    }
+
+    .hero-headline {
+        font-size: 3.5rem;
+    }
+
+    .hero-subheadline {
+        font-size: 1.15rem;
+    }
+
+    .impact-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+
+    .impact-amounts-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+
+    .expenses-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .success-story {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .donate-hero {
+        min-height: 450px;
+    }
+
+    .hero-headline {
+        font-size: 2.5rem;
+    }
+
+    .hero-subheadline {
+        font-size: 1rem;
+    }
+
+    .hero-cta-btn {
+        font-size: 1rem;
+        padding: 16px 35px;
+    }
+
+    .impact-section,
+    .donation-section,
+    .transparency-section {
+        padding: 70px 20px;
+    }
+
+    .impact-heading,
+    .donation-heading,
+    .transparency-heading {
+        font-size: 2.25rem;
+    }
+
+    .impact-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .impact-amounts-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .expenses-breakdown {
+        padding: 35px 25px;
+    }
+
+    .success-story {
+        padding: 30px 25px;
+    }
+
+    .success-headline {
+        font-size: 1.5rem;
+    }
+
+    .thankyou-heading {
+        font-size: 2.25rem;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .hero-headline {
+        font-size: 2rem;
+    }
+
+    .donation-iframe-container {
+        padding: 25px;
+    }
+
+    .iframe-placeholder {
+        padding: 50px 25px;
+    }
+}

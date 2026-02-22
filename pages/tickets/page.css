@@ -1,0 +1,1071 @@
+/* =========================================================
+   TOM SOX WEBSITE - COMPLETE CUSTOM CSS
+   Version: 2.2 - Tickets Page Cleaned & Optimized
+   ========================================================= */
+
+/* =========================================================
+   GLOBAL STYLES & FONT IMPORTS
+   ========================================================= */
+
+/* 1. Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Open+Sans:wght@400;700&display=swap');
+
+/* 2. Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* 3. Body Baseline */
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+:root {
+    --brand-green: #84BD00;
+    --dark-blue-bg: #1b365d;
+    --light-text: #ffffff;
+    --subtle-text: #a9b3d1;
+}
+
+/* =========================================================
+   TICKETS PAGE - HERO SECTION
+   ========================================================= */
+
+.tickets-hero {
+    position: relative;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/6908e36edb58b4e9b1c5adcb.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(27, 54, 93, 0.85) 0%, rgba(13, 26, 45, 0.75) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+    padding: 0 20px;
+}
+
+.hero-headline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 4.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #ffffff;
+    margin: 0 0 25px 0;
+    line-height: 1.1;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.hero-subheadline {
+    font-size: 1.35rem;
+    color: #f3f4f6;
+    margin: 0 0 40px 0;
+    line-height: 1.7;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* NEW: Hero button wrapper for overlay */
+.ticket-button-wrapper-hero {
+    position: relative;
+    display: inline-block;
+}
+
+.hero-cta-btn {
+    display: inline-block;
+    background: #84BD00;
+    color: #ffffff;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 20px 50px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(132, 189, 0, 0.4);
+}
+
+/* NEW: Disabled state for hero button */
+.hero-cta-btn.disabled {
+    pointer-events: none;
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.hero-cta-btn:hover {
+    background: #9fd400;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(132, 189, 0, 0.6);
+}
+
+/* NEW: On Sale Soon overlay for hero button */
+.on-sale-soon-overlay-hero {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    background-color: #D32F2F;
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    box-shadow: 0 3px 8px rgba(211, 47, 47, 0.5);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* =========================================================
+   TICKET OPTIONS INTRO SECTION
+   ========================================================= */
+
+.ticket-intro-section {
+    background: #f9fafb;
+    padding: 100px 20px;
+}
+
+.ticket-intro-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.ticket-intro-heading {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #1B365D;
+    text-align: center;
+    margin: 0 0 20px 0;
+}
+
+.ticket-intro-subheading {
+    font-size: 1.125rem;
+    color: #6b7280;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 60px;
+    line-height: 1.7;
+}
+
+.ticket-types-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.ticket-type-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 50px 40px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 2px solid transparent;
+    position: relative;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.ticket-type-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(132, 189, 0, 0.2);
+    border-color: #84BD00;
+    cursor: pointer;
+}
+
+.ticket-type-card.featured-card {
+    border-color: #84BD00;
+    box-shadow: 0 8px 25px rgba(132, 189, 0, 0.15);
+}
+
+.best-value-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #84BD00;
+    color: #ffffff;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 6px 20px;
+    border-radius: 20px;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(132, 189, 0, 0.4);
+}
+
+.ticket-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.ticket-type-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #1B365D;
+    margin: 0 0 15px 0;
+}
+
+.ticket-type-description {
+    font-size: 1rem;
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+/* =========================================================
+   SINGLE GAME TICKETS SECTION
+   ========================================================= */
+
+.single-game-section {
+    background: #ffffff;
+    padding: 100px 20px;
+}
+
+.single-game-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.section-heading {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #1B365D;
+    text-align: center;
+    margin: 0 0 20px 0;
+}
+
+.section-subheading {
+    font-size: 1.125rem;
+    color: #6b7280;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 50px;
+    line-height: 1.7;
+}
+
+/* Inline Button Styles */
+.ticket-button-inline {
+    text-align: center;
+    padding: 40px 20px 0;
+}
+
+/* NEW: Inline button wrapper for overlay */
+.ticket-button-wrapper-inline {
+    position: relative;
+    display: inline-block;
+}
+
+.ticket-purchase-btn-small {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #84BD00 0%, #9fd400 100%);
+    color: #ffffff;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 14px 35px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.4s ease;
+    box-shadow: 0 6px 20px rgba(132, 189, 0, 0.3);
+    border: 2px solid transparent;
+}
+
+/* NEW: Disabled state for inline buttons */
+.ticket-purchase-btn-small.disabled {
+    pointer-events: none;
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.ticket-purchase-btn-small:hover {
+    background: linear-gradient(135deg, #1B365D 0%, #2d5a8f 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(27, 54, 93, 0.4);
+    border-color: #84BD00;
+}
+
+/* NEW: On Sale Soon overlay for inline buttons */
+.on-sale-soon-overlay-inline {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #D32F2F;
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    box-shadow: 0 2px 6px rgba(211, 47, 47, 0.4);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.btn-icon-small {
+    font-size: 1.25rem;
+}
+
+.btn-text-small {
+    font-size: 0.875rem;
+}
+
+.ticket-notice-small {
+    margin-top: 15px;
+    font-size: 0.75rem;
+    color: #6b7280;
+    font-weight: 600;
+}
+
+/* Pricing Info Box */
+.pricing-info-box {
+    background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+    border-radius: 12px;
+    padding: 50px 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    margin-bottom: 60px;
+    border: 2px solid #84BD00;
+}
+
+.pricing-info-heading {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #1B365D;
+    text-align: center;
+    margin: 0 0 40px 0;
+}
+
+.pricing-info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.pricing-info-item {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 35px 30px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 2px solid #e5e7eb;
+    transition: all 0.3s ease;
+}
+
+.pricing-info-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(132, 189, 0, 0.15);
+    border-color: #84BD00;
+}
+
+.pricing-info-item.discount {
+    border-color: #84BD00;
+    background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+}
+
+.pricing-tier {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #1B365D;
+    margin: 0 0 15px 0;
+}
+
+.pricing-amount {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #84BD00;
+    margin: 10px 0;
+}
+
+.pricing-details {
+    font-size: 0.95rem;
+    color: #6b7280;
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+.pricing-note {
+    font-size: 0.875rem;
+    color: #84BD00;
+    font-weight: 700;
+    margin-top: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* What's Included Box */
+.whats-included-box {
+    background: #f9fafb;
+    border-radius: 12px;
+    padding: 50px 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.included-heading {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #1B365D;
+    text-align: center;
+    margin: 0 0 40px 0;
+}
+
+.included-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px;
+}
+
+.included-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.included-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+}
+
+.included-content {
+    flex: 1;
+}
+
+.included-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #1B365D;
+    margin: 0 0 8px 0;
+}
+
+.included-description {
+    font-size: 0.95rem;
+    color: #6b7280;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* =========================================================
+   SEASON TICKETS SECTION
+   ========================================================= */
+
+.season-tickets-section {
+    background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+    padding: 100px 20px;
+}
+
+.season-tickets-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Benefits Showcase */
+.benefits-showcase {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 50px 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 60px;
+}
+
+.benefits-heading {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #1B365D;
+    text-align: center;
+    margin: 0 0 40px 0;
+}
+
+/* Left-Aligned Benefits Layout */
+.benefits-grid-new {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px;
+}
+
+.benefit-item-new {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.benefit-icon-new {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+}
+
+.benefit-content-new {
+    flex: 1;
+}
+
+.benefit-title-new {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #1B365D;
+    margin: 0 0 8px 0;
+}
+
+.benefit-description-new {
+    font-size: 0.95rem;
+    color: #6b7280;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Pricing Tiers */
+.pricing-tiers-section {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 50px 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 60px;
+}
+
+.pricing-heading {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #1B365D;
+    text-align: center;
+    margin: 0 0 15px 0;
+}
+
+.pricing-subheading {
+    font-size: 1rem;
+    color: #6b7280;
+    text-align: center;
+    margin: 0 0 40px 0;
+}
+
+.pricing-grid-single {
+    display: flex;
+    justify-content: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.pricing-grid-single .pricing-card {
+    width: 100%;
+}
+
+.pricing-card {
+    background: #f9fafb;
+    border-radius: 12px;
+    padding: 40px 30px;
+    transition: all 0.3s ease;
+    border: 2px solid #e5e7eb;
+    position: relative;
+}
+
+.pricing-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(132, 189, 0, 0.15);
+    border-color: #84BD00;
+}
+
+.pricing-card.featured-pricing {
+    border-color: #84BD00;
+    box-shadow: 0 8px 25px rgba(132, 189, 0, 0.15);
+    background: #ffffff;
+}
+
+.popular-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #84BD00;
+    color: #ffffff;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 6px 20px;
+    border-radius: 20px;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(132, 189, 0, 0.4);
+}
+
+.pricing-header {
+    text-align: center;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.tier-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #1B365D;
+    margin: 0 0 8px 0;
+}
+
+.tier-location {
+    font-size: 0.875rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.pricing-amount {
+    text-align: center;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.price-symbol {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #84BD00;
+    margin-right: 4px;
+    margin-top: 8px;
+}
+
+.price-value {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #1B365D;
+    line-height: 1;
+}
+
+.price-period {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-left: 6px;
+    align-self: flex-end;
+    margin-bottom: 12px;
+}
+
+.pricing-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pricing-features li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+    color: #4b5563;
+    line-height: 1.5;
+}
+
+.pricing-features .check {
+    color: #84BD00;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+/* =========================================================
+   GAME DAY INFO SECTION
+   ========================================================= */
+
+.gameday-info-section {
+    background: #f9fafb;
+    padding: 100px 20px;
+}
+
+.gameday-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.info-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 2px solid transparent;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(132, 189, 0, 0.15);
+    border-color: #84BD00;
+}
+
+.info-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.info-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #1B365D;
+    margin: 0 0 15px 0;
+}
+
+.info-description {
+    font-size: 0.9rem;
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+.directions-cta {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.directions-btn {
+    display: inline-block;
+    background: #84BD00;
+    color: #ffffff;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.125rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 18px 45px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(132, 189, 0, 0.3);
+}
+
+.directions-btn:hover {
+    background: #1B365D;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(27, 54, 93, 0.4);
+}
+
+.schedule-cta {
+    text-align: center;
+}
+
+.schedule-text {
+    font-size: 1.125rem;
+    color: #6b7280;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    line-height: 1.7;
+}
+
+.schedule-btn {
+    display: inline-block;
+    background: #1B365D;
+    color: #ffffff;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.125rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 18px 45px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(27, 54, 93, 0.3);
+}
+
+.schedule-btn:hover {
+    background: #84BD00;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(132, 189, 0, 0.4);
+}
+
+/* =========================================================
+   FAQ SECTION
+   ========================================================= */
+
+.faq-section {
+    background: #ffffff;
+    padding: 100px 20px;
+}
+
+.faq-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.faq-item {
+    background: #f9fafb;
+    border-radius: 12px;
+    padding: 30px;
+    border-left: 4px solid #84BD00;
+}
+
+.faq-question {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #1B365D;
+    margin: 0 0 12px 0;
+}
+
+.faq-answer {
+    font-size: 0.95rem;
+    color: #6b7280;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.contact-cta {
+    text-align: center;
+}
+
+.contact-text {
+    font-size: 1.125rem;
+    color: #6b7280;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    line-height: 1.7;
+}
+
+.contact-btn {
+    display: inline-block;
+    background: #84BD00;
+    color: #ffffff;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.125rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 18px 45px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(132, 189, 0, 0.3);
+}
+
+.contact-btn:hover {
+    background: #1B365D;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(27, 54, 93, 0.4);
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+/* Tablet */
+@media (max-width: 992px) {
+    .tickets-hero {
+        min-height: 500px;
+        background-attachment: scroll;
+    }
+
+    .hero-headline {
+        font-size: 3.5rem;
+    }
+
+    .hero-subheadline {
+        font-size: 1.15rem;
+    }
+
+    .ticket-types-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .pricing-info-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .included-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .benefits-grid-new {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .pricing-grid-single {
+        max-width: 100%;
+    }
+
+    .info-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+
+    .faq-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .tickets-hero {
+        min-height: 450px;
+    }
+
+    .hero-headline {
+        font-size: 2.5rem;
+    }
+
+    .hero-subheadline {
+        font-size: 1rem;
+    }
+
+    .hero-cta-btn {
+        font-size: 1rem;
+        padding: 16px 35px;
+    }
+
+    .ticket-intro-section,
+    .single-game-section,
+    .season-tickets-section,
+    .gameday-info-section,
+    .faq-section {
+        padding: 70px 20px;
+    }
+
+    .ticket-intro-heading,
+    .section-heading {
+        font-size: 2.25rem;
+    }
+
+    .ticket-purchase-btn-small {
+        font-size: 0.8rem;
+        padding: 12px 30px;
+    }
+
+    .btn-icon-small {
+        font-size: 1.1rem;
+    }
+
+    .btn-text-small {
+        font-size: 0.8rem;
+    }
+
+    .pricing-info-box,
+    .whats-included-box,
+    .benefits-showcase,
+    .pricing-tiers-section {
+        padding: 35px 25px;
+    }
+
+    .benefits-grid-new {
+        grid-template-columns: 1fr;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .hero-headline {
+        font-size: 2rem;
+    }
+
+    .ticket-type-card {
+        padding: 35px 25px;
+    }
+
+    .ticket-purchase-btn-small {
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px 25px;
+    }
+
+    .btn-icon-small {
+        font-size: 1.25rem;
+    }
+}
