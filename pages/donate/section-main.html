@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support the Tom Sox | Donate</title>
-    <link rel="stylesheet" href="donate-styles.css">
-</head>
-<body>
+<!--
+  File: section-main.html
+  Page: Donate
+  Section: Full donate page — hero, impact cards, donate button, transparency breakdown
+  Last Updated: 2026-02-22
+-->
 
 <!-- ============================================
      HERO SECTION
@@ -16,7 +13,7 @@
     <div class="hero-content">
         <h1 class="hero-headline">Fuel the Dream</h1>
         <p class="hero-subheadline">Your support brings world-class baseball to Charlottesville and inspires the next generation of champions.</p>
-        <a href="https://cvilletomsox.betterworld.org/donate" target="_blank" class="hero-cta-btn">Make an Impact Today</a>
+        <a href="https://cvilletomsox.betterworld.org/donate" target="_blank" rel="noopener noreferrer" class="hero-cta-btn">Make an Impact Today</a>
     </div>
 </section>
 
@@ -27,33 +24,29 @@
     <div class="impact-container">
         <h2 class="impact-heading">Your Support Powers</h2>
         <p class="impact-subheading">Every dollar makes a difference in creating unforgettable moments and building future stars.</p>
-        
+
         <div class="impact-grid">
-            
-            <!-- Impact Card 1 -->
+
             <div class="impact-card">
-                <div class="impact-icon">⚾</div>
+                <div class="impact-icon" aria-hidden="true">⚾</div>
                 <h3 class="impact-title">Award-Winning Baseball</h3>
                 <p class="impact-description">Championship-caliber competition that brings the best collegiate talent to Charlottesville every summer.</p>
             </div>
 
-            <!-- Impact Card 2 -->
             <div class="impact-card">
-                <div class="impact-icon">🎓</div>
+                <div class="impact-icon" aria-hidden="true">🎓</div>
                 <h3 class="impact-title">Player Development</h3>
                 <p class="impact-description">Supporting athletes on their journey from college stars to professional players—including recent World Series pitchers!</p>
             </div>
 
-            <!-- Impact Card 3 -->
             <div class="impact-card">
-                <div class="impact-icon">🏘️</div>
+                <div class="impact-icon" aria-hidden="true">🏘️</div>
                 <h3 class="impact-title">Community Entertainment</h3>
                 <p class="impact-description">Affordable family fun and hometown pride that brings our community together all season long.</p>
             </div>
 
-            <!-- Impact Card 4 -->
             <div class="impact-card">
-                <div class="impact-icon">💚</div>
+                <div class="impact-icon" aria-hidden="true">💚</div>
                 <h3 class="impact-title">Local Pride</h3>
                 <p class="impact-description">A team that represents Charlottesville's values—excellence, tradition, and love for America's Game.</p>
             </div>
@@ -63,20 +56,19 @@
 </section>
 
 <!-- ============================================
-     DONATION FORM SECTION
+     DONATION BUTTON SECTION
      ============================================ -->
 <section class="donation-section" id="donation-form">
     <div class="donation-container">
         <h2 class="donation-heading">Choose Your Impact Level</h2>
         <p class="donation-subheading">Every contribution helps us deliver an exceptional experience for players and fans alike.</p>
-        
-        <!-- Better World Button -->
+
         <div class="donation-button-container">
-            <a href="https://cvilletomsox.betterworld.org/donate" target="_blank" class="better-world-btn">
-                <span class="btn-icon">💚</span>
+            <a href="https://cvilletomsox.betterworld.org/donate" target="_blank" rel="noopener noreferrer" class="better-world-btn">
+                <span class="btn-icon" aria-hidden="true">💚</span>
                 <span class="btn-text">Donate Now</span>
             </a>
-            <p class="secure-notice">🔒 Secure donation powered by Better World</p>
+            <p class="secure-notice"><span aria-hidden="true">🔒</span> Secure donation powered by Better World</p>
         </div>
     </div>
 </section>
@@ -88,31 +80,31 @@
     <div class="transparency-container">
         <h2 class="transparency-heading">Your Impact in Action</h2>
         <p class="transparency-subheading">Building a championship experience takes dedication and resources. Here's how your support makes it possible:</p>
-        
+
         <!-- Impact Amounts Grid -->
         <div class="impact-amounts-grid">
-            
+
             <div class="amount-card">
                 <div class="amount-value">$50</div>
-                <div class="amount-icon">👕</div>
+                <div class="amount-icon" aria-hidden="true">👕</div>
                 <p class="amount-description">Provides one jersey for a future MLB star</p>
             </div>
 
             <div class="amount-card">
                 <div class="amount-value">$120</div>
-                <div class="amount-icon">⚾</div>
+                <div class="amount-icon" aria-hidden="true">⚾</div>
                 <p class="amount-description">Supplies equipment for one complete game</p>
             </div>
 
             <div class="amount-card">
                 <div class="amount-value">$500</div>
-                <div class="amount-icon">🍽️</div>
+                <div class="amount-icon" aria-hidden="true">🍽️</div>
                 <p class="amount-description">Provides one pregame meal for the players</p>
             </div>
 
             <div class="amount-card">
                 <div class="amount-value">$2,500</div>
-                <div class="amount-icon">🚌</div>
+                <div class="amount-icon" aria-hidden="true">🚌</div>
                 <p class="amount-description">Provides transportation for the entire team</p>
             </div>
 
@@ -122,17 +114,17 @@
         <div class="expenses-breakdown">
             <h3 class="expenses-heading">Building Championship Excellence</h3>
             <p class="expenses-intro">Operating a premier collegiate summer baseball team requires significant investment:</p>
-            
+
             <div class="expenses-grid">
-                
+
                 <div class="expense-item">
                     <div class="expense-icon-bg travel">
-                        <span class="expense-icon">🚌</span>
+                        <span class="expense-icon" aria-hidden="true">🚌</span>
                     </div>
                     <div class="expense-details">
-                        <h4 class="expense-category">Travel & Logistics</h4>
+                        <h4 class="expense-category">Travel &amp; Logistics</h4>
                         <ul class="expense-list">
-                            <li>Team bus transportation (12-15 trips) - $2,500</li>
+                            <li>Team bus transportation (12–15 trips) — $2,500</li>
                             <li>Road trip accommodations and planning</li>
                         </ul>
                     </div>
@@ -140,37 +132,37 @@
 
                 <div class="expense-item">
                     <div class="expense-icon-bg equipment">
-                        <span class="expense-icon">⚾</span>
+                        <span class="expense-icon" aria-hidden="true">⚾</span>
                     </div>
                     <div class="expense-details">
-                        <h4 class="expense-category">Equipment & Facilities</h4>
+                        <h4 class="expense-category">Equipment &amp; Facilities</h4>
                         <ul class="expense-list">
-                            <li>Professional umpires (21 home games) - $465</li>
-                            <li>Game baseballs (100 dozen per season) - $60</li>
-                            <li>Practice gear (150 sets per season) - $50</li>
-                            <li>Field maintenance supplies (60-90 bags) - $20</li>
+                            <li>Professional umpires (21 home games) — $465 each</li>
+                            <li>Game baseballs (100 dozen per season) — $60 per dozen</li>
+                            <li>Practice gear (150 sets per season) — $50 per set</li>
+                            <li>Field maintenance supplies (60–90 bags) — $20 per bag</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="expense-item">
                     <div class="expense-icon-bg players">
-                        <span class="expense-icon">👥</span>
+                        <span class="expense-icon" aria-hidden="true">👥</span>
                     </div>
                     <div class="expense-details">
                         <h4 class="expense-category">Player Support</h4>
                         <ul class="expense-list">
-                            <li>Game day meals (42 per season) - $500</li>
-                            <li>Team jerseys (100 per season) - $50</li>
-                            <li>Baseball pants (100 per season) - $40</li>
-                            <li>Equipment bats (50 per season) - $120</li>
+                            <li>Game day meals (42 per season) — $500 each</li>
+                            <li>Team jerseys (100 per season) — $50 each</li>
+                            <li>Baseball pants (100 per season) — $40 each</li>
+                            <li>Equipment bats (50 per season) — $120 each</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="expense-item">
                     <div class="expense-icon-bg experience">
-                        <span class="expense-icon">🎟️</span>
+                        <span class="expense-icon" aria-hidden="true">🎟️</span>
                     </div>
                     <div class="expense-details">
                         <h4 class="expense-category">Fan Experience</h4>
@@ -187,7 +179,7 @@
 
         <!-- MLB Success Story Callout -->
         <div class="success-story">
-            <div class="success-icon">⭐</div>
+            <div class="success-icon" aria-hidden="true">⭐</div>
             <div class="success-content">
                 <h3 class="success-headline">From Charlottesville to the World Series</h3>
                 <p class="success-text">A former Tom Sox player recently took the mound in the MLB World Series! Your support helps develop the next generation of professional athletes while bringing world-class baseball to our community.</p>
@@ -197,23 +189,8 @@
         <!-- Closing CTA -->
         <div class="transparency-cta">
             <p class="cta-text">Your contribution ensures we continue offering a world-class experience to our community while nurturing the dreams of tomorrow's champions.</p>
-            <a href="https://cvilletomsox.betterworld.org/donate" target="_blank" class="secondary-cta-btn">Support the Tom Sox Today</a>
+            <a href="https://cvilletomsox.betterworld.org/donate" target="_blank" rel="noopener noreferrer" class="secondary-cta-btn">Support the Tom Sox Today</a>
         </div>
 
     </div>
 </section>
-
-<!-- ============================================
-     THANK YOU MESSAGE (Optional - Hidden by default)
-     ============================================ -->
-<section class="thankyou-section" style="display: none;">
-    <div class="thankyou-container">
-        <div class="thankyou-icon">🙏</div>
-        <h2 class="thankyou-heading">Thank You for Your Support!</h2>
-        <p class="thankyou-message">Your generosity makes a real difference in our community and in the lives of our players. Together, we're building something special in Charlottesville.</p>
-        <a href="/" class="thankyou-btn">Return to Home</a>
-    </div>
-</section>
-
-</body>
-</html>

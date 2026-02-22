@@ -1,16 +1,26 @@
-/* =========================================================
-   TOM SOX WEBSITE - COMPLETE CUSTOM CSS
-   Version: 2.0 - Donation Page Added
-   ========================================================= */
+/*
+  File: page.css
+  Page: Donate
+  Section: All page-level styles for the Donate page
+  Last Updated: 2026-02-22
+*/
 
-/* =========================================================
-   GLOBAL STYLES & FONT IMPORTS
-   ========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Arimo:wght@400;600;700&display=swap');
 
-/* 1. Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Open+Sans:wght@400;700&display=swap');
+/* ============================================================
+   1. CSS Variables
+   ============================================================ */
+:root {
+    --brand-green:  #84BD00;
+    --navy:         #1b365d;
+    --off-white:    #f9fafb;
+    --body-text:    #6b7280;
+    --card-shadow:  rgba(0, 0, 0, 0.08);
+}
 
-/* 2. Global Reset */
+/* ============================================================
+   2. Base
+   ============================================================ */
 * {
     margin: 0;
     padding: 0;
@@ -21,45 +31,16 @@ html {
     scroll-behavior: smooth;
 }
 
-/* 3. Body Baseline */
 body {
-    font-family: 'Open Sans', sans-serif;
-    color: #333;
+    font-family: 'Arimo', sans-serif;
+    color: var(--body-text);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
-:root {
-    --brand-green: #84BD00;
-    --dark-blue-bg: #1b365d;
-    --light-text: #ffffff;
-    --subtle-text: #a9b3d1;
-    --error-red: #e74c3c;
-    --success-green: #2ecc71;
-}
-
-/* INFIELD DIRT */
-.infield-dirt {
-    background-color: #a1662f;
-    position: relative;
-    z-index: 0;
-}
-
-.infield-dirt::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('https://storage.googleapis.com/msgsndr/xPpGvlvaXWhYtIJUg0CZ/media/686e62f4879662a5cb44bef2.jpeg');
-    opacity: 0.15;
-    z-index: -1;
-}
-
-/* =========================================================
-   DONATION PAGE - HERO SECTION
-   ========================================================= */
-
+/* ============================================================
+   3. Hero Section
+   ============================================================ */
 .donate-hero {
     position: relative;
     min-height: 600px;
@@ -69,17 +50,13 @@ body {
     background-image: url('https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/6908e36edb58b4e9b1c5adcb.webp');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
     overflow: hidden;
 }
 
 .hero-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(27, 54, 93, 0.85) 0%, rgba(13, 26, 45, 0.75) 100%);
+    inset: 0;
+    background: linear-gradient(135deg, rgba(27, 54, 93, 0.88) 0%, rgba(13, 26, 45, 0.78) 100%);
     z-index: 1;
 }
 
@@ -96,51 +73,54 @@ body {
     font-size: 4.5rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 3px;
+    letter-spacing: 0.08em;
     color: #ffffff;
-    margin: 0 0 25px 0;
+    margin: 0 0 24px;
     line-height: 1.1;
     text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .hero-subheadline {
-    font-size: 1.35rem;
+    font-family: 'Arimo', sans-serif;
+    font-size: 1.25rem;
     color: #f3f4f6;
-    margin: 0 0 40px 0;
-    line-height: 1.7;
+    margin: 0 auto 40px;
+    line-height: 1.75;
     max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .hero-cta-btn {
     display: inline-block;
-    background: #84BD00;
+    background: var(--brand-green);
     color: #ffffff;
     font-family: 'Oswald', sans-serif;
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 0.1em;
     padding: 20px 50px;
     border-radius: 8px;
     text-decoration: none;
     font-weight: 700;
-    transition: all 0.3s ease;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     box-shadow: 0 8px 25px rgba(132, 189, 0, 0.4);
 }
 
 .hero-cta-btn:hover {
-    background: #9fd400;
+    background: var(--navy);
     transform: translateY(-3px);
-    box-shadow: 0 12px 35px rgba(132, 189, 0, 0.6);
+    box-shadow: 0 12px 35px rgba(27, 54, 93, 0.5);
 }
 
-/* =========================================================
-   DONATION PAGE - IMPACT SECTION
-   ========================================================= */
+.hero-cta-btn:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 4px;
+}
 
+/* ============================================================
+   4. Impact Cards Section
+   ============================================================ */
 .impact-section {
-    background: #f9fafb;
+    background: var(--off-white);
     padding: 100px 20px;
 }
 
@@ -154,19 +134,20 @@ body {
     font-size: 3rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #1B365D;
+    letter-spacing: 0.06em;
+    color: var(--navy);
     text-align: center;
-    margin: 0 0 20px 0;
+    margin: 0 0 20px;
 }
 
 .impact-subheading {
-    font-size: 1.125rem;
-    color: #6b7280;
+    font-family: 'Arimo', sans-serif;
+    font-size: 1.1rem;
+    color: var(--body-text);
     text-align: center;
     max-width: 700px;
     margin: 0 auto 60px;
-    line-height: 1.7;
+    line-height: 1.75;
 }
 
 .impact-grid {
@@ -178,44 +159,45 @@ body {
 .impact-card {
     background: #ffffff;
     border-radius: 12px;
-    padding: 40px 30px;
+    padding: 40px 28px;
     text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    box-shadow: 0 4px 15px var(--card-shadow);
     border: 2px solid transparent;
 }
 
 .impact-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 30px rgba(132, 189, 0, 0.2);
-    border-color: #84BD00;
+    border-color: var(--brand-green);
 }
 
 .impact-icon {
-    font-size: 4rem;
+    font-size: 3.5rem;
     margin-bottom: 20px;
     display: block;
 }
 
 .impact-title {
     font-family: 'Oswald', sans-serif;
-    font-size: 1.35rem;
+    font-size: 1.25rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #1B365D;
-    margin: 0 0 15px 0;
+    letter-spacing: 0.05em;
+    color: var(--navy);
+    margin: 0 0 14px;
 }
 
 .impact-description {
+    font-family: 'Arimo', sans-serif;
     font-size: 0.95rem;
-    color: #6b7280;
-    line-height: 1.6;
+    color: var(--body-text);
+    line-height: 1.65;
 }
-/* =========================================================
-   DONATION PAGE - DONATION FORM SECTION (UPDATED)
-   ========================================================= */
 
+/* ============================================================
+   5. Donation Button Section
+   ============================================================ */
 .donation-section {
     background: #ffffff;
     padding: 100px 20px;
@@ -231,59 +213,69 @@ body {
     font-size: 3rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #1B365D;
+    letter-spacing: 0.06em;
+    color: var(--navy);
     text-align: center;
-    margin: 0 0 20px 0;
+    margin: 0 0 20px;
 }
 
 .donation-subheading {
-    font-size: 1.125rem;
-    color: #6b7280;
+    font-family: 'Arimo', sans-serif;
+    font-size: 1.1rem;
+    color: var(--body-text);
     text-align: center;
     max-width: 700px;
     margin: 0 auto 50px;
-    line-height: 1.7;
+    line-height: 1.75;
 }
 
 .donation-button-container {
     text-align: center;
     padding: 60px 40px;
-    background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+    background: var(--off-white);
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 20px var(--card-shadow);
 }
 
 .better-world-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
-    background: linear-gradient(135deg, #84BD00 0%, #9fd400 100%);
+    gap: 14px;
+    background: linear-gradient(135deg, var(--brand-green) 0%, #9fd400 100%);
     color: #ffffff;
     font-family: 'Oswald', sans-serif;
     font-size: 1.5rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 0.1em;
     padding: 25px 60px;
     border-radius: 12px;
     text-decoration: none;
     font-weight: 700;
-    transition: all 0.4s ease;
+    transition: background 0.35s ease, transform 0.25s ease, box-shadow 0.35s ease;
     box-shadow: 0 8px 30px rgba(132, 189, 0, 0.4);
     border: 3px solid transparent;
 }
 
 .better-world-btn:hover {
-    background: linear-gradient(135deg, #1B365D 0%, #2d5a8f 100%);
+    background: linear-gradient(135deg, var(--navy) 0%, #2d5a8f 100%);
     transform: translateY(-5px);
     box-shadow: 0 15px 40px rgba(27, 54, 93, 0.5);
-    border-color: #84BD00;
+    border-color: var(--brand-green);
 }
 
+.better-world-btn:focus-visible {
+    outline: 3px solid var(--navy);
+    outline-offset: 4px;
+}
+
+/* Heartbeat fires only on hover — not continuously */
 .btn-icon {
     font-size: 2rem;
-    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.better-world-btn:hover .btn-icon {
+    animation: heartbeat 0.7s ease-in-out 2;
 }
 
 .btn-text {
@@ -291,56 +283,23 @@ body {
 }
 
 @keyframes heartbeat {
-    0%, 100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.1);
-    }
+    0%, 100% { transform: scale(1); }
+    50%       { transform: scale(1.2); }
 }
 
 .secure-notice {
-    margin-top: 25px;
+    margin-top: 24px;
+    font-family: 'Arimo', sans-serif;
     font-size: 0.875rem;
-    color: #6b7280;
+    color: var(--body-text);
     font-weight: 600;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .donation-button-container {
-        padding: 40px 25px;
-    }
-
-    .better-world-btn {
-        font-size: 1.25rem;
-        padding: 20px 45px;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .btn-icon {
-        font-size: 2.5rem;
-    }
-
-    .btn-text {
-        font-size: 1.25rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .better-world-btn {
-        padding: 18px 35px;
-    }
-}
-
-/* =========================================================
-   DONATION PAGE - TRANSPARENCY SECTION
-   ========================================================= */
-
+/* ============================================================
+   6. Transparency Section
+   ============================================================ */
 .transparency-section {
-    background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+    background: var(--off-white);
     padding: 100px 20px;
 }
 
@@ -354,19 +313,20 @@ body {
     font-size: 3rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #1B365D;
+    letter-spacing: 0.06em;
+    color: var(--navy);
     text-align: center;
-    margin: 0 0 20px 0;
+    margin: 0 0 20px;
 }
 
 .transparency-subheading {
-    font-size: 1.125rem;
-    color: #6b7280;
+    font-family: 'Arimo', sans-serif;
+    font-size: 1.1rem;
+    color: var(--body-text);
     text-align: center;
     max-width: 800px;
     margin: 0 auto 60px;
-    line-height: 1.7;
+    line-height: 1.75;
 }
 
 /* Impact Amounts Grid */
@@ -380,37 +340,38 @@ body {
 .amount-card {
     background: #ffffff;
     border-radius: 12px;
-    padding: 35px 25px;
+    padding: 35px 24px;
     text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    box-shadow: 0 4px 15px var(--card-shadow);
     border: 2px solid #f3f4f6;
 }
 
 .amount-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 30px rgba(132, 189, 0, 0.15);
-    border-color: #84BD00;
+    border-color: var(--brand-green);
 }
 
 .amount-value {
     font-family: 'Oswald', sans-serif;
     font-size: 2.5rem;
     font-weight: 700;
-    color: #84BD00;
-    margin-bottom: 15px;
+    color: var(--brand-green);
+    margin-bottom: 12px;
 }
 
 .amount-icon {
-    font-size: 3rem;
-    margin-bottom: 15px;
+    font-size: 2.75rem;
+    margin-bottom: 12px;
     display: block;
 }
 
 .amount-description {
+    font-family: 'Arimo', sans-serif;
     font-size: 0.95rem;
-    color: #6b7280;
-    line-height: 1.5;
+    color: var(--body-text);
+    line-height: 1.55;
 }
 
 /* Expenses Breakdown */
@@ -418,7 +379,7 @@ body {
     background: #ffffff;
     border-radius: 12px;
     padding: 50px 40px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 20px var(--card-shadow);
     margin-bottom: 60px;
 }
 
@@ -427,15 +388,16 @@ body {
     font-size: 2rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: #1B365D;
+    letter-spacing: 0.06em;
+    color: var(--navy);
     text-align: center;
-    margin: 0 0 15px 0;
+    margin: 0 0 14px;
 }
 
 .expenses-intro {
+    font-family: 'Arimo', sans-serif;
     font-size: 1rem;
-    color: #6b7280;
+    color: var(--body-text);
     text-align: center;
     max-width: 700px;
     margin: 0 auto 40px;
@@ -444,43 +406,37 @@ body {
 .expenses-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
+    gap: 24px;
 }
 
+/* Merged from two separate declarations in previous version */
 .expense-item {
     display: flex;
     gap: 20px;
     align-items: flex-start;
+    background: #fafbfc;
+    padding: 24px;
+    border-radius: 8px;
+    border-left: 4px solid var(--brand-green);
 }
 
 .expense-icon-bg {
-    width: 60px;
-    height: 60px;
-    border-radius: 12px;
+    width: 56px;
+    height: 56px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
 }
 
-.expense-icon-bg.travel {
-    background: rgba(59, 130, 246, 0.1);
-}
-
-.expense-icon-bg.equipment {
-    background: rgba(132, 189, 0, 0.1);
-}
-
-.expense-icon-bg.players {
-    background: rgba(249, 115, 22, 0.1);
-}
-
-.expense-icon-bg.experience {
-    background: rgba(168, 85, 247, 0.1);
-}
+.expense-icon-bg.travel    { background: rgba(59, 130, 246, 0.1); }
+.expense-icon-bg.equipment { background: rgba(132, 189, 0, 0.1); }
+.expense-icon-bg.players   { background: rgba(249, 115, 22, 0.1); }
+.expense-icon-bg.experience{ background: rgba(168, 85, 247, 0.1); }
 
 .expense-icon {
-    font-size: 1.75rem;
+    font-size: 1.65rem;
 }
 
 .expense-details {
@@ -489,12 +445,12 @@ body {
 
 .expense-category {
     font-family: 'Oswald', sans-serif;
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #1B365D;
-    margin: 0 0 12px 0;
+    letter-spacing: 0.05em;
+    color: var(--navy);
+    margin: 0 0 10px;
 }
 
 .expense-list {
@@ -504,30 +460,26 @@ body {
 }
 
 .expense-list li {
-    font-size: 0.95rem;
-    color: #6b7280;
-    margin-bottom: 8px;
-    padding-left: 20px;
+    font-family: 'Arimo', sans-serif;
+    font-size: 0.92rem;
+    color: var(--body-text);
+    margin-bottom: 7px;
+    padding-left: 18px;
     position: relative;
+    line-height: 1.5;
 }
 
-.expense-list li:before {
+.expense-list li::before {
     content: '•';
     position: absolute;
     left: 0;
-    color: #84BD00;
+    color: var(--brand-green);
     font-weight: 700;
 }
 
-.expense-item {
-    background: #fafbfc;
-    padding: 25px;
-    border-radius: 8px;
-    border-left: 4px solid #84BD00;
-}
 /* Success Story Callout */
 .success-story {
-    background: linear-gradient(135deg, #84BD00 0%, #9fd400 100%);
+    background: linear-gradient(135deg, var(--brand-green) 0%, #9fd400 100%);
     border-radius: 12px;
     padding: 40px;
     display: flex;
@@ -538,7 +490,7 @@ body {
 }
 
 .success-icon {
-    font-size: 4rem;
+    font-size: 3.75rem;
     flex-shrink: 0;
 }
 
@@ -551,15 +503,16 @@ body {
     font-size: 1.75rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 0.06em;
     color: #ffffff;
-    margin: 0 0 12px 0;
+    margin: 0 0 12px;
 }
 
 .success-text {
+    font-family: 'Arimo', sans-serif;
     font-size: 1.05rem;
     color: #ffffff;
-    line-height: 1.7;
+    line-height: 1.75;
     margin: 0;
 }
 
@@ -569,125 +522,64 @@ body {
 }
 
 .cta-text {
-    font-size: 1.125rem;
-    color: #6b7280;
+    font-family: 'Arimo', sans-serif;
+    font-size: 1.1rem;
+    color: var(--body-text);
     max-width: 700px;
     margin: 0 auto 30px;
-    line-height: 1.7;
+    line-height: 1.75;
 }
 
 .secondary-cta-btn {
     display: inline-block;
-    background: #84BD00;
+    background: var(--brand-green);
     color: #ffffff;
     font-family: 'Oswald', sans-serif;
-    font-size: 1.125rem;
+    font-size: 1.1rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 0.1em;
     padding: 18px 45px;
     border-radius: 8px;
     text-decoration: none;
     font-weight: 700;
-    transition: all 0.3s ease;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 15px rgba(27, 54, 93, 0.3);
 }
 
 .secondary-cta-btn:hover {
-    background: #1B365D;
+    background: var(--navy);
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(132, 189, 0, 0.4);
 }
 
-/* =========================================================
-   DONATION PAGE - THANK YOU SECTION (Optional)
-   ========================================================= */
-
-.thankyou-section {
-    background: linear-gradient(135deg, #1B365D 0%, #0d1a2d 100%);
-    padding: 120px 20px;
-    text-align: center;
+.secondary-cta-btn:focus-visible {
+    outline: 3px solid var(--navy);
+    outline-offset: 4px;
 }
 
-.thankyou-container {
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-.thankyou-icon {
-    font-size: 5rem;
-    margin-bottom: 30px;
-}
-
-.thankyou-heading {
-    font-family: 'Oswald', sans-serif;
-    font-size: 3rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #ffffff;
-    margin: 0 0 25px 0;
-}
-
-.thankyou-message {
-    font-size: 1.25rem;
-    color: #f3f4f6;
-    line-height: 1.8;
-    margin: 0 0 40px 0;
-}
-
-.thankyou-btn {
-    display: inline-block;
-    background: #84BD00;
-    color: #ffffff;
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.125rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    padding: 18px 45px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 700;
-    transition: all 0.3s ease;
-}
-
-.thankyou-btn:hover {
-    background: #9fd400;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(132, 189, 0, 0.4);
-}
-
-/* =========================================================
-   DONATION PAGE - RESPONSIVE DESIGN
-   ========================================================= */
+/* ============================================================
+   7. Responsive Breakpoints
+   ============================================================ */
 
 /* Tablet */
 @media (max-width: 992px) {
     .donate-hero {
         min-height: 500px;
-        background-attachment: scroll;
     }
 
     .hero-headline {
         font-size: 3.5rem;
     }
 
-    .hero-subheadline {
-        font-size: 1.15rem;
-    }
-
-    .impact-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 25px;
-    }
-
+    .impact-grid,
     .impact-amounts-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 25px;
+        gap: 24px;
     }
 
     .expenses-grid {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 20px;
     }
 
     .success-story {
@@ -712,13 +604,13 @@ body {
 
     .hero-cta-btn {
         font-size: 1rem;
-        padding: 16px 35px;
+        padding: 16px 32px;
     }
 
     .impact-section,
     .donation-section,
     .transparency-section {
-        padding: 70px 20px;
+        padding: 70px 16px;
     }
 
     .impact-heading,
@@ -727,30 +619,41 @@ body {
         font-size: 2.25rem;
     }
 
-    .impact-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
+    .impact-grid,
     .impact-amounts-grid {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 18px;
+    }
+
+    .donation-button-container {
+        padding: 40px 24px;
+    }
+
+    .better-world-btn {
+        font-size: 1.2rem;
+        padding: 20px 40px;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-icon {
+        font-size: 2.25rem;
+    }
+
+    .btn-text {
+        font-size: 1.2rem;
     }
 
     .expenses-breakdown {
-        padding: 35px 25px;
+        padding: 32px 20px;
     }
 
     .success-story {
-        padding: 30px 25px;
+        padding: 30px 24px;
     }
 
     .success-headline {
         font-size: 1.5rem;
-    }
-
-    .thankyou-heading {
-        font-size: 2.25rem;
     }
 }
 
@@ -758,13 +661,12 @@ body {
 @media (max-width: 480px) {
     .hero-headline {
         font-size: 2rem;
+        letter-spacing: 0.05em;
     }
 
-    .donation-iframe-container {
-        padding: 25px;
-    }
-
-    .iframe-placeholder {
-        padding: 50px 25px;
+    .impact-heading,
+    .donation-heading,
+    .transparency-heading {
+        font-size: 1.85rem;
     }
 }
