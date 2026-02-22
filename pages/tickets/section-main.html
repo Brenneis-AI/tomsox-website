@@ -1,362 +1,293 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get Tickets | Charlottesville Tom Sox</title>
-    <link rel="stylesheet" href="tickets-styles.css">
-</head>
-<body>
+<!--
+  File: section-main.html
+  Page: Tickets
+  Section: Full page — hero, ticket options, single game, season tickets, game day info, FAQ
+  Last Updated: 2026-02-22
+-->
 
-<script>
-// Prevent auto-scroll on page load, but allow smooth scroll on click
-(function() {
-    // Store the original scroll position
-    if (window.location.hash) {
-        // Prevent default scroll behavior
-        setTimeout(function() {
-            window.scrollTo(0, 0);
-        }, 1);
-    }
-})();
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Get all links with hash targets
-    const scrollLinks = document.querySelectorAll('a[href^="#"]');
-    
-    scrollLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
-            
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-});
-</script>
-
-<!-- ============================================
-     HERO SECTION
-     ============================================ -->
+<!-- HERO SECTION -->
 <section class="tickets-hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-        <h1 class="hero-headline">Experience the Game</h1>
-        <p class="hero-subheadline">Join us for unforgettable summer baseball action in Charlottesville. Get your tickets today!</p>
-        <!-- MODIFIED: Wrapped button with overlay -->
-        <div class="ticket-button-wrapper-hero">
-            <a href="#tickets-options" class="hero-cta-btn">Get Your Tickets</a>
-            </div>
-    </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 class="hero-headline">Experience the Game</h1>
+    <p class="hero-subheadline">Join us for unforgettable summer baseball action in Charlottesville. Get your tickets today!</p>
+    <a href="#tickets-options" class="hero-cta-btn">Get Your Tickets</a>
+  </div>
 </section>
 
-<!-- ============================================
-     TICKET OPTIONS INTRO
-     ============================================ -->
-<section class="ticket-intro-section" id="tickets-options">>
-    <div class="ticket-intro-container">
-        <h2 class="ticket-intro-heading">Choose Your Experience</h2>
-        <p class="ticket-intro-subheading">Whether you're coming to one game or joining us all season long, we have the perfect ticket option for you.</p>
-        
-        <div class="ticket-types-grid">
-            
-            <!-- Single Game Tickets -->
-            <a href="#single-game-section" class="ticket-type-card ticket-type-link">
-                <div class="ticket-icon">🎟️</div>
-                <h3 class="ticket-type-title">Single Game Tickets</h3>
-                <p class="ticket-type-description">Perfect for a night out with family and friends. General admission seating—arrive early for the best spots!</p>
-            </a>
+<!-- TICKET OPTIONS INTRO -->
+<section class="ticket-intro-section" id="tickets-options">
+  <div class="ticket-intro-container">
+    <h2 class="ticket-intro-heading">Choose Your Experience</h2>
+    <p class="ticket-intro-subheading">Whether you're coming to one game or joining us all season long, we have the perfect ticket option for you.</p>
 
-            <!-- Season Tickets -->
-            <a href="#season-tickets-section" class="ticket-type-card ticket-type-link featured-card">
-                <div class="best-value-badge">Best Value</div>
-                <div class="ticket-icon">🏆</div>
-                <h3 class="ticket-type-title">Season Tickets</h3>
-                <p class="ticket-type-description">Never miss a game! Enjoy all 18 home games plus playoffs with one pass and incredible savings.</p>
-            </a>
+    <div class="ticket-types-grid">
 
-        </div>
+      <a href="#single-game-section" class="ticket-type-card">
+        <div class="ticket-icon" aria-hidden="true">🎟️</div>
+        <h3 class="ticket-type-title">Single Game Tickets</h3>
+        <p class="ticket-type-description">Perfect for a night out with family and friends. General admission seating—arrive early for the best spots!</p>
+      </a>
+
+      <a href="#season-tickets-section" class="ticket-type-card featured-card">
+        <div class="best-value-badge">Best Value</div>
+        <div class="ticket-icon" aria-hidden="true">🏆</div>
+        <h3 class="ticket-type-title">Season Tickets</h3>
+        <p class="ticket-type-description">Never miss a game! Enjoy all 18 home games plus playoffs with one pass and incredible savings.</p>
+      </a>
+
     </div>
+  </div>
 </section>
 
-<!-- ============================================
-     SINGLE GAME TICKETS SECTION
-     ============================================ -->
+<!-- SINGLE GAME TICKETS SECTION -->
 <section class="single-game-section" id="single-game-section">
-    <div class="single-game-container">
-        <h2 class="section-heading">Single Game Tickets</h2>
-        <p class="section-subheading">General admission seating—first come, first served! Grab your tickets and enjoy America's favorite pastime in Charlottesville.</p>
-        
-        <!-- Pricing Information -->
-        <div class="pricing-info-box">
-            <h3 class="pricing-info-heading">Ticket Pricing</h3>
-            <div class="pricing-info-grid">
-                <div class="pricing-info-item">
-                    <h4 class="pricing-tier">General Admission</h4>
-                    <p class="pricing-amount">$8 per person</p>
-                </div>
-                <div class="pricing-info-item discount">
-                    <h4 class="pricing-tier">Discounted Tickets</h4>
-                    <p class="pricing-details">Military, First Responders, Kids Under 12, Seniors 55+</p>
-                    <p class="pricing-note">Kids 3 and under are FREE</p>
-                </div>
-            </div>
-            
-            <!-- MODIFIED: Ticket Purchase Button with overlay -->
-            <div class="ticket-button-inline">
-    <div class="ticket-button-wrapper-inline">
-        <a href="https://www.zeffy.com/en-US/ticketing/single-game-tickets-2026-in-draft" target="_blank" class="ticket-purchase-btn-small single-game-btn">
-            <span class="btn-icon-small">⚾</span>
-            <span class="btn-text-small">Buy Game Day Tickets</span>
+  <div class="single-game-container">
+    <h2 class="section-heading">Single Game Tickets</h2>
+    <p class="section-subheading">General admission seating—first come, first served! Grab your tickets and enjoy America's favorite pastime in Charlottesville.</p>
+
+    <!-- Pricing Information -->
+    <div class="pricing-info-box">
+      <h3 class="pricing-info-heading">Ticket Pricing</h3>
+      <div class="pricing-info-grid">
+        <div class="pricing-info-item">
+          <h4 class="pricing-tier">General Admission</h4>
+          <p class="pricing-amount">$8 per person</p>
+        </div>
+        <div class="pricing-info-item discount">
+          <h4 class="pricing-tier">Discounted Tickets</h4>
+          <p class="pricing-details">Military, First Responders, Kids Under 12, Seniors 55+</p>
+          <p class="pricing-note">Kids 3 and under are FREE</p>
+        </div>
+      </div>
+
+      <div class="ticket-button-inline">
+        <a href="https://www.zeffy.com/en-US/ticketing/single-game-tickets-2026-in-draft" target="_blank" rel="noopener noreferrer" class="ticket-purchase-btn-small single-game-btn">
+          <span class="btn-icon-small" aria-hidden="true">⚾</span>
+          <span class="btn-text-small">Buy Game Day Tickets</span>
         </a>
+        <p class="ticket-notice-small">Choose your game—seating is first come, first served</p>
+      </div>
     </div>
-    <p class="ticket-notice-small">Choose your game—seating is first come, first served</p>
-</div>
+
+    <!-- What's Included -->
+    <div class="whats-included-box">
+      <h3 class="included-heading">What's Included</h3>
+      <div class="included-grid">
+
+        <div class="included-item">
+          <span class="included-icon" aria-hidden="true">🎪</span>
+          <div class="included-content">
+            <h4 class="included-title">Family Entertainment</h4>
+            <p class="included-description">Between-inning games, contests, and entertainment for all ages</p>
+          </div>
         </div>
 
-        <!-- What's Included -->
-        <div class="whats-included-box">
-            <h3 class="included-heading">What's Included</h3>
-            <div class="included-grid">
-                
-                <div class="included-item">
-                    <span class="included-icon">🎪</span>
-                    <div class="included-content">
-                        <h4 class="included-title">Family Entertainment</h4>
-                        <p class="included-description">Between-inning games, contests, and entertainment for all ages</p>
-                    </div>
-                </div>
-
-                <div class="included-item">
-                    <span class="included-icon">🍿</span>
-                    <div class="included-content">
-                        <h4 class="included-title">Concessions Available</h4>
-                        <p class="included-description">Classic ballpark food and refreshments at affordable prices</p>
-                    </div>
-                </div>
-
-                <div class="included-item">
-                    <span class="included-icon">🌟</span>
-                    <div class="included-content">
-                        <h4 class="included-title">Premium Experience</h4>
-                        <p class="included-description">Watch future MLB stars in a beautiful, intimate ballpark setting</p>
-                    </div>
-                </div>
-
-                <div class="included-item">
-                    <span class="included-icon">❤️</span>
-                    <div class="included-content">
-                        <h4 class="included-title">Making Memories</h4>
-                        <p class="included-description">Create lasting memories with your family at every game</p>
-                    </div>
-                </div>
-
-            </div>
+        <div class="included-item">
+          <span class="included-icon" aria-hidden="true">🍿</span>
+          <div class="included-content">
+            <h4 class="included-title">Concessions Available</h4>
+            <p class="included-description">Classic ballpark food and refreshments at affordable prices</p>
+          </div>
         </div>
 
+        <div class="included-item">
+          <span class="included-icon" aria-hidden="true">🌟</span>
+          <div class="included-content">
+            <h4 class="included-title">Premium Experience</h4>
+            <p class="included-description">Watch future MLB stars in a beautiful, intimate ballpark setting</p>
+          </div>
+        </div>
+
+        <div class="included-item">
+          <span class="included-icon" aria-hidden="true">❤️</span>
+          <div class="included-content">
+            <h4 class="included-title">Making Memories</h4>
+            <p class="included-description">Create lasting memories with your family at every game</p>
+          </div>
+        </div>
+
+      </div>
     </div>
+
+  </div>
 </section>
 
-<!-- ============================================
-     SEASON TICKETS SECTION
-     ============================================ -->
+<!-- SEASON TICKETS SECTION -->
 <section class="season-tickets-section" id="season-tickets-section">
-    <div class="season-tickets-container">
-        <h2 class="section-heading">Season Tickets</h2>
-        <p class="section-subheading">Get your all-access pass to every home game! One simple pass for all 18 home games plus playoff games with incredible savings.</p>
-        
-        <!-- Pricing Tiers -->
-        <div class="pricing-tiers-section">
-            <h3 class="pricing-heading">Season Ticket Package</h3>
-            <p class="pricing-subheading">One simple pass for all 18 home games plus playoff games—the best value in Charlottesville baseball!</p>
-            
-            <div class="pricing-grid-single">
-                
-                <!-- General Admission Season -->
-                <div class="pricing-card featured-pricing">
-                    <div class="popular-badge">Best Value</div>
-                    <div class="pricing-header">
-                        <h4 class="tier-name">Season Pass</h4>
-                        <p class="tier-location">General Admission - All Home Games + Playoffs</p>
-                    </div>
-                    <div class="pricing-amount">
-                        <span class="price-symbol">$</span>
-                        <span class="price-value">100</span>
-                        <span class="price-period">/ season</span>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><span class="check">✓</span> Access to all 18 home games plus playoff games</li>
-                        <li><span class="check">✓</span> General admission seating (first come, first served)</li>
-                        <li><span class="check">✓</span> No need to exchange tickets for rain outs</li>
-                        <li><span class="check">✓</span> Save over 30% vs single game tickets</li>
-                        <li><span class="check">✓</span> Support local collegiate summer baseball</li>
-                    </ul>
-                </div>
+  <div class="season-tickets-container">
+    <h2 class="section-heading">Season Tickets</h2>
+    <p class="section-subheading">Get your all-access pass to every home game! One simple pass for all 18 home games plus playoff games with incredible savings.</p>
 
-            </div>
-            
-            <!-- MODIFIED: Season Ticket Purchase Button with overlay -->
-            <div class="ticket-button-inline">
-    <div class="ticket-button-wrapper-inline">
-        <a href="https://www.zeffy.com/en-US/ticketing/2026-season-tom-sox-baseball-ticket" target="_blank" class="ticket-purchase-btn-small season-ticket-btn">
-            <span class="btn-icon-small">🎟️</span>
-            <span class="btn-text-small">Buy Season Tickets</span>
+    <!-- Pricing Tier -->
+    <div class="pricing-tiers-section">
+      <h3 class="pricing-heading">Season Ticket Package</h3>
+      <p class="pricing-subheading">One simple pass for all 18 home games plus playoff games—the best value in Charlottesville baseball!</p>
+
+      <div class="pricing-grid-single">
+        <div class="pricing-card featured-pricing">
+          <div class="popular-badge">Best Value</div>
+          <div class="pricing-header">
+            <h4 class="tier-name">Season Pass</h4>
+            <p class="tier-location">General Admission - All Home Games + Playoffs</p>
+          </div>
+          <div class="pricing-display">
+            <span class="price-symbol">$</span>
+            <span class="price-value">100</span>
+            <span class="price-period">/ season</span>
+          </div>
+          <ul class="pricing-features">
+            <li><span class="check">✓</span> Access to all 18 home games plus playoff games</li>
+            <li><span class="check">✓</span> General admission seating (first come, first served)</li>
+            <li><span class="check">✓</span> No need to exchange tickets for rain outs</li>
+            <li><span class="check">✓</span> Save over 30% vs single game tickets</li>
+            <li><span class="check">✓</span> Support local collegiate summer baseball</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ticket-button-inline">
+        <a href="https://www.zeffy.com/en-US/ticketing/2026-season-tom-sox-baseball-ticket" target="_blank" rel="noopener noreferrer" class="ticket-purchase-btn-small season-ticket-btn">
+          <span class="btn-icon-small" aria-hidden="true">🎟️</span>
+          <span class="btn-text-small">Buy Season Tickets</span>
         </a>
+        <p class="ticket-notice-small">One pass for all 18 home games plus playoffs—no exchanges needed for rain outs!</p>
+      </div>
     </div>
-    <p class="ticket-notice-small">One pass for all 18 home games plus playoffs—no exchanges needed for rain outs!</p>
-</div>
+
+    <!-- Season Ticket Benefits -->
+    <div class="benefits-showcase">
+      <h3 class="benefits-heading">Exclusive Season Ticket Holder Benefits</h3>
+
+      <div class="benefits-grid-new">
+
+        <div class="benefit-item-new">
+          <span class="benefit-icon-new" aria-hidden="true">💰</span>
+          <div class="benefit-content-new">
+            <h4 class="benefit-title-new">Incredible Savings</h4>
+            <p class="benefit-description-new">Save up to 30% compared to buying single game tickets</p>
+          </div>
         </div>
 
-        <!-- Season Ticket Benefits -->
-        <div class="benefits-showcase">
-            <h3 class="benefits-heading">Exclusive Season Ticket Holder Benefits</h3>
-            
-            <div class="benefits-grid-new">
-                
-                <div class="benefit-item-new">
-                    <span class="benefit-icon-new">💰</span>
-                    <div class="benefit-content-new">
-                        <h4 class="benefit-title-new">Incredible Savings</h4>
-                        <p class="benefit-description-new">Save up to 30% compared to buying single game tickets</p>
-                    </div>
-                </div>
-
-                <div class="benefit-item-new">
-                    <span class="benefit-icon-new">🎟️</span>
-                    <div class="benefit-content-new">
-                        <h4 class="benefit-title-new">All-Access Pass</h4>
-                        <p class="benefit-description-new">One pass gets you into all home games—no hassle, no exchanges</p>
-                    </div>
-                </div>
-
-                <div class="benefit-item-new">
-                    <span class="benefit-icon-new">☔</span>
-                    <div class="benefit-content-new">
-                        <h4 class="benefit-title-new">Rain Out Protection</h4>
-                        <p class="benefit-description-new">Your pass works for rescheduled games—no need to exchange tickets</p>
-                    </div>
-                </div>
-
-                <div class="benefit-item-new">
-                    <span class="benefit-icon-new">⚾</span>
-                    <div class="benefit-content-new">
-                        <h4 class="benefit-title-new">Never Miss a Moment</h4>
-                        <p class="benefit-description-new">Attend every home game and watch future MLB stars develop</p>
-                    </div>
-                </div>
-
-            </div>
+        <div class="benefit-item-new">
+          <span class="benefit-icon-new" aria-hidden="true">🎟️</span>
+          <div class="benefit-content-new">
+            <h4 class="benefit-title-new">All-Access Pass</h4>
+            <p class="benefit-description-new">One pass gets you into all home games—no hassle, no exchanges</p>
+          </div>
         </div>
 
+        <div class="benefit-item-new">
+          <span class="benefit-icon-new" aria-hidden="true">☔</span>
+          <div class="benefit-content-new">
+            <h4 class="benefit-title-new">Rain Out Protection</h4>
+            <p class="benefit-description-new">Your pass works for rescheduled games—no need to exchange tickets</p>
+          </div>
+        </div>
+
+        <div class="benefit-item-new">
+          <span class="benefit-icon-new" aria-hidden="true">⚾</span>
+          <div class="benefit-content-new">
+            <h4 class="benefit-title-new">Never Miss a Moment</h4>
+            <p class="benefit-description-new">Attend every home game and watch future MLB stars develop</p>
+          </div>
+        </div>
+
+      </div>
     </div>
+
+  </div>
 </section>
 
-<!-- ============================================
-     GAME DAY INFO SECTION
-     ============================================ -->
+<!-- GAME DAY INFO SECTION -->
 <section class="gameday-info-section">
-    <div class="gameday-container">
-        <h2 class="section-heading">Plan Your Visit</h2>
-        <p class="section-subheading">Everything you need to know for an amazing game day experience</p>
-        
-        <div class="info-grid">
-            
-            <div class="info-card">
-                <div class="info-icon">📍</div>
-                <h3 class="info-title">Location</h3>
-                <p class="info-description">Charlottesville High School<br>1400 Melbourne Road<br>Charlottesville, VA 22901</p>
-            </div>
+  <div class="gameday-container">
+    <h2 class="section-heading">Plan Your Visit</h2>
+    <p class="section-subheading">Everything you need to know for an amazing game day experience</p>
 
-            <div class="info-card">
-                <div class="info-icon">🕐</div>
-                <h3 class="info-title">Game Times</h3>
-                <p class="info-description">Gates open 1 hour before first pitch<br>Most games start at 7:00 PM<br>Check schedule for specific times</p>
-            </div>
+    <div class="info-grid">
 
-            <div class="info-card">
-                <div class="info-icon">🅿️</div>
-                <h3 class="info-title">Parking</h3>
-                <p class="info-description">Free parking available<br>Accessible parking near entrance<br>Arrive early for best spots</p>
-            </div>
+      <div class="info-card">
+        <div class="info-icon" aria-hidden="true">📍</div>
+        <h3 class="info-title">Location</h3>
+        <p class="info-description">Charlottesville High School<br>1400 Melbourne Road<br>Charlottesville, VA 22901</p>
+      </div>
 
-            <div class="info-card">
-                <div class="info-icon">🎒</div>
-                <h3 class="info-title">What to Bring</h3>
-                <p class="info-description">Lawn chairs & blankets welcome<br>Sunscreen & hats recommended<br>Family-friendly atmosphere</p>
-            </div>
+      <div class="info-card">
+        <div class="info-icon" aria-hidden="true">🕐</div>
+        <h3 class="info-title">Game Times</h3>
+        <p class="info-description">Gates open 1 hour before first pitch<br>Most games start at 7:00 PM<br>Check schedule for specific times</p>
+      </div>
 
-        </div>
+      <div class="info-card">
+        <div class="info-icon" aria-hidden="true">🅿️</div>
+        <h3 class="info-title">Parking</h3>
+        <p class="info-description">Free parking available<br>Accessible parking near entrance<br>Arrive early for best spots</p>
+      </div>
 
-        <!-- Directions CTA -->
-        <div class="directions-cta">
-            <a href="/ballpark#ballpark-directions" class="directions-btn">Get Directions to Ballpark</a>
-        </div>
-
-        <!-- CTA to Schedule -->
-        <div class="schedule-cta">
-            <p class="schedule-text">Ready to pick your game? View our complete schedule to plan your visit.</p>
-            <a href="/schedule" class="schedule-btn">View Full Schedule</a>
-        </div>
+      <div class="info-card">
+        <div class="info-icon" aria-hidden="true">🎒</div>
+        <h3 class="info-title">What to Bring</h3>
+        <p class="info-description">Lawn chairs &amp; blankets welcome<br>Sunscreen &amp; hats recommended<br>Family-friendly atmosphere</p>
+      </div>
 
     </div>
+
+    <div class="directions-cta">
+      <a href="/ballpark#ballpark-directions" class="directions-btn">Get Directions to Ballpark</a>
+    </div>
+
+    <div class="schedule-cta">
+      <p class="schedule-text">Ready to pick your game? View our complete schedule to plan your visit.</p>
+      <a href="/schedule" class="schedule-btn">View Full Schedule</a>
+    </div>
+
+  </div>
 </section>
 
-<!-- ============================================
-     FAQ SECTION
-     ============================================ -->
+<!-- FAQ SECTION -->
 <section class="faq-section">
-    <div class="faq-container">
-        <h2 class="section-heading">Frequently Asked Questions</h2>
-        
-        <div class="faq-grid">
-            
-            <div class="faq-item">
-                <h3 class="faq-question">What payment methods do you accept?</h3>
-                <p class="faq-answer">We accept all major credit cards, debit cards, and digital payment methods through our secure ticketing platform.</p>
-            </div>
+  <div class="faq-container">
+    <h2 class="section-heading">Frequently Asked Questions</h2>
 
-            <div class="faq-item">
-                <h3 class="faq-question">What happens if it rains?</h3>
-                <p class="faq-answer">Games postponed due to weather will be rescheduled. Season ticket holders automatically have access to all rescheduled games with their pass—no exchange needed! Single game ticket holders should contact us for rescheduled game details.</p>
-            </div>
+    <div class="faq-grid">
 
-            <div class="faq-item">
-                <h3 class="faq-question">Are there discounts for groups?</h3>
-                <p class="faq-answer">Yes! We offer special group rates for parties of 20 or more. Contact our ticket office for group pricing and availability.</p>
-            </div>
+      <div class="faq-item">
+        <h3 class="faq-question">What payment methods do you accept?</h3>
+        <p class="faq-answer">We accept all major credit cards, debit cards, and digital payment methods through our secure ticketing platform.</p>
+      </div>
 
-            <div class="faq-item">
-                <h3 class="faq-question">Is the stadium accessible?</h3>
-                <p class="faq-answer">Absolutely. We have accessible seating, parking, and facilities. Please contact us in advance for specific accessibility needs.</p>
-            </div>
+      <div class="faq-item">
+        <h3 class="faq-question">What happens if it rains?</h3>
+        <p class="faq-answer">Games postponed due to weather will be rescheduled. Season ticket holders automatically have access to all rescheduled games—no exchange needed! Single game ticket holders should contact us for rescheduled game details.</p>
+      </div>
 
-            <div class="faq-item">
-                <h3 class="faq-question">Can I bring food and drinks?</h3>
-                <p class="faq-answer">Outside food and non-alcoholic beverages in sealed containers are welcome. We also have great concessions available at the ballpark.</p>
-            </div>
+      <div class="faq-item">
+        <h3 class="faq-question">Are there discounts for groups?</h3>
+        <p class="faq-answer">Yes! We offer special group rates for parties of 20 or more. Contact our ticket office for group pricing and availability.</p>
+      </div>
 
-            <div class="faq-item">
-                <h3 class="faq-question">When do season tickets go on sale?</h3>
-                <p class="faq-answer">Season tickets typically go on sale in early spring. Purchase early to ensure you don't miss any of the 36 games (18 home, 18 away) played throughout the season!</p>
-            </div>
+      <div class="faq-item">
+        <h3 class="faq-question">Is the stadium accessible?</h3>
+        <p class="faq-answer">Absolutely. We have accessible seating, parking, and facilities. Please contact us in advance for specific accessibility needs.</p>
+      </div>
 
-        </div>
+      <div class="faq-item">
+        <h3 class="faq-question">Can I bring food and drinks?</h3>
+        <p class="faq-answer">Outside food and non-alcoholic beverages in sealed containers are welcome. We also have great concessions available at the ballpark.</p>
+      </div>
 
-        <!-- Contact CTA -->
-        <div class="contact-cta">
-            <p class="contact-text">Have more questions? Our ticket office team is here to help!</p>
-            <a href="/contact" class="contact-btn">Contact Us</a>
-        </div>
+      <div class="faq-item">
+        <h3 class="faq-question">When do season tickets go on sale?</h3>
+        <p class="faq-answer">Season tickets typically go on sale in early spring. Purchase early to ensure you don't miss any of the 36 games (18 home, 18 away) played throughout the season!</p>
+      </div>
 
     </div>
-</section>
 
-</body>
-</html>
+    <div class="contact-cta">
+      <p class="contact-text">Have more questions? Our ticket office team is here to help!</p>
+      <a href="/contact" class="contact-btn">Contact Us</a>
+    </div>
+
+  </div>
+</section>
