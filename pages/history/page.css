@@ -1,51 +1,253 @@
-/* =========================================================
-   GLOBAL STYLES & FONT IMPORTS
-   ========================================================= */
+/*
+  File: page.css
+  Page: History
+  Section: All page-level styles for the History timeline page
+  Last Updated: 2026-02-22
+*/
 
-/* 1. Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Open+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Arimo:wght@400;600;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 
-/* 2. Global Reset */
+/* ============================================================
+   1. CSS Variables
+   ============================================================ */
+:root {
+    --brand-green:  #84BD00;
+    --navy:         #1b365d;
+    --light-gray:   #f0f2f5;
+    --card-shadow:  rgba(0, 0, 0, 0.08);
+    --dark-text:    #2c3e50;
+    --body-text:    #4b5563;
+}
+
+/* ============================================================
+   2. Base
+   ============================================================ */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
-/* 3. Body Baseline */
 body {
-    /* Use Open Sans as the primary body font for consistency */
-    font-family: 'Open Sans', sans-serif;
-    color: #333;
+    font-family: 'Arimo', sans-serif;
+    color: var(--body-text);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
-:root {
-    --brand-green: #84BD00;
-    --dark-blue-bg: #1b365d;
-    --light-text: #ffffff;
-    --subtle-text: #a9b3d1;
+/* ============================================================
+   3. Page Layout
+   ============================================================ */
+.history-container {
+    font-family: 'Arimo', sans-serif;
+    width: 90%;
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
 }
 
-/* INFIELD DIRT */
-.infield-dirt {
-    background-color: #a1662f;
+.history-main-title {
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--navy);
+    margin-bottom: 50px;
+}
+
+/* ============================================================
+   4. Timeline Track
+   ============================================================ */
+.timeline-container {
     position: relative;
-    z-index: 0;
+    padding: 20px 0;
 }
 
-.infield-dirt::before {
+.timeline-container::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('https://storage.googleapis.com/msgsndr/xPpGvlvaXWhYtIJUg0CZ/media/686e62f4879662a5cb44bef2.jpeg');
-    opacity: 0.15;
-    z-index: -1;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 100%;
+    background-color: var(--light-gray);
+    z-index: 0;
+}
+
+/* ============================================================
+   5. Timeline Items — Default visible (JS-free fallback)
+
+   Items are always visible by default. The JS will add
+   .js-timeline-ready to .timeline-container, which enables
+   the hidden/animate-in state only when JS is available.
+   If JS fails or is unavailable, all items remain visible.
+   ============================================================ */
+.timeline-item {
+    padding: 20px 40px;
+    position: relative;
+    width: 50%;
+}
+
+/* Only hide items when JS has confirmed it is running */
+.js-timeline-ready .timeline-item {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.js-timeline-ready .timeline-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-item:nth-child(odd)  { left: 0; }
+.timeline-item:nth-child(even) { left: 50%; }
+
+/* ============================================================
+   6. Timeline Icon
+   ============================================================ */
+.timeline-icon {
+    position: absolute;
+    top: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--navy);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    border: 3px solid var(--light-gray);
+    z-index: 10;
+}
+
+.timeline-item:nth-child(odd)  .timeline-icon { right: -25px; }
+.timeline-item:nth-child(even) .timeline-icon { left: -25px; }
+
+/* Major milestone icons */
+.timeline-item--major .timeline-icon {
+    background-color: var(--brand-green);
+    color: var(--navy);
+    transform: scale(1.15);
+    border-color: #ffffff;
+    box-shadow: 0 0 0 3px var(--brand-green);
+}
+
+/* ============================================================
+   7. Timeline Content Card
+   ============================================================ */
+.timeline-content {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px var(--card-shadow);
+    position: relative;
+}
+
+/* Arrow pointer toward the timeline track */
+.timeline-content::after {
+    content: '';
+    position: absolute;
+    top: 32px;
+    width: 16px;
+    height: 16px;
+    background-color: #ffffff;
+    transform: rotate(45deg);
+    box-shadow: 2px -2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.timeline-item:nth-child(odd)  .timeline-content::after { right: -8px; }
+.timeline-item:nth-child(even) .timeline-content::after { left: -8px; }
+
+/* ============================================================
+   8. Card Content
+   ============================================================ */
+.timeline-image {
+    width: 100%;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    display: block;
+}
+
+.timeline-date {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--brand-green);
+    display: block;
+    margin-bottom: 6px;
+    letter-spacing: 0.03em;
+}
+
+.timeline-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.timeline-description {
+    font-family: 'Arimo', sans-serif;
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--dark-text);
+}
+
+/* ============================================================
+   9. Responsive Breakpoints
+   ============================================================ */
+@media (max-width: 768px) {
+    .history-main-title {
+        font-size: 2.2rem;
+    }
+
+    /* Collapse to single left-aligned column on mobile */
+    .timeline-container::before {
+        left: 25px;
+    }
+
+    .timeline-item,
+    .timeline-item:nth-child(even) {
+        width: 100%;
+        left: 0;
+        padding-left: 70px;
+        padding-right: 20px;
+    }
+
+    .timeline-icon,
+    .timeline-item:nth-child(odd)  .timeline-icon,
+    .timeline-item:nth-child(even) .timeline-icon {
+        left: 0;
+        right: auto;
+    }
+
+    .timeline-content::after,
+    .timeline-item:nth-child(odd)  .timeline-content::after,
+    .timeline-item:nth-child(even) .timeline-content::after {
+        left: -8px;
+        right: auto;
+    }
+
+    .timeline-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .history-container {
+        width: 100%;
+        padding: 16px;
+        margin: 30px auto;
+    }
+
+    .history-main-title {
+        font-size: 1.85rem;
+    }
 }
