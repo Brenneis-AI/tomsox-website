@@ -1118,6 +1118,7 @@
         width: 100%;
         margin-top: 8px;
         color: var(--brand-green);
+        text-shadow: none;
     }
 
     .player-header-line1 {
@@ -1325,7 +1326,7 @@
     }
 
     .college-link {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
     }
 
     .player-header-line1 {
