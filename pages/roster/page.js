@@ -383,6 +383,15 @@ function buildRoster(currentSort = 'name-az') {
     // Build menu header
     const menuHeader = playerMenu.querySelector('.menu-header');
     menuHeader.innerHTML = `
+        <div class="mobile-favorites-bar">
+            <button id="show-favorites-btn-mobile" aria-label="Show favorite players only">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14" aria-hidden="true">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <span>Favorites</span>
+            </button>
+        </div>
+
         <select class="mobile-player-dropdown" id="mobile-player-select" aria-label="Select player">
             <option value="">Select a player...</option>
         </select>
@@ -679,22 +688,33 @@ function buildRoster(currentSort = 'name-az') {
         btn.addEventListener('click', handleFavoriteClick);
     });
 
-    // Setup favorites button
-    const showFavoritesBtn = document.getElementById('show-favorites-btn');
-    if (showFavoritesBtn) {
-        showFavoritesBtn.addEventListener('click', () => {
-            showingFavoritesOnly = !showingFavoritesOnly;
-            if (showingFavoritesOnly) {
-                showFavoritesBtn.classList.add('active');
-                showFavoritesBtn.querySelector('span').textContent = 'Show All Players';
-            } else {
-                showFavoritesBtn.classList.remove('active');
-                showFavoritesBtn.querySelector('span').textContent = 'Show Favorites';
-            }
-            filterPlayers();
-        });
-        if (showingFavoritesOnly) showFavoritesBtn.classList.add('active');
+    // Setup favorites buttons — desktop and mobile share one toggle function
+    function syncFavoriteBtns() {
+        const desktopBtn = document.getElementById('show-favorites-btn');
+        const mobileBtn  = document.getElementById('show-favorites-btn-mobile');
+        if (desktopBtn) {
+            desktopBtn.classList.toggle('active', showingFavoritesOnly);
+            desktopBtn.querySelector('span').textContent = showingFavoritesOnly ? 'Show All Players' : 'Show Favorites';
+        }
+        if (mobileBtn) {
+            mobileBtn.classList.toggle('active', showingFavoritesOnly);
+            mobileBtn.querySelector('span').textContent = showingFavoritesOnly ? 'All Players' : 'Favorites';
+        }
     }
+
+    function onFavoritesToggle() {
+        showingFavoritesOnly = !showingFavoritesOnly;
+        syncFavoriteBtns();
+        filterPlayers();
+    }
+
+    const showFavoritesBtn = document.getElementById('show-favorites-btn');
+    if (showFavoritesBtn) showFavoritesBtn.addEventListener('click', onFavoritesToggle);
+
+    const showFavoritesBtnMobile = document.getElementById('show-favorites-btn-mobile');
+    if (showFavoritesBtnMobile) showFavoritesBtnMobile.addEventListener('click', onFavoritesToggle);
+
+    syncFavoriteBtns();
 
     updatePlayerCount();
 }
