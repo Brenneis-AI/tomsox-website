@@ -1,52 +1,338 @@
-/* =========================================================
-   GLOBAL STYLES & FONT IMPORTS
-   ========================================================= */
+/*
+  File: page.css
+  Page: Contact
+  Section: All page-level styles for the Contact page
+  Last Updated: 2026-02-22
+*/
 
-/* 1. Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Open+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Arimo:wght@400;600;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 
-/* 2. Global Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-/* 3. Body Baseline */
-body {
-    font-family: 'Open Sans', sans-serif;
-    color: #333;
-    line-height: 1.6;
-}
-
+/* ============================================================
+   1. CSS Variables
+   ============================================================ */
 :root {
-    --brand-green: #84BD00;
-    --dark-blue-bg: #1b365d;
-    --light-text: #ffffff;
-    --subtle-text: #a9b3d1;
-    --error-red: #e74c3c;
-    --success-green: #2ecc71;
+    --brand-green:  #84BD00;
+    --navy:         #1b365d;
+    --off-white:    #f9fafb;
+    --card-border:  #e5e7eb;
+    --body-text:    #4b5563;
+    --card-text:    #1b2a3b;
 }
 
-/* INFIELD DIRT */
-.infield-dirt {
-    background-color: #a1662f;
+/* ============================================================
+   2. Base
+   ============================================================ */
+body {
+    font-family: 'Arimo', sans-serif;
+    color: var(--body-text);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+/* ============================================================
+   3. Hero Section
+   ============================================================ */
+.contact-hero {
     position: relative;
-    z-index: 0;
+    min-height: 420px;
+    background: linear-gradient(135deg, rgba(27, 54, 93, 0.97) 0%, rgba(132, 189, 0, 0.88) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #ffffff;
+    padding: 80px 20px;
 }
 
-.infield-dirt::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('https://storage.googleapis.com/msgsndr/xPpGvlvaXWhYtIJUg0CZ/media/686e62f4879662a5cb44bef2.jpeg');
-    opacity: 0.15;
-    z-index: -1;
+.contact-hero__content {
+    max-width: 860px;
+    position: relative;
+    z-index: 1;
+}
+
+.contact-hero h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 24px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.contact-hero p {
+    font-family: 'Arimo', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.85;
+    opacity: 0.95;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+/* ============================================================
+   4. GHL Form Block — Prevent Layout Shift (CLS Fix)
+
+   GHL loads form embeds asynchronously via JS. Without a
+   reserved height, the form block starts at ~0px and expands
+   after JS fires, slamming the info cards section down.
+
+   These rules target GHL's native form wrapper elements and
+   hold vertical space before the form initializes.
+
+   Adjust min-height values if your specific form renders
+   taller or shorter than 560px on desktop.
+   ============================================================ */
+.hl-forms-wrapper,
+.hl-form-container,
+[data-form-id],
+.contact-form-section .section-body {
+    min-height: 560px;
+}
+
+/* ============================================================
+   5. Info Cards Section
+   ============================================================ */
+.contact-info-section {
+    padding: 96px 20px;
+    background: var(--off-white);
+}
+
+.contact-info-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.contact-info-card {
+    background: #ffffff;
+    padding: 44px 36px;
+    border-radius: 12px;
+    text-align: center;
+    border: 2px solid var(--card-border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.contact-info-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--brand-green);
+}
+
+.contact-info-icon {
+    width: 62px;
+    height: 62px;
+    margin: 0 auto 24px;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--brand-green) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    flex-shrink: 0;
+}
+
+.contact-info-card h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--navy);
+    margin-bottom: 14px;
+}
+
+.contact-info-card p {
+    font-family: 'Arimo', sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--body-text);
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.contact-info-card a {
+    color: var(--brand-green);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.contact-info-card a:hover {
+    color: var(--navy);
+}
+
+/* Card CTA Button */
+.contact-btn {
+    display: inline-block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 13px 32px;
+    background: var(--brand-green);
+    color: #ffffff !important;
+    text-decoration: none;
+    border-radius: 6px;
+    margin-top: 8px;
+    transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.contact-btn:hover {
+    background: var(--navy);
+    color: #ffffff !important;
+    transform: translateY(-2px);
+}
+
+.contact-btn:focus-visible {
+    outline: 2px solid var(--navy);
+    outline-offset: 3px;
+}
+
+/* ============================================================
+   6. Social Links
+   ============================================================ */
+.social-links {
+    list-style: none;
+    margin: 16px 0 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--off-white);
+    color: var(--navy);
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
+}
+
+.social-links a:hover {
+    background: var(--brand-green);
+    color: #ffffff;
+    transform: translateY(-3px);
+}
+
+.social-links a:focus-visible {
+    outline: 2px solid var(--brand-green);
+    outline-offset: 3px;
+}
+
+/* ============================================================
+   7. Bottom CTA Section
+   ============================================================ */
+.contact-cta-section {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--brand-green) 100%);
+    text-align: center;
+    color: #ffffff;
+}
+
+.contact-cta-content {
+    max-width: 780px;
+    margin: 0 auto;
+}
+
+.contact-cta-content h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 20px;
+}
+
+.contact-cta-content p {
+    font-family: 'Arimo', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.85;
+    opacity: 0.95;
+}
+
+/* ============================================================
+   8. Responsive Breakpoints
+   ============================================================ */
+
+/* Tablet — 2-column cards */
+@media (max-width: 992px) {
+    .contact-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-hero {
+        min-height: 340px;
+        padding: 60px 16px;
+    }
+
+    .contact-hero h1 {
+        font-size: 2.8rem;
+    }
+
+    .contact-hero p {
+        font-size: 1rem;
+    }
+
+    /* Taller form reservation on mobile — fields stack vertically */
+    .hl-forms-wrapper,
+    .hl-form-container,
+    [data-form-id],
+    .contact-form-section .section-body {
+        min-height: 700px;
+    }
+
+    .contact-info-section {
+        padding: 64px 16px;
+    }
+
+    .contact-info-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .contact-info-card {
+        padding: 32px 24px;
+    }
+
+    .contact-cta-section {
+        padding: 64px 16px;
+    }
+
+    .contact-cta-content h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-hero h1 {
+        font-size: 2.2rem;
+        letter-spacing: 0.04em;
+    }
+
+    .contact-btn {
+        padding: 11px 24px;
+        font-size: 0.82rem;
+    }
+
+    .contact-cta-content h2 {
+        font-size: 1.75rem;
+    }
 }
