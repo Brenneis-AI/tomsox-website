@@ -1,183 +1,298 @@
 <script>
-/* TOM SOX ALUMNI PAGE - JAVASCRIPT */
+/*
+  File: page.js
+  Page: Alumni
+  Section: All page JavaScript
+  Last Updated: 2026-02-23
+*/
 
-(function() {
+(function () {
     'use strict';
 
-    var carouselState = {
-        currentSlide: 0,
-        totalSlides: 4,
-        autoPlayInterval: null,
-        autoPlayDelay: 5000,
-        isPaused: false
-    };
+    var carouselInitialized = false;
+    var draftInitialized = false;
+    var statsInitialized = false;
+
+
+    /* =========================================
+       CAROUSEL
+       ========================================= */
 
     function initCarousel() {
-        console.log('Tom Sox: Initializing Carousel...');
-        
+        if (carouselInitialized) return;
+
         var slides = document.querySelectorAll('.carousel-slide');
         var dots = document.querySelectorAll('.carousel-dots .dot');
         var prevBtn = document.querySelector('.carousel-prev');
         var nextBtn = document.querySelector('.carousel-next');
-        var carouselContainer = document.querySelector('.alumni-carousel');
+        var carouselEl = document.querySelector('.alumni-carousel');
 
-        if (!slides || slides.length === 0) {
-            console.error('Tom Sox: No carousel slides found! Retrying in 2 seconds...');
-            setTimeout(initCarousel, 2000);
-            return;
+        if (!slides || slides.length === 0) return;
+
+        carouselInitialized = true;
+
+        var state = {
+            current: 0,
+            total: slides.length,
+            interval: null,
+            paused: false,
+            delay: 5500,
+            touchStartX: 0
+        };
+
+        function goTo(index) {
+            slides[state.current].classList.remove('active');
+            slides[state.current].setAttribute('aria-hidden', 'true');
+            if (dots[state.current]) dots[state.current].classList.remove('active');
+
+            if (index >= state.total) index = 0;
+            if (index < 0) index = state.total - 1;
+            state.current = index;
+
+            slides[state.current].classList.add('active');
+            slides[state.current].removeAttribute('aria-hidden');
+            if (dots[state.current]) dots[state.current].classList.add('active');
         }
 
-        console.log('Tom Sox: Found ' + slides.length + ' slides');
-
-        function showSlide(index) {
-            for (var i = 0; i < slides.length; i++) {
-                slides[i].classList.remove('active');
-            }
-            for (var i = 0; i < dots.length; i++) {
-                dots[i].classList.remove('active');
-            }
-
-            if (index >= carouselState.totalSlides) {
-                carouselState.currentSlide = 0;
-            } else if (index < 0) {
-                carouselState.currentSlide = carouselState.totalSlides - 1;
-            } else {
-                carouselState.currentSlide = index;
-            }
-
-            slides[carouselState.currentSlide].classList.add('active');
-            if (dots[carouselState.currentSlide]) {
-                dots[carouselState.currentSlide].classList.add('active');
-            }
-            
-            console.log('Tom Sox: Showing slide ' + carouselState.currentSlide);
+        function startAuto() {
+            if (state.interval || state.paused) return;
+            state.interval = setInterval(function () {
+                goTo(state.current + 1);
+            }, state.delay);
         }
 
-        function nextSlide() {
-            showSlide(carouselState.currentSlide + 1);
+        function stopAuto() {
+            clearInterval(state.interval);
+            state.interval = null;
         }
 
-        function prevSlide() {
-            showSlide(carouselState.currentSlide - 1);
-        }
-
-        function startAutoPlay() {
-            if (!carouselState.isPaused && !carouselState.autoPlayInterval) {
-                carouselState.autoPlayInterval = setInterval(nextSlide, carouselState.autoPlayDelay);
-                console.log('Tom Sox: Carousel auto-play started');
-            }
-        }
-
-        function stopAutoPlay() {
-            if (carouselState.autoPlayInterval) {
-                clearInterval(carouselState.autoPlayInterval);
-                carouselState.autoPlayInterval = null;
-                console.log('Tom Sox: Carousel auto-play stopped');
-            }
-        }
-
-        function resetAutoPlay() {
-            stopAutoPlay();
-            startAutoPlay();
+        function resetAuto() {
+            stopAuto();
+            startAuto();
         }
 
         if (prevBtn) {
-            prevBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                console.log('Tom Sox: Previous clicked');
-                prevSlide();
-                resetAutoPlay();
+            prevBtn.addEventListener('click', function () {
+                goTo(state.current - 1);
+                resetAuto();
             });
         }
 
         if (nextBtn) {
-            nextBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                console.log('Tom Sox: Next clicked');
-                nextSlide();
-                resetAutoPlay();
+            nextBtn.addEventListener('click', function () {
+                goTo(state.current + 1);
+                resetAuto();
             });
         }
 
         for (var i = 0; i < dots.length; i++) {
-            (function(index) {
-                dots[index].addEventListener('click', function(e) {
-                    e.preventDefault();
-                    console.log('Tom Sox: Dot ' + index + ' clicked');
-                    showSlide(index);
-                    resetAutoPlay();
+            (function (idx) {
+                dots[idx].addEventListener('click', function () {
+                    goTo(idx);
+                    resetAuto();
                 });
             })(i);
         }
 
-        if (carouselContainer) {
-            carouselContainer.addEventListener('mouseenter', function() {
-                carouselState.isPaused = true;
-                stopAutoPlay();
+        if (carouselEl) {
+            carouselEl.addEventListener('mouseenter', function () {
+                state.paused = true;
+                stopAuto();
             });
 
-            carouselContainer.addEventListener('mouseleave', function() {
-                carouselState.isPaused = false;
-                startAutoPlay();
+            carouselEl.addEventListener('mouseleave', function () {
+                state.paused = false;
+                startAuto();
+            });
+
+            /* Touch swipe */
+            carouselEl.addEventListener('touchstart', function (e) {
+                state.touchStartX = e.touches[0].clientX;
+                state.paused = true;
+                stopAuto();
+            }, { passive: true });
+
+            carouselEl.addEventListener('touchend', function (e) {
+                var diff = state.touchStartX - e.changedTouches[0].clientX;
+                if (Math.abs(diff) > 44) {
+                    goTo(diff > 0 ? state.current + 1 : state.current - 1);
+                }
+                state.paused = false;
+                startAuto();
+            }, { passive: true });
+
+            /* Keyboard — scoped to carousel focus only */
+            carouselEl.setAttribute('tabindex', '0');
+            carouselEl.addEventListener('keydown', function (e) {
+                if (e.key === 'ArrowLeft') {
+                    goTo(state.current - 1);
+                    resetAuto();
+                } else if (e.key === 'ArrowRight') {
+                    goTo(state.current + 1);
+                    resetAuto();
+                }
             });
         }
 
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'ArrowLeft') {
-                prevSlide();
-                resetAutoPlay();
-            } else if (e.key === 'ArrowRight') {
-                nextSlide();
-                resetAutoPlay();
+        /* Set aria-hidden on non-active slides */
+        for (var j = 0; j < slides.length; j++) {
+            if (j !== state.current) {
+                slides[j].setAttribute('aria-hidden', 'true');
             }
-        });
+        }
 
-        startAutoPlay();
-        console.log('Tom Sox: Carousel initialized successfully!');
+        startAuto();
     }
+
+
+    /* =========================================
+       DRAFT TABLE
+       ========================================= */
 
     function initDraftTable() {
+        if (draftInitialized) return;
+
+        var table = document.querySelector('.draft-table');
+        if (!table) return;
+
+        draftInitialized = true;
+
+        var allDataRows = table.querySelectorAll('tbody tr:not(.year-group-header)');
+        var yearHeaders = table.querySelectorAll('tbody tr.year-group-header');
+        var hiddenRows = table.querySelectorAll('tbody tr.draft-hidden');
         var showMoreBtn = document.getElementById('showMoreDraft');
-        var hiddenRows = document.querySelectorAll('.draft-hidden');
+        var showMoreContainer = document.querySelector('.draft-show-more-container');
+        var filterBtns = document.querySelectorAll('.draft-filter-btn');
 
-        if (!showMoreBtn || !hiddenRows || hiddenRows.length === 0) return;
-
-        showMoreBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            var isShown = hiddenRows[0].classList.contains('show');
-            if (isShown) {
+        /* Show More / Show Less */
+        if (showMoreBtn && hiddenRows.length > 0) {
+            showMoreBtn.addEventListener('click', function () {
+                var isExpanded = hiddenRows[0].classList.contains('show');
                 for (var i = 0; i < hiddenRows.length; i++) {
-                    hiddenRows[i].classList.remove('show');
+                    if (isExpanded) {
+                        hiddenRows[i].classList.remove('show');
+                    } else {
+                        hiddenRows[i].classList.add('show');
+                    }
                 }
-                showMoreBtn.textContent = 'Show More Draft Picks';
+                showMoreBtn.textContent = isExpanded ? 'Show More Draft Picks' : 'Show Less';
+            });
+        }
+
+        /* Year Filter */
+        function filterByYear(year) {
+            if (year === 'all') {
+                for (var i = 0; i < allDataRows.length; i++) {
+                    allDataRows[i].removeAttribute('style');
+                }
+                for (var k = 0; k < yearHeaders.length; k++) {
+                    yearHeaders[k].removeAttribute('style');
+                }
+                if (showMoreContainer) showMoreContainer.removeAttribute('style');
             } else {
-                for (var i = 0; i < hiddenRows.length; i++) {
-                    hiddenRows[i].classList.add('show');
+                for (var i = 0; i < yearHeaders.length; i++) {
+                    yearHeaders[i].style.display = 'none';
                 }
-                showMoreBtn.textContent = 'Show Less';
+                for (var j = 0; j < allDataRows.length; j++) {
+                    var yearCell = allDataRows[j].querySelector('td[data-label="Year"]');
+                    if (yearCell && yearCell.textContent.trim() === year) {
+                        allDataRows[j].style.display = '';
+                    } else {
+                        allDataRows[j].style.display = 'none';
+                    }
+                }
+                if (showMoreContainer) showMoreContainer.style.display = 'none';
             }
-        });
+        }
+
+        if (filterBtns.length > 0) {
+            for (var f = 0; f < filterBtns.length; f++) {
+                (function (btn) {
+                    btn.addEventListener('click', function () {
+                        for (var b = 0; b < filterBtns.length; b++) {
+                            filterBtns[b].classList.remove('active');
+                        }
+                        btn.classList.add('active');
+                        filterByYear(btn.getAttribute('data-year'));
+                    });
+                })(filterBtns[f]);
+            }
+        }
     }
 
-    // Try multiple times with increasing delays
-    console.log('Tom Sox: Script loaded, waiting for page...');
-    setTimeout(function() {
-        console.log('Tom Sox: Attempt 1 (1 second)');
+
+    /* =========================================
+       STATS COUNTER
+       ========================================= */
+
+    function initStats() {
+        if (statsInitialized) return;
+
+        var counters = document.querySelectorAll('.stat-number[data-target]');
+        if (!counters || counters.length === 0) return;
+
+        statsInitialized = true;
+
+        function animateCounter(el) {
+            var target = parseInt(el.getAttribute('data-target'), 10);
+            var suffix = el.getAttribute('data-suffix') || '';
+            var duration = 1800;
+            var startTime = null;
+
+            function step(timestamp) {
+                if (!startTime) startTime = timestamp;
+                var progress = Math.min((timestamp - startTime) / duration, 1);
+                var eased = 1 - Math.pow(1 - progress, 3);
+                el.textContent = Math.round(eased * target) + suffix;
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                } else {
+                    el.textContent = target + suffix;
+                }
+            }
+
+            requestAnimationFrame(step);
+        }
+
+        if ('IntersectionObserver' in window) {
+            var observer = new IntersectionObserver(function (entries) {
+                for (var i = 0; i < entries.length; i++) {
+                    if (entries[i].isIntersecting) {
+                        animateCounter(entries[i].target);
+                        observer.unobserve(entries[i].target);
+                    }
+                }
+            }, { threshold: 0.35 });
+
+            for (var i = 0; i < counters.length; i++) {
+                observer.observe(counters[i]);
+            }
+        } else {
+            for (var i = 0; i < counters.length; i++) {
+                animateCounter(counters[i]);
+            }
+        }
+    }
+
+
+    /* =========================================
+       INIT
+       ========================================= */
+
+    function init() {
         initCarousel();
         initDraftTable();
-    }, 1000);
-    
-    setTimeout(function() {
-        console.log('Tom Sox: Attempt 2 (3 seconds)');
-        initCarousel();
-        initDraftTable();
-    }, 3000);
-    
-    setTimeout(function() {
-        console.log('Tom Sox: Attempt 3 (5 seconds)');
-        initCarousel();
-        initDraftTable();
-    }, 5000);
+        initStats();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+
+    /* Single GHL fallback — guards prevent any double-initialization */
+    setTimeout(init, 1500);
 
 })();
 </script>

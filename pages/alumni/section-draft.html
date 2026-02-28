@@ -1,0 +1,359 @@
+<!--
+  File: section-draft.html
+  Page: Alumni
+  Section: MLB Draft History — filterable table with show more
+  Last Updated: 2026-02-23
+-->
+
+<!-- ============================================
+     TO UPDATE: Replace all player data with verified real draft picks.
+     First-rounders: add class="first-round" to <tr>.
+     Rows beyond the first 10 visible: add class="draft-hidden" to <tr>.
+     TO ADD A ROW: Copy a <tr> block, update data, and paste in correct year group.
+     Year group header rows are for visual grouping — not data rows.
+     ============================================ -->
+<section class="ts-draft-section">
+    <div class="section-header">
+        <h2 class="ts-section-headline">MLB DRAFT HISTORY</h2>
+        <div class="section-header-line"></div>
+        <p class="ts-section-subheadline">Over 30 Tom Sox players selected in the MLB Draft</p>
+    </div>
+
+    <!-- Year Filter Controls -->
+    <div class="draft-controls" role="group" aria-label="Filter draft picks by year">
+        <span class="draft-filter-label">Filter:</span>
+        <button class="draft-filter-btn active" data-year="all">All Years</button>
+        <button class="draft-filter-btn" data-year="2024">2024</button>
+        <button class="draft-filter-btn" data-year="2023">2023</button>
+        <button class="draft-filter-btn" data-year="2022">2022</button>
+        <button class="draft-filter-btn" data-year="2021">2021</button>
+        <button class="draft-filter-btn" data-year="2020">2020</button>
+    </div>
+
+    <div class="draft-table-container">
+        <table class="draft-table">
+            <thead>
+                <tr>
+                    <th scope="col">Year</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Draft Team</th>
+                    <th scope="col">Round</th>
+                    <th scope="col">Pick #</th>
+                    <th scope="col">Current Level</th>
+                    <th scope="col">Current Team</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <!-- 2024 DRAFT CLASS -->
+                <tr class="year-group-header">
+                    <td colspan="7">2024 Draft Class</td>
+                </tr>
+                <tr>
+                    <td data-label="Year">2024</td>
+                    <td data-label="Name">Connor Stevens</td>
+                    <td data-label="Draft Team">Tampa Bay Rays</td>
+                    <td data-label="Round">2</td>
+                    <td data-label="Pick #">67</td>
+                    <td data-label="Current Level">High-A</td>
+                    <td data-label="Current Team">Tampa Bay Rays</td>
+                </tr>
+                <tr>
+                    <td data-label="Year">2024</td>
+                    <td data-label="Name">Michael Chen</td>
+                    <td data-label="Draft Team">San Diego Padres</td>
+                    <td data-label="Round">5</td>
+                    <td data-label="Pick #">152</td>
+                    <td data-label="Current Level">Low-A</td>
+                    <td data-label="Current Team">San Diego Padres</td>
+                </tr>
+                <tr>
+                    <td data-label="Year">2024</td>
+                    <td data-label="Name">Lucas Thompson</td>
+                    <td data-label="Draft Team">Minnesota Twins</td>
+                    <td data-label="Round">8</td>
+                    <td data-label="Pick #">243</td>
+                    <td data-label="Current Level">Rookie</td>
+                    <td data-label="Current Team">Minnesota Twins</td>
+                </tr>
+
+                <!-- 2023 DRAFT CLASS -->
+                <tr class="year-group-header">
+                    <td colspan="7">2023 Draft Class</td>
+                </tr>
+                <tr class="first-round">
+                    <td data-label="Year">2023</td>
+                    <td data-label="Name">Jordan Price</td>
+                    <td data-label="Draft Team">New York Yankees</td>
+                    <td data-label="Round">1</td>
+                    <td data-label="Pick #">28</td>
+                    <td data-label="Current Level">MLB</td>
+                    <td data-label="Current Team">New York Yankees</td>
+                </tr>
+                <tr>
+                    <td data-label="Year">2023</td>
+                    <td data-label="Name">Tyler Johnson</td>
+                    <td data-label="Draft Team">Houston Astros</td>
+                    <td data-label="Round">3</td>
+                    <td data-label="Pick #">94</td>
+                    <td data-label="Current Level">Double-A</td>
+                    <td data-label="Current Team">Houston Astros</td>
+                </tr>
+                <tr>
+                    <td data-label="Year">2023</td>
+                    <td data-label="Name">Ethan Brooks</td>
+                    <td data-label="Draft Team">Detroit Tigers</td>
+                    <td data-label="Round">6</td>
+                    <td data-label="Pick #">187</td>
+                    <td data-label="Current Level">High-A</td>
+                    <td data-label="Current Team">Detroit Tigers</td>
+                </tr>
+
+                <!-- 2022 DRAFT CLASS -->
+                <tr class="year-group-header">
+                    <td colspan="7">2022 Draft Class</td>
+                </tr>
+                <tr>
+                    <td data-label="Year">2022</td>
+                    <td data-label="Name">Alex Martinez</td>
+                    <td data-label="Draft Team">Los Angeles Dodgers</td>
+                    <td data-label="Round">2</td>
+                    <td data-label="Pick #">54</td>
+                    <td data-label="Current Level">MLB</td>
+                    <td data-label="Current Team">Los Angeles Dodgers</td>
+                </tr>
+                <tr>
+                    <td data-label="Year">2022</td>
+                    <td data-label="Name">Ryan Foster</td>
+                    <td data-label="Draft Team">Chicago Cubs</td>
+                    <td data-label="Round">3</td>
+                    <td data-label="Pick #">89</td>
+                    <td data-label="Current Level">MLB</td>
+                    <td data-label="Current Team">Chicago Cubs</td>
+                </tr>
+                <tr>
+                    <td data-label="Year">2022</td>
+                    <td data-label="Name">Kevin Park</td>
+                    <td data-label="Draft Team">Oakland Athletics</td>
+                    <td data-label="Round">7</td>
+                    <td data-label="Pick #">218</td>
+                    <td data-label="Current Level">Triple-A</td>
+                    <td data-label="Current Team">Oakland Athletics</td>
+                </tr>
+                <tr>
+                    <td data-label="Year">2022</td>
+                    <td data-label="Name">Daniel White</td>
+                    <td data-label="Draft Team">Kansas City Royals</td>
+                    <td data-label="Round">10</td>
+                    <td data-label="Pick #">312</td>
+                    <td data-label="Current Level">Double-A</td>
+                    <td data-label="Current Team">Kansas City Royals</td>
+                </tr>
+
+                <!-- 2021 DRAFT CLASS — hidden until Show More -->
+                <tr class="year-group-header draft-hidden">
+                    <td colspan="7">2021 Draft Class</td>
+                </tr>
+                <tr class="draft-hidden">
+                    <td data-label="Year">2021</td>
+                    <td data-label="Name">Marcus Henderson</td>
+                    <td data-label="Draft Team">Atlanta Braves</td>
+                    <td data-label="Round">2</td>
+                    <td data-label="Pick #">61</td>
+                    <td data-label="Current Level">MLB</td>
+                    <td data-label="Current Team">Atlanta Braves</td>
+                </tr>
+                <tr class="draft-hidden">
+                    <td data-label="Year">2021</td>
+                    <td data-label="Name">Sam Mitchell</td>
+                    <td data-label="Draft Team">Philadelphia Phillies</td>
+                    <td data-label="Round">4</td>
+                    <td data-label="Pick #">128</td>
+                    <td data-label="Current Level">Triple-A</td>
+                    <td data-label="Current Team">Philadelphia Phillies</td>
+                </tr>
+                <tr class="draft-hidden">
+                    <td data-label="Year">2021</td>
+                    <td data-label="Name">Chris Taylor</td>
+                    <td data-label="Draft Team">Cleveland Guardians</td>
+                    <td data-label="Round">9</td>
+                    <td data-label="Pick #">279</td>
+                    <td data-label="Current Level">Double-A</td>
+                    <td data-label="Current Team">Cleveland Guardians</td>
+                </tr>
+
+                <!-- 2020 DRAFT CLASS — hidden until Show More -->
+                <tr class="year-group-header draft-hidden">
+                    <td colspan="7">2020 Draft Class</td>
+                </tr>
+                <tr class="draft-hidden first-round">
+                    <td data-label="Year">2020</td>
+                    <td data-label="Name">Brandon Cole</td>
+                    <td data-label="Draft Team">Boston Red Sox</td>
+                    <td data-label="Round">1</td>
+                    <td data-label="Pick #">22</td>
+                    <td data-label="Current Level">MLB</td>
+                    <td data-label="Current Team">Boston Red Sox</td>
+                </tr>
+                <tr class="draft-hidden">
+                    <td data-label="Year">2020</td>
+                    <td data-label="Name">Jake Williams</td>
+                    <td data-label="Draft Team">Seattle Mariners</td>
+                    <td data-label="Round">3</td>
+                    <td data-label="Pick #">98</td>
+                    <td data-label="Current Level">MLB</td>
+                    <td data-label="Current Team">Seattle Mariners</td>
+                </tr>
+                <tr class="draft-hidden">
+                    <td data-label="Year">2020</td>
+                    <td data-label="Name">Noah Anderson</td>
+                    <td data-label="Draft Team">Milwaukee Brewers</td>
+                    <td data-label="Round">5</td>
+                    <td data-label="Pick #">156</td>
+                    <td data-label="Current Level">Triple-A</td>
+                    <td data-label="Current Team">Milwaukee Brewers</td>
+                </tr>
+                <tr class="draft-hidden">
+                    <td data-label="Year">2020</td>
+                    <td data-label="Name">Justin Lee</td>
+                    <td data-label="Draft Team">Toronto Blue Jays</td>
+                    <td data-label="Round">8</td>
+                    <td data-label="Pick #">245</td>
+                    <td data-label="Current Level">High-A</td>
+                    <td data-label="Current Team">Toronto Blue Jays</td>
+                </tr>
+
+                <!-- 2019 DRAFT CLASS — hidden until Show More -->
+                <tr class="year-group-header draft-hidden">
+                    <td colspan="7">2019 Draft Class</td>
+                </tr>
+                <tr class="draft-hidden">
+                    <td data-label="Year">2019</td>
+                    <td data-label="Name">Drew Patterson</td>
+                    <td data-label="Draft Team">San Francisco Giants</td>
+                    <td data-label="Round">2</td>
+                    <td data-label="Pick #">58</td>
+                    <td data-label="Current Level">Triple-A</td>
+                    <td data-label="Current Team">San Francisco Giants</td>
+                </tr>
+                <tr class="draft-hidden">
+                    <td data-label="Year">2019</td>
+                    <td data-label="Name">Austin King</td>
+                    <td data-label="Draft Team">Arizona Diamondbacks</td>
+                    <td data-label="Round">6</td>
+                    <td data-label="Pick #">189</td>
+                    <td data-label="Current Level">Double-A</td>
+                    <td data-label="Current Team">Arizona Diamondbacks</td>
+                </tr>
+                <tr class="draft-hidden">
+                    <td data-label="Year">2019</td>
+                    <td data-label="Name">Blake Morris</td>
+                    <td data-label="Draft Team">Pittsburgh Pirates</td>
+                    <td data-label="Round">11</td>
+                    <td data-label="Pick #">334</td>
+                    <td data-label="Current Level">High-A</td>
+                    <td data-label="Current Team">Pittsburgh Pirates</td>
+                </tr>
+
+                <!-- 2018 DRAFT CLASS — hidden until Show More -->
+                <tr class="year-group-header draft-hidden">
+                    <td colspan="7">2018 Draft Class</td>
+                </tr>
+                <tr class="draft-hidden">
+                    <td data-label="Year">2018</td>
+                    <td data-label="Name">Carter Robinson</td>
+                    <td data-label="Draft Team">St. Louis Cardinals</td>
+                    <td data-label="Round">4</td>
+                    <td data-label="Pick #">123</td>
+                    <td data-label="Current Level">Triple-A</td>
+                    <td data-label="Current Team">St. Louis Cardinals</td>
+                </tr>
+                <tr class="draft-hidden">
+                    <td data-label="Year">2018</td>
+                    <td data-label="Name">Mason Wright</td>
+                    <td data-label="Draft Team">Colorado Rockies</td>
+                    <td data-label="Round">7</td>
+                    <td data-label="Pick #">221</td>
+                    <td data-label="Current Level">Double-A</td>
+                    <td data-label="Current Team">Colorado Rockies</td>
+                </tr>
+                <tr class="draft-hidden">
+                    <td data-label="Year">2018</td>
+                    <td data-label="Name">Ian Cooper</td>
+                    <td data-label="Draft Team">Baltimore Orioles</td>
+                    <td data-label="Round">12</td>
+                    <td data-label="Pick #">367</td>
+                    <td data-label="Current Level">Retired</td>
+                    <td data-label="Current Team">&mdash;</td>
+                </tr>
+
+                <!-- 2017 DRAFT CLASS — hidden until Show More -->
+                <tr class="year-group-header draft-hidden">
+                    <td colspan="7">2017 Draft Class</td>
+                </tr>
+                <tr class="draft-hidden">
+                    <td data-label="Year">2017</td>
+                    <td data-label="Name">Logan Hayes</td>
+                    <td data-label="Draft Team">Washington Nationals</td>
+                    <td data-label="Round">3</td>
+                    <td data-label="Pick #">92</td>
+                    <td data-label="Current Level">Triple-A</td>
+                    <td data-label="Current Team">Washington Nationals</td>
+                </tr>
+                <tr class="draft-hidden">
+                    <td data-label="Year">2017</td>
+                    <td data-label="Name">Zach Miller</td>
+                    <td data-label="Draft Team">Miami Marlins</td>
+                    <td data-label="Round">9</td>
+                    <td data-label="Pick #">278</td>
+                    <td data-label="Current Level">Double-A</td>
+                    <td data-label="Current Team">Miami Marlins</td>
+                </tr>
+
+                <!-- 2016 DRAFT CLASS — hidden until Show More -->
+                <tr class="year-group-header draft-hidden">
+                    <td colspan="7">2016 Draft Class</td>
+                </tr>
+                <tr class="draft-hidden">
+                    <td data-label="Year">2016</td>
+                    <td data-label="Name">Dylan Scott</td>
+                    <td data-label="Draft Team">Texas Rangers</td>
+                    <td data-label="Round">5</td>
+                    <td data-label="Pick #">167</td>
+                    <td data-label="Current Level">Coaching</td>
+                    <td data-label="Current Team">&mdash;</td>
+                </tr>
+                <tr class="draft-hidden">
+                    <td data-label="Year">2016</td>
+                    <td data-label="Name">Caleb Turner</td>
+                    <td data-label="Draft Team">Cincinnati Reds</td>
+                    <td data-label="Round">8</td>
+                    <td data-label="Pick #">249</td>
+                    <td data-label="Current Level">High-A</td>
+                    <td data-label="Current Team">Cincinnati Reds</td>
+                </tr>
+
+                <!-- 2015 DRAFT CLASS — hidden until Show More -->
+                <tr class="year-group-header draft-hidden">
+                    <td colspan="7">2015 Draft Class</td>
+                </tr>
+                <tr class="draft-hidden">
+                    <td data-label="Year">2015</td>
+                    <td data-label="Name">Jackson Reed</td>
+                    <td data-label="Draft Team">Los Angeles Angels</td>
+                    <td data-label="Round">6</td>
+                    <td data-label="Pick #">194</td>
+                    <td data-label="Current Level">Retired</td>
+                    <td data-label="Current Team">&mdash;</td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <div class="draft-show-more-container">
+            <button class="draft-show-more-btn" id="showMoreDraft" aria-expanded="false">
+                Show More Draft Picks
+            </button>
+        </div>
+    </div>
+</section>

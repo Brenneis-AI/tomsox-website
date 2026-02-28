@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Charlottesville Tom Sox Baseball Record Book</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Oswald:700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #84BD00;
+            --secondary: #1B365D;
+            --accent: #fff;
+            --shadow: 0 4px 24px 0 rgba(27, 54, 93, 0.08);
+            --radius: 1.5rem;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Open Sans', Arial, sans-serif;
+            background: #f8fafc;
+            color: #1B365D;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 330px;
+            background: linear-gradient(135deg, rgba(27, 54, 93, 0.88) 70%, rgba(132, 189, 0, 0.90)), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+            color: var(--accent);
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .hero-title {
+            font-family: 'Oswald', Arial, sans-serif;
+            font-size: 3rem;
+            letter-spacing: 2px;
+            text-shadow: 0 6px 24px #222a;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-sub {
+            font-size: 1.25rem;
+            opacity: 0.92;
+        }
+
+        /* STAT CARDS */
+        .stat-card-row {
+            margin-top: -60px;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            z-index: 2;
+            position: relative;
+        }
+
+        .stat-card {
+            background: #fff;
+            color: var(--secondary);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 2rem 2.25rem;
+            min-width: 200px;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 1.25rem;
+            transition: transform 0.18s, box-shadow 0.18s;
+            font-family: 'Oswald', Arial, sans-serif;
+            font-weight: 700;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 8px 36px 0 rgba(27, 54, 93, 0.13);
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+            letter-spacing: 1px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1.05rem;
+            letter-spacing: 1px;
+            color: var(--secondary);
+            opacity: 0.87;
+        }
+
+        /* INTRO TEXT */
+        .intro {
+            max-width: 700px;
+            margin: 2.5rem auto 1.5rem auto;
+            font-size: 1.13rem;
+            line-height: 1.65;
+            color: var(--secondary);
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 2rem 2.2rem;
+            text-align: center;
+        }
+
+        /* FEATURE GRID */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2.5rem auto 2.5rem auto;
+            padding: 0 1.25rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #1B365D 80%, #84BD00 120%);
+            color: #fff;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 2.25rem 2rem 2rem 2rem;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: box-shadow 0.18s, transform 0.15s;
+            min-height: 180px;
+            text-decoration: none;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 8px 32px 0 rgba(132, 189, 0, 0.15);
+            transform: translateY(-6px) scale(1.02);
+        }
+
+        .feature-icon {
+            font-size: 2.3rem;
+            margin-bottom: 0.7rem;
+            opacity: 0.93;
+        }
+
+        .feature-title {
+            font-family: 'Oswald', Arial, sans-serif;
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.1;
+        }
+
+        .feature-desc {
+            font-size: 1.05rem;
+            opacity: 0.87;
+            margin-bottom: 0.3rem;
+        }
+
+        /* RESPONSIVE MEDIA QUERIES */
+        @media (max-width: 900px) {
+            .stat-card-row {
+                gap: 1rem;
+                flex-direction: column;
+                align-items: center;
+            }
+            .intro {
+                padding: 1.2rem 1.1rem;
+                font-size: 1rem;
+            }
+            .feature-card {
+                padding: 1.4rem 1.1rem 1.1rem 1.1rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            .stat-card {
+                min-width: 150px;
+                padding: 1.1rem 1rem;
+            }
+            .stat-number {
+                font-size: 2rem;
+            }
+            .feature-title {
+                font-size: 1.17rem;
+            }
+            .feature-grid {
+                gap: 1.2rem;
+            }
+        }
+
+        /* Simple fade-in animation */
+        .fadein {
+            opacity: 0;
+            transform: translateY(28px);
+            animation: fadein 1.1s cubic-bezier(.48, .1, .15, 1) forwards;
+        }
+
+        .fadein-1 { animation-delay: .13s; }
+        .fadein-2 { animation-delay: .28s; }
+        .fadein-3 { animation-delay: .42s; }
+        .fadein-4 { animation-delay: .56s; }
+        .fadein-5 { animation-delay: .67s; }
+
+        @keyframes fadein {
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO SECTION -->
+    <div class="hero">
+        <div class="hero-title">Charlottesville Tom Sox<br>Record Book</div>
+        <div class="hero-sub">A decade of dominance in the Valley Baseball League</div>
+    </div>
+
+    <!-- STAT CARDS ROW -->
+    <div class="stat-card-row">
+        <div class="stat-card fadein fadein-1">
+            <div class="stat-number">253-166</div>
+            <div class="stat-label">All-Time Record</div>
+        </div>
+        <div class="stat-card fadein fadein-2">
+            <div class="stat-number">4</div>
+            <div class="stat-label">VBL Championships</div>
+        </div>
+        <div class="stat-card fadein fadein-3">
+            <div class="stat-number">400+</div>
+            <div class="stat-label">Players All-Time</div>
+        </div>
+        <div class="stat-card fadein fadein-4">
+            <div class="stat-number">60+</div>
+            <div class="stat-label">Players Drafted</div>
+        </div>
+    </div>
+
+    <!-- INTRO SECTION -->
+    <div class="intro fadein fadein-5">
+        Welcome to the official Charlottesville Tom Sox Baseball Record Book. Explore the program’s decade of success—highlighting championships, record-breaking performances, future pros, and the players and coaches who’ve defined Tom Sox excellence. Dive in to see team, individual, and playoff records, program milestones, and a year-by-year look at one of the Valley League’s most successful franchises.
+    </div>
+
+    <!-- FEATURE GRID LINKS -->
+    <div class="feature-grid">
+        <a href="/team-records/program-history" class="feature-card fadein fadein-1">
+            <span class="feature-icon">
+                <!-- Book SVG -->
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#84BD00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 19.5A2.5 2.5 0 0 1 4.5 17H20"/>
+                    <path d="M2 6.5A2.5 2.5 0 0 1 4.5 4H20"/>
+                    <path d="M20 22V2"/>
+                </svg>
+            </span>
+            <div class="feature-title">Program History</div>
+            <div class="feature-desc">A timeline of coaches, overall records, and championship highlights.</div>
+        </a>
+
+        <a href="/team-records/individual-records" class="feature-card fadein fadein-2">
+            <span class="feature-icon">
+                <!-- User SVG -->
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#84BD00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="7" r="4"/>
+                    <path d="M5.5 21H18.5"/>
+                    <path d="M2 17a6 6 0 0 1 12 0"/>
+                </svg>
+            </span>
+            <div class="feature-title">Individual Records</div>
+            <div class="feature-desc">Career, single-season, and single-game records set by Tom Sox players.</div>
+        </a>
+
+        <a href="/team-records/team-records-data" class="feature-card fadein fadein-3">
+            <span class="feature-icon">
+                <!-- Bar Chart SVG -->
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#84BD00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="20" x2="12" y2="10"/>
+                    <line x1="18" y1="20" x2="18" y2="4"/>
+                    <line x1="6" y1="20" x2="6" y2="16"/>
+                </svg>
+            </span>
+            <div class="feature-title">Team Records</div>
+            <div class="feature-desc">All-time team highs and single-game/season statistical milestones.</div>
+        </a>
+
+        <a href="/team-records/year-by-year" class="feature-card fadein fadein-4">
+            <span class="feature-icon">
+                <!-- Calendar SVG -->
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#84BD00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6"/>
+                    <line x1="8" y1="2" x2="8" y2="6"/>
+                    <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+            </span>
+            <div class="feature-title">Year-by-Year Results</div>
+            <div class="feature-desc">Season-by-season records, coaches, and team achievements.</div>
+        </a>
+
+        <a href="/team-records/playoffs" class="feature-card fadein fadein-5">
+            <span class="feature-icon">
+                <!-- Trophy SVG -->
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#84BD00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 17v3a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-3"/>
+                    <path d="M7 4V2h10v2"/>
+                    <rect x="4" y="4" width="16" height="8" rx="4"/>
+                    <path d="M4 8a4 4 0 0 0 8 0"/>
+                </svg>
+            </span>
+            <div class="feature-title">Playoff & Championship History</div>
+            <div class="feature-desc">Postseason results, playoff runs, and all four championship seasons.</div>
+        </a>
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+        // Simple fade-in trigger if needed for extra polish
+        document.querySelectorAll('.fadein').forEach(el => {
+            el.style.opacity = 1;
+            el.style.transform = 'none';
+        });
+    </script>
+
+</body>
+</html>

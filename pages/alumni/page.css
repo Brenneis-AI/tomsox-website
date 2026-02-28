@@ -1,11 +1,20 @@
+/*
+  File: page.css
+  Page: Alumni
+  Section: All page styles
+  Last Updated: 2026-02-23
+*/
+
 /* =========================================================
-   GLOBAL STYLES & FONT IMPORTS
+   FONT IMPORTS
    ========================================================= */
 
-/* 1. Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Open+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Arimo:wght@400;600;700&display=swap');
 
-/* 2. Global Reset */
+/* =========================================================
+   RESET & BASE
+   ========================================================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -16,30 +25,28 @@ html {
     scroll-behavior: smooth;
 }
 
-/* 3. Body Baseline */
-body {
-    font-family: 'Open Sans', sans-serif;
-    color: #333;
-    line-height: 1.6;
-}
-/* =========================================
-   TOM SOX ALUMNI - WHERE ARE THEY NOW
-   Complete CSS for Alumni Page
-   ========================================= */
+/* =========================================================
+   CSS VARIABLES
+   ========================================================= */
 
-/* --- CSS VARIABLES (From Design System) --- */
 :root {
     --green: #84BD00;
     --navy: #1b365d;
     --white: #ffffff;
-    --orange: #FF5A1F;
     --light-gray: #a7a8aa;
     --dark-gray: #333333;
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
+    --bg-light: #f4f6f8;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.14);
     --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.2);
     --font-heading: 'Oswald', sans-serif;
     --font-body: 'Arimo', sans-serif;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--dark-gray);
+    line-height: 1.6;
 }
 
 
@@ -49,8 +56,8 @@ body {
 
 .ts-alumni-hero {
     position: relative;
-    height: 80vh;
-    min-height: 700px;
+    height: 85vh;
+    min-height: 600px;
     overflow: hidden;
     background-color: var(--navy);
 }
@@ -59,9 +66,9 @@ body {
     position: relative;
     width: 100%;
     height: 100%;
+    outline: none;
 }
 
-/* Carousel Slides */
 .carousel-slide {
     position: absolute;
     top: 0;
@@ -69,10 +76,10 @@ body {
     width: 100%;
     height: 100%;
     background-size: cover;
-    background-position: center;
+    background-position: top center;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
     z-index: 1;
 }
 
@@ -82,63 +89,77 @@ body {
     z-index: 2;
 }
 
-/* Carousel Gradient Overlay */
 .carousel-gradient {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(27, 54, 93, 0.85) 0%, rgba(27, 54, 93, 0.6) 50%, rgba(132, 189, 0, 0.3) 100%);
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(27, 54, 93, 0.9) 0%,
+        rgba(27, 54, 93, 0.55) 55%,
+        rgba(132, 189, 0, 0.15) 100%
+    );
     z-index: 3;
 }
 
-/* Carousel Content (Bottom-Left) */
 .carousel-content {
     position: absolute;
-    bottom: 80px;
+    bottom: 90px;
     left: 60px;
     z-index: 4;
-    max-width: 600px;
+    max-width: 640px;
     color: var(--white);
+}
+
+.carousel-tag {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--green);
+    border: 1px solid var(--green);
+    padding: 4px 14px;
+    border-radius: 3px;
+    margin-bottom: 18px;
 }
 
 .carousel-name {
     font-family: var(--font-heading);
-    font-size: 3.5rem;
-    font-weight: 800;
+    font-size: 4rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin: 0 0 15px 0;
-    line-height: 1.1;
+    letter-spacing: 1px;
+    margin: 0 0 14px 0;
+    line-height: 1.05;
 }
 
 .carousel-achievement {
     font-family: var(--font-body);
-    font-size: 1.5rem;
+    font-size: 1.35rem;
     font-weight: 600;
     margin: 0 0 8px 0;
     color: var(--green);
+    line-height: 1.4;
 }
 
 .carousel-years {
     font-family: var(--font-body);
-    font-size: 1.125rem;
+    font-size: 1.05rem;
     margin: 0;
-    opacity: 0.9;
+    opacity: 0.8;
 }
 
-/* Carousel Navigation Buttons */
 .carousel-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     z-index: 5;
-    background: rgba(255, 255, 255, 0.2);
-    border: 2px solid var(--white);
+    background: rgba(255, 255, 255, 0.12);
+    border: 2px solid rgba(255, 255, 255, 0.5);
     color: var(--white);
-    width: 50px;
-    height: 50px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -147,102 +168,272 @@ body {
     justify-content: center;
 }
 
-.carousel-btn:hover {
+.carousel-btn:hover,
+.carousel-btn:focus-visible {
     background: var(--green);
     border-color: var(--green);
+    outline: none;
 }
 
-.carousel-prev {
-    left: 30px;
-}
+.carousel-prev { left: 30px; }
+.carousel-next { right: 30px; }
 
-.carousel-next {
-    right: 30px;
-}
-
-/* Carousel Dots */
 .carousel-dots {
     position: absolute;
-    bottom: 30px;
+    bottom: 32px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 5;
     display: flex;
-    gap: 12px;
+    gap: 10px;
+    align-items: center;
 }
 
 .carousel-dots .dot {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
-    border: 2px solid var(--white);
+    background: rgba(255, 255, 255, 0.35);
+    border: 2px solid rgba(255, 255, 255, 0.6);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.35s ease;
     padding: 0;
 }
 
 .carousel-dots .dot:hover {
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.7);
 }
 
 .carousel-dots .dot.active {
     background: var(--green);
     border-color: var(--green);
-    width: 14px;
-    height: 14px;
+    width: 28px;
+    border-radius: 6px;
 }
 
 
 /* =========================================
-   SECTION 2: FEATURED SUCCESS STORIES
+   SECTION 2: IMPACT STATS
    ========================================= */
 
-.ts-featured-section {
-    padding: 80px 20px;
-    background-color: #f8f9fa;
+.ts-stats-section {
+    background: linear-gradient(135deg, var(--green) 0%, #6a9600 100%);
+    padding: 64px 20px;
 }
+
+.stats-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    text-align: center;
+    color: var(--white);
+    flex: 1;
+    min-width: 180px;
+    padding: 20px 30px;
+    position: relative;
+}
+
+.stat-item + .stat-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 15%;
+    height: 70%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.stat-number {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--white);
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+
+/* =========================================
+   SHARED: SECTION HEADERS
+   ========================================= */
 
 .section-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 56px;
 }
 
 .ts-section-headline {
     font-family: var(--font-heading);
     font-size: 3rem;
-    font-weight: 800;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     color: var(--navy);
-    margin: 0 0 15px 0;
-    line-height: 1.2;
+    margin: 0 0 14px 0;
+    line-height: 1.15;
+}
+
+.section-header-line {
+    width: 56px;
+    height: 4px;
+    background: var(--green);
+    margin: 0 auto 18px;
+    border-radius: 2px;
 }
 
 .ts-section-subheadline {
     font-family: var(--font-body);
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     color: var(--dark-gray);
     margin: 0;
-    line-height: 1.5;
+    line-height: 1.55;
 }
 
-/* Featured Grid */
-.featured-grid {
+
+/* =========================================
+   SHARED: ALUMNI GRID & CARD
+   ========================================= */
+
+.alumni-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Featured Card */
+.ts-alumni-card {
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 4px solid transparent;
+    display: flex;
+    flex-direction: column;
+}
+
+.ts-alumni-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+}
+
+.alumni-image {
+    width: 100%;
+    height: 240px;
+    background-size: cover;
+    background-position: top center;
+    flex-shrink: 0;
+}
+
+.alumni-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.alumni-name {
+    font-family: var(--font-heading);
+    font-size: 1.45rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin: 0 0 6px 0;
+}
+
+.alumni-current {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--green);
+    margin: 0 0 4px 0;
+}
+
+.alumni-years {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: var(--light-gray);
+    margin: 0 0 12px 0;
+}
+
+.alumni-stats {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--dark-gray);
+    margin: 0 0 16px 0;
+}
+
+.alumni-profile-link,
+.alumni-stats-link {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--green);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    margin-top: auto;
+}
+
+.alumni-profile-link:hover,
+.alumni-stats-link:hover {
+    color: var(--navy);
+}
+
+.alumni-career {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: var(--light-gray);
+    font-style: italic;
+    margin: 8px 0 0 0;
+}
+
+
+/* =========================================
+   SECTION 3: FEATURED SUCCESS STORIES
+   ========================================= */
+
+.ts-featured-section {
+    padding: 90px 20px;
+    background-color: var(--bg-light);
+}
+
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 .ts-featured-card {
     background: var(--white);
     border-radius: 12px;
     overflow: hidden;
     box-shadow: var(--shadow-md);
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
 }
 
 .ts-featured-card:hover {
@@ -252,13 +443,17 @@ body {
 
 .featured-image {
     width: 100%;
-    height: 280px;
+    height: 300px;
     background-size: cover;
-    background-position: center;
+    background-position: top center;
+    flex-shrink: 0;
 }
 
 .featured-content {
-    padding: 30px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .featured-name {
@@ -267,12 +462,12 @@ body {
     font-weight: 700;
     text-transform: uppercase;
     color: var(--navy);
-    margin: 0 0 8px 0;
+    margin: 0 0 6px 0;
 }
 
 .featured-role {
     font-family: var(--font-body);
-    font-size: 1.125rem;
+    font-size: 1.1rem;
     font-weight: 600;
     color: var(--green);
     margin: 0 0 4px 0;
@@ -280,23 +475,25 @@ body {
 
 .featured-years {
     font-family: var(--font-body);
-    font-size: 0.95rem;
+    font-size: 0.875rem;
     color: var(--light-gray);
     margin: 0 0 20px 0;
 }
 
 .featured-bio {
     font-family: var(--font-body);
-    font-size: 1rem;
+    font-size: 0.975rem;
     color: var(--dark-gray);
-    line-height: 1.6;
-    margin: 0 0 20px 0;
+    line-height: 1.65;
+    margin: 0 0 24px 0;
+    flex: 1;
 }
 
 .featured-achievements {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
+    margin-bottom: 20px;
 }
 
 .achievement-badge {
@@ -304,123 +501,85 @@ body {
     background: var(--green);
     color: var(--white);
     font-family: var(--font-heading);
-    font-size: 0.85rem;
-    font-weight: 700;
+    font-size: 0.78rem;
+    font-weight: 600;
     text-transform: uppercase;
-    padding: 6px 14px;
+    letter-spacing: 0.5px;
+    padding: 5px 14px;
     border-radius: 20px;
 }
 
 
 /* =========================================
-   SECTION 3: TOM SOX IN THE MAJORS
+   SECTION 4: TOM SOX IN THE MAJORS
    ========================================= */
 
 .ts-mlb-section {
-    padding: 80px 20px;
+    padding: 90px 20px;
     background-color: var(--white);
 }
 
-/* Alumni Grid (Used in Multiple Sections) */
-.alumni-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Alumni Card Base Styles */
-.ts-alumni-card {
-    background: var(--white);
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: var(--shadow-sm);
-    transition: all 0.3s ease;
-    border-top: 4px solid transparent;
-}
-
-.ts-alumni-card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-md);
-}
-
-/* MLB Card Variant (Green Accent) */
 .mlb-card {
     border-top-color: var(--green);
 }
 
 .mlb-card:hover {
-    box-shadow: 0 8px 24px rgba(132, 189, 0, 0.25);
-}
-
-/* Alumni Card Image */
-.alumni-image {
-    width: 100%;
-    height: 240px;
-    background-size: cover;
-    background-position: center;
-}
-
-/* Alumni Card Content */
-.alumni-content {
-    padding: 24px;
-}
-
-.alumni-name {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: var(--navy);
-    margin: 0 0 8px 0;
-}
-
-.alumni-current {
-    font-family: var(--font-body);
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: var(--green);
-    margin: 0 0 4px 0;
-}
-
-.alumni-years {
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    color: var(--light-gray);
-    margin: 0 0 12px 0;
-}
-
-.alumni-stats {
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    color: var(--dark-gray);
-    margin: 0 0 12px 0;
-}
-
-.alumni-stats-link {
-    display: inline-block;
-    font-family: var(--font-heading);
-    font-size: 0.9rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: var(--green);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.alumni-stats-link:hover {
-    color: var(--navy);
+    box-shadow: 0 10px 28px rgba(132, 189, 0, 0.2);
 }
 
 
 /* =========================================
-   SECTION 4: MLB DRAFT HISTORY
+   SECTION 5: MLB DRAFT HISTORY
    ========================================= */
 
 .ts-draft-section {
-    padding: 80px 20px;
-    background-color: #f8f9fa;
+    padding: 90px 20px;
+    background-color: var(--bg-light);
+}
+
+.draft-controls {
+    max-width: 1200px;
+    margin: 0 auto 28px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.draft-filter-label {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--navy);
+    margin-right: 6px;
+}
+
+.draft-filter-btn {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 8px 18px;
+    border-radius: 30px;
+    border: 2px solid #c8d0da;
+    background: transparent;
+    color: #7a8a99;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.draft-filter-btn:hover {
+    border-color: var(--navy);
+    color: var(--navy);
+}
+
+.draft-filter-btn.active {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: var(--white);
 }
 
 .draft-table-container {
@@ -428,13 +587,12 @@ body {
     margin: 0 auto;
 }
 
-/* Draft Table */
 .draft-table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
     background: var(--white);
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
     box-shadow: var(--shadow-sm);
 }
@@ -445,21 +603,22 @@ body {
 
 .draft-table th {
     font-family: var(--font-heading);
-    font-size: 1rem;
+    font-size: 0.85rem;
     font-weight: 700;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
     color: var(--white);
     padding: 18px 16px;
     text-align: left;
 }
 
 .draft-table tbody tr {
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #eee;
     transition: background-color 0.2s ease;
 }
 
 .draft-table tbody tr:hover {
-    background-color: rgba(132, 189, 0, 0.05);
+    background-color: rgba(132, 189, 0, 0.06);
 }
 
 .draft-table tbody tr:last-child {
@@ -468,21 +627,19 @@ body {
 
 .draft-table td {
     font-family: var(--font-body);
-    font-size: 0.95rem;
-    padding: 16px;
+    font-size: 0.9rem;
+    padding: 15px 16px;
     color: var(--dark-gray);
 }
 
-/* First Round Highlighting */
 .draft-table tr.first-round {
-    background-color: #fffbe7 !important;
+    background-color: #fffce8;
 }
 
 .draft-table tr.first-round:hover {
-    background-color: #fff8d6 !important;
+    background-color: #fff8d6;
 }
 
-/* Hidden Rows (for Show More) */
 .draft-table tr.draft-hidden {
     display: none;
 }
@@ -491,33 +648,46 @@ body {
     display: table-row;
 }
 
-/* Show More Button Container */
+/* Year Group Header Rows */
+.draft-table tr.year-group-header td {
+    background: #edf0f4;
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--navy);
+    padding: 8px 16px;
+    border-bottom: 1px solid #dce1e8;
+}
+
 .draft-show-more-container {
     text-align: center;
-    margin-top: 30px;
+    margin-top: 28px;
 }
 
 .draft-show-more-btn {
     display: inline-block;
-    padding: 16px 40px;
-    font-size: 1.1rem;
-    font-weight: 700;
+    padding: 14px 44px;
     font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    background-color: var(--green);
-    color: var(--navy);
+    background-color: var(--navy);
+    color: var(--white);
     border: none;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-sm);
 }
 
 .draft-show-more-btn:hover {
-    background-color: #6a9600;
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-lg);
+    background-color: var(--green);
+    color: var(--navy);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }
 
 .draft-show-more-btn.hidden {
@@ -526,21 +696,20 @@ body {
 
 
 /* =========================================
-   SECTION 5: TOM SOX IN PROFESSIONAL BASEBALL
+   SECTION 6: TOM SOX IN PROFESSIONAL BASEBALL
    ========================================= */
 
 .ts-milb-section {
-    padding: 80px 20px;
+    padding: 90px 20px;
     background-color: var(--white);
 }
 
-/* MiLB Card Variant (Navy Accent) */
 .milb-card {
     border-top-color: var(--navy);
 }
 
 .milb-card:hover {
-    box-shadow: 0 8px 24px rgba(27, 54, 93, 0.2);
+    box-shadow: 0 10px 28px rgba(27, 54, 93, 0.16);
 }
 
 .milb-card .alumni-current {
@@ -549,68 +718,109 @@ body {
 
 
 /* =========================================
-   SECTION 6: BEYOND THE FIELD
+   SECTION 7: BEYOND THE FIELD
    ========================================= */
 
 .ts-beyond-section {
-    padding: 80px 20px;
-    background-color: #f8f9fa;
+    padding: 90px 20px;
+    background: linear-gradient(175deg, #162d50 0%, var(--navy) 100%);
 }
 
-/* Beyond Card Variant (Grey Accent) */
+.ts-beyond-section .ts-section-headline {
+    color: var(--white);
+}
+
+.ts-beyond-section .ts-section-subheadline {
+    color: rgba(255, 255, 255, 0.7);
+}
+
 .beyond-card {
-    border-top-color: var(--light-gray);
+    border-top-color: var(--green);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 4px solid var(--green);
+    box-shadow: none;
 }
 
 .beyond-card:hover {
-    box-shadow: 0 8px 24px rgba(167, 168, 170, 0.3);
+    transform: translateY(-6px);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
+}
+
+.beyond-card .alumni-name {
+    color: var(--white);
 }
 
 .beyond-card .alumni-current {
-    color: var(--dark-gray);
+    color: var(--green);
 }
 
-.alumni-career {
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    color: var(--light-gray);
-    margin: 8px 0 0 0;
-    font-style: italic;
+.beyond-card .alumni-years {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.ts-beyond-section .alumni-career {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.beyond-card .alumni-profile-link {
+    color: var(--green);
+    margin-top: auto;
+}
+
+.beyond-card .alumni-profile-link:hover {
+    color: var(--white);
 }
 
 
 /* =========================================
-   SECTION 7: FINAL CTA
+   SECTION 8: CTA
    ========================================= */
 
 .ts-cta-section {
     padding: 100px 20px;
-    background: linear-gradient(135deg, var(--navy) 0%, rgba(27, 54, 93, 0.95) 100%);
+    background: linear-gradient(135deg, #0f2040 0%, var(--navy) 60%, #1c4020 100%);
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.ts-cta-section::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    left: -10%;
+    width: 50%;
+    height: 180%;
+    background: radial-gradient(ellipse, rgba(132, 189, 0, 0.1) 0%, transparent 65%);
+    pointer-events: none;
 }
 
 .cta-content {
-    max-width: 800px;
+    max-width: 760px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
 .cta-headline {
     font-family: var(--font-heading);
     font-size: 3rem;
-    font-weight: 800;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     color: var(--white);
     margin: 0 0 20px 0;
-    line-height: 1.2;
+    line-height: 1.15;
 }
 
 .cta-text {
     font-family: var(--font-body);
-    font-size: 1.25rem;
-    color: var(--white);
-    line-height: 1.6;
-    margin: 0 0 40px 0;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.65;
+    margin: 0 0 44px 0;
 }
 
 .cta-buttons {
@@ -618,50 +828,52 @@ body {
     gap: 20px;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .ts-btn-primary {
     display: inline-block;
-    padding: 16px 40px;
-    font-size: 1.1rem;
+    padding: 16px 44px;
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
     font-weight: 700;
     text-decoration: none;
     border-radius: 50px;
-    transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    box-shadow: var(--shadow-md);
-    font-family: var(--font-heading);
     background-color: var(--green);
     color: var(--navy);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(132, 189, 0, 0.4);
 }
 
 .ts-btn-primary:hover {
-    background-color: #6a9600;
+    background-color: #96d400;
     transform: translateY(-3px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 8px 30px rgba(132, 189, 0, 0.5);
 }
 
 .ts-btn-secondary {
     display: inline-block;
-    padding: 16px 40px;
-    font-size: 1.1rem;
+    padding: 14px 44px;
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
     font-weight: 700;
     text-decoration: none;
     border-radius: 50px;
-    transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    box-shadow: var(--shadow-md);
-    font-family: var(--font-heading);
     background-color: transparent;
     color: var(--white);
-    border: 3px solid var(--white);
+    border: 2px solid rgba(255, 255, 255, 0.55);
+    transition: all 0.3s ease;
 }
 
 .ts-btn-secondary:hover {
     background-color: var(--white);
     color: var(--navy);
+    border-color: var(--white);
+    transform: translateY(-3px);
 }
 
 
@@ -670,140 +882,95 @@ body {
    ========================================= */
 
 @media (max-width: 992px) {
-    
-    /* Hero Carousel */
+
     .ts-alumni-hero {
-        min-height: 600px;
+        min-height: 560px;
     }
 
     .carousel-content {
-        bottom: 60px;
+        bottom: 64px;
         left: 40px;
-        max-width: 500px;
+        max-width: 520px;
     }
 
-    .carousel-name {
-        font-size: 2.8rem;
-    }
+    .carousel-name { font-size: 3.1rem; }
+    .carousel-achievement { font-size: 1.2rem; }
 
-    .carousel-achievement {
-        font-size: 1.25rem;
-    }
-    
-    /* Section Padding */
     .ts-featured-section,
     .ts-mlb-section,
     .ts-draft-section,
     .ts-milb-section,
-    .ts-beyond-section {
-        padding: 60px 20px;
-    }
-    
-    /* Section Headlines */
-    .ts-section-headline {
-        font-size: 2.5rem;
-    }
-    
-    /* Featured Grid */
-    .featured-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-    
-    /* Alumni Grid */
-    .alumni-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    /* CTA Section */
+    .ts-beyond-section,
     .ts-cta-section {
-        padding: 80px 20px;
+        padding: 72px 20px;
     }
 
-    .cta-headline {
-        font-size: 2.5rem;
-    }
+    .ts-section-headline { font-size: 2.5rem; }
+
+    .featured-grid { gap: 24px; }
+
+    .alumni-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .cta-headline { font-size: 2.5rem; }
 }
 
 
 /* =========================================
-   RESPONSIVE: MOBILE (max-width: 768px)
+   RESPONSIVE: MOBILE (max-width: 600px)
    ========================================= */
 
-@media (max-width: 768px) {
-    
-    /* Hero Carousel */
+@media (max-width: 600px) {
+
     .ts-alumni-hero {
-        min-height: 500px;
+        min-height: 480px;
         height: auto;
     }
 
     .carousel-content {
-        bottom: 40px;
-        left: 25px;
-        right: 25px;
+        bottom: 52px;
+        left: 20px;
+        right: 20px;
         max-width: 100%;
     }
 
-    .carousel-name {
-        font-size: 2.2rem;
-    }
+    .carousel-name { font-size: 2.1rem; }
+    .carousel-achievement { font-size: 1rem; }
+    .carousel-years { font-size: 0.95rem; }
+    .carousel-tag { font-size: 0.72rem; }
 
-    .carousel-achievement {
-        font-size: 1.1rem;
-    }
+    .carousel-btn { width: 42px; height: 42px; }
+    .carousel-prev { left: 12px; }
+    .carousel-next { right: 12px; }
 
-    .carousel-years {
-        font-size: 1rem;
-    }
+    .carousel-dots .dot.active { width: 20px; }
 
-    .carousel-btn {
-        width: 40px;
-        height: 40px;
-    }
+    .ts-stats-section { padding: 48px 16px; }
+    .stat-item { min-width: 130px; padding: 16px 18px; }
+    .stat-number { font-size: 2.6rem; }
+    .stat-label { font-size: 0.78rem; }
+    .stat-item + .stat-item::before { display: none; }
 
-    .carousel-prev {
-        left: 15px;
-    }
+    .section-header { margin-bottom: 40px; }
+    .ts-section-headline { font-size: 1.9rem; }
+    .ts-section-subheadline { font-size: 1.05rem; }
 
-    .carousel-next {
-        right: 15px;
-    }
-    
-    /* Section Padding */
-    .ts-featured-section,
-    .ts-mlb-section,
-    .ts-draft-section,
-    .ts-milb-section,
-    .ts-beyond-section {
-        padding: 60px 20px;
-    }
-    
-    /* Section Headlines */
-    .ts-section-headline {
-        font-size: 2rem;
-    }
-
-    .ts-section-subheadline {
-        font-size: 1.1rem;
-    }
-    
-    /* Featured Grid */
     .featured-grid {
-        gap: 25px;
+        grid-template-columns: 1fr;
+        gap: 24px;
     }
 
-    .featured-name {
-        font-size: 1.75rem;
-    }
-    
-    /* Alumni Grid - Single Column */
+    .featured-image { height: 240px; }
+    .featured-content { padding: 24px; }
+    .featured-name { font-size: 1.75rem; }
+
     .alumni-grid {
         grid-template-columns: 1fr;
-        gap: 25px;
+        gap: 20px;
     }
-    
-    /* Draft Table - Transform to Cards */
+
+    .alumni-content { padding: 20px; }
+
+    /* Draft Table → Card Layout */
     .draft-table,
     .draft-table thead,
     .draft-table tbody,
@@ -813,51 +980,57 @@ body {
         display: block;
     }
 
-    .draft-table thead {
+    .draft-table thead,
+    .draft-table tr.year-group-header {
         display: none;
     }
 
     .draft-table tbody tr {
         margin-bottom: 1rem;
-        border: 1px solid #e5e5e5;
+        border: 1px solid #e0e6ed;
         border-radius: 10px;
         box-shadow: var(--shadow-sm);
         overflow: hidden;
+        background: var(--white);
     }
 
     .draft-table td {
-        padding: 0.75rem 0.75rem 0.75rem 45%;
+        padding: 10px 14px 10px 48%;
         position: relative;
-        border-bottom: 1px solid #f0f0f0;
+        border-bottom: 1px solid #f0f3f7;
+        font-size: 0.875rem;
+        min-height: 40px;
+        display: flex;
+        align-items: center;
     }
 
-    .draft-table td:last-child {
-        border-bottom: none;
-    }
+    .draft-table td:last-child { border-bottom: none; }
 
     .draft-table td::before {
         content: attr(data-label);
         position: absolute;
-        left: 0.75rem;
+        left: 14px;
+        top: 50%;
+        transform: translateY(-50%);
         font-weight: 700;
         font-family: var(--font-heading);
-        font-size: 0.85rem;
+        font-size: 0.72rem;
         text-transform: uppercase;
+        letter-spacing: 0.5px;
         color: var(--navy);
-    }
-    
-    /* CTA Section */
-    .ts-cta-section {
-        padding: 60px 20px;
+        width: 42%;
     }
 
-    .cta-headline {
-        font-size: 2rem;
+    .draft-table tr.first-round {
+        border-top: 3px solid var(--green) !important;
     }
 
-    .cta-text {
-        font-size: 1.1rem;
-    }
+    .draft-controls { gap: 6px; }
+    .draft-filter-btn { font-size: 0.75rem; padding: 6px 13px; }
+
+    .ts-cta-section { padding: 72px 20px; }
+    .cta-headline { font-size: 1.9rem; }
+    .cta-text { font-size: 1.05rem; }
 
     .cta-buttons {
         flex-direction: column;
@@ -868,33 +1041,20 @@ body {
     .ts-btn-secondary {
         width: 100%;
         text-align: center;
+        padding: 16px 32px;
     }
 }
 
 
 /* =========================================
-   RESPONSIVE: SMALL MOBILE (max-width: 480px)
+   RESPONSIVE: SMALL MOBILE (max-width: 400px)
    ========================================= */
 
-@media (max-width: 480px) {
-    
-    .carousel-name {
-        font-size: 1.8rem;
-    }
+@media (max-width: 400px) {
 
-    .carousel-achievement {
-        font-size: 1rem;
-    }
-
-    .ts-section-headline {
-        font-size: 1.75rem;
-    }
-
-    .featured-content {
-        padding: 20px;
-    }
-
-    .alumni-content {
-        padding: 20px;
-    }
+    .carousel-name { font-size: 1.75rem; }
+    .carousel-tag { display: none; }
+    .ts-section-headline { font-size: 1.65rem; }
+    .stat-number { font-size: 2.2rem; }
+    .featured-content { padding: 20px; }
 }

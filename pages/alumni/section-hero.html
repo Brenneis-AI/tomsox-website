@@ -1,0 +1,78 @@
+<!--
+  File: section-hero.html
+  Page: Alumni
+  Section: Hero carousel — rotating spotlight of top alumni
+  Last Updated: 2026-02-23
+-->
+
+<section class="ts-alumni-hero" role="region" aria-label="Alumni highlight carousel">
+    <div class="alumni-carousel" aria-roledescription="carousel">
+
+        <!-- SLIDE 1 — Trey Yesavage -->
+        <!-- TO UPDATE: Replace background-image URL, tag, name, achievement, years -->
+        <div class="carousel-slide active"
+             role="group"
+             aria-label="Slide 1 of 3: Trey Yesavage"
+             style="background-image: url('https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/697b5f514d568342b4ab0de0.webp');">
+            <div class="carousel-gradient"></div>
+            <div class="carousel-content">
+                <span class="carousel-tag">MLB &bull; Toronto Blue Jays</span>
+                <h1 class="carousel-name">TREY YESAVAGE</h1>
+                <p class="carousel-achievement">STARTING PITCHER<br>Toronto Blue Jays<br>World Series Game 1 Starter 2025</p>
+                <p class="carousel-years">Tom Sox All Valley League All-Star 2022</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 2 — Vinnie Pasquantino -->
+        <!-- TO UPDATE: Replace background-image URL, tag, name, achievement, years -->
+        <div class="carousel-slide"
+             role="group"
+             aria-label="Slide 2 of 3: Vinnie Pasquantino"
+             aria-hidden="true"
+             style="background-image: url('https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/697b70381f68d13bf3f9a6bc.webp');">
+            <div class="carousel-gradient"></div>
+            <div class="carousel-content">
+                <span class="carousel-tag">MLB &bull; Kansas City Royals</span>
+                <h1 class="carousel-name">VINNIE PASQUANTINO</h1>
+                <p class="carousel-achievement">FIRST BASEMAN<br>Kansas City Royals<br>3-Time MLB Player of the Week</p>
+                <p class="carousel-years">Tom Sox 2017 VBL Championship Team</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 3 — Lyndon Coleman -->
+        <!-- TO UPDATE: Replace background-image URL, tag, name, achievement, years -->
+        <div class="carousel-slide"
+             role="group"
+             aria-label="Slide 3 of 3: Lyndon Coleman"
+             aria-hidden="true"
+             style="background-image: url('https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/697b745db3ae830397a610c1.webp');">
+            <div class="carousel-gradient"></div>
+            <div class="carousel-content">
+                <span class="carousel-tag">Coaching &bull; NJCAA</span>
+                <h1 class="carousel-name">LYNDON COLEMAN</h1>
+                <p class="carousel-achievement">ATHLETIC DIRECTOR<br>Pasco-Hernando State College<br>2025 NJCAA DII Coach of the Year</p>
+                <p class="carousel-years">Tom Sox Head Coach 2023</p>
+            </div>
+        </div>
+
+        <!-- Carousel Navigation -->
+        <button class="carousel-btn carousel-prev" aria-label="Previous slide">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+        <button class="carousel-btn carousel-next" aria-label="Next slide">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+
+        <!-- Carousel Dots -->
+        <div class="carousel-dots" role="tablist" aria-label="Carousel navigation">
+            <button class="dot active" role="tab" aria-selected="true" aria-label="Go to slide 1"></button>
+            <button class="dot" role="tab" aria-selected="false" aria-label="Go to slide 2"></button>
+            <button class="dot" role="tab" aria-selected="false" aria-label="Go to slide 3"></button>
+        </div>
+
+    </div>
+</section>
