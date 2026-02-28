@@ -1,0 +1,13 @@
+/* =========================================================
+   TOM SOX WEBSITE - FOOTER CSS (GHL SAFE VERSION)
+   ========================================================= */
+
+/* 1. Import Fonts (Safe to keep) */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Open+Sans:wght@400;700&display=swap');
+
+/* 2. VARIABLES (Scoped to footer to prevent conflicts) */
+.site-footer {
+    --brand-green: #84BD00;
+    --dark-blue-bg: #1b365d;
+    --light-text: #ffffff;
+}

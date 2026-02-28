@@ -1,0 +1,2571 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Charlottesville Tom Sox | Year by Year Results</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Oswald:700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           GLOBAL STYLES & VARIABLES
+           ========================================= */
+        :root {
+            --tomsox-green: #84BD00;
+            --dark-blue: #1B365D;
+            --blue-gradient: linear-gradient(90deg, #1B365D 70%, #224472 100%);
+            --max-width: 1600px;
+            --sidebar-width: 200px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Open Sans', Arial, sans-serif;
+            background: #f7f7f7;
+            color: #222;
+            scroll-behavior: smooth;
+        }
+
+        /* =========================================
+           HERO SECTION
+           ========================================= */
+        .hero-section {
+            background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            position: relative;
+            min-height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--blue-gradient);
+            opacity: 0.86;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 20px #0006;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+            margin-bottom: 0;
+            opacity: 0.93;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        /* =========================================
+           TOP NAVIGATION BAR (CENTERED DESIGN)
+           ========================================= */
+        .records-nav {
+            width: 100%;
+            background: var(--dark-blue);
+            border-bottom: none;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
+        }
+
+        .records-nav-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0;
+            justify-content: center;
+        }
+
+        .nav-link {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.13rem;
+            color: #fff;
+            background: none;
+            border: none;
+            border-radius: 0;
+            padding: 1rem 2rem;
+            margin: 0;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            transition: background 0.2s, color 0.2s;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .nav-link.active {
+            background: var(--tomsox-green);
+            color: var(--dark-blue);
+            box-shadow: none;
+        }
+
+        .nav-link:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        /* =========================================
+           SEARCH CONTAINER
+           ========================================= */
+        .search-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 1rem 0.5rem 0.5rem 0.5rem;
+            background: #fff;
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 500px;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Open Sans', sans-serif;
+            transition: border-color 0.2s;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--tomsox-green);
+        }
+
+        /* =========================================
+           CONTENT WRAPPER (SIDEBAR + MAIN)
+           ========================================= */
+        .content-wrapper {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0.5rem;
+            display: flex;
+            gap: 1rem;
+            background: #fff;
+        }
+
+        /* =========================================
+           STICKY SIDEBAR NAVIGATION
+           ========================================= */
+        .sidebar-nav {
+            width: var(--sidebar-width);
+            position: sticky;
+            top: 80px;
+            align-self: flex-start;
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .sidebar-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--tomsox-green);
+        }
+
+        .sidebar-link {
+            display: block;
+            padding: 0.6rem 0.8rem;
+            color: #555;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: all 0.2s;
+            margin-bottom: 0.3rem;
+        }
+
+        .sidebar-link:hover {
+            background: var(--tomsox-green);
+            color: #fff;
+        }
+
+        .sidebar-link.active {
+            background: var(--dark-blue);
+            color: #fff;
+        }
+
+        /* =========================================
+           MAIN CONTENT AREA
+           ========================================= */
+        .main-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        /* =========================================
+           ACCORDION STYLES
+           ========================================= */
+        .accordion {
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 14px rgba(27, 54, 93, 0.1);
+            background: #fff;
+        }
+
+        .accordion-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            padding: 1rem 1.2rem;
+            cursor: pointer;
+            user-select: none;
+            background: var(--blue-gradient);
+            color: #fff;
+            border: none;
+            outline: none;
+            transition: background 0.2s;
+            position: relative;
+        }
+
+        .accordion-header:hover {
+            background: linear-gradient(90deg, #1B365D 60%, #2a4f7f 100%);
+        }
+
+        .accordion-header .arrow {
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+            margin-left: 1rem;
+        }
+
+        .accordion.open .accordion-header .arrow {
+            transform: rotate(90deg);
+        }
+
+        /* Championship styling */
+        .accordion-header.championship {
+            background: linear-gradient(90deg, var(--tomsox-green) 10%, #9ed61f 70%, var(--dark-blue) 100%);
+        }
+
+        .accordion-header.championship:hover {
+            background: linear-gradient(90deg, var(--tomsox-green) 10%, #aee32f 70%, #1B365D 100%);
+        }
+
+        /* Badges */
+        .champ-badge,
+        .badge-champ {
+            color: #fff;
+            background: var(--tomsox-green);
+            border-radius: 1em;
+            padding: 0.12em 0.7em;
+            font-size: 0.88em;
+            font-weight: 700;
+            display: inline-block;
+            margin-left: 0.4em;
+            vertical-align: middle;
+            letter-spacing: 0.2px;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.15);
+        }
+
+        .runner-up-badge,
+        .badge-runner-up {
+            color: #29314e;
+            background: #f0c400;
+            border-radius: 1em;
+            padding: 0.12em 0.7em;
+            font-size: 0.88em;
+            font-weight: 700;
+            display: inline-block;
+            margin-left: 0.4em;
+            vertical-align: middle;
+            letter-spacing: 0.2px;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.15);
+        }
+
+        .season-record {
+            margin-left: 1rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Accordion content */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            background: #fff;
+        }
+
+        .accordion.open .accordion-content {
+            padding: 1rem 1.2rem 1.2rem 1.2rem;
+        }
+
+        .accordion-summary {
+            background: #f8fcfa;
+            padding: 1.2rem 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            font-size: 0.98rem;
+        }
+
+        .accordion-summary ul {
+            margin: 0.8rem 0 0 0;
+            padding-left: 1.5rem;
+        }
+
+        .accordion-summary li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .accordion-highlight {
+            display: inline-block;
+            background: #ecfaea;
+            border-left: 4px solid var(--tomsox-green);
+            padding: 0.4rem 0.8rem;
+            margin: 0.3rem 0;
+            border-radius: 6px;
+            font-weight: 600;
+            color: #4b730d;
+        }
+
+        /* =========================================
+           TABLE CATEGORY & SHOW MORE BUTTON
+           ========================================= */
+        .table-category {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .show-more-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--tomsox-green);
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .show-more-btn:hover {
+            background: #72a500;
+        }
+
+        .show-more-btn.collapsed::after {
+            content: ' ▼';
+        }
+
+        .show-more-btn.expanded::after {
+            content: ' ▲';
+        }
+
+        /* =========================================
+           TABLES
+           ========================================= */
+        .records-table,
+        .results-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 0.98rem;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 1px 10px 0 #1b365d0d;
+            margin-bottom: 1.5rem;
+        }
+
+        .records-table th,
+        .results-table th {
+            background: var(--dark-blue);
+            color: #fff;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            font-size: 0.95em;
+            padding: 0.6em 0.7em;
+            border-bottom: 3px solid var(--tomsox-green);
+            text-align: left;
+        }
+
+        .records-table td,
+        .results-table td {
+            background: #fff;
+            color: #222;
+            padding: 0.5em 0.7em;
+            border-bottom: 1px solid #e8ebf2;
+            font-family: 'Open Sans', Arial, sans-serif;
+        }
+
+        .records-table tr:hover td,
+        .results-table tr:hover td {
+            background: #f7fadf;
+        }
+
+        .records-table tr:last-child td,
+        .results-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Table row visibility */
+        .table-row-hidden {
+            display: none;
+        }
+
+        /* Highlight matching rows in search */
+        .highlight-row {
+            background: #fff9c4 !important;
+        }
+
+        /* Result styling */
+        .result-win {
+            color: var(--tomsox-green);
+            font-weight: 700;
+        }
+
+        .result-loss {
+            color: #c33232;
+            font-weight: 700;
+        }
+
+        .result-forfeit {
+            color: #f39504;
+            font-weight: 700;
+        }
+
+        /* Championship row highlighting */
+        tr.championship,
+        .champ-row {
+            background: #e6f9c5 !important;
+        }
+
+        /* =========================================
+           SCROLL TO TOP BUTTON
+           ========================================= */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--tomsox-green);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            z-index: 1000;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            background: #72a500;
+        }
+
+        /* =========================================
+           MOBILE RESPONSIVENESS
+           ========================================= */
+        @media (max-width: 1000px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+
+            .sidebar-nav {
+                width: 100%;
+                position: static;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                padding: 1rem;
+            }
+
+            .sidebar-title {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+
+            .sidebar-link {
+                display: inline-block;
+                width: auto;
+                padding: 0.5rem 1rem;
+                margin-bottom: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .nav-link {
+                font-size: 0.95rem;
+                padding: 0.8rem 1rem;
+            }
+
+            .accordion-header {
+                font-size: 1.2rem;
+                padding: 0.8rem 1rem;
+            }
+
+            .search-container {
+                padding: 0.8rem;
+            }
+        }
+
+        @media (max-width: 650px) {
+            /* Transform tables to cards on mobile */
+            .records-table,
+            .results-table,
+            .records-table tbody,
+            .results-table tbody,
+            .records-table tr,
+            .results-table tr,
+            .records-table td,
+            .results-table td {
+                display: block;
+                width: 100%;
+            }
+
+            .records-table thead,
+            .results-table thead {
+                display: none;
+            }
+
+            .records-table tr,
+            .results-table tr {
+                margin-bottom: 1rem;
+                border-radius: 8px;
+                box-shadow: 0 2px 8px rgba(27, 54, 93, 0.08);
+                border-left: 4px solid var(--dark-blue);
+                padding: 0.8rem;
+                background: #fff;
+            }
+
+            .records-table td,
+            .results-table td {
+                padding: 0.3rem 0;
+                border: none;
+                text-align: left;
+            }
+
+            .records-table td::before,
+            .results-table td::before {
+                content: attr(data-label);
+                font-weight: 700;
+                color: var(--dark-blue);
+                display: inline-block;
+                margin-right: 0.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-title">Charlottesville Tom Sox Baseball<br>Record Book</div>
+            <div class="hero-subtitle">Year by Year Results</div>
+        </div>
+    </section>
+
+    <!-- TOP NAVIGATION BAR -->
+    <nav class="records-nav">
+        <div class="records-nav-inner">
+            <a class="nav-link" href="/team-records/program-history">Program History</a>
+            <a class="nav-link" href="/team-records/individual-records">Individual Records</a>
+            <a class="nav-link" href="/team-records/team-records-data">Team Records</a>
+            <a class="nav-link active" href="/team-records/year-by-year">Year by Year</a>
+            <a class="nav-link" href="/team-records/playoffs">Playoffs</a>
+        </div>
+    </nav>
+
+    <!-- SEARCH CONTAINER -->
+    <div class="search-container">
+        <input type="text" class="search-box" id="searchBox" placeholder="Search for player, team, or year...">
+    </div>
+
+    <!-- CONTENT WRAPPER -->
+    <div class="content-wrapper">
+        
+        <!-- STICKY SIDEBAR NAVIGATION -->
+        <aside class="sidebar-nav">
+            <div class="sidebar-title">Jump to Season</div>
+            <a href="#season-2025" class="sidebar-link" data-target="season-2025">2025</a>
+          <a href="#season-2024" class="sidebar-link" data-target="season-2024">2024</a>
+            <a href="#season-2023" class="sidebar-link" data-target="season-2023">2023</a>
+            <a href="#season-2022" class="sidebar-link" data-target="season-2022">2022</a>
+            <a href="#season-2021" class="sidebar-link" data-target="season-2021">2021</a>
+            <a href="#season-2019" class="sidebar-link" data-target="season-2019">2019</a>
+            <a href="#season-2018" class="sidebar-link" data-target="season-2018">2018</a>
+            <a href="#season-2017" class="sidebar-link" data-target="season-2017">2017</a>
+            <a href="#season-2016" class="sidebar-link" data-target="season-2016">2016</a>
+            <a href="#season-2015" class="sidebar-link" data-target="season-2015">2015</a>
+        </aside>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="main-content">
+          
+           <!-- 2025 Season Accordion -->
+      <div class="accordion" id="season-2025">
+        <div class="accordion-header championship">
+            2025 Season &mdash; Randy Tomlin
+            <span class="season-record">24-20</span>
+            <span class="badge-champ">VBL Runner Up 🏆</span>
+        </div>
+        <div class="accordion-content">
+            <div class="accordion-summary">
+                <strong>Head Coach:</strong> Randy Tomlin<br>
+                <strong>Record:</strong> 24-20<br>
+                <strong>Finish:</strong> <span class="accordion-highlight">VBL Runner Up</span>
+                <br><br>
+                <strong>Season Notables:</strong>
+                <ul>
+                    <li>Defeated Culpeper 19–2 in championship-clinching game</li>
+                    <li>Set single-game RBI record (18) and runs scored (19, tied team record) in playoffs</li>
+                    <li>Most hit by pitches in a season (72)</li>
+                    <li>VBL All-Stars: Randy Tomlin (Manager), Robbie Lavey (C), Johnnie Lopez (3B), Ethan Gibson (SS), Daniel Powell (RHP), Marco Levari (RHP), Ayden Alexander (LHP)</li>
+                    <li>MLB Draft: Trey Yesavage (1st round), Davian Garcia, Fisher Jameson, Carter Cunningham, James Nunnallee, Jordan Little, Wyatt Lunsford-Shenkman, Christian Martin, Chase Centala, Chandler Marsh</li>
+                </ul>
+            </div>
+           <table class="results-table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Opponent</th>
+            <th>Time</th>
+            <th>Result</th>
+            <th>Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>5/31</td>
+            <td>Harrisonburg</td>
+            <td>4:02 PM</td>
+            <td class="result-loss">L</td>
+            <td>1-9</td>
+        </tr>
+        <tr>
+            <td>6/1</td>
+            <td>Woodstock</td>
+            <td>1:01 PM</td>
+            <td class="result-loss">L</td>
+            <td>7-8</td>
+        </tr>
+        <tr>
+            <td>6/3</td>
+            <td>@ Waynesboro</td>
+            <td>7:03 PM</td>
+            <td class="result-win">W</td>
+            <td>10-9</td>
+        </tr>
+        <tr>
+            <td>6/4</td>
+            <td>Front Royal</td>
+            <td>7:00 PM</td>
+            <td class="result-loss">L</td>
+            <td>4-10</td>
+        </tr>
+        <tr>
+            <td>6/5</td>
+            <td>@ Covington</td>
+            <td>6:30 PM</td>
+            <td class="result-loss">L (Forfeit)</td>
+            <td>0-9</td>
+        </tr>
+        <tr>
+            <td>6/6</td>
+            <td>Staunton</td>
+            <td>7:18 PM</td>
+            <td class="result-win">W</td>
+            <td>8-2</td>
+        </tr>
+        <tr>
+            <td>6/7</td>
+            <td>Waynesboro</td>
+            <td>4:07 PM</td>
+            <td class="result-loss">L</td>
+            <td>9-11</td>
+        </tr>
+        <tr>
+            <td>6/10</td>
+            <td>Culpeper</td>
+            <td>7:00 PM</td>
+            <td class="result-win">W</td>
+            <td>10-7</td>
+        </tr>
+        <tr>
+            <td>6/11</td>
+            <td>@ Staunton</td>
+            <td>7:31 PM</td>
+            <td class="result-loss">L</td>
+            <td>5-6</td>
+        </tr>
+        <tr>
+            <td>6/12</td>
+            <td>Strasburg</td>
+            <td>6:59 PM</td>
+            <td class="result-loss">L</td>
+            <td>4-14</td>
+        </tr>
+        <tr>
+            <td>6/16</td>
+            <td>@ Winchester</td>
+            <td>6:58 PM</td>
+            <td class="result-loss">L</td>
+            <td>0-1</td>
+        </tr>
+        <tr>
+            <td>6/17</td>
+            <td>@ Strasburg</td>
+            <td>7:05 PM</td>
+            <td class="result-loss">L</td>
+            <td>9-15</td>
+        </tr>
+        <tr>
+            <td>6/19</td>
+            <td>Harrisonburg</td>
+            <td>7:19 PM</td>
+            <td class="result-win">W</td>
+            <td>4-3</td>
+        </tr>
+        <tr>
+            <td>6/20</td>
+            <td>@ Waynesboro</td>
+            <td>7:03 PM</td>
+            <td class="result-win">W</td>
+            <td>7-6</td>
+        </tr>
+        <tr>
+            <td>6/21</td>
+            <td>@ Culpeper (DH1)</td>
+            <td>4:02 PM</td>
+            <td class="result-win">W</td>
+            <td>5-2</td>
+        </tr>
+        <tr>
+            <td>6/21</td>
+            <td>@ Culpeper (DH2)</td>
+            <td>7:19 PM</td>
+            <td class="result-loss">L</td>
+            <td>0-8</td>
+        </tr>
+        <tr>
+            <td>6/22</td>
+            <td>New Market</td>
+            <td>7:02 PM</td>
+            <td class="result-win">W</td>
+            <td>10-6</td>
+        </tr>
+        <tr>
+            <td>6/25</td>
+            <td>@ Covington</td>
+            <td>8:01 PM</td>
+            <td class="result-win">W</td>
+            <td>6-5</td>
+        </tr>
+        <tr>
+            <td>6/27</td>
+            <td>Waynesboro</td>
+            <td>7:33 PM</td>
+            <td class="result-win">W</td>
+            <td>3-2</td>
+        </tr>
+        <tr>
+            <td>6/28</td>
+            <td>@ Staunton</td>
+            <td>7:52 PM</td>
+            <td class="result-loss">L</td>
+            <td>1-9</td>
+        </tr>
+        <tr>
+            <td>6/29</td>
+            <td>Purcellville</td>
+            <td>1:04 PM</td>
+            <td class="result-win">W</td>
+            <td>8-2</td>
+        </tr>
+        <tr>
+            <td>6/30</td>
+            <td>Staunton</td>
+            <td>6:59 PM</td>
+            <td class="result-win">W</td>
+            <td>3-2</td>
+        </tr>
+        <tr>
+            <td>7/1</td>
+            <td>@ Harrisonburg</td>
+            <td>7:06 PM</td>
+            <td class="result-loss">L</td>
+            <td>8-9</td>
+        </tr>
+        <tr>
+            <td>7/2</td>
+            <td>@ Covington</td>
+            <td>6:28 PM</td>
+            <td class="result-win">W</td>
+            <td>12-7</td>
+        </tr>
+        <tr>
+            <td>7/3</td>
+            <td>Staunton</td>
+            <td>7:01 PM</td>
+            <td class="result-loss">L</td>
+            <td>4-8</td>
+        </tr>
+        <tr>
+            <td>7/5</td>
+            <td>Harrisonburg</td>
+            <td>4:03 PM</td>
+            <td class="result-win">W</td>
+            <td>5-4</td>
+        </tr>
+        <tr>
+            <td>7/6</td>
+            <td>Winchester</td>
+            <td>1:03 PM</td>
+            <td class="result-loss">L</td>
+            <td>8-10</td>
+        </tr>
+        <tr>
+            <td>7/7</td>
+            <td>@ Purcellville</td>
+            <td>7:02 PM</td>
+            <td class="result-win">W</td>
+            <td>7-5</td>
+        </tr>
+        <tr>
+            <td>7/8</td>
+            <td>@ Waynesboro</td>
+            <td>7:21 PM</td>
+            <td class="result-win">W</td>
+            <td>5-4</td>
+        </tr>
+        <tr>
+            <td>7/10</td>
+            <td>@ Front Royal</td>
+            <td>5:59 PM</td>
+            <td class="result-win">W</td>
+            <td>6-4</td>
+        </tr>
+        <tr>
+            <td>7/16</td>
+            <td>@ Harrisonburg</td>
+            <td>7:17 PM</td>
+            <td class="result-win">W</td>
+            <td>14-2</td>
+        </tr>
+        <tr>
+            <td>7/17</td>
+            <td>Culpeper (DH1)</td>
+            <td>5:02 PM</td>
+            <td class="result-loss">L</td>
+            <td>5-9</td>
+        </tr>
+        <tr>
+            <td>7/17</td>
+            <td>Culpeper (DH2)</td>
+            <td>8:54 PM</td>
+            <td class="result-win">W</td>
+            <td>5-4</td>
+        </tr>
+        <tr>
+            <td>7/18</td>
+            <td>Covington</td>
+            <td>8:04 PM</td>
+            <td class="result-win">W</td>
+            <td>6-5</td>
+        </tr>
+        <tr>
+            <td>7/19</td>
+            <td>@ Harrisonburg</td>
+            <td>7:07 PM</td>
+            <td class="result-loss">L</td>
+            <td>2-8</td>
+        </tr>
+        <tr>
+            <td>7/20</td>
+            <td>Waynesboro</td>
+            <td>1:04 PM</td>
+            <td class="result-win">W</td>
+            <td>14-4</td>
+        </tr>
+        <tr>
+            <td>7/21</td>
+            <td>@ Staunton</td>
+            <td>7:31 PM</td>
+            <td class="result-loss">L</td>
+            <td>1-3</td>
+        </tr>
+        <tr>
+            <td>7/22</td>
+            <td>@ Culpeper</td>
+            <td>7:12 PM</td>
+            <td class="result-loss">L</td>
+            <td>3-5</td>
+        </tr>
+        <tr>
+            <td>7/24</td>
+            <td>Waynesboro (Playoff)</td>
+            <td>7:03 PM</td>
+            <td class="result-win">W</td>
+            <td>8-5</td>
+        </tr>
+        <tr>
+            <td>7/26</td>
+            <td>@ Staunton (Playoff)</td>
+            <td>1:03 PM</td>
+            <td class="result-win">W</td>
+            <td>10-7</td>
+        </tr>
+        <tr>
+            <td>7/27</td>
+            <td>Culpeper (Playoff)</td>
+            <td>9:17 PM</td>
+            <td class="result-win">W</td>
+            <td>5-4</td>
+        </tr>
+        <tr>
+            <td>7/28</td>
+            <td>@ Strasburg (Playoff)</td>
+            <td>7:04 PM</td>
+            <td class="result-loss">L</td>
+            <td>11-12</td>
+        </tr>
+        <tr>
+            <td>7/29</td>
+            <td>Strasburg (Playoff)</td>
+            <td>7:00 PM</td>
+            <td class="result-win">W</td>
+            <td>8-7</td>
+        </tr>
+        <tr>
+            <td>7/30</td>
+            <td>@ Strasburg (Playoff)</td>
+            <td>7:04 PM</td>
+            <td class="result-loss">L</td>
+            <td>2-5</td>
+        </tr>
+    </tbody>
+</table>
+        </div>
+      </div>
+      <!-- 2024 Season Accordion -->
+      <div class="accordion" id="season-2024">
+        <div class="accordion-header championship">
+            2024 Season &mdash; Randy Tomlin
+            <span class="season-record">30-15</span>
+            <span class="badge-champ">VBL Champions 🏆</span>
+        </div>
+        <div class="accordion-content">
+            <div class="accordion-summary">
+                <strong>Head Coach:</strong> Randy Tomlin<br>
+                <strong>Record:</strong> 30-15<br>
+                <strong>Finish:</strong> <span class="accordion-highlight">VBL Champions (4th title in program history)</span>
+                <br><br>
+                <strong>Season Notables:</strong>
+                <ul>
+                    <li>Defeated Culpeper 19–2 in championship-clinching game</li>
+                    <li>Set single-game RBI record (18) and runs scored (19, tied team record) in playoffs</li>
+                    <li>Most hit by pitches in a season (72)</li>
+                    <li>VBL All-Stars: Randy Tomlin (Manager), Robbie Lavey (C), Johnnie Lopez (3B), Ethan Gibson (SS), Daniel Powell (RHP), Marco Levari (RHP), Ayden Alexander (LHP)</li>
+                    <li>MLB Draft: Trey Yesavage (1st round), Davian Garcia, Fisher Jameson, Carter Cunningham, James Nunnallee, Jordan Little, Wyatt Lunsford-Shenkman, Christian Martin, Chase Centala, Chandler Marsh</li>
+                </ul>
+            </div>
+            <table class="results-table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Opponent</th>
+            <th>Time</th>
+            <th>Result</th>
+            <th>Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>5/31</td>
+            <td>@ Staunton</td>
+            <td>7:37 PM</td>
+            <td class="result-loss">L</td>
+            <td>8-9</td>
+        </tr>
+        <tr>
+            <td>6/1</td>
+            <td>Culpeper</td>
+            <td>7:00 PM</td>
+            <td class="result-win">W</td>
+            <td>10-3</td>
+        </tr>
+        <tr>
+            <td>6/2</td>
+            <td>Waynesboro</td>
+            <td>3:02 PM</td>
+            <td class="result-win">W</td>
+            <td>16-1</td>
+        </tr>
+        <tr>
+            <td>6/6</td>
+            <td>Staunton</td>
+            <td>7:01 PM</td>
+            <td class="result-win">W</td>
+            <td>10-0</td>
+        </tr>
+        <tr>
+            <td>6/7</td>
+            <td>@ Culpeper</td>
+            <td>7:01 PM</td>
+            <td class="result-win">W</td>
+            <td>10-2</td>
+        </tr>
+        <tr>
+            <td>6/8</td>
+            <td>@ Waynesboro</td>
+            <td>7:01 PM</td>
+            <td class="result-win">W</td>
+            <td>16-1</td>
+        </tr>
+        <tr>
+            <td>6/9</td>
+            <td>Harrisonburg</td>
+            <td>3:05 PM</td>
+            <td class="result-loss">L</td>
+            <td>8-12</td>
+        </tr>
+        <tr>
+            <td>6/11</td>
+            <td>Covington</td>
+            <td>7:03 PM</td>
+            <td class="result-win">W</td>
+            <td>10-6</td>
+        </tr>
+        <tr>
+            <td>6/12</td>
+            <td>@ Harrisonburg</td>
+            <td>7:35 PM</td>
+            <td class="result-loss">L</td>
+            <td>1-10</td>
+        </tr>
+        <tr>
+            <td>6/13</td>
+            <td>@ Staunton</td>
+            <td>7:32 PM</td>
+            <td class="result-win">W</td>
+            <td>4-1</td>
+        </tr>
+        <tr>
+            <td>6/14</td>
+            <td>Culpeper</td>
+            <td>7:06 PM</td>
+            <td class="result-win">W</td>
+            <td>5-4</td>
+        </tr>
+        <tr>
+            <td>6/15</td>
+            <td>Waynesboro</td>
+            <td>7:00 PM</td>
+            <td class="result-win">W</td>
+            <td>10-2</td>
+        </tr>
+        <tr>
+            <td>6/16</td>
+            <td>@ Covington</td>
+            <td>6:58 PM</td>
+            <td class="result-win">W</td>
+            <td>6-4</td>
+        </tr>
+        <tr>
+            <td>6/18</td>
+            <td>Covington</td>
+            <td>6:59 PM</td>
+            <td class="result-win">W</td>
+            <td>11-2</td>
+        </tr>
+        <tr>
+            <td>6/19</td>
+            <td>@ Culpeper</td>
+            <td>7:06 PM</td>
+            <td class="result-win">W</td>
+            <td>4-3</td>
+        </tr>
+        <tr>
+            <td>6/20</td>
+            <td>@ Waynesboro</td>
+            <td>7:03 PM</td>
+            <td class="result-loss">L</td>
+            <td>6-10</td>
+        </tr>
+        <tr>
+            <td>6/21</td>
+            <td>Harrisonburg</td>
+            <td>6:59 PM</td>
+            <td class="result-win">W</td>
+            <td>9-5</td>
+        </tr>
+        <tr>
+            <td>6/22</td>
+            <td>@ Staunton</td>
+            <td>7:31 PM</td>
+            <td class="result-win">W</td>
+            <td>11-5</td>
+        </tr>
+        <tr>
+            <td>6/23</td>
+            <td>Staunton</td>
+            <td>7:01 PM</td>
+            <td class="result-win">W</td>
+            <td>6-2</td>
+        </tr>
+        <tr>
+            <td>6/26</td>
+            <td>@ Covington</td>
+            <td>7:02 PM</td>
+            <td class="result-win">W</td>
+            <td>5-1</td>
+        </tr>
+        <tr>
+            <td>6/27</td>
+            <td>Staunton</td>
+            <td>7:01 PM</td>
+            <td class="result-loss">L</td>
+            <td>3-7</td>
+        </tr>
+        <tr>
+            <td>6/28</td>
+            <td>Waynesboro</td>
+            <td>7:06 PM</td>
+            <td class="result-win">W</td>
+            <td>3-2</td>
+        </tr>
+        <tr>
+            <td>7/1</td>
+            <td>@ Harrisonburg</td>
+            <td>7:32 PM</td>
+            <td class="result-loss">L</td>
+            <td>4-10</td>
+        </tr>
+        <tr>
+            <td>7/2</td>
+            <td>@ Harrisonburg</td>
+            <td>7:34 PM</td>
+            <td class="result-win">W</td>
+            <td>9-7</td>
+        </tr>
+        <tr>
+            <td>7/3</td>
+            <td>@ Covington</td>
+            <td>6:57 PM</td>
+            <td class="result-loss">L</td>
+            <td>6-7</td>
+        </tr>
+        <tr>
+            <td>7/5</td>
+            <td>@ Waynesboro</td>
+            <td>7:14 PM</td>
+            <td class="result-win">W</td>
+            <td>16-4</td>
+        </tr>
+        <tr>
+            <td>7/6</td>
+            <td>Culpeper</td>
+            <td>7:09 PM</td>
+            <td class="result-win">W</td>
+            <td>8-5</td>
+        </tr>
+        <tr>
+            <td>7/7</td>
+            <td>@ Staunton</td>
+            <td>7:35 PM</td>
+            <td class="result-loss">L</td>
+            <td>10-11</td>
+        </tr>
+        <tr>
+            <td>7/9</td>
+            <td>Covington</td>
+            <td>6:59 PM</td>
+            <td class="result-win">W</td>
+            <td>11-1</td>
+        </tr>
+        <tr>
+            <td>7/11</td>
+            <td>Harrisonburg</td>
+            <td>7:00 PM</td>
+            <td class="result-loss">L</td>
+            <td>1-3</td>
+        </tr>
+        <tr>
+            <td>7/13</td>
+            <td>@ Harrisonburg</td>
+            <td>7:36 PM</td>
+            <td class="result-win">W</td>
+            <td>9-3</td>
+        </tr>
+        <tr>
+            <td>7/14</td>
+            <td>Staunton</td>
+            <td>3:02 PM</td>
+            <td class="result-win">W</td>
+            <td>10-4</td>
+        </tr>
+        <tr>
+            <td>7/17</td>
+            <td>@ Waynesboro</td>
+            <td>7:01 PM</td>
+            <td class="result-win">W</td>
+            <td>11-1</td>
+        </tr>
+        <tr>
+            <td>7/17</td>
+            <td>Waynesboro</td>
+            <td>9:00 PM</td>
+            <td class="result-win">W (Forfeit)</td>
+            <td>9-0</td>
+        </tr>
+        <tr>
+            <td>7/18</td>
+            <td>@ Culpeper</td>
+            <td>7:05 PM</td>
+            <td class="result-loss">L</td>
+            <td>5-6</td>
+        </tr>
+        <tr>
+            <td>7/19</td>
+            <td>Covington</td>
+            <td>7:04 PM</td>
+            <td class="result-win">W</td>
+            <td>2-1</td>
+        </tr>
+        <tr>
+            <td>7/20</td>
+            <td>Culpeper</td>
+            <td>6:59 PM</td>
+            <td class="result-loss">L</td>
+            <td>11-15</td>
+        </tr>
+        <tr>
+            <td>7/21</td>
+            <td>@ Covington</td>
+            <td>7:07 PM</td>
+            <td class="result-loss">L</td>
+            <td>2-6</td>
+        </tr>
+        <tr>
+            <td>7/22</td>
+            <td>@ Culpeper</td>
+            <td>7:05 PM</td>
+            <td class="result-loss">L</td>
+            <td>1-2</td>
+        </tr>
+        <tr>
+            <td>7/26</td>
+            <td>Culpeper (Playoff)</td>
+            <td>7:00 PM</td>
+            <td class="result-loss">L</td>
+            <td>1-4</td>
+        </tr>
+        <tr>
+            <td>7/27</td>
+            <td>@ Culpeper (Playoff)</td>
+            <td>7:05 PM</td>
+            <td class="result-win">W</td>
+            <td>8-1</td>
+        </tr>
+        <tr>
+            <td>7/28</td>
+            <td>Culpeper (Playoff)</td>
+            <td>6:59 PM</td>
+            <td class="result-win">W</td>
+            <td>19-2</td>
+        </tr>
+        <tr>
+            <td>7/29</td>
+            <td>Purcellville (Finals)</td>
+            <td>6:59 PM</td>
+            <td class="result-win">W</td>
+            <td>7-5</td>
+        </tr>
+        <tr>
+            <td>7/31</td>
+            <td>@ Purcellville (Finals)</td>
+            <td>7:14 PM</td>
+            <td class="result-loss">L</td>
+            <td>8-21</td>
+        </tr>
+        <tr>
+            <td>8/1</td>
+            <td>Purcellville (Finals)</td>
+            <td>7:02 PM</td>
+            <td class="result-win">W</td>
+            <td>9-5</td>
+        </tr>
+    </tbody>
+</table>
+        </div>
+      </div>
+
+      <!-- 2023 Season Accordion -->
+      <div class="accordion" id="season-2023">
+        <div class="accordion-header">
+            2023 Season &mdash; Lyndon Coleman
+            <span class="season-record">32-20</span>
+            <span class="badge-runner-up">VBL Runner-Up</span>
+        </div>
+        <div class="accordion-content">
+            <div class="accordion-summary">
+                <strong>Head Coach:</strong> Lyndon Coleman<br>
+                <strong>Record:</strong> 32-20<br>
+                <strong>Finish:</strong> <span class="accordion-highlight" style="background:#fff8e6;border-left:4px solid #f0c400;color:#a38200;">VBL Championship Series (Lost to Culpeper)</span>
+                <br><br>
+                <strong>Season Notables:</strong>
+                <ul>
+                    <li>Advanced to the VBL Finals, falling to Culpeper in three games.</li>
+                    <li>Brice Martinez set team single-season stolen base record (31 SB).</li>
+                    <li>Team set record for most games played in a season (52).</li>
+                    <li>VBL All-Stars: Lyndon Coleman (Manager), Kalvin Alexander (C), Kyle Edwards (SS), Mike Eggert (RHP), Brice Martinez (2B), Mark Perkins (RHP)</li>
+                    <li>MLB Draft: Wyatt Langford (1st round, Rangers), Jack Hurley, Cole Foster, Cooper Ingle, Christian Worley, Brady Kirtner, Marty Gair, Elijah Nuñez, Garrett Wright, Pierce Bennett</li>
+                </ul>
+            </div>
+            <table class="results-table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Opponent</th>
+            <th>Time</th>
+            <th>Result</th>
+            <th>Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>6/1</td>
+            <td>Waynesboro</td>
+            <td>7:02 PM</td>
+            <td class="result-loss">L</td>
+            <td>2-3</td>
+        </tr>
+        <tr>
+            <td>6/2</td>
+            <td>@ Covington</td>
+            <td>6:58 PM</td>
+            <td class="result-win">W</td>
+            <td>8-1</td>
+        </tr>
+        <tr>
+            <td>6/3</td>
+            <td>Harrisonburg</td>
+            <td>6:59 PM</td>
+            <td class="result-loss">L</td>
+            <td>2-4</td>
+        </tr>
+        <tr>
+            <td>6/4</td>
+            <td>@ Culpeper</td>
+            <td>7:26 PM</td>
+            <td class="result-win">W</td>
+            <td>11-1</td>
+        </tr>
+        <tr>
+            <td>6/6</td>
+            <td>Staunton</td>
+            <td>7:00 PM</td>
+            <td class="result-win">W</td>
+            <td>7-3</td>
+        </tr>
+        <tr>
+            <td>6/7</td>
+            <td>@ Woodstock</td>
+            <td>7:08 PM</td>
+            <td class="result-win">W</td>
+            <td>10-9</td>
+        </tr>
+        <tr>
+            <td>6/9</td>
+            <td>@ Harrisonburg</td>
+            <td>7:44 PM</td>
+            <td class="result-win">W</td>
+            <td>12-4</td>
+        </tr>
+        <tr>
+            <td>6/10</td>
+            <td>Purcellville</td>
+            <td>7:00 PM</td>
+            <td class="result-loss">L</td>
+            <td>2-8</td>
+        </tr>
+        <tr>
+            <td>6/11</td>
+            <td>@ Front Royal</td>
+            <td>7:01 PM</td>
+            <td class="result-loss">L</td>
+            <td>6-9</td>
+        </tr>
+        <tr>
+            <td>6/13</td>
+            <td>Strasburg</td>
+            <td>6:59 PM</td>
+            <td class="result-loss">L</td>
+            <td>2-5</td>
+        </tr>
+        <tr>
+            <td>6/14</td>
+            <td>@ Waynesboro</td>
+            <td>6:58 PM</td>
+            <td class="result-win">W</td>
+            <td>8-4</td>
+        </tr>
+        <tr>
+            <td>6/15</td>
+            <td>Harrisonburg</td>
+            <td>7:01 PM</td>
+            <td class="result-win">W</td>
+            <td>7-1</td>
+        </tr>
+        <tr>
+            <td>6/17</td>
+            <td>@ Front Royal</td>
+            <td>7:03 PM</td>
+            <td class="result-win">W</td>
+            <td>10-7</td>
+        </tr>
+        <tr>
+            <td>6/18</td>
+            <td>@ Culpeper</td>
+            <td>7:33 PM</td>
+            <td class="result-win">W</td>
+            <td>8-6</td>
+        </tr>
+        <tr>
+            <td>6/24</td>
+            <td>@ Strasburg</td>
+            <td>7:00 PM</td>
+            <td class="result-loss">L</td>
+            <td>1-4</td>
+        </tr>
+        <tr>
+            <td>6/27</td>
+            <td>New Market</td>
+            <td>7:03 PM</td>
+            <td class="result-loss">L</td>
+            <td>1-3</td>
+        </tr>
+        <tr>
+            <td>6/29</td>
+            <td>Staunton</td>
+            <td>7:02 PM</td>
+            <td class="result-win">W</td>
+            <td>3-2</td>
+        </tr>
+        <tr>
+            <td>6/30</td>
+            <td>Front Royal</td>
+            <td>7:04 PM</td>
+            <td class="result-win">W</td>
+            <td>3-1</td>
+        </tr>
+        <tr>
+            <td>7/1</td>
+            <td>@ Covington</td>
+            <td>7:02 PM</td>
+            <td class="result-win">W</td>
+            <td>10-9</td>
+        </tr>
+        <tr>
+            <td>7/2</td>
+            <td>Culpeper</td>
+            <td>7:02 PM</td>
+            <td class="result-win">W</td>
+            <td>11-4</td>
+        </tr>
+        <tr>
+            <td>7/3</td>
+            <td>Waynesboro</td>
+            <td>7:00 PM</td>
+            <td class="result-win">W</td>
+            <td>13-3</td>
+        </tr>
+        <tr>
+            <td>7/5</td>
+            <td>Covington</td>
+            <td>6:59 PM</td>
+            <td class="result-win">W</td>
+            <td>3-0</td>
+        </tr>
+        <tr>
+            <td>7/6</td>
+            <td>Purcellville</td>
+            <td>7:04 PM</td>
+            <td class="result-win">W</td>
+            <td>5-4</td>
+        </tr>
+        <tr>
+            <td>7/8</td>
+            <td>@ Strasburg</td>
+            <td>7:00 PM</td>
+            <td class="result-win">W</td>
+            <td>7-6</td>
+        </tr>
+        <tr>
+            <td>7/9</td>
+            <td>Winchester (DH1)</td>
+            <td>5:30 PM</td>
+            <td class="result-loss">L</td>
+            <td>0-5</td>
+        </tr>
+        <tr>
+            <td>7/9</td>
+            <td>Winchester (DH2)</td>
+            <td>8:06 PM</td>
+            <td class="result-win">W</td>
+            <td>4-2</td>
+        </tr>
+        <tr>
+            <td>7/10</td>
+            <td>@ Harrisonburg</td>
+            <td>7:29 PM</td>
+            <td class="result-loss">L</td>
+            <td>1-2</td>
+        </tr>
+        <tr>
+            <td>7/11</td>
+            <td>New Market</td>
+            <td>7:01 PM</td>
+            <td class="result-win">W</td>
+            <td>3-0</td>
+        </tr>
+        <tr>
+            <td>7/12</td>
+            <td>Culpeper</td>
+            <td>7:04 PM</td>
+            <td class="result-loss">L</td>
+            <td>7-8</td>
+        </tr>
+        <tr>
+            <td>7/16</td>
+            <td>@ Waynesboro</td>
+            <td>6:58 PM</td>
+            <td class="result-win">W</td>
+            <td>7-3</td>
+        </tr>
+        <tr>
+            <td>7/17</td>
+            <td>@ Staunton (DH1)</td>
+            <td>5:05 PM</td>
+            <td class="result-win">W</td>
+            <td>19-2</td>
+        </tr>
+        <tr>
+            <td>7/17</td>
+            <td>@ Staunton (DH2)</td>
+            <td>7:36 PM</td>
+            <td class="result-win">W</td>
+            <td>11-1</td>
+        </tr>
+        <tr>
+            <td>7/18</td>
+            <td>@ New Market</td>
+            <td>7:31 PM</td>
+            <td class="result-loss">L</td>
+            <td>8-10</td>
+        </tr>
+        <tr>
+            <td>7/20</td>
+            <td>@ Woodstock</td>
+            <td>7:12 PM</td>
+            <td class="result-loss">L</td>
+            <td>4-5</td>
+        </tr>
+        <tr>
+            <td>7/21</td>
+            <td>@ New Market</td>
+            <td>7:32 PM</td>
+            <td class="result-win">W</td>
+            <td>8-1</td>
+        </tr>
+        <tr>
+            <td>7/22</td>
+            <td>Strasburg</td>
+            <td>7:00 PM</td>
+            <td class="result-loss">L</td>
+            <td>2-6</td>
+        </tr>
+        <tr>
+            <td>7/23</td>
+            <td>@ Winchester (DH1)</td>
+            <td>1:01 PM</td>
+            <td class="result-win">W</td>
+            <td>10-0</td>
+        </tr>
+        <tr>
+            <td>7/23</td>
+            <td>@ Winchester (DH2)</td>
+            <td>3:21 PM</td>
+            <td class="result-loss">L</td>
+            <td>5-7</td>
+        </tr>
+        <tr>
+            <td>7/24</td>
+            <td>Woodstock (DH1)</td>
+            <td>3:57 PM</td>
+            <td class="result-win">W</td>
+            <td>11-8</td>
+        </tr>
+        <tr>
+            <td>7/24</td>
+            <td>Woodstock (DH2)</td>
+            <td>7:06 PM</td>
+            <td class="result-win">W</td>
+            <td>9-3</td>
+        </tr>
+        <tr>
+            <td>7/25</td>
+            <td>Front Royal</td>
+            <td>1:03 PM</td>
+            <td class="result-win">W</td>
+            <td>6-5</td>
+        </tr>
+        <tr>
+            <td>7/26</td>
+            <td>@ Purcellville (DH1)</td>
+            <td>4:03 PM</td>
+            <td class="result-win">W</td>
+            <td>11-10</td>
+        </tr>
+        <tr>
+            <td>7/26</td>
+            <td>Covington</td>
+            <td>7:00 PM</td>
+            <td class="result-loss">L</td>
+            <td>0-9 (Forfeit)</td>
+        </tr>
+        <tr>
+            <td>7/26</td>
+            <td>@ Purcellville (DH2)</td>
+            <td>7:42 PM</td>
+            <td class="result-loss">L</td>
+            <td>7-9</td>
+        </tr>
+        <tr>
+            <td>7/27</td>
+            <td>Front Royal</td>
+            <td>7:03 PM</td>
+            <td class="result-win">W</td>
+            <td>17-6</td>
+        </tr>
+        <tr>
+            <td>7/29</td>
+            <td>@ Front Royal</td>
+            <td>6:16 PM</td>
+            <td class="result-win">W</td>
+            <td>11-1</td>
+        </tr>
+        <tr>
+            <td>7/30</td>
+            <td>Front Royal</td>
+            <td>7:01 PM</td>
+            <td class="result-win">W</td>
+            <td>4-2</td>
+        </tr>
+        <tr>
+            <td>7/31</td>
+            <td>Strasburg</td>
+            <td>7:00 PM</td>
+            <td class="result-loss">L</td>
+            <td>6-8</td>
+        </tr>
+        <tr>
+            <td>8/1</td>
+            <td>@ Strasburg</td>
+            <td>7:01 PM</td>
+            <td class="result-win">W</td>
+            <td>11-9</td>
+        </tr>
+        <tr>
+            <td>8/2</td>
+            <td>Strasburg</td>
+            <td>7:02 PM</td>
+            <td class="result-win">W</td>
+            <td>6-3</td>
+        </tr>
+        <tr>
+            <td>8/3</td>
+            <td>Harrisonburg</td>
+            <td>9:04 PM</td>
+            <td class="result-loss">L</td>
+            <td>2-7</td>
+        </tr>
+        <tr>
+            <td>8/4</td>
+            <td>@ Harrisonburg</td>
+            <td>7:32 PM</td>
+            <td class="result-loss">L</td>
+            <td>5-9</td>
+        </tr>
+    </tbody>
+</table>
+        </div>
+      </div>
+
+      <!-- 2022 Season Accordion -->
+      <div class="accordion" id="season-2022">
+        <div class="accordion-header championship">
+            2022 Season &mdash; Ramon Garza
+            <span class="season-record">32-16</span>
+            <span class="badge-champ">VBL Champions 🏆</span>
+        </div>
+        <div class="accordion-content">
+            <div class="accordion-summary">
+                <strong>Head Coach:</strong> Ramon Garza<br>
+                <strong>Record:</strong> 32-16<br>
+                <strong>Finish:</strong> <span class="accordion-highlight">VBL Champions (third title in program history)</span>
+                <br><br>
+                <strong>Season Notables:</strong>
+                <ul>
+                    <li>Clinched championship with a 6-3 win over Strasburg.</li>
+                    <li>Carter Cunningham: .404 avg, VBL top hitter.</li>
+                    <li>Christian Martin: .493 OBP (single-season record).</li>
+                    <li>VBL All-Stars: John Armstrong (RP), Carter Cunningham (OF), Christian Martin (2B), Satchell Norman (C), Cole Wagner (1B), Trey Yesavage (SP)</li>
+                    <li>MLB Draft: Trace Bright, Carson Skipper, Satchell Norman</li>
+                </ul>
+            </div>
+            <table class="results-table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Opponent</th>
+            <th>Time</th>
+            <th>Result</th>
+            <th>Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>6/3</td><td>@ Harrisonburg</td><td>7:30 PM</td><td class="result-loss">L</td><td>3-4</td></tr>
+        <tr><td>6/4</td><td>Covington</td><td>7:02 PM</td><td class="result-loss">L</td><td>2-9</td></tr>
+        <tr><td>6/5</td><td>@ Covington</td><td>6:49 PM</td><td class="result-loss">L</td><td>0-3</td></tr>
+        <tr><td>6/6</td><td>Staunton</td><td>7:01 PM</td><td class="result-loss">L</td><td>8-13</td></tr>
+        <tr><td>6/9</td><td>@ Covington</td><td>6:51 PM</td><td class="result-win">W</td><td>5-2</td></tr>
+        <tr><td>6/10</td><td>Waynesboro</td><td>7:02 PM</td><td class="result-loss">L</td><td>1-3</td></tr>
+        <tr><td>6/11</td><td>@ Harrisonburg</td><td>7:31 PM</td><td class="result-loss">L</td><td>0-1</td></tr>
+        <tr><td>6/13</td><td>@ Staunton</td><td>7:34 PM</td><td class="result-loss">L</td><td>3-12</td></tr>
+        <tr><td>6/15</td><td>@ Waynesboro</td><td>7:02 PM</td><td class="result-win">W</td><td>10-7</td></tr>
+        <tr><td>6/16</td><td>Staunton</td><td>7:02 PM</td><td class="result-loss">L</td><td>7-15</td></tr>
+        <tr><td>6/17</td><td>Harrisonburg</td><td>7:00 PM</td><td class="result-loss">L</td><td>8-10</td></tr>
+        <tr><td>6/19</td><td>Purcellville (DH1)</td><td>3:59 PM</td><td class="result-loss">L</td><td>6-13</td></tr>
+        <tr><td>6/19</td><td>@ Purcellville (DH2)</td><td>7:50 PM</td><td class="result-loss">L</td><td>1-2</td></tr>
+        <tr><td>6/21</td><td>@ Waynesboro</td><td>7:01 PM</td><td class="result-win">W</td><td>8-4</td></tr>
+        <tr><td>6/23</td><td>Waynesboro</td><td>8:01 PM</td><td class="result-loss">L</td><td>2-10</td></tr>
+        <tr><td>6/25</td><td>@ Covington</td><td>6:50 PM</td><td class="result-loss">L</td><td>6-7</td></tr>
+        <tr><td>6/28</td><td>New Market (DH1)</td><td>3:59 PM</td><td class="result-loss">L</td><td>0-3</td></tr>
+        <tr><td>6/28</td><td>New Market (DH2)</td><td>6:32 PM</td><td class="result-loss">L</td><td>0-3</td></tr>
+        <tr><td>6/29</td><td>Harrisonburg</td><td>6:59 PM</td><td class="result-loss">L</td><td>2-3</td></tr>
+        <tr><td>7/1</td><td>Staunton</td><td>6:58 PM</td><td class="result-loss">L</td><td>3-5</td></tr>
+        <tr><td>7/2</td><td>Covington</td><td>7:00 PM</td><td class="result-loss">L</td><td>3-7</td></tr>
+        <tr><td>7/3</td><td>@ Winchester (DH1)</td><td>2:35 PM</td><td class="result-win">W</td><td>7-3</td></tr>
+        <tr><td>7/3</td><td>@ Winchester (DH2)</td><td>5:35 PM</td><td class="result-win">W</td><td>2-0</td></tr>
+        <tr><td>7/4</td><td>Waynesboro</td><td>6:01 PM</td><td class="result-loss">L</td><td>4-17</td></tr>
+        <tr><td>7/5</td><td>Covington</td><td>7:03 PM</td><td class="result-loss">L</td><td>0-16</td></tr>
+        <tr><td>7/8</td><td>@ Staunton</td><td>7:24 PM</td><td class="result-win">W</td><td>12-4</td></tr>
+        <tr><td>7/10</td><td>@ Front Royal (DH1)</td><td>4:30 PM</td><td class="result-win">W</td><td>4-3</td></tr>
+        <tr><td>7/10</td><td>@ Front Royal (DH2)</td><td>6:30 PM</td><td class="result-win">W</td><td>3-0</td></tr>
+        <tr><td>7/11</td><td>@ Staunton</td><td>7:39 PM</td><td class="result-loss">L</td><td>4-8</td></tr>
+        <tr><td>7/13</td><td>Staunton</td><td>7:00 PM</td><td class="result-loss">L</td><td>5-7</td></tr>
+        <tr><td>7/15</td><td>@ Harrisonburg</td><td>7:33 PM</td><td class="result-loss">L</td><td>0-10</td></tr>
+        <tr><td>7/16</td><td>Woodstock</td><td>4:00 PM</td><td class="result-loss">L</td><td>0-1</td></tr>
+        <tr><td>7/18</td><td>@ Harrisonburg</td><td>7:34 PM</td><td class="result-win">W</td><td>11-6</td></tr>
+        <tr><td>7/19</td><td>@ Strasburg (DH1)</td><td>5:02 PM</td><td class="result-win">W</td><td>4-3</td></tr>
+        <tr><td>7/19</td><td>@ Strasburg (DH2)</td><td>7:54 PM</td><td class="result-win">W</td><td>3-1</td></tr>
+        <tr><td>7/20</td><td>@ Staunton</td><td>7:34 PM</td><td class="result-win">W</td><td>13-5</td></tr>
+        <tr><td>7/21</td><td>Harrisonburg (DH1)</td><td>3:01 PM</td><td class="result-loss">L</td><td>4-15</td></tr>
+        <tr><td>7/21</td><td>Harrisonburg (DH2)</td><td>6:13 PM</td><td class="result-loss">L</td><td>7-10</td></tr>
+        <tr><td>7/22</td><td>Woodstock</td><td>7:00 PM</td><td class="result-loss">L</td><td>0-7</td></tr>
+        <tr><td>7/23</td><td>@ Covington</td><td>7:48 PM</td><td class="result-win">W</td><td>4-0</td></tr>
+        <tr><td>7/24</td><td>Waynesboro (DH1)</td><td>1:00 PM</td><td class="result-loss">L</td><td>4-7</td></tr>
+        <tr><td>7/24</td><td>@ Waynesboro (DH2)</td><td>7:02 PM</td><td class="result-win">W</td><td>18-9</td></tr>
+        <!-- PLAYOFFS (Per third screenshot) -->
+        <tr><td>7/29</td><td>Staunton (Playoff)</td><td>7:01 PM</td><td class="result-loss">L</td><td>2-11</td></tr>
+        <tr><td>7/30</td><td>@ Staunton (Playoff)</td><td>7:30 PM</td><td class="result-win">W</td><td>10-5</td></tr>
+        <tr><td>7/31</td><td>Waynesboro (Playoff)</td><td>7:00 PM</td><td class="result-loss">L</td><td>2-7</td></tr>
+        <tr><td>8/1</td><td>@ Waynesboro (Playoff)</td><td>7:00 PM</td><td class="result-win">W</td><td>3-2</td></tr>
+        <tr><td>8/5</td><td>Strasburg (Finals)</td><td>7:00 PM</td><td class="result-loss">L</td><td>7-9</td></tr>
+        <tr><td>8/6</td><td>@ Strasburg (Finals)</td><td>7:02 PM</td><td class="result-win">W</td><td>11-5</td></tr>
+        <tr><td>8/8</td><td>Strasburg (Finals)</td><td>7:00 PM</td><td class="result-win">W</td><td>2-1</td></tr>
+    </tbody>
+</table>
+        </div>
+      </div>
+
+      <!-- 2021 Season Accordion -->
+      <div class="accordion" id="season-2021">
+        <div class="accordion-header">
+            2021 Season &mdash; Kory Koehler
+            <span class="season-record">30-12</span>
+        </div>
+        <div class="accordion-content">
+            <div class="accordion-summary">
+                <strong>Head Coach:</strong> Kory Koehler<br>
+                <strong>Record:</strong> 30-12<br>
+                <strong>Finish:</strong> <span class="accordion-highlight" style="background:#e8efff;border-left:4px solid #5a8cf7;color:#164480;">Regular Season Champions</span>
+                <br><br>
+                <strong>Season Notables:</strong>
+                <ul>
+                    <li>Finished with league's best regular season record (30-12).</li>
+                    <li>Wyatt Langford: .336 avg (team leader), Adam Cecere: 4 HR, 24 RBI.</li>
+                    <li>VBL All-Stars: Kory Koehler (Manager), Wyatt Langford (1B), Cole Foster (SS), Garrett Spikes (OF, injury replacement), Christian Worley (SP), Brady Kirtner (RHP)</li>
+                    <li>MLB Draft: Evan Justice, Carlos Rodriguez, Hunter Gregory, Alex Ayala, Antonio Menendez, Alaska Abney, Thomas Francisco, Jared Wetherbee, Kyle Battle, Peyton Glavine</li>
+                </ul>
+            </div>
+            <table class="results-table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Opponent</th>
+            <th>Time</th>
+            <th>Result</th>
+            <th>Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>6/5</td><td>Covington</td><td>7:04 PM</td><td class="result-win">W</td><td>9-5</td></tr>
+        <tr><td>6/6</td><td>@ Woodstock (DH1)</td><td>5:04 PM</td><td class="result-loss">L</td><td>3-4</td></tr>
+        <tr><td>6/6</td><td>@ Woodstock (DH2)</td><td>7:44 PM</td><td class="result-win">W</td><td>4-1</td></tr>
+        <tr><td>6/7</td><td>Staunton</td><td>7:02 PM</td><td class="result-win">W</td><td>5-1</td></tr>
+        <tr><td>6/10</td><td>Staunton</td><td>7:02 PM</td><td class="result-win">W</td><td>6-2</td></tr>
+        <tr><td>6/12</td><td>@ Harrisonburg</td><td>7:30 PM</td><td class="result-win">W</td><td>8-5</td></tr>
+        <tr><td>6/14</td><td>@ Staunton</td><td>7:31 PM</td><td class="result-win">W</td><td>9-2</td></tr>
+        <tr><td>6/15</td><td>@ Covington</td><td>7:10 PM</td><td class="result-win">W</td><td>9-7</td></tr>
+        <tr><td>6/16</td><td>Waynesboro</td><td>7:02 PM</td><td class="result-loss">L</td><td>2-7</td></tr>
+        <tr><td>6/17</td><td>Staunton</td><td>7:02 PM</td><td class="result-win">W</td><td>7-6</td></tr>
+        <tr><td>6/18</td><td>@ Harrisonburg</td><td>7:30 PM</td><td class="result-loss">L</td><td>1-3</td></tr>
+        <tr><td>6/19</td><td>@ Covington</td><td>6:58 PM</td><td class="result-win">W</td><td>10-4</td></tr>
+        <tr><td>6/20</td><td>Winchester (DH1)</td><td>5:08 PM</td><td class="result-win">W</td><td>4-3</td></tr>
+        <tr><td>6/20</td><td>Winchester (DH2)</td><td>8:05 PM</td><td class="result-loss">L</td><td>0-7</td></tr>
+        <tr><td>6/21</td><td>@ Staunton</td><td>7:33 PM</td><td class="result-loss">L</td><td>3-7</td></tr>
+        <tr><td>6/24</td><td>Covington</td><td>7:04 PM</td><td class="result-win">W</td><td>3-1</td></tr>
+        <tr><td>6/25</td><td>Staunton</td><td>7:02 PM</td><td class="result-loss">L</td><td>4-10</td></tr>
+        <tr><td>6/27</td><td>Strasburg (DH1)</td><td>5:01 PM</td><td class="result-win">W</td><td>6-4</td></tr>
+        <tr><td>6/27</td><td>Strasburg (DH2)</td><td>8:09 PM</td><td class="result-win">W</td><td>9-2</td></tr>
+        <tr><td>6/29</td><td>@ Harrisonburg</td><td>7:31 PM</td><td class="result-win">W</td><td>8-4</td></tr>
+        <tr><td>6/30</td><td>Harrisonburg</td><td>7:02 PM</td><td class="result-win">W</td><td>11-7</td></tr>
+        <tr><td>7/1</td><td>@ Waynesboro</td><td>7:11 PM</td><td class="result-loss">L</td><td>9-14</td></tr>
+        <tr><td>7/2</td><td>Waynesboro</td><td>7:02 PM</td><td class="result-win">W</td><td>4-3</td></tr>
+        <tr><td>7/3</td><td>@ Purcellville (DH1)</td><td>4:06 PM</td><td class="result-win">W</td><td>3-1</td></tr>
+        <tr><td>7/3</td><td>@ Purcellville (DH2)</td><td>7:01 PM</td><td class="result-win">W</td><td>12-1</td></tr>
+        <tr><td>7/4</td><td>Waynesboro</td><td>5:01 PM</td><td class="result-win">W</td><td>7-4</td></tr>
+        <tr><td>7/5</td><td>@ Harrisonburg</td><td>7:30 PM</td><td class="result-win">W</td><td>4-0</td></tr>
+        <tr><td>7/6</td><td>@ Covington</td><td>7:02 PM</td><td class="result-win">W</td><td>11-4</td></tr>
+        <tr><td>7/7</td><td>Harrisonburg</td><td>7:29 PM</td><td class="result-win">W</td><td>7-6</td></tr>
+        <tr><td>7/9</td><td>@ Staunton</td><td>7:33 PM</td><td class="result-loss">L</td><td>13-14</td></tr>
+        <tr><td>7/10</td><td>@ New Market (DH1)</td><td>6:00 PM</td><td class="result-win">W</td><td>15-0</td></tr>
+        <tr><td>7/10</td><td>@ New Market (DH2)</td><td>9:03 PM</td><td class="result-win">W</td><td>11-3</td></tr>
+        <tr><td>7/13</td><td>@ Waynesboro</td><td>7:06 PM</td><td class="result-loss">L</td><td>0-9</td></tr>
+        <tr><td>7/15</td><td>@ Staunton</td><td>7:39 PM</td><td class="result-win">W</td><td>15-1</td></tr>
+        <tr><td>7/16</td><td>Harrisonburg</td><td>7:05 PM</td><td class="result-win">W</td><td>11-1</td></tr>
+        <tr><td>7/19</td><td>Front Royal (DH1)</td><td>3:03 PM</td><td class="result-win">W</td><td>7-2</td></tr>
+        <tr><td>7/19</td><td>Front Royal (DH2)</td><td>6:06 PM</td><td class="result-win">W</td><td>7-1</td></tr>
+        <tr><td>7/20</td><td>Harrisonburg</td><td>7:02 PM</td><td class="result-win">W</td><td>6-4</td></tr>
+        <tr><td>7/21</td><td>@ Waynesboro</td><td>7:06 PM</td><td class="result-win">W</td><td>3-2</td></tr>
+        <tr><td>7/23</td><td>Waynesboro</td><td>7:03 PM</td><td class="result-loss">L</td><td>1-5</td></tr>
+        <!-- PLAYOFFS -->
+        <tr><td>7/24</td><td>Waynesboro (Playoff)</td><td>7:01 PM</td><td class="result-loss">L</td><td>1-3</td></tr>
+        <tr><td>7/25</td><td>@ Waynesboro (Playoff)</td><td>7:03 PM</td><td class="result-loss">L</td><td>3-6</td></tr>
+    </tbody>
+</table>
+        </div>
+      </div>
+
+      <!-- 2019 Season Accordion -->
+      <div class="accordion" id="season-2019">
+        <div class="accordion-header championship">
+            2019 Season &mdash; Corey Hunt
+            <span class="season-record">31-19</span>
+            <span class="badge-champ">VBL Champions 🏆</span>
+        </div>
+        <div class="accordion-content">
+            <div class="accordion-summary">
+                <strong>Head Coach:</strong> Corey Hunt<br>
+                <strong>Record:</strong> 31-19<br>
+                <strong>Finish:</strong> <span class="accordion-highlight">VBL Champions (second title in program history)</span>
+                <br><br>
+                <strong>Season Notables:</strong>
+                <ul>
+                    <li>Won VBL Championship with 10-5 win over Covington in deciding game.</li>
+                    <li>Thomas Francisco: .409 avg, All-Valley League DH (1st team).</li>
+                    <li>Vinnie Pasquantino: 37 RBI (team leader).</li>
+                    <li>VBL All-Stars: Cayman Richardson (OF, 1st team), Thomas Francisco (DH, 1st team), Trey McDyre (UTL, 2nd team), Kirby McMullen (OF), Joe Sprake (RHP), Antonio Balducci (LHP)</li>
+                    <li>MLB Draft: Connor Gillispie, Zac Ching, Patrick McColl, Vinnie Pasquantino, AJ Franklin, Bradley Hanner, Dominic D'Alessandro, Nick Roth III, Dupree Hart, Brooks Crawford, Bryce Windham, Evan Justice, DJ Lee, Eric Jones</li>
+                </ul>
+            </div>
+            <table class="results-table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Opponent</th>
+            <th>Time</th>
+            <th>Result</th>
+            <th>Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>5/31</td><td>@ Harrisonburg</td><td>8:43 PM</td><td class="result-loss">L</td><td>4-9</td></tr>
+        <tr><td>6/2</td><td>@ Staunton</td><td>7:36 PM</td><td class="result-win">W</td><td>18-4</td></tr>
+        <tr><td>6/4</td><td>@ Winchester</td><td>7:01 PM</td><td class="result-win">W</td><td>12-7</td></tr>
+        <tr><td>6/5</td><td>Covington</td><td>6:59 PM</td><td class="result-win">W</td><td>9-3</td></tr>
+        <tr><td>6/6</td><td>Woodstock</td><td>7:00 PM</td><td class="result-win">W</td><td>10-6</td></tr>
+        <tr><td>6/7</td><td>Waynesboro</td><td>7:01 PM</td><td class="result-win">W</td><td>7-2</td></tr>
+        <tr><td>6/10</td><td>Staunton</td><td>7:03 PM</td><td class="result-win">W</td><td>11-3</td></tr>
+        <tr><td>6/11</td><td>@ Front Royal</td><td>7:00 PM</td><td class="result-loss">L</td><td>4-5</td></tr>
+        <tr><td>6/12</td><td>@ New Market</td><td>7:38 PM</td><td class="result-loss">L</td><td>4-6</td></tr>
+        <tr><td>6/14</td><td>@ Staunton</td><td>7:33 PM</td><td class="result-loss">L</td><td>5-8</td></tr>
+        <tr><td>6/15</td><td>Covington</td><td>7:01 PM</td><td class="result-loss">L</td><td>5-6</td></tr>
+        <tr><td>6/16</td><td>Purcellville</td><td>3:02 PM</td><td class="result-win">W</td><td>17-16</td></tr>
+        <tr><td>6/17</td><td>@ Covington</td><td>7:06 PM</td><td class="result-win">W</td><td>12-2</td></tr>
+        <tr><td>6/19</td><td>Winchester</td><td>7:02 PM</td><td class="result-loss">L</td><td>5-8</td></tr>
+        <tr><td>6/21</td><td>@ Waynesboro</td><td>7:06 PM</td><td class="result-win">W</td><td>2-1</td></tr>
+        <tr><td>6/22</td><td>@ Staunton</td><td>7:32 PM</td><td class="result-loss">L</td><td>6-14</td></tr>
+        <tr><td>6/23</td><td>New Market</td><td>3:01 PM</td><td class="result-win">W</td><td>9-2</td></tr>
+        <tr><td>6/25</td><td>Staunton</td><td>7:02 PM</td><td class="result-win">W</td><td>3-2</td></tr>
+        <tr><td>6/26</td><td>@ New Market</td><td>7:32 PM</td><td class="result-win">W</td><td>6-4</td></tr>
+        <tr><td>6/27</td><td>Strasburg</td><td>7:01 PM</td><td class="result-loss">L</td><td>5-8</td></tr>
+        <tr><td>6/29</td><td>Harrisonburg</td><td>7:04 PM</td><td class="result-loss">L</td><td>5-6</td></tr>
+        <tr><td>6/30</td><td>@ Front Royal</td><td>7:00 PM</td><td class="result-win">W</td><td>2-1</td></tr>
+        <tr><td>7/1</td><td>Woodstock</td><td>7:02 PM</td><td class="result-win">W</td><td>10-5</td></tr>
+        <tr><td>7/2</td><td>@ Harrisonburg</td><td>8:02 PM</td><td class="result-win">W</td><td>11-8</td></tr>
+        <tr><td>7/4</td><td>Waynesboro</td><td>6:37 PM</td><td class="result-win">W</td><td>7-6</td></tr>
+        <tr><td>7/5</td><td>Staunton</td><td>7:14 PM</td><td class="result-loss">L</td><td>8-9</td></tr>
+        <tr><td>7/6</td><td>@ Waynesboro</td><td>7:04 PM</td><td class="result-loss">L</td><td>0-5</td></tr>
+        <tr><td>7/8</td><td>Waynesboro</td><td>7:02 PM</td><td class="result-win">W</td><td>11-5</td></tr>
+        <tr><td>7/9</td><td>Harrisonburg</td><td>7:03 PM</td><td class="result-loss">L</td><td>2-5</td></tr>
+        <tr><td>7/10</td><td>@ Purcellville</td><td>7:03 PM</td><td class="result-win">W</td><td>18-3</td></tr>
+        <tr><td>7/12</td><td>Covington</td><td>7:01 PM</td><td class="result-loss">L</td><td>3-4</td></tr>
+        <tr><td>7/13</td><td>Winchester</td><td>7:03 PM</td><td class="result-loss">L</td><td>1-11</td></tr>
+        <tr><td>7/14</td><td>@ Strasburg</td><td>7:02 PM</td><td class="result-loss">L</td><td>5-8</td></tr>
+        <tr><td>7/16</td><td>Purcellville</td><td>7:00 PM</td><td class="result-win">W</td><td>4-2</td></tr>
+        <tr><td>7/17</td><td>Woodstock</td><td>7:22 PM</td><td class="result-win">W</td><td>7-4</td></tr>
+        <tr><td>7/19</td><td>Harrisonburg</td><td>7:02 PM</td><td class="result-loss">L</td><td>2-3</td></tr>
+        <tr><td>7/20</td><td>@ Covington</td><td>7:18 PM</td><td class="result-loss">L</td><td>5-8</td></tr>
+        <tr><td>7/21</td><td>Front Royal</td><td>7:02 PM</td><td class="result-loss">L</td><td>4-9</td></tr>
+        <tr><td>7/22</td><td>Strasburg</td><td>7:48 PM</td><td class="result-loss">L</td><td>3-8</td></tr>
+        <tr><td>7/23</td><td>@ Waynesboro</td><td>7:00 PM</td><td class="result-loss">L</td><td>4-10</td></tr>
+        <tr><td>7/24</td><td>@ Covington</td><td>7:10 PM</td><td class="result-loss">L</td><td>6-7</td></tr>
+        <tr><td>7/25</td><td>@ Harrisonburg</td><td>7:34 PM</td><td class="result-loss">L</td><td>2-3</td></tr>
+        <!-- PLAYOFFS -->
+        <tr><td>7/28</td><td>Covington (Playoff)</td><td>7:00 PM</td><td class="result-win">W</td><td>9-4</td></tr>
+        <tr><td>7/29</td><td>@ Covington (Playoff)</td><td>7:11 PM</td><td class="result-loss">L</td><td>9-12</td></tr>
+        <tr><td>8/1</td><td>Covington (Playoff)</td><td>5:00 PM</td><td class="result-win">W</td><td>10-5</td></tr>
+        <tr><td>8/2</td><td>Staunton (Playoff)</td><td>6:59 PM</td><td class="result-loss">L</td><td>1-3</td></tr>
+        <tr><td>8/4</td><td>@ Staunton (Playoff)</td><td>7:34 PM</td><td class="result-win">W</td><td>9-7</td></tr>
+        <tr><td>8/5</td><td>Staunton (Playoff)</td><td>7:01 PM</td><td class="result-win">W</td><td>10-2</td></tr>
+        <tr><td>8/6</td><td>@ Strasburg (Finals)</td><td>7:01 PM</td><td class="result-win">W</td><td>11-8</td></tr>
+        <tr><td>8/7</td><td>Strasburg (Finals)</td><td>6:59 PM</td><td class="result-win">W</td><td>4-1</td></tr>
+    </tbody>
+</table>
+        </div>
+      </div>
+
+      <!-- 2018 Season Accordion -->
+      <div class="accordion" id="season-2018">
+        <div class="accordion-header">
+            2018 Season &mdash; Corey Hunt
+            <span class="season-record">27-21</span>
+            <span class="badge-runner-up">VBL Runner-Up</span>
+        </div>
+        <div class="accordion-content">
+            <div class="accordion-summary">
+                <strong>Head Coach:</strong> Corey Hunt<br>
+                <strong>Record:</strong> 27-21<br>
+                <strong>Finish:</strong> <span class="accordion-highlight" style="background:#fff8e6;border-left:4px solid #f0c400;color:#a38200;">VBL Championship Series (Lost to New Market)</span>
+                <br><br>
+                <strong>Season Notables:</strong>
+                <ul>
+                    <li>Advanced to the VBL Finals, falling to New Market in three games.</li>
+                    <li>Dominic D’Alessandro: 44 hits, 48 RBI (single-season record).</li>
+                    <li>Jared Wetherbee: VBL Pitcher of the Year.</li>
+                    <li>VBL All-Stars: Dominic D’Alessandro (DH, 1st team), Jared Wetherbee (SP, 1st team), Cody Maw (LHP), Zac Ching (SS).</li>
+                    <li>MLB Draft: Michael Wielansky, Layne Looney, Seth Lancaster.</li>
+                </ul>
+            </div>
+            <table class="results-table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Opponent</th>
+            <th>Time</th>
+            <th>Result</th>
+            <th>Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>6/1</td><td>@ Staunton</td><td>7:33 PM</td><td class="result-loss">L</td><td>4-9</td></tr>
+        <tr><td>6/4</td><td>New Market</td><td>7:06 PM</td><td class="result-win">W</td><td>13-3</td></tr>
+        <tr><td>6/5</td><td>Purcellville</td><td>6:58 PM</td><td class="result-win">W</td><td>5-4</td></tr>
+        <tr><td>6/6</td><td>@ Woodstock</td><td>7:08 PM</td><td class="result-win">W</td><td>4-1</td></tr>
+        <tr><td>6/7</td><td>Strasburg</td><td>6:58 PM</td><td class="result-win">W</td><td>6-0</td></tr>
+        <tr><td>6/11</td><td>@ Purcellville</td><td>6:59 PM</td><td class="result-loss">L</td><td>4-5</td></tr>
+        <tr><td>6/12</td><td>Woodstock</td><td>7:00 PM</td><td class="result-win">W</td><td>17-6</td></tr>
+        <tr><td>6/13</td><td>@ Staunton</td><td>7:30 PM</td><td class="result-win">W</td><td>6-1</td></tr>
+        <tr><td>6/14</td><td>Harrisonburg</td><td>7:05 PM</td><td class="result-win">W</td><td>11-4</td></tr>
+        <tr><td>6/16</td><td>@ Covington</td><td>7:08 PM</td><td class="result-loss">L</td><td>3-4</td></tr>
+        <tr><td>6/17</td><td>Harrisonburg</td><td>7:03 PM</td><td class="result-win">W</td><td>8-3</td></tr>
+        <tr><td>6/18</td><td>@ Waynesboro</td><td>7:00 PM</td><td class="result-win">W</td><td>5-3</td></tr>
+        <tr><td>6/23</td><td>@ Covington</td><td>7:02 PM</td><td class="result-loss">L</td><td>0-7</td></tr>
+        <tr><td>6/25</td><td>Waynesboro</td><td>6:59 PM</td><td class="result-win">W</td><td>8-4</td></tr>
+        <tr><td>6/26</td><td>New Market</td><td>6:59 PM</td><td class="result-win">W</td><td>6-1</td></tr>
+        <tr><td>6/27</td><td>@ Waynesboro</td><td>7:00 PM</td><td class="result-loss">L</td><td>3-6</td></tr>
+        <tr><td>6/28</td><td>@ Staunton</td><td>7:31 PM</td><td class="result-win">W</td><td>15-7</td></tr>
+        <tr><td>6/29</td><td>Covington</td><td>7:04 PM</td><td class="result-loss">L</td><td>1-4</td></tr>
+        <tr><td>6/30</td><td>@ Harrisonburg</td><td>7:32 PM</td><td class="result-loss">L</td><td>2-5</td></tr>
+        <tr><td>7/1</td><td>Purcellville</td><td>7:00 PM</td><td class="result-win">W</td><td>6-5</td></tr>
+        <tr><td>7/3</td><td>@ Covington</td><td>7:05 PM</td><td class="result-win">W</td><td>8-2</td></tr>
+        <tr><td>7/4</td><td>Waynesboro</td><td>6:01 PM</td><td class="result-loss">L</td><td>6-7</td></tr>
+        <tr><td>7/5</td><td>@ Winchester</td><td>7:03 PM</td><td class="result-loss">L</td><td>4-8</td></tr>
+        <tr><td>7/6</td><td>Covington</td><td>7:01 PM</td><td class="result-win">W</td><td>11-1</td></tr>
+        <tr><td>7/7</td><td>@ Harrisonburg</td><td>7:32 PM</td><td class="result-loss">L</td><td>2-9</td></tr>
+        <tr><td>7/8</td><td>Front Royal</td><td>5:02 PM</td><td class="result-loss">L</td><td>2-6</td></tr>
+        <tr><td>7/9</td><td>Front Royal</td><td>7:42 PM</td><td class="result-loss">L</td><td>0-17</td></tr>
+        <tr><td>7/10</td><td>Staunton</td><td>7:01 PM</td><td class="result-loss">L</td><td>1-3</td></tr>
+        <tr><td>7/11</td><td>@ Strasburg</td><td>7:02 PM</td><td class="result-loss">L</td><td>12-13</td></tr>
+        <tr><td>7/12</td><td>@ Woodstock</td><td>7:05 PM</td><td class="result-win">W</td><td>16-5</td></tr>
+        <tr><td>7/13</td><td>Staunton</td><td>6:02 PM</td><td class="result-loss">L</td><td>1-3</td></tr>
+        <tr><td>7/14</td><td>Waynesboro</td><td>6:02 PM</td><td class="result-loss">L</td><td>1-11</td></tr>
+        <tr><td>7/16</td><td>Winchester</td><td>7:02 PM</td><td class="result-loss">L</td><td>3-5</td></tr>
+        <tr><td>7/17</td><td>Covington</td><td>8:03 PM</td><td class="result-loss">L</td><td>4-6</td></tr>
+        <tr><td>7/18</td><td>@ Strasburg</td><td>7:02 PM</td><td class="result-loss">L</td><td>2-3</td></tr>
+        <tr><td>7/19</td><td>@ Front Royal</td><td>7:00 PM</td><td class="result-win">W</td><td>7-3</td></tr>
+        <tr><td>7/20</td><td>@ Waynesboro</td><td>7:00 PM</td><td class="result-win">W</td><td>2-1</td></tr>
+        <tr><td>7/21</td><td>Harrisonburg</td><td>3:05 PM</td><td class="result-loss">L</td><td>1-4</td></tr>
+        <tr><td>7/22</td><td>@ Winchester</td><td>7:24 PM</td><td class="result-loss">L</td><td>1-2</td></tr>
+        <tr><td>7/26</td><td>Staunton</td><td>7:04 PM</td><td class="result-loss">L</td><td>2-8</td></tr>
+        <tr><td>7/27</td><td>@ New Market</td><td>12:35 PM</td><td class="result-loss">L</td><td>3-7</td></tr>
+        <tr><td>7/28</td><td>@ Harrisonburg</td><td>9:09 PM</td><td class="result-loss">L</td><td>1-2</td></tr>
+        <!-- PLAYOFFS -->
+        <tr><td>7/29</td><td>Waynesboro (Playoff)</td><td>7:02 PM</td><td class="result-loss">L</td><td>2-4</td></tr>
+        <tr><td>8/1</td><td>@ Waynesboro (Playoff)</td><td>6:54 PM</td><td class="result-loss">L</td><td>7-12</td></tr>
+        <tr><td>8/4</td><td>Waynesboro (Playoff)</td><td>3:01 PM</td><td class="result-loss">L</td><td>2-3</td></tr>
+        <tr><td>8/5</td><td>@ Covington (Championship)</td><td>7:02 PM</td><td class="result-win">W</td><td>7-6</td></tr>
+        <tr><td>8/6</td><td>New Market (Finals)</td><td>7:01 PM</td><td class="result-win">W</td><td>16-4</td></tr>
+        <tr><td>8/7</td><td>@ New Market (Finals)</td><td>7:32 PM</td><td class="result-loss">L</td><td>5-8</td></tr>
+    </tbody>
+</table>
+        </div>
+      </div>
+
+      <!-- 2017 Season Accordion -->
+      <div class="accordion" id="season-2017">
+        <div class="accordion-header championship">
+            2017 Season &mdash; Corey Hunt
+            <span class="season-record">38-11</span>
+            <span class="badge-champ">VBL Champions 🏆</span>
+        </div>
+        <div class="accordion-content">
+            <div class="accordion-summary">
+                <strong>Head Coach:</strong> Corey Hunt<br>
+                <strong>Record:</strong> 38-11<br>
+                <strong>Finish:</strong> <span class="accordion-highlight">VBL Champions (first title in program history)</span>
+                <br><br>
+                <strong>Season Notables:</strong>
+                <ul>
+                    <li>Best record in franchise history (38-11).</li>
+                    <li>Michael Wielansky: .428 avg, 80 hits, VBL MVP, Perfect Game All-American.</li>
+                    <li>Rick Spiers: 0.85 ERA (franchise record).</li>
+                    <li>VBL All-Stars: Michael Wielansky (1st Team), Rick Spiers (1st Team), Sean McCracken (1st Team), Vinnie Pasquantino (2nd Team), Joe Burris (2nd Team), Drew Loepprich (2nd Team), plus several All-Star selections including manager Corey Hunt.</li>
+                    <li>MLB Draft: Billy Cooke, Kyle Davis, Brett Pope.</li>
+                </ul>
+            </div>
+<table class="results-table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Opponent</th>
+            <th>Time</th>
+            <th>Result</th>
+            <th>Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>6/2</td><td>@ Covington</td><td>7:00 PM</td><td class="result-win">W</td><td>14-2</td></tr>
+        <tr><td>6/3</td><td>@ Waynesboro</td><td>7:07 PM</td><td class="result-win">W</td><td>3-2</td></tr>
+        <tr><td>6/4</td><td>@ Staunton</td><td>7:30 PM</td><td class="result-win">W</td><td>7-4</td></tr>
+        <tr><td>6/6</td><td>Woodstock</td><td>7:02 PM</td><td class="result-win">W</td><td>8-1</td></tr>
+        <tr><td>6/7</td><td>New Market</td><td>7:01 PM</td><td class="result-loss">L</td><td>7-11</td></tr>
+        <tr><td>6/8</td><td>@ Strasburg</td><td>7:00 PM</td><td class="result-win">W</td><td>17-7</td></tr>
+        <tr><td>6/9</td><td>@ Harrisonburg</td><td>7:30 PM</td><td class="result-loss">L</td><td>3-4</td></tr>
+        <tr><td>6/10</td><td>@ Waynesboro</td><td>7:00 PM</td><td class="result-win">W</td><td>3-0</td></tr>
+        <tr><td>6/11</td><td>Covington</td><td>7:03 PM</td><td class="result-win">W</td><td>9-3</td></tr>
+        <tr><td>6/12</td><td>New Market</td><td>7:00 PM</td><td class="result-win">W</td><td>6-2</td></tr>
+        <tr><td>6/13</td><td>@ Front Royal</td><td>7:00 PM</td><td class="result-loss">L</td><td>2-5</td></tr>
+        <tr><td>6/17</td><td>Harrisonburg</td><td>7:08 PM</td><td class="result-loss">L</td><td>3-5</td></tr>
+        <tr><td>6/18</td><td>@ Covington</td><td>7:00 PM</td><td class="result-win">W</td><td>19-4</td></tr>
+        <tr><td>6/21</td><td>@ Strasburg</td><td>7:00 PM</td><td class="result-win">W</td><td>7-5</td></tr>
+        <tr><td>6/22</td><td>@ New Market</td><td>7:32 PM</td><td class="result-loss">L</td><td>4-8</td></tr>
+        <tr><td>6/24</td><td>@ Harrisonburg</td><td>7:30 PM</td><td class="result-win">W</td><td>8-1</td></tr>
+        <tr><td>6/25</td><td>Waynesboro</td><td>7:00 PM</td><td class="result-win">W</td><td>3-2</td></tr>
+        <tr><td>6/27</td><td>Strasburg</td><td>7:02 PM</td><td class="result-win">W</td><td>10-2</td></tr>
+        <tr><td>6/28</td><td>@ Woodstock</td><td>7:06 PM</td><td class="result-win">W</td><td>11-3</td></tr>
+        <tr><td>6/29</td><td>Winchester</td><td>7:01 PM</td><td class="result-win">W</td><td>6-0</td></tr>
+        <tr><td>6/30</td><td>@ Purcellville</td><td>7:00 PM</td><td class="result-win">W</td><td>8-4</td></tr>
+        <tr><td>7/1</td><td>Covington</td><td>7:00 PM</td><td class="result-win">W</td><td>9-0</td></tr>
+        <tr><td>7/2</td><td>Staunton</td><td>7:01 PM</td><td class="result-win">W</td><td>3-2</td></tr>
+        <tr><td>7/4</td><td>Waynesboro</td><td>5:58 PM</td><td class="result-loss">L</td><td>4-5</td></tr>
+        <tr><td>7/8</td><td>Waynesboro</td><td>7:52 PM</td><td class="result-win">W</td><td>8-2</td></tr>
+        <tr><td>7/11</td><td>@ Staunton</td><td>7:30 PM</td><td class="result-win">W</td><td>8-5</td></tr>
+        <tr><td>7/12</td><td>Harrisonburg</td><td>7:04 PM</td><td class="result-win">W</td><td>6-5</td></tr>
+        <tr><td>7/14</td><td>Covington</td><td>6:33 PM</td><td class="result-win">W</td><td>7-2</td></tr>
+        <tr><td>7/15</td><td>Staunton</td><td>7:01 PM</td><td class="result-loss">L</td><td>4-8</td></tr>
+        <tr><td>7/16</td><td>@ Waynesboro</td><td>7:00 PM</td><td class="result-loss">L</td><td>4-8</td></tr>
+        <tr><td>7/17</td><td>@ Staunton</td><td>7:30 PM</td><td class="result-loss">L</td><td>2-7</td></tr>
+        <tr><td>7/18</td><td>Front Royal</td><td>7:03 PM</td><td class="result-win">W</td><td>7-1</td></tr>
+        <tr><td>7/19</td><td>@ Front Royal</td><td>1:00 PM</td><td class="result-win">W</td><td>12-7</td></tr>
+        <tr><td>7/19</td><td>@ Winchester</td><td>7:00 PM</td><td class="result-loss">L</td><td>4-5</td></tr>
+        <tr><td>7/20</td><td>Purcellville (DH1)</td><td>4:59 PM</td><td class="result-win">W</td><td>5-3</td></tr>
+        <tr><td>7/20</td><td>@ Purcellville (DH2)</td><td>7:18 PM</td><td class="result-win">W</td><td>4-0</td></tr>
+        <tr><td>7/21</td><td>@ Covington</td><td>6:59 PM</td><td class="result-win">W</td><td>9-3</td></tr>
+        <tr><td>7/22</td><td>Harrisonburg</td><td>7:00 PM</td><td class="result-win">W</td><td>6-1</td></tr>
+        <tr><td>7/24</td><td>Woodstock</td><td>7:00 PM</td><td class="result-win">W</td><td>5-0</td></tr>
+        <tr><td>7/25</td><td>@ Harrisonburg</td><td>7:30 PM</td><td class="result-win">W</td><td>4-2</td></tr>
+        <tr><td>7/26</td><td>Winchester</td><td>7:01 PM</td><td class="result-win">W</td><td>5-4</td></tr>
+        <tr><td>7/27</td><td>Staunton</td><td>7:17 PM</td><td class="result-win">W</td><td>9-4</td></tr>
+        <!-- PLAYOFFS -->
+        <tr><td>7/29</td><td>Staunton (Playoff)</td><td>7:01 PM</td><td class="result-win">W</td><td>11-2</td></tr>
+        <tr><td>7/30</td><td>@ Staunton (Playoff)</td><td>7:30 PM</td><td class="result-win">W</td><td>10-5</td></tr>
+        <tr><td>7/31</td><td>Waynesboro (Playoff)</td><td>7:00 PM</td><td class="result-win">W</td><td>7-2</td></tr>
+        <tr><td>8/1</td><td>@ Waynesboro (Playoff)</td><td>7:00 PM</td><td class="result-win">W</td><td>3-2</td></tr>
+        <tr><td>8/5</td><td>Strasburg (Finals)</td><td>7:00 PM</td><td class="result-loss">L</td><td>7-9</td></tr>
+        <tr><td>8/6</td><td>@ Strasburg (Finals)</td><td>7:02 PM</td><td class="result-win">W</td><td>11-5</td></tr>
+        <tr><td>8/8</td><td>Strasburg (Finals)</td><td>7:00 PM</td><td class="result-win">W</td><td>2-1</td></tr>
+    </tbody>
+</table>
+        </div>
+      </div>
+
+      <!-- 2016 Season Accordion -->
+      <div class="accordion" id="season-2016">
+        <div class="accordion-header">
+            2016 Season &mdash; Travis Thomas
+            <span class="season-record">15-27</span>
+        </div>
+        <div class="accordion-content">
+            <div class="accordion-summary">
+                <strong>Head Coach:</strong> Travis Thomas<br>
+                <strong>Record:</strong> 15-27<br>
+                <strong>Finish:</strong> <span class="accordion-highlight" style="background:#f7eaea;border-left:4px solid #bb3e3e;color:#8c2323;">Missed Playoffs</span>
+                <br><br>
+                <strong>Season Notables:</strong>
+                <ul>
+                    <li>Rebuilding year with a young roster and 15 total wins.</li>
+                    <li>Bruce Steel: 4 sacrifice hits (team season record, tied).</li>
+                    <li>Jeb Bemiss: 43.2 IP, 43 K (team leader).</li>
+                    <li>All-Valley League: Riley Arnone (LHP), Brooks Crawford (RHP), Bruce Steel (SS).</li>
+                    <li>MLB Draft: Jack Alkire, Joe Burris, Brooks Crawford, Jacob Polina, Layne Looney.</li>
+                </ul>
+            </div>
+            <table class="results-table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Opponent</th>
+            <th>Time</th>
+            <th>Result</th>
+            <th>Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>6/1</td><td>New Market</td><td>7:00 PM</td><td class="result-loss">L</td><td>2-8</td></tr>
+        <tr><td>6/4</td><td>@ Purcellville</td><td>7:05 PM</td><td class="result-win">W</td><td>5-0</td></tr>
+        <tr><td>6/7</td><td>@ Front Royal</td><td>7:00 PM</td><td class="result-win">W</td><td>6-0</td></tr>
+        <tr><td>6/8</td><td>@ Woodstock</td><td>8:02 PM</td><td class="result-win">W</td><td>8-3</td></tr>
+        <tr><td>6/9</td><td>Front Royal</td><td>7:00 PM</td><td class="result-win">W</td><td>2-1</td></tr>
+        <tr><td>6/10</td><td>@ Waynesboro</td><td>7:00 PM</td><td class="result-loss">L</td><td>0-10</td></tr>
+        <tr><td>6/11</td><td>@ New Market</td><td>7:33 PM</td><td class="result-loss">L</td><td>5-6</td></tr>
+        <tr><td>6/12</td><td>Staunton</td><td>7:00 PM</td><td class="result-loss">L</td><td>5-6</td></tr>
+        <tr><td>6/13</td><td>@ Strasburg</td><td>7:00 PM</td><td class="result-loss">L</td><td>1-6</td></tr>
+        <tr><td>6/14</td><td>Woodstock</td><td>7:00 PM</td><td class="result-loss">L</td><td>3-6</td></tr>
+        <tr><td>6/17</td><td>Harrisonburg</td><td>7:00 PM</td><td class="result-loss">L</td><td>1-5</td></tr>
+        <tr><td>6/18</td><td>Covington</td><td>7:00 PM</td><td class="result-win">W</td><td>5-1</td></tr>
+        <tr><td>6/19</td><td>@ Harrisonburg (DH1)</td><td>6:02 PM</td><td class="result-win">W</td><td>6-1</td></tr>
+        <tr><td>6/19</td><td>@ Harrisonburg (DH2)</td><td>8:16 PM</td><td class="result-loss">L</td><td>0-2</td></tr>
+        <tr><td>6/20</td><td>@ Waynesboro</td><td>7:00 PM</td><td class="result-loss">L</td><td>3-9</td></tr>
+        <tr><td>6/22</td><td>@ Winchester</td><td>7:06 PM</td><td class="result-loss">L</td><td>4-8</td></tr>
+        <tr><td>6/23</td><td>@ Strasburg</td><td>7:00 PM</td><td class="result-loss">L</td><td>4-5</td></tr>
+        <tr><td>6/25</td><td>Waynesboro</td><td>7:00 PM</td><td class="result-win">W</td><td>5-3</td></tr>
+        <tr><td>6/26</td><td>@ Winchester</td><td>7:00 PM</td><td class="result-loss">L</td><td>4-5</td></tr>
+        <tr><td>6/27</td><td>@ Purcellville</td><td>7:00 PM</td><td class="result-loss">L</td><td>2-5</td></tr>
+        <tr><td>6/28</td><td>Staunton</td><td>7:00 PM</td><td class="result-win">W</td><td>10-3</td></tr>
+        <tr><td>6/29</td><td>Strasburg</td><td>7:00 PM</td><td class="result-loss">L</td><td>3-6</td></tr>
+        <tr><td>6/30</td><td>Covington</td><td>7:00 PM</td><td class="result-loss">L</td><td>2-6</td></tr>
+        <tr><td>7/1</td><td>@ Covington</td><td>7:11 PM</td><td class="result-loss">L</td><td>4-7</td></tr>
+        <tr><td>7/3</td><td>Harrisonburg</td><td>7:00 PM</td><td class="result-loss">L</td><td>1-3</td></tr>
+        <tr><td>7/5</td><td>New Market</td><td>7:00 PM</td><td class="result-loss">L</td><td>3-5</td></tr>
+        <tr><td>7/7</td><td>Covington</td><td>7:00 PM</td><td class="result-loss">L</td><td>7-9</td></tr>
+        <tr><td>7/8</td><td>@ Waynesboro</td><td>7:00 PM</td><td class="result-loss">L</td><td>3-7</td></tr>
+        <tr><td>7/9</td><td>@ Staunton</td><td>7:30 PM</td><td class="result-loss">L</td><td>10-11</td></tr>
+        <tr><td>7/12</td><td>Staunton</td><td>7:00 PM</td><td class="result-win">W</td><td>10-2</td></tr>
+        <tr><td>7/13</td><td>@ Staunton</td><td>7:30 PM</td><td class="result-loss">L</td><td>2-4</td></tr>
+        <tr><td>7/14</td><td>Woodstock</td><td>7:00 PM</td><td class="result-win">W</td><td>4-3</td></tr>
+        <tr><td>7/15</td><td>Front Royal</td><td>7:00 PM</td><td class="result-win">W</td><td>2-1</td></tr>
+        <tr><td>7/17</td><td>@ Covington</td><td>7:00 PM</td><td class="result-loss">L</td><td>8-9</td></tr>
+        <tr><td>7/20</td><td>Purcellville</td><td>7:00 PM</td><td class="result-loss">L</td><td>2-7</td></tr>
+        <tr><td>7/21</td><td>@ Staunton</td><td>7:30 PM</td><td class="result-loss">L</td><td>6-9</td></tr>
+        <tr><td>7/22</td><td>Winchester</td><td>6:00 PM</td><td class="result-win">W</td><td>4-1</td></tr>
+        <tr><td>7/24</td><td>Waynesboro (DH1)</td><td>6:00 PM</td><td class="result-win">W</td><td>4-2</td></tr>
+        <tr><td>7/24</td><td>Waynesboro (DH2)</td><td>8:30 PM</td><td class="result-loss">L</td><td>6-14</td></tr>
+        <tr><td>7/25</td><td>Harrisonburg (DH1)</td><td>6:00 PM</td><td class="result-win">W</td><td>4-2</td></tr>
+        <tr><td>7/25</td><td>Harrisonburg (DH2)</td><td>8:30 PM</td><td class="result-loss">L</td><td>3-7</td></tr>
+        <tr><td>7/26</td><td>@ Covington</td><td>7:00 PM</td><td class="result-win">W</td><td>5-0</td></tr>
+    </tbody>
+</table>
+        </div>
+      </div>
+
+      <!-- 2015 Season Accordion -->
+      <div class="accordion" id="season-2015">
+        <div class="accordion-header">
+            2015 Season &mdash; Mike Goldberg
+            <span class="season-record">18-25</span>
+        </div>
+        <div class="accordion-content">
+            <div class="accordion-summary">
+                <strong>Head Coach:</strong> Mike Goldberg<br>
+                <strong>Record:</strong> 18-25<br>
+                <strong>Finish:</strong> <span class="accordion-highlight" style="background:#f7eaea;border-left:4px solid #bb3e3e;color:#8c2323;">Playoff Appearance</span>
+                <br><br>
+                <strong>Season Notables:</strong>
+                <ul>
+                    <li>Inaugural season in the Valley Baseball League.</li>
+                    <li>Earned a playoff berth as the No. 4 seed, reached VBL Finals (lost to Strasburg).</li>
+                    <li>Cris Perez: 6 HR (tied single-season record), Daniel Johnson: 1.62 ERA (team season record).</li>
+                    <li>All-Valley League: Hayden McCutcheon (SP, 1st Team), Daniel Johnson (RP, 1st Team), Seth Lancaster (SS, All-Star).</li>
+                    <li>MLB Draft: Billy Cooke, Daniel Johnson, Cam Johnson, Chris Clayton, Ryan Larson, Brian Fortier, Joe Burris.</li>
+                </ul>
+            </div>
+            <table class="results-table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Opponent</th>
+            <th>Time</th>
+            <th>Result</th>
+            <th>Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>6/4</td><td>@ New Market</td><td>7:43 PM</td><td class="result-loss">L</td><td>2-4</td></tr>
+        <tr><td>6/6</td><td>@ Staunton</td><td>7:30 PM</td><td class="result-loss">L</td><td>4-5</td></tr>
+        <tr><td>6/7</td><td>@ Harrisonburg</td><td>7:33 PM</td><td class="result-loss">L</td><td>1-8</td></tr>
+        <tr><td>6/9</td><td>Covington</td><td>7:06 PM</td><td class="result-loss">L</td><td>5-6</td></tr>
+        <tr><td>6/10</td><td>@ Waynesboro</td><td>8:02 PM</td><td class="result-loss">L</td><td>5-6</td></tr>
+        <tr><td>6/11</td><td>New Market</td><td>7:01 PM</td><td class="result-win">W</td><td>7-5</td></tr>
+        <tr><td>6/12</td><td>Staunton</td><td>7:30 PM</td><td class="result-win">W</td><td>3-1</td></tr>
+        <tr><td>6/13</td><td>Harrisonburg</td><td>8:13 PM</td><td class="result-loss">L</td><td>1-7</td></tr>
+        <tr><td>6/14</td><td>@ Covington</td><td>7:34 PM</td><td class="result-loss">L</td><td>4-6</td></tr>
+        <tr><td>6/16</td><td>@ Waynesboro</td><td>7:00 PM</td><td class="result-loss">L</td><td>4-5</td></tr>
+        <tr><td>6/17</td><td>@ Winchester</td><td>7:30 PM</td><td class="result-win">W</td><td>16-2</td></tr>
+        <tr><td>6/18</td><td>New Market</td><td>7:02 PM</td><td class="result-win">W</td><td>6-3</td></tr>
+        <tr><td>6/19</td><td>@ Staunton</td><td>7:30 PM</td><td class="result-loss">L</td><td>1-14</td></tr>
+        <tr><td>6/21</td><td>Covington</td><td>7:01 PM</td><td class="result-win">W</td><td>2-0</td></tr>
+        <tr><td>6/22</td><td>@ Harrisonburg</td><td>7:32 PM</td><td class="result-loss">L</td><td>1-2</td></tr>
+        <tr><td>6/23</td><td>Waynesboro</td><td>7:00 PM</td><td class="result-win">W</td><td>5-4</td></tr>
+        <tr><td>6/24</td><td>@ Strasburg</td><td>7:00 PM</td><td class="result-win">W</td><td>19-6</td></tr>
+        <tr><td>6/26</td><td>@ Aldie</td><td>7:30 PM</td><td class="result-win">W</td><td>4-2</td></tr>
+        <tr><td>6/28</td><td>Woodstock</td><td>7:00 PM</td><td class="result-loss">L</td><td>7-8</td></tr>
+        <tr><td>6/29</td><td>Front Royal</td><td>7:04 PM</td><td class="result-win">W</td><td>6-5</td></tr>
+        <tr><td>6/30</td><td>@ New Market</td><td>7:30 PM</td><td class="result-win">W</td><td>1-0</td></tr>
+        <tr><td>7/1</td><td>Staunton</td><td>7:02 PM</td><td class="result-win">W</td><td>3-2</td></tr>
+        <tr><td>7/2</td><td>Harrisonburg</td><td>7:03 PM</td><td class="result-loss">L</td><td>0-5</td></tr>
+        <tr><td>7/4</td><td>Waynesboro</td><td>5:00 PM</td><td class="result-loss">L</td><td>2-7</td></tr>
+        <tr><td>7/6</td><td>@ Charles Town (DH1)</td><td>5:00 PM</td><td class="result-win">W</td><td>3-2</td></tr>
+        <tr><td>7/6</td><td>@ Charles Town (DH2)</td><td>7:32 PM</td><td class="result-loss">L</td><td>3-4</td></tr>
+        <tr><td>7/7</td><td>@ Strasburg</td><td>7:01 PM</td><td class="result-win">W</td><td>2-1</td></tr>
+        <tr><td>7/8</td><td>@ Aldie</td><td>7:03 PM</td><td class="result-win">W</td><td>11-2</td></tr>
+        <tr><td>7/9</td><td>@ Front Royal</td><td>7:00 PM</td><td class="result-loss">L</td><td>2-3</td></tr>
+        <tr><td>7/11</td><td>@ Woodstock</td><td>8:03 PM</td><td class="result-loss">L</td><td>4-7</td></tr>
+        <tr><td>7/15</td><td>New Market</td><td>7:00 PM</td><td class="result-win">W</td><td>4-3</td></tr>
+        <tr><td>7/16</td><td>@ Staunton</td><td>7:30 PM</td><td class="result-loss">L</td><td>9-11</td></tr>
+        <tr><td>7/17</td><td>@ Harrisonburg</td><td>7:30 PM</td><td class="result-loss">L</td><td>1-5</td></tr>
+        <tr><td>7/18</td><td>Covington</td><td>7:02 PM</td><td class="result-loss">L</td><td>3-9</td></tr>
+        <tr><td>7/19</td><td>Waynesboro</td><td>7:00 PM</td><td class="result-win">W</td><td>4-3</td></tr>
+        <tr><td>7/20</td><td>@ Covington</td><td>7:18 PM</td><td class="result-win">W</td><td>5-1</td></tr>
+        <tr><td>7/21</td><td>@ New Market</td><td>7:30 PM</td><td class="result-loss">L</td><td>4-5</td></tr>
+        <tr><td>7/22</td><td>Staunton</td><td>7:08 PM</td><td class="result-loss">L</td><td>2-6</td></tr>
+        <tr><td>7/23</td><td>Harrisonburg</td><td>7:00 PM</td><td class="result-loss">L</td><td>1-2</td></tr>
+        <tr><td>7/24</td><td>@ Covington</td><td>7:12 PM</td><td class="result-loss">L</td><td>3-4</td></tr>
+        <tr><td>7/25</td><td>@ Waynesboro</td><td>7:00 PM</td><td class="result-loss">L</td><td>1-5</td></tr>
+        <tr><td>7/26</td><td>Winchester</td><td>6:59 PM</td><td class="result-win">W</td><td>4-3</td></tr>
+        <!-- PLAYOFFS -->
+        <tr><td>7/29</td><td>@ Covington (Play-In)</td><td>4:30 PM</td><td class="result-loss">L</td><td>5-6</td></tr>
+    </tbody>
+</table>
+                </tbody>
+            </table>
+        </div>
+      </div>
+
+           
+        </main>
+
+    </div>
+
+    <!-- SCROLL TO TOP BUTTON -->
+    <button class="scroll-to-top" id="scrollToTop">↑</button>
+
+    <!-- =========================================
+         JAVASCRIPT FUNCTIONALITY
+         ========================================= -->
+    <script>
+        // =====================================
+        // ACCORDION TOGGLE
+        // =====================================
+        document.querySelectorAll('.accordion-header').forEach((header) => {
+            header.addEventListener('click', function() {
+                const thisAccordion = header.closest('.accordion');
+                const content = thisAccordion.querySelector('.accordion-content');
+                const wasOpen = thisAccordion.classList.contains('open');
+
+                // Close all accordions
+                document.querySelectorAll('.accordion').forEach(acc => {
+                    acc.classList.remove('open');
+                    acc.querySelector('.accordion-content').style.maxHeight = null;
+                });
+
+                // If it wasn't open before, open it now
+                if (!wasOpen) {
+                    thisAccordion.classList.add('open');
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        });
+
+        // =====================================
+        // SIDEBAR NAVIGATION
+        // =====================================
+        const sidebarLinks = document.querySelectorAll('.sidebar-link');
+        
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('data-target');
+                const targetAccordion = document.getElementById(targetId);
+                
+                if (targetAccordion) {
+                    // Close all accordions
+                    document.querySelectorAll('.accordion').forEach(acc => {
+                        acc.classList.remove('open');
+                        acc.querySelector('.accordion-content').style.maxHeight = null;
+                    });
+                    
+                    // Open target accordion
+                    targetAccordion.classList.add('open');
+                    const content = targetAccordion.querySelector('.accordion-content');
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    
+                    // Scroll to accordion
+                    targetAccordion.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    
+                    // Update active state
+                    sidebarLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Update active sidebar link on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            document.querySelectorAll('.accordion').forEach(accordion => {
+                const sectionTop = accordion.offsetTop;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = accordion.getAttribute('id');
+                }
+            });
+            
+            sidebarLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-target') === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // =====================================
+        // SHOW MORE / SHOW LESS BUTTONS
+        // =====================================
+        document.querySelectorAll('.show-more-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const category = this.closest('.table-category');
+                const table = category.querySelector('.records-table tbody');
+                const hiddenRows = Array.from(table.querySelectorAll('tr')).slice(5);
+                
+                if (this.classList.contains('collapsed')) {
+                    // Show all rows
+                    hiddenRows.forEach(row => row.classList.remove('table-row-hidden'));
+                    this.classList.remove('collapsed');
+                    this.classList.add('expanded');
+                    this.textContent = 'Show Less';
+                } else {
+                    // Hide rows after index 5
+                    hiddenRows.forEach(row => row.classList.add('table-row-hidden'));
+                    this.classList.remove('expanded');
+                    this.classList.add('collapsed');
+                    this.textContent = 'Show All';
+                }
+            });
+        });
+
+        // Initialize: hide rows beyond 5 for tables with >5 rows
+        document.querySelectorAll('.table-category').forEach(category => {
+            const table = category.querySelector('.records-table tbody');
+            if (table) {
+                const rows = table.querySelectorAll('tr');
+                if (rows.length > 5) {
+                    // Add button if it doesn't exist
+                    if (!category.querySelector('.show-more-btn')) {
+                        const btn = document.createElement('button');
+                        btn.className = 'show-more-btn collapsed';
+                        btn.textContent = 'Show All';
+                        category.insertBefore(btn, table.parentElement);
+                    }
+                    
+                    // Hide rows beyond 5
+                    Array.from(rows).slice(5).forEach(row => {
+                        row.classList.add('table-row-hidden');
+                    });
+                }
+            }
+        });
+
+        // =====================================
+        // SEARCH FUNCTIONALITY
+        // =====================================
+        let searchTimeout;
+        const searchBox = document.getElementById('searchBox');
+        
+        searchBox.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            
+            searchTimeout = setTimeout(() => {
+                const searchTerm = this.value.toLowerCase().trim();
+                
+                // Clear previous highlights
+                document.querySelectorAll('.highlight-row').forEach(row => {
+                    row.classList.remove('highlight-row');
+                });
+                
+                if (searchTerm.length < 2) {
+                    return;
+                }
+                
+                let firstMatch = null;
+                
+                // Search through all table rows
+                document.querySelectorAll('.records-table tbody tr, .results-table tbody tr').forEach(row => {
+                    const text = row.textContent.toLowerCase();
+                    
+                    if (text.includes(searchTerm)) {
+                        row.classList.add('highlight-row');
+                        row.classList.remove('table-row-hidden');
+                        
+                        if (!firstMatch) {
+                            firstMatch = row;
+                            
+                            // Open the accordion containing this row
+                            const accordion = row.closest('.accordion');
+                            if (accordion && !accordion.classList.contains('open')) {
+                                document.querySelectorAll('.accordion').forEach(acc => {
+                                    acc.classList.remove('open');
+                                    acc.querySelector('.accordion-content').style.maxHeight = null;
+                                });
+                                
+                                accordion.classList.add('open');
+                                const content = accordion.querySelector('.accordion-content');
+                                content.style.maxHeight = content.scrollHeight + "px";
+                            }
+                        }
+                    }
+                });
+                
+                // Scroll to first match
+                if (firstMatch) {
+                    firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }, 300);
+        });
+
+        // =====================================
+        // SCROLL TO TOP BUTTON
+        // =====================================
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // =====================================
+        // AUTO-ADD DATA-LABEL FOR MOBILE
+        // =====================================
+        document.querySelectorAll('.records-table, .results-table').forEach(table => {
+            const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent);
+            
+            table.querySelectorAll('tbody tr').forEach(row => {
+                Array.from(row.querySelectorAll('td')).forEach((cell, index) => {
+                    if (headers[index] && !cell.getAttribute('data-label')) {
+                        cell.setAttribute('data-label', headers[index]);
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

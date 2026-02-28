@@ -1,0 +1,1823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Charlottesville Tom Sox - Team Records</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Oswald:700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           GLOBAL VARIABLES & RESET
+           ========================================= */
+        :root {
+            --tomsox-green: #84BD00;
+            --dark-blue: #1B365D;
+            --blue-gradient: linear-gradient(90deg, #1B365D 70%, #224472 100%);
+            --max-width: 1600px;
+            --sidebar-width: 200px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Open Sans', Arial, sans-serif;
+            background: #F7F8FA;
+            color: #232323;
+        }
+
+        /* =========================================
+           HERO SECTION
+           ========================================= */
+        .hero-section {
+            background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            position: relative;
+            min-height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--blue-gradient);
+            opacity: 0.86;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: #fff;
+            padding: 2rem;
+        }
+
+        .hero-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 20px #0006;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+            margin-bottom: 0;
+            opacity: 0.93;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        /* =========================================
+           TOP NAVIGATION BAR (CENTERED)
+           ========================================= */
+        .records-nav {
+            width: 100%;
+            background: var(--dark-blue);
+            border-bottom: none;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
+        }
+
+        .records-nav-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0;
+            justify-content: center;
+        }
+
+        .nav-link {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.13rem;
+            color: #fff;
+            background: none;
+            border: none;
+            border-radius: 0;
+            padding: 1rem 2rem;
+            margin: 0;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            transition: background 0.2s, color 0.2s;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .nav-link.active {
+            background: var(--tomsox-green);
+            color: var(--dark-blue);
+            box-shadow: none;
+        }
+
+        .nav-link:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        /* =========================================
+           SEARCH CONTAINER
+           ========================================= */
+        .search-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 1rem 0.5rem 0.5rem 0.5rem;
+        }
+
+        .search-input {
+            width: 100%;
+            max-width: 600px;
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-family: 'Open Sans', Arial, sans-serif;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .search-input:focus {
+            border-color: var(--tomsox-green);
+            box-shadow: 0 0 0 3px rgba(132, 189, 0, 0.1);
+        }
+
+        .search-input::placeholder {
+            color: #999;
+        }
+
+        /* =========================================
+           CONTENT WRAPPER WITH SIDEBAR
+           ========================================= */
+        .content-wrapper {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            gap: 1rem;
+            padding: 0.5rem;
+            position: relative;
+        }
+
+        /* =========================================
+           SIDEBAR NAVIGATION
+           ========================================= */
+        .sidebar-nav {
+            width: var(--sidebar-width);
+            position: sticky;
+            top: 80px;
+            align-self: flex-start;
+            background: #fff;
+            border-radius: 15px;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 12px rgba(27, 54, 93, 0.08);
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+
+        .sidebar-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.95rem;
+            color: var(--dark-blue);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin: 0 0 1rem 0;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--tomsox-green);
+            font-weight: 700;
+        }
+
+        .sidebar-link {
+            display: block;
+            padding: 0.6rem 0.8rem;
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
+            color: #555;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s;
+            cursor: pointer;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-link:hover {
+            background: #f0f9e6;
+            color: var(--dark-blue);
+            border-left-color: var(--tomsox-green);
+        }
+
+        .sidebar-link.active {
+            background: linear-gradient(90deg, #e8f7d1 0%, #f5fced 100%);
+            color: var(--dark-blue);
+            font-weight: 600;
+            border-left-color: var(--tomsox-green);
+        }
+
+        /* =========================================
+           MOBILE CHIP NAVIGATION
+           ========================================= */
+        .chip-nav {
+            display: none;
+            gap: 0.5rem;
+            padding: 1rem 0.5rem;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .chip-link {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #fff;
+            border: 2px solid #ddd;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #555;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+
+        .chip-link:hover,
+        .chip-link.active {
+            background: var(--tomsox-green);
+            color: #fff;
+            border-color: var(--tomsox-green);
+        }
+
+        /* =========================================
+           ACCORDIONS
+           ========================================= */
+        .accordions {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .accordion {
+            margin-bottom: 1rem;
+            border-radius: 20px;
+            background: #fff;
+            box-shadow: 0 2px 16px #0e204010;
+            overflow: hidden;
+            transition: box-shadow 0.23s;
+        }
+
+        .accordion.open {
+            box-shadow: 0 4px 28px #0e204020;
+        }
+
+        .accordion-header {
+            background: var(--blue-gradient);
+            color: #fff;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            padding: 1rem 1.2rem;
+            cursor: pointer;
+            position: relative;
+            transition: background 0.2s;
+            user-select: none;
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-header .chevron {
+            font-size: 1.2rem;
+            transition: transform 0.23s;
+        }
+
+        .accordion.open .accordion-header .chevron {
+            transform: rotate(90deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .accordion.open .accordion-content {
+            max-height: 10000px;
+            transition: max-height 0.5s ease-in;
+        }
+
+        .accordion-body {
+            padding: 1rem 1.2rem 1.2rem 1.2rem;
+            animation: fadein .6s;
+        }
+
+        @keyframes fadein {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* =========================================
+           TABLE CATEGORIES
+           ========================================= */
+        .table-category {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        /* =========================================
+           TABLE STYLES
+           ========================================= */
+        .records-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 0.98rem;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 1px 10px 0 #1b365d0d;
+        }
+
+        .records-table th {
+            background: var(--dark-blue);
+            color: #fff;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            font-size: 0.95em;
+            padding: 0.6em 0.7em;
+            border-bottom: 3px solid var(--tomsox-green);
+            text-align: left;
+        }
+
+        .records-table td {
+            background: #fff;
+            color: #222;
+            padding: 0.5em 0.7em;
+            border-bottom: 1px solid #e8ebf2;
+            font-family: 'Open Sans', Arial, sans-serif;
+        }
+
+        .records-table tr:hover td {
+            background: #f7fadf;
+        }
+
+        .records-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .table-row-hidden {
+            display: none;
+        }
+
+        /* Search highlight */
+        .search-highlight {
+            background: #ffeb3b !important;
+            transition: background 0.3s;
+        }
+
+        /* Highlights & Badges */
+        .highlight-record {
+            background: #e6f9c5 !important;
+            font-weight: 600;
+        }
+
+        .champ-year-row {
+            background: #f0f9e6 !important;
+        }
+
+        .champ-badge {
+            color: #fff;
+            background: var(--tomsox-green);
+            border-radius: 1em;
+            padding: 0.12em 0.7em;
+            font-size: 0.88em;
+            font-weight: 700;
+            display: inline-block;
+            margin-left: 0.4em;
+            vertical-align: middle;
+            letter-spacing: 0.2px;
+        }
+
+        /* =========================================
+           SCROLL TO TOP BUTTON
+           ========================================= */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--tomsox-green);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s, transform 0.2s;
+            z-index: 100;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            background: #73a600;
+            transform: translateY(-3px);
+        }
+
+        /* =========================================
+           RESPONSIVE / MOBILE STYLES
+           ========================================= */
+        
+        /* Tablet and below - hide sidebar, show chips */
+        @media (max-width: 1000px) {
+            .sidebar-nav {
+                display: none;
+            }
+
+            .chip-nav {
+                display: flex;
+            }
+
+            .content-wrapper {
+                padding: 0 0.5rem;
+            }
+        }
+
+        /* Mobile - card view for tables */
+        @media (max-width: 650px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .nav-link {
+                font-size: 0.85rem;
+                padding: 0.8rem 1rem;
+            }
+
+            .accordion-header {
+                font-size: 1.2rem;
+                padding: 0.9rem 1rem;
+            }
+
+            .accordion-body {
+                padding: 0.8rem;
+            }
+
+            /* Hide tables on mobile */
+            .records-table {
+                display: none;
+            }
+
+            .record-mobile-cards {
+                display: grid;
+                gap: 14px;
+            }
+
+            .record-card {
+                background: #fff;
+                border-radius: 13px;
+                box-shadow: 0 1px 6px #1b365d12;
+                padding: 17px 13px 13px 17px;
+                font-size: 0.98rem;
+                border-left: 6px solid var(--dark-blue);
+                position: relative;
+            }
+
+            .record-card.highlight-record {
+                background: #e6f9c5;
+                border-left-color: var(--tomsox-green);
+            }
+
+            .record-card.champ-year-row {
+                background: #f0f9e6;
+            }
+
+            .record-card-title {
+                font-family: 'Oswald', sans-serif;
+                font-size: 1.08em;
+                margin: 0 0 4px 0;
+                color: var(--dark-blue);
+                font-weight: 700;
+            }
+
+            .record-card-content {
+                margin-bottom: 0;
+                line-height: 1.5;
+            }
+        }
+
+        /* Hide cards on desktop */
+        @media (min-width: 651px) {
+            .record-mobile-cards {
+                display: none;
+            }
+        }
+
+        /* Very small mobile adjustments */
+        @media (max-width: 400px) {
+            .hero-title {
+                font-size: 1.6rem;
+            }
+
+            .search-container {
+                padding: 0.8rem 0.5rem 0.5rem 0.5rem;
+            }
+
+            .search-input {
+                font-size: 0.9rem;
+                padding: 10px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Tom Sox Record Book</h1>
+            <p class="hero-subtitle">Team Records</p>
+        </div>
+    </section>
+
+    <!-- TOP NAVIGATION BAR (CENTERED) -->
+    <nav class="records-nav">
+        <div class="records-nav-inner">
+            <a href="/team-records/program-history" class="nav-link">Program History</a>
+            <a href="/team-records/individual-records" class="nav-link">Individual Records</a>
+            <a href="/team-records/team-records-data" class="nav-link active">Team Records</a>
+            <a href="/team-records/year-by-year" class="nav-link">Year by Year</a>
+            <a href="/team-records/playoffs" class="nav-link">Playoffs</a>
+        </div>
+    </nav>
+
+    <!-- SEARCH INPUT -->
+    <div class="search-container">
+        <input 
+            type="text" 
+            class="search-input" 
+            id="searchInput" 
+            placeholder="Search records (player names, years, stats...)"
+            autocomplete="off"
+        >
+    </div>
+
+    <!-- MOBILE CHIP NAVIGATION -->
+    <div class="chip-nav" id="chipNav">
+        <a href="#acc-season" class="chip-link" data-target="acc-season">Season Records</a>
+        <a href="#acc-game" class="chip-link" data-target="acc-game">Game Records</a>
+        <a href="#acc-misc" class="chip-link" data-target="acc-misc">Miscellaneous</a>
+    </div>
+
+    <!-- CONTENT WRAPPER WITH SIDEBAR -->
+    <div class="content-wrapper">
+
+        <!-- SIDEBAR NAVIGATION (Desktop) -->
+        <aside class="sidebar-nav" id="sidebarNav">
+            <h3 class="sidebar-title">Jump to Section</h3>
+            <a href="#acc-season" class="sidebar-link" data-target="acc-season">Team Season Records</a>
+            <a href="#acc-game" class="sidebar-link" data-target="acc-game">Team Game Records</a>
+            <a href="#acc-misc" class="sidebar-link" data-target="acc-misc">Miscellaneous Records</a>
+        </aside>
+
+        <!-- ACCORDIONS CONTAINER -->
+        <main class="accordions">
+
+            <!-- ACCORDION 1: TEAM SEASON RECORDS -->
+            <section class="accordion" id="acc-season">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    Team Season Records <span class="chevron">►</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        
+                        <!-- DESKTOP TABLE: TEAM SEASON RECORDS -->
+                        <table class="records-table" aria-label="Team Season Records">
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>Record</th>
+                                    <th>Year</th>
+                                    <th>Note</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- GAMES PLAYED -->
+                                <tr class="highlight-record">
+                                    <td>Games Played</td>
+                                    <td>52</td>
+                                    <td>2023</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Games Played</td>
+                                    <td>50</td>
+                                    <td>2019 <span class="champ-badge">Champions</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Games Played</td>
+                                    <td>49</td>
+                                    <td>2017 <span class="champ-badge">Champions</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Games Played</td>
+                                    <td>48</td>
+                                    <td>2022 <span class="champ-badge">Champions</span></td>
+                                    <td>Tied: 2018</td>
+                                </tr>
+                                <tr>
+                                    <td>Games Played</td>
+                                    <td>45</td>
+                                    <td>2024 <span class="champ-badge">Champions</span></td>
+                                    <td></td>
+                                </tr>
+
+                                <!-- BATTING AVERAGE -->
+                                <tr class="highlight-record">
+                                    <td>Batting Average</td>
+                                    <td>.297</td>
+                                    <td>2017 <span class="champ-badge">Champions</span></td>
+                                    <td>Team Record</td>
+                                </tr>
+                                <tr>
+                                    <td>Batting Average</td>
+                                    <td>.293</td>
+                                    <td>2019 <span class="champ-badge">Champions</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Batting Average</td>
+                                    <td>.273</td>
+                                    <td>2024 <span class="champ-badge">Champions</span></td>
+                                    <td></td>
+                                </tr>
+
+                                <!-- SLUGGING PCT -->
+                                <tr class="highlight-record">
+                                    <td>Slugging %</td>
+                                    <td>.409</td>
+                                    <td>2017 <span class="champ-badge">Champions</span></td>
+                                    <td>Team Record</td>
+                                </tr>
+                                <tr>
+                                    <td>Slugging %</td>
+                                    <td>.404</td>
+                                    <td>2019 <span class="champ-badge">Champions</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Slugging %</td>
+                                    <td>.403</td>
+                                    <td>2024 <span class="champ-badge">Champions</span></td>
+                                    <td></td>
+                                </tr>
+
+                                <!-- ON-BASE PCT -->
+                                <tr class="highlight-record">
+                                    <td>On-Base %</td>
+                                    <td>.414</td>
+                                    <td>2024 <span class="champ-badge">Champions</span></td>
+                                    <td>Team Record</td>
+                                </tr>
+                                <tr>
+                                    <td>On-Base %</td>
+                                    <td>.398</td>
+                                    <td>2023</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>On-Base %</td>
+                                    <td>.387</td>
+                                    <td>2017 <span class="champ-badge">Champions</span>, 2019 <span class="champ-badge">Champions</span></td>
+                                    <td></td>
+                                </tr>
+
+                                <!-- RUNS SCORED -->
+                                <tr class="highlight-record">
+                                    <td>Runs Scored</td>
+                                    <td>352</td>
+                                    <td>2019 <span class="champ-badge">Champions</span></td>
+                                    <td>Team Record</td>
+                                </tr>
+                                <tr>
+                                    <td>Runs Scored</td>
+                                    <td>340</td>
+                                    <td>2024 <span class="champ-badge">Champions</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Runs Scored</td>
+                                    <td>336</td>
+                                    <td>2023</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Runs Scored</td>
+                                    <td>334</td>
+                                    <td>2017 <span class="champ-badge">Champions</span></td>
+                                    <td></td>
+                                </tr>
+
+                                <!-- HITS -->
+                                <tr class="highlight-record">
+                                    <td>Hits</td>
+                                    <td>524</td>
+                                    <td>2019 <span class="champ-badge">Champions</span></td>
+                                    <td>Team Record</td>
+                                </tr>
+                                <tr>
+                                    <td>Hits</td>
+                                    <td>522</td>
+                                    <td>2017 <span class="champ-badge">Champions</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Hits</td>
+                                    <td>431</td>
+                                    <td>2023</td>
+                                    <td></td>
+                                </tr>
+
+                                <!-- DOUBLES -->
+                                <tr class="highlight-record">
+                                    <td>Doubles</td>
+                                    <td>101</td>
+                                    <td>2017 <span class="champ-badge">Champions</span></td>
+                                    <td>Team Record</td>
+                                </tr>
+                                <tr>
+                                    <td>Doubles</td>
+                                    <td>100</td>
+                                    <td>2019 <span class="champ-badge">Champions</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Doubles</td>
+                                    <td>88</td>
+                                    <td>2022 <span class="champ-badge">Champions</span></td>
+                                    <td></td>
+                                </tr>
+
+                                <!-- TRIPLES -->
+                                <tr class="highlight-record">
+                                    <td>Triples</td>
+                                    <td>12</td>
+                                    <td>2024 <span class="champ-badge">Champions</span></td>
+                                    <td>Team Record</td>
+                                </tr>
+                                <tr>
+                                    <td>Triples</td>
+                                    <td>9</td>
+                                    <td>2017 <span class="champ-badge">Champions</span></td>
+                                    <td>Tied: 2021, 2015</td>
+                                </tr>
+                                <tr>
+                                    <td>Triples</td>
+                                    <td>7</td>
+                                    <td>2023</td>
+                                    <td></td>
+                                </tr>
+
+                                <!-- HOME RUNS -->
+                                <tr class="highlight-record">
+                                    <td>Home Runs</td>
+                                    <td>32</td>
+                                    <td>2022 <span class="champ-badge">Champions</span>, 2023</td>
+                                    <td>Team Record</td>
+                                </tr>
+                                <tr>
+                                    <td>Home Runs</td>
+                                    <td>29</td>
+                                    <td>2019 <span class="champ-badge">Champions</span>, 2024 <span class="champ-badge">Champions</span></td>
+                                    <td></td>
+                                </tr>
+
+                                <!-- RBI -->
+                                <tr class="highlight-record">
+                                    <td>RBI</td>
+                                    <td>294</td>
+                                    <td>2019 <span class="champ-badge">Champions</span></td>
+                                    <td>Team Record</td>
+                                </tr>
+                                <tr>
+                                    <td>RBI</td>
+                                    <td>286</td>
+                                    <td>2024 <span class="champ-badge">Champions</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>RBI</td>
+                                    <td>282</td>
+                                    <td>2017 <span class="champ-badge">Champions</span></td>
+                                    <td></td>
+                                </tr>
+
+                                <!-- WALKS -->
+                                <tr class="highlight-record">
+                                    <td>Walks</td>
+                                    <td>298</td>
+                                    <td>2023</td>
+                                    <td>Team Record</td>
+                                </tr>
+                                <tr>
+                                    <td>Walks</td>
+                                    <td>287</td>
+                                    <td>2024 <span class="champ-badge">Champions</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Walks</td>
+                                    <td>277</td>
+                                    <td>2022 <span class="champ-badge">Champions</span></td>
+                                    <td></td>
+                                </tr>
+
+                                <!-- STOLEN BASES -->
+                                <tr class="highlight-record">
+                                    <td>Stolen Bases</td>
+                                    <td>142</td>
+                                    <td>2023</td>
+                                    <td>Team Record</td>
+                                </tr>
+                                <tr>
+                                    <td>Stolen Bases</td>
+                                    <td>110</td>
+                                    <td>2021</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Stolen Bases</td>
+                                    <td>66</td>
+                                    <td>2022 <span class="champ-badge">Champions</span>, 2017 <span class="champ-badge">Champions</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Stolen Bases</td>
+                                    <td>60</td>
+                                    <td>2024 <span class="champ-badge">Champions</span></td>
+                                    <td></td>
+                                </tr>
+
+                                <!-- ERA -->
+                                <tr class="highlight-record">
+                                    <td>ERA</td>
+                                    <td>2.98</td>
+                                    <td>2017 <span class="champ-badge">Champions</span></td>
+                                    <td>Team Record</td>
+                                </tr>
+                                <tr>
+                                    <td>ERA</td>
+                                    <td>3.33</td>
+                                    <td>2015</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>ERA</td>
+                                    <td>3.64</td>
+                                    <td>2018</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>ERA</td>
+                                    <td>3.77</td>
+                                    <td>2021</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>ERA</td>
+                                    <td>4.06</td>
+                                    <td>2022 <span class="champ-badge">Champions</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>ERA</td>
+                                    <td>4.20</td>
+                                    <td>2024 <span class="champ-badge">Champions</span></td>
+                                    <td></td>
+                                </tr>
+
+                                <!-- WINS -->
+                                <tr class="highlight-record">
+                                    <td>Wins</td>
+                                    <td>38</td>
+                                    <td>2017 <span class="champ-badge">Champions</span></td>
+                                    <td>Team Record</td>
+                                </tr>
+                                <tr>
+                                    <td>Wins</td>
+                                    <td>32</td>
+                                    <td>2022 <span class="champ-badge">Champions</span>, 2023</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Wins</td>
+                                    <td>31</td>
+                                    <td>2019 <span class="champ-badge">Champions</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Wins</td>
+                                    <td>30</td>
+                                    <td>2021, 2024 <span class="champ-badge">Champions</span></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!-- MOBILE CARDS: TEAM SEASON RECORDS -->
+                        <div class="record-mobile-cards">
+                            
+                            <!-- Games Played -->
+                            <div class="record-card highlight-record">
+                                <div class="record-card-title">Games Played</div>
+                                <div class="record-card-content">52 (2023)</div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">Games Played</div>
+                                <div class="record-card-content">50 (2019) <span class="champ-badge">Champions</span></div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">Games Played</div>
+                                <div class="record-card-content">49 (2017) <span class="champ-badge">Champions</span></div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">Games Played</div>
+                                <div class="record-card-content">48 (2022) <span class="champ-badge">Champions</span></div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">Games Played</div>
+                                <div class="record-card-content">45 (2024) <span class="champ-badge">Champions</span></div>
+                            </div>
+
+                            <!-- Batting Average -->
+                            <div class="record-card highlight-record">
+                                <div class="record-card-title">Batting Average</div>
+                                <div class="record-card-content">.297 (2017) <span class="champ-badge">Champions</span></div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">Batting Average</div>
+                                <div class="record-card-content">.293 (2019) <span class="champ-badge">Champions</span></div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">Batting Average</div>
+                                <div class="record-card-content">.273 (2024) <span class="champ-badge">Champions</span></div>
+                            </div>
+
+                            <!-- Slugging % -->
+                            <div class="record-card highlight-record">
+                                <div class="record-card-title">Slugging %</div>
+                                <div class="record-card-content">.409 (2017) <span class="champ-badge">Champions</span></div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">Slugging %</div>
+                                <div class="record-card-content">.404 (2019) <span class="champ-badge">Champions</span></div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">Slugging %</div>
+                                <div class="record-card-content">.403 (2024) <span class="champ-badge">Champions</span></div>
+                            </div>
+
+                            <!-- On-Base % -->
+                            <div class="record-card highlight-record">
+                                <div class="record-card-title">On-Base %</div>
+                                <div class="record-card-content">.414 (2024) <span class="champ-badge">Champions</span></div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">On-Base %</div>
+                                <div class="record-card-content">.398 (2023)</div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">On-Base %</div>
+                                <div class="record-card-content">.387 (2017, 2019) <span class="champ-badge">Champions</span></div>
+                            </div>
+
+                            <!-- Runs Scored -->
+                            <div class="record-card highlight-record">
+                                <div class="record-card-title">Runs Scored</div>
+                                <div class="record-card-content">352 (2019) <span class="champ-badge">Champions</span></div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">Runs Scored</div>
+                                <div class="record-card-content">340 (2024) <span class="champ-badge">Champions</span></div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">Runs Scored</div>
+                                <div class="record-card-content">336 (2023)</div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">Runs Scored</div>
+                                <div class="record-card-content">334 (2017) <span class="champ-badge">Champions</span></div>
+                            </div>
+
+                            <!-- Hits -->
+                            <div class="record-card highlight-record">
+                                <div class="record-card-title">Hits</div>
+                                <div class="record-card-content">524 (2019) <span class="champ-badge">Champions</span></div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">Hits</div>
+                                <div class="record-card-content">522 (2017) <span class="champ-badge">Champions</span></div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">Hits</div>
+                                <div class="record-card-content">431 (2023)</div>
+                            </div>
+
+                            <!-- Doubles -->
+                            <div class="record-card highlight-record">
+                                <div class="record-card-title">Doubles</div>
+                                <div class="record-card-content">101 (2017) <span class="champ-badge">Champions</span></div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">Doubles</div>
+                                <div class="record-card-content">100 (2019) <span class="champ-badge">Champions</span></div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">Doubles</div>
+                                <div class="record-card-content">88 (2022) <span class="champ-badge">Champions</span></div>
+                            </div>
+
+                            <!-- Triples -->
+                            <div class="record-card highlight-record">
+                                <div class="record-card-title">Triples</div>
+                                <div class="record-card-content">12 (2024) <span class="champ-badge">Champions</span></div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">Triples</div>
+                                <div class="record-card-content">9 (2017, 2021, 2015) <span class="champ-badge">Champions</span></div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">Triples</div>
+                                <div class="record-card-content">7 (2023)</div>
+                            </div>
+
+                            <!-- Home Runs -->
+                            <div class="record-card highlight-record">
+                                <div class="record-card-title">Home Runs</div>
+                                <div class="record-card-content">32 (2022 <span class="champ-badge">Champions</span>, 2023)</div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">Home Runs</div>
+                                <div class="record-card-content">29 (2019 <span class="champ-badge">Champions</span>, 2024 <span class="champ-badge">Champions</span>)</div>
+                            </div>
+
+                            <!-- RBI -->
+                            <div class="record-card highlight-record">
+                                <div class="record-card-title">RBI</div>
+                                <div class="record-card-content">294 (2019) <span class="champ-badge">Champions</span></div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">RBI</div>
+                                <div class="record-card-content">286 (2024) <span class="champ-badge">Champions</span></div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">RBI</div>
+                                <div class="record-card-content">282 (2017) <span class="champ-badge">Champions</span></div>
+                            </div>
+
+                            <!-- Walks -->
+                            <div class="record-card highlight-record">
+                                <div class="record-card-title">Walks</div>
+                                <div class="record-card-content">298 (2023)</div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">Walks</div>
+                                <div class="record-card-content">287 (2024) <span class="champ-badge">Champions</span></div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">Walks</div>
+                                <div class="record-card-content">277 (2022) <span class="champ-badge">Champions</span></div>
+                            </div>
+
+                            <!-- Stolen Bases -->
+                            <div class="record-card highlight-record">
+                                <div class="record-card-title">Stolen Bases</div>
+                                <div class="record-card-content">142 (2023)</div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">Stolen Bases</div>
+                                <div class="record-card-content">110 (2021)</div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">Stolen Bases</div>
+                                <div class="record-card-content">66 (2022 <span class="champ-badge">Champions</span>, 2017 <span class="champ-badge">Champions</span>)</div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">Stolen Bases</div>
+                                <div class="record-card-content">60 (2024) <span class="champ-badge">Champions</span></div>
+                            </div>
+
+                            <!-- ERA -->
+                            <div class="record-card highlight-record">
+                                <div class="record-card-title">ERA</div>
+                                <div class="record-card-content">2.98 (2017) <span class="champ-badge">Champions</span></div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">ERA</div>
+                                <div class="record-card-content">3.33 (2015)</div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">ERA</div>
+                                <div class="record-card-content">3.64 (2018)</div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">ERA</div>
+                                <div class="record-card-content">3.77 (2021)</div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">ERA</div>
+                                <div class="record-card-content">4.06 (2022) <span class="champ-badge">Champions</span></div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">ERA</div>
+                                <div class="record-card-content">4.20 (2024) <span class="champ-badge">Champions</span></div>
+                            </div>
+
+                            <!-- Wins -->
+                            <div class="record-card highlight-record">
+                                <div class="record-card-title">Wins</div>
+                                <div class="record-card-content">38 (2017) <span class="champ-badge">Champions</span></div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">Wins</div>
+                                <div class="record-card-content">32 (2022 <span class="champ-badge">Champions</span>, 2023)</div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">Wins</div>
+                                <div class="record-card-content">31 (2019) <span class="champ-badge">Champions</span></div>
+                            </div>
+                            <div class="record-card">
+                                <div class="record-card-title">Wins</div>
+                                <div class="record-card-content">30 (2021, 2024 <span class="champ-badge">Champions</span>)</div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- ACCORDION 2: TEAM GAME RECORDS -->
+            <section class="accordion" id="acc-game">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    Team Game Records <span class="chevron">►</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        
+                        <!-- DESKTOP TABLE: TEAM GAME RECORDS -->
+                        <table class="records-table" aria-label="Team Game Records">
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>Record</th>
+                                    <th>Details / Opponent</th>
+                                    <th>Date</th>
+                                    <th>Note</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- MOST RUNS -->
+                                <tr class="highlight-record">
+                                    <td>Most Runs</td>
+                                    <td>19</td>
+                                    <td>at Covington</td>
+                                    <td>6/18/17</td>
+                                    <td>Also: 19 at Strasburg 6/24/15</td>
+                                </tr>
+                                <tr>
+                                    <td>Most Runs</td>
+                                    <td>19</td>
+                                    <td>at Strasburg</td>
+                                    <td>6/24/15</td>
+                                    <td>Tied Team Record</td>
+                                </tr>
+                                <tr>
+                                    <td>Most Runs</td>
+                                    <td>19</td>
+                                    <td>vs Culpeper (Playoffs)</td>
+                                    <td>7/28/24</td>
+                                    <td>Championship Playoff</td>
+                                </tr>
+
+                                <!-- MOST HITS -->
+                                <tr class="highlight-record">
+                                    <td>Most Hits</td>
+                                    <td>24</td>
+                                    <td>at Strasburg</td>
+                                    <td>6/24/15</td>
+                                    <td>Team Record</td>
+                                </tr>
+                                <tr>
+                                    <td>Most Hits</td>
+                                    <td>20</td>
+                                    <td>at Covington</td>
+                                    <td>6/18/17</td>
+                                    <td></td>
+                                </tr>
+
+                                <!-- MOST HOME RUNS -->
+                                <tr class="highlight-record">
+                                    <td>Most Home Runs</td>
+                                    <td>6</td>
+                                    <td>at Strasburg</td>
+                                    <td>6/24/15</td>
+                                    <td>Team Record</td>
+                                </tr>
+                                <tr>
+                                    <td>Most Home Runs</td>
+                                    <td>5</td>
+                                    <td>at Covington</td>
+                                    <td>6/18/17</td>
+                                    <td></td>
+                                </tr>
+
+                                <!-- MOST DOUBLES -->
+                                <tr class="highlight-record">
+                                    <td>Most Doubles</td>
+                                    <td>8</td>
+                                    <td>at Covington</td>
+                                    <td>6/18/17</td>
+                                    <td>Team Record</td>
+                                </tr>
+
+                                <!-- MOST TRIPLES -->
+                                <tr class="highlight-record">
+                                    <td>Most Triples</td>
+                                    <td>3</td>
+                                    <td>at Harrisonburg</td>
+                                    <td>7/13/24</td>
+                                    <td>Team Record</td>
+                                </tr>
+
+                                <!-- MOST RUNS BATTED IN -->
+                                <tr class="highlight-record">
+                                    <td>Most RBI</td>
+                                    <td>18</td>
+                                    <td>at Strasburg</td>
+                                    <td>6/24/15</td>
+                                    <td>Team Record</td>
+                                </tr>
+
+                                <!-- MOST WALKS -->
+                                <tr class="highlight-record">
+                                    <td>Most Walks</td>
+                                    <td>15</td>
+                                    <td>at Purcellville</td>
+                                    <td>6/30/24</td>
+                                    <td>Team Record</td>
+                                </tr>
+
+                                <!-- MOST STRIKEOUTS (BY PITCHING STAFF) -->
+                                <tr class="highlight-record">
+                                    <td>Most Strikeouts (Pitching)</td>
+                                    <td>19</td>
+                                    <td>at New Market</td>
+                                    <td>7/6/21</td>
+                                    <td>Team Record</td>
+                                </tr>
+
+                                <!-- FEWEST HITS ALLOWED -->
+                                <tr class="highlight-record">
+                                    <td>Fewest Hits Allowed</td>
+                                    <td>1</td>
+                                    <td>at Winchester</td>
+                                    <td>6/22/21</td>
+                                    <td>No-hitter (Combined)</td>
+                                </tr>
+
+                                <!-- MOST ERRORS (FIELDING) -->
+                                <tr>
+                                    <td>Most Errors</td>
+                                    <td>7</td>
+                                    <td>at New Market</td>
+                                    <td>6/26/19</td>
+                                    <td>Team Record</td>
+                                </tr>
+
+                                <!-- LONGEST GAME -->
+                                <tr>
+                                    <td>Longest Game</td>
+                                    <td>16 innings</td>
+                                    <td>vs Waynesboro</td>
+                                    <td>7/19/15</td>
+                                    <td>Team Record</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!-- MOBILE CARDS: TEAM GAME RECORDS -->
+                        <div class="record-mobile-cards">
+                            
+                            <div class="record-card highlight-record">
+                                <div class="record-card-title">Most Runs</div>
+                                <div class="record-card-content">19 – at Covington (6/18/17), at Strasburg (6/24/15), vs Culpeper (7/28/24)</div>
+                            </div>
+                            
+                            <div class="record-card highlight-record">
+                                <div class="record-card-title">Most Hits</div>
+                                <div class="record-card-content">24 – at Strasburg (6/24/15)</div>
+                            </div>
+                            
+                            <div class="record-card highlight-record">
+                                <div class="record-card-title">Most Home Runs</div>
+                                <div class="record-card-content">6 – at Strasburg (6/24/15)</div>
+                            </div>
+                            
+                            <div class="record-card highlight-record">
+                                <div class="record-card-title">Most Doubles</div>
+                                <div class="record-card-content">8 – at Covington (6/18/17)</div>
+                            </div>
+                            
+                            <div class="record-card highlight-record">
+                                <div class="record-card-title">Most Triples</div>
+                                <div class="record-card-content">3 – at Harrisonburg (7/13/24)</div>
+                            </div>
+                            
+                            <div class="record-card highlight-record">
+                                <div class="record-card-title">Most RBI</div>
+                                <div class="record-card-content">18 – at Strasburg (6/24/15)</div>
+                            </div>
+                            
+                            <div class="record-card highlight-record">
+                                <div class="record-card-title">Most Walks</div>
+                                <div class="record-card-content">15 – at Purcellville (6/30/24)</div>
+                            </div>
+                            
+                            <div class="record-card highlight-record">
+                                <div class="record-card-title">Most Strikeouts (Pitching)</div>
+                                <div class="record-card-content">19 – at New Market (7/6/21)</div>
+                            </div>
+                            
+                            <div class="record-card highlight-record">
+                                <div class="record-card-title">Fewest Hits Allowed</div>
+                                <div class="record-card-content">1 – at Winchester (6/22/21)<br><span style="color:#5d8e0b;font-weight:600;">No-hitter (Combined)</span></div>
+                            </div>
+                            
+                            <div class="record-card">
+                                <div class="record-card-title">Most Errors</div>
+                                <div class="record-card-content">7 – at New Market (6/26/19)</div>
+                            </div>
+                            
+                            <div class="record-card">
+                                <div class="record-card-title">Longest Game</div>
+                                <div class="record-card-content">16 innings – vs Waynesboro (7/19/15)</div>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- ACCORDION 3: MISCELLANEOUS RECORDS -->
+            <section class="accordion" id="acc-misc">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    Miscellaneous Records <span class="chevron">►</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        
+                        <!-- DESKTOP TABLE: MISCELLANEOUS RECORDS -->
+                        <table class="records-table" aria-label="Miscellaneous Team & Individual Records">
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>Record</th>
+                                    <th>Holder/Details</th>
+                                    <th>Date / Season</th>
+                                    <th>Note</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Longest Hit Streak -->
+                                <tr class="highlight-record">
+                                    <td>Longest Hit Streak</td>
+                                    <td>23 games</td>
+                                    <td>Thomas Francisco</td>
+                                    <td>6/21–7/22/19</td>
+                                    <td>Team Record</td>
+                                </tr>
+                                <!-- Longest Reached Base Streak -->
+                                <tr>
+                                    <td>Longest Reached Base Streak</td>
+                                    <td>38 games</td>
+                                    <td>Cole Wagner</td>
+                                    <td>2022</td>
+                                    <td></td>
+                                </tr>
+                                <!-- Longest Game (Innings) -->
+                                <tr class="highlight-record">
+                                    <td>Longest Game</td>
+                                    <td>16 innings</td>
+                                    <td>vs Waynesboro</td>
+                                    <td>7/19/15</td>
+                                    <td></td>
+                                </tr>
+                                <!-- Highest Home Attendance (Game) -->
+                                <tr class="highlight-record">
+                                    <td>Highest Home Attendance (Game)</td>
+                                    <td>3,256</td>
+                                    <td>vs Waynesboro</td>
+                                    <td>7/4/17</td>
+                                    <td>Team Record</td>
+                                </tr>
+                                <!-- Highest Home Attendance (Playoff Game) -->
+                                <tr>
+                                    <td>Highest Home Attendance (Playoff)</td>
+                                    <td>1,042</td>
+                                    <td>vs Covington</td>
+                                    <td>8/5/17</td>
+                                    <td></td>
+                                </tr>
+                                <!-- Highest Home Attendance (Season) -->
+                                <tr>
+                                    <td>Highest Home Attendance (Season)</td>
+                                    <td>17,213</td>
+                                    <td>--</td>
+                                    <td>2017</td>
+                                    <td></td>
+                                </tr>
+                                <!-- Highest Home Attendance (Season Avg) -->
+                                <tr>
+                                    <td>Highest Season Avg Attendance</td>
+                                    <td>694</td>
+                                    <td>--</td>
+                                    <td>2022</td>
+                                    <td></td>
+                                </tr>
+                                <!-- Team Fielding: Highest Fielding Pct -->
+                                <tr>
+                                    <td>Highest Fielding %</td>
+                                    <td>.968</td>
+                                    <td>--</td>
+                                    <td>2022</td>
+                                    <td>Team Record</td>
+                                </tr>
+                                <!-- Team Fielding: Most Double Plays (Game) -->
+                                <tr>
+                                    <td>Most Double Plays (Game)</td>
+                                    <td>5</td>
+                                    <td>vs Harrisonburg</td>
+                                    <td>7/23/22</td>
+                                    <td></td>
+                                </tr>
+                                <!-- Team Fielding: Most Putouts (Game) -->
+                                <tr>
+                                    <td>Most Putouts (Game)</td>
+                                    <td>48</td>
+                                    <td>vs Waynesboro</td>
+                                    <td>7/19/15</td>
+                                    <td></td>
+                                </tr>
+                                <!-- Team Fielding: Most Assists (Game) -->
+                                <tr>
+                                    <td>Most Assists (Game)</td>
+                                    <td>21</td>
+                                    <td>vs Front Royal</td>
+                                    <td>7/18/17</td>
+                                    <td></td>
+                                </tr>
+                                <!-- Individual Game: Most At Bats -->
+                                <tr>
+                                    <td>Most At Bats (Game)</td>
+                                    <td>8</td>
+                                    <td>Seth Lancaster</td>
+                                    <td>7/19/15</td>
+                                    <td></td>
+                                </tr>
+                                <!-- Individual Game: Most Hits -->
+                                <tr>
+                                    <td>Most Hits (Game)</td>
+                                    <td>5</td>
+                                    <td>Five Players (last: Trey McDyre)</td>
+                                    <td>6/27/19</td>
+                                    <td></td>
+                                </tr>
+                                <!-- Individual Game: Most RBI -->
+                                <tr>
+                                    <td>Most RBI (Game)</td>
+                                    <td>6</td>
+                                    <td>Kyle Edwards</td>
+                                    <td>6/17/23</td>
+                                    <td></td>
+                                </tr>
+                                <!-- Individual Game: Most Stolen Bases -->
+                                <tr>
+                                    <td>Most Stolen Bases (Game)</td>
+                                    <td>4</td>
+                                    <td>Three players (last: Brice Martinez)</td>
+                                    <td>7/23/23</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!-- MOBILE CARDS: MISCELLANEOUS RECORDS -->
+                        <div class="record-mobile-cards">
+                            
+                            <div class="record-card highlight-record">
+                                <div class="record-card-title">Longest Hit Streak</div>
+                                <div class="record-card-content">23 games – Thomas Francisco (6/21–7/22/19)</div>
+                            </div>
+                            
+                            <div class="record-card">
+                                <div class="record-card-title">Longest Reached Base Streak</div>
+                                <div class="record-card-content">38 games – Cole Wagner (2022)</div>
+                            </div>
+                            
+                            <div class="record-card highlight-record">
+                                <div class="record-card-title">Longest Game</div>
+                                <div class="record-card-content">16 innings – vs Waynesboro (7/19/15)</div>
+                            </div>
+                            
+                            <div class="record-card highlight-record">
+                                <div class="record-card-title">Highest Attendance (Game)</div>
+                                <div class="record-card-content">3,256 – vs Waynesboro (7/4/17)</div>
+                            </div>
+                            
+                            <div class="record-card">
+                                <div class="record-card-title">Highest Attendance (Playoff Game)</div>
+                                <div class="record-card-content">1,042 – vs Covington (8/5/17)</div>
+                            </div>
+                            
+                            <div class="record-card">
+                                <div class="record-card-title">Highest Attendance (Season)</div>
+                                <div class="record-card-content">17,213 (2017)</div>
+                            </div>
+                            
+                            <div class="record-card">
+                                <div class="record-card-title">Season Avg Attendance</div>
+                                <div class="record-card-content">694 (2022)</div>
+                            </div>
+                            
+                            <div class="record-card">
+                                <div class="record-card-title">Highest Fielding %</div>
+                                <div class="record-card-content">.968 (2022)</div>
+                            </div>
+                            
+                            <div class="record-card">
+                                <div class="record-card-title">Most Double Plays (Game)</div>
+                                <div class="record-card-content">5 – vs Harrisonburg (7/23/22)</div>
+                            </div>
+                            
+                            <div class="record-card">
+                                <div class="record-card-title">Most Putouts (Game)</div>
+                                <div class="record-card-content">48 – vs Waynesboro (7/19/15)</div>
+                            </div>
+                            
+                            <div class="record-card">
+                                <div class="record-card-title">Most Assists (Game)</div>
+                                <div class="record-card-content">21 – vs Front Royal (7/18/17)</div>
+                            </div>
+                            
+                            <div class="record-card">
+                                <div class="record-card-title">Most At Bats (Game)</div>
+                                <div class="record-card-content">8 – Seth Lancaster (7/19/15)</div>
+                            </div>
+                            
+                            <div class="record-card">
+                                <div class="record-card-title">Most Hits (Game)</div>
+                                <div class="record-card-content">5 – Five Players (last: Trey McDyre, 6/27/19)</div>
+                            </div>
+                            
+                            <div class="record-card">
+                                <div class="record-card-title">Most RBI (Game)</div>
+                                <div class="record-card-content">6 – Kyle Edwards (6/17/23)</div>
+                            </div>
+                            
+                            <div class="record-card">
+                                <div class="record-card-title">Most Stolen Bases (Game)</div>
+                                <div class="record-card-content">4 – Three Players (last: Brice Martinez, 7/23/23)</div>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- SCROLL TO TOP BUTTON -->
+    <button class="scroll-to-top" id="scrollToTopBtn" aria-label="Scroll to top">↑</button>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // ==========================================
+        // ACCORDION TOGGLE
+        // ==========================================
+        function toggleAccordion(header) {
+            const section = header.parentElement;
+            const isOpen = section.classList.contains('open');
+            
+            if (isOpen) {
+                // Close this accordion
+                section.classList.remove('open');
+            } else {
+                // Open this accordion
+                section.classList.add('open');
+            }
+        }
+
+        // ==========================================
+        // SIDEBAR NAVIGATION
+        // ==========================================
+        const sidebarLinks = document.querySelectorAll('.sidebar-link');
+        const chipLinks = document.querySelectorAll('.chip-link');
+        const accordions = document.querySelectorAll('.accordion');
+
+        // Function to handle navigation (works for both sidebar and chips)
+        function handleNavClick(e, targetId) {
+            e.preventDefault();
+            
+            const targetAccordion = document.getElementById(targetId);
+            
+            if (targetAccordion) {
+                // Open target accordion if not already open
+                if (!targetAccordion.classList.contains('open')) {
+                    targetAccordion.classList.add('open');
+                }
+                
+                // Scroll to target with offset
+                setTimeout(() => {
+                    const yOffset = -100;
+                    const element = targetAccordion;
+                    const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    window.scrollTo({top: y, behavior: 'smooth'});
+                }, 100);
+            }
+        }
+
+        // Sidebar link clicks
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('data-target');
+                handleNavClick(e, targetId);
+            });
+        });
+
+        // Chip link clicks
+        chipLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('data-target');
+                handleNavClick(e, targetId);
+            });
+        });
+
+        // ==========================================
+        // ACTIVE SECTION TRACKING ON SCROLL
+        // ==========================================
+        function updateActiveSection() {
+            const scrollPosition = window.scrollY + 150;
+            
+            accordions.forEach(accordion => {
+                const sectionTop = accordion.offsetTop;
+                const sectionHeight = accordion.offsetHeight;
+                const sectionId = accordion.getAttribute('id');
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    // Update sidebar links
+                    sidebarLinks.forEach(link => {
+                        if (link.getAttribute('data-target') === sectionId) {
+                            link.classList.add('active');
+                        } else {
+                            link.classList.remove('active');
+                        }
+                    });
+                    
+                    // Update chip links
+                    chipLinks.forEach(link => {
+                        if (link.getAttribute('data-target') === sectionId) {
+                            link.classList.add('active');
+                        } else {
+                            link.classList.remove('active');
+                        }
+                    });
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveSection);
+        window.addEventListener('load', updateActiveSection);
+
+        // ==========================================
+        // SEARCH FUNCTIONALITY
+        // ==========================================
+        const searchInput = document.getElementById('searchInput');
+        let searchTimeout;
+
+        searchInput.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            
+            searchTimeout = setTimeout(() => {
+                const searchTerm = this.value.toLowerCase().trim();
+                
+                // Clear previous highlights
+                document.querySelectorAll('.search-highlight').forEach(row => {
+                    row.classList.remove('search-highlight');
+                });
+                
+                if (searchTerm.length < 2) {
+                    return;
+                }
+                
+                let firstMatch = null;
+                const allRows = document.querySelectorAll('.records-table tbody tr');
+                
+                allRows.forEach(row => {
+                    const rowText = row.textContent.toLowerCase();
+                    
+                    if (rowText.includes(searchTerm)) {
+                        // Highlight the row
+                        row.classList.add('search-highlight');
+                        
+                        // Track first match
+                        if (!firstMatch) {
+                            firstMatch = row;
+                        }
+                        
+                        // Open parent accordion
+                        const parentAccordion = row.closest('.accordion');
+                        if (parentAccordion && !parentAccordion.classList.contains('open')) {
+                            parentAccordion.classList.add('open');
+                        }
+                    }
+                });
+                
+                // Scroll to first match
+                if (firstMatch) {
+                    setTimeout(() => {
+                        const yOffset = -120;
+                        const y = firstMatch.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                        window.scrollTo({top: y, behavior: 'smooth'});
+                    }, 200);
+                }
+                
+            }, 300);
+        });
+
+        // ==========================================
+        // SCROLL TO TOP BUTTON
+        // ==========================================
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // ==========================================
+        // INITIALIZE - ALL ACCORDIONS CLOSED
+        // ==========================================
+        document.addEventListener("DOMContentLoaded", function() {
+            // Ensure all accordions start closed
+            accordions.forEach(accordion => {
+                accordion.classList.remove('open');
+            });
+            updateActiveSection();
+        });
+    </script>
+
+</body>
+</html>
