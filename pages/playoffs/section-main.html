@@ -1,992 +1,566 @@
-<!-- CHUNK START: PAGE SHELL & HERO/NAV Charlottesville Tom Sox Baseball - Playoffs Page -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Charlottesville Tom Sox Baseball Record Book – Playoffs</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+  File: section-main.html
+  Page: Playoffs
+  Section: Hero, sticky nav, and accordion of all playoff years
+  Last Updated: 2026-03-08
+-->
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Oswald:700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap" rel="stylesheet">
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">Tom Sox Record Book</h1>
+    <div class="hero-subtitle">Playoff History &amp; Championships</div>
+  </div>
+</section>
 
-  <style>
-    /* =========================================
-       1. GLOBAL VARIABLES & RESET
-       ========================================= */
-    :root {
-      --green: #84BD00;
-      --blue: #1B365D;
-      --blue-gradient: linear-gradient(120deg, #24406e 0%, #1B365D 100%);
-      --white: #fff;
-      --gray: #f4f6fa;
-      --radius: 1.25rem;
-      --transition: 0.25s cubic-bezier(.4, 0, .2, 1);
-    }
+<!-- NAVIGATION -->
+<nav class="nav" aria-label="Main Navigation">
+  <ul class="nav-list">
+    <li><a href="/team-records" class="nav-link">Overview</a></li>
+    <li><a href="/team-records/program-history" class="nav-link">Program History</a></li>
+    <li><a href="/team-records/individual-records" class="nav-link">Individual Records</a></li>
+    <li><a href="/team-records/team-records-data" class="nav-link">Team Records</a></li>
+    <li><a href="/team-records/year-by-year" class="nav-link">Year-by-Year</a></li>
+    <li><a href="/team-records/playoffs" class="nav-link active" aria-current="page">Playoffs</a></li>
+  </ul>
+</nav>
 
-    html {
-      scroll-behavior: smooth;
-    }
+<!-- MAIN CONTENT: ACCORDIONS -->
+<main>
+  <div class="accordion" id="playoffAccordion">
 
-    body {
-      margin: 0;
-      background: var(--gray);
-      color: var(--blue);
-      font-family: 'Open Sans', Arial, sans-serif;
-      min-height: 100vh;
-    }
-
-    /* =========================================
-       2. HERO SECTION
-       ========================================= */
-    .hero {
-      position: relative;
-      min-height: 260px;
-      background: url('https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 0;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: var(--blue-gradient);
-      opacity: 0.80;
-      z-index: 1;
-      border-bottom-left-radius: var(--radius);
-      border-bottom-right-radius: var(--radius);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      color: var(--white);
-      padding: 3.5rem 1.5rem 2.5rem 1.5rem;
-      text-align: left;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .hero-title {
-      font-family: 'Oswald', Arial, sans-serif;
-      font-size: 2.5rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin: 0 0 0.5rem 0;
-      line-height: 1.12;
-    }
-
-    .hero-subtitle {
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin: 0;
-      color: var(--green);
-      letter-spacing: 1px;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    }
-
-    /* Hero Mobile Adjustments */
-    @media (max-width: 700px) {
-      .hero-title {
-        font-size: 1.6rem;
-      }
-      .hero-content {
-        padding: 2rem 0.8rem 1.5rem 0.8rem;
-      }
-    }
-
-    /* =========================================
-       3. NAVIGATION
-       ========================================= */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: var(--white);
-      box-shadow: 0 2px 10px rgba(27, 54, 93, 0.04);
-      border-bottom: 2px solid var(--blue);
-      display: flex;
-      justify-content: center;
-    }
-
-    .nav-list {
-      display: flex;
-      gap: 1.5rem;
-      padding: 0.25rem 0;
-      margin: 0;
-      list-style: none;
-      font-family: 'Oswald', Arial, sans-serif;
-      font-size: 1.11rem;
-    }
-
-    .nav-list li {
-      margin: 0;
-    }
-
-    .nav-link {
-      text-decoration: none;
-      color: var(--blue);
-      padding: 0.75rem 1.3rem 0.6rem 1.3rem;
-      border-radius: var(--radius);
-      font-weight: 700;
-      letter-spacing: 1px;
-      transition: background var(--transition), color var(--transition), box-shadow var(--transition);
-      display: inline-block;
-      position: relative;
-    }
-
-    .nav-link.active,
-    .nav-link[aria-current="page"] {
-      background: var(--blue);
-      color: var(--white);
-      box-shadow: 0 2px 10px rgba(27, 54, 93, 0.06);
-    }
-
-    .nav-link:hover:not(.active) {
-      background: #eaf5d6;
-      color: var(--blue);
-    }
-
-    /* Nav Mobile Adjustments */
-    @media (max-width: 700px) {
-      .nav-list {
-        gap: 0.5rem;
-        font-size: 0.97rem;
-      }
-      .nav-link {
-        padding: 0.7rem 0.8rem 0.6rem 0.8rem;
-      }
-    }
-
-    /* =========================================
-       4. ACCORDIONS (FIXED)
-       ========================================= */
-    .accordion {
-      max-width: 900px;
-      margin: 2rem auto;
-      border-radius: var(--radius);
-      overflow: visible;
-      background: none;
-      box-shadow: none;
-      font-family: inherit;
-    }
-
-    .accordion-section {
-      margin-bottom: 1.7rem;
-      border-radius: var(--radius);
-      background: var(--white);
-      box-shadow: 0 3px 16px rgba(27, 54, 93, 0.08);
-      overflow: hidden;
-      transition: box-shadow var(--transition);
-    }
-
-    .accordion-section.open {
-      box-shadow: 0 4px 32px rgba(27, 54, 93, 0.11);
-    }
-
-    .accordion-header {
-      font-family: 'Oswald', Arial, sans-serif;
-      font-size: 1.34rem;
-      font-weight: 700;
-      background: var(--blue-gradient);
-      color: var(--white);
-      padding: 1.35rem 2.1rem 1.15rem 2.1rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border: none;
-      width: 100%;
-      text-align: left;
-      transition: background var(--transition);
-      user-select: none;
-    }
-
-    .accordion-header .badge-champ {
-      background: var(--green);
-      color: var(--blue);
-      font-family: 'Oswald', Arial, sans-serif;
-      font-size: 0.97rem;
-      border-radius: 999px;
-      padding: 0.2em 1.1em;
-      margin-left: 1em;
-      font-weight: 700;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
-      text-shadow: none;
-      letter-spacing: 1px;
-      display: inline-block;
-    }
-
-    .accordion-header .arrow {
-      margin-left: 1.2em;
-      font-size: 1.6em;
-      transition: transform var(--transition);
-    }
-
-    /* Rotate arrow when open */
-    .accordion-section.open .accordion-header .arrow {
-      transform: rotate(90deg);
-    }
-
-    /* --- THE FIX IS HERE --- */
-    /* 1. Hide the panel by default */
-    .accordion-panel {
-      display: none; 
-      padding: 1.5rem 1.5rem 2rem 1.5rem;
-      background: var(--white);
-      animation: fadeIn 0.35s;
-      font-size: 1.09rem;
-      line-height: 1.7;
-      border-top: 2px solid #e4e6ed;
-    }
-
-    /* 2. Show the panel ONLY when parent has class 'open' */
-    .accordion-section.open .accordion-panel {
-      display: block;
-    }
-    /* ----------------------- */
-
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(16px); }
-      100% { opacity: 1; transform: none; }
-    }
-
-    /* Accordion Mobile Adjustments */
-    @media (max-width: 700px) {
-      .accordion {
-        margin: 1rem 0.5rem;
-      }
-      .accordion-panel {
-        padding: 1.1rem 0.5rem 1.6rem 0.5rem;
-      }
-      .accordion-header {
-        font-size: 1.01rem;
-        padding: 1.02rem 1rem 0.89rem 1rem;
-      }
-    }
-
-    /* =========================================
-       5. DATA TABLES
-       ========================================= */
-    .records-table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0;
-      background: var(--white);
-      border-radius: var(--radius);
-      overflow: hidden;
-      margin: 1.1rem 0 2rem 0;
-      box-shadow: 0 1.5px 10px rgba(27, 54, 93, 0.04);
-    }
-
-    .records-table th,
-    .records-table td {
-      padding: 0.65em 1em;
-      text-align: left;
-      font-size: 1.01rem;
-    }
-
-    .records-table th {
-      background: var(--blue);
-      color: var(--white);
-      font-family: 'Oswald', Arial, sans-serif;
-      font-size: 1.09rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      border-bottom: 2px solid #eaf5d6;
-      position: sticky;
-      top: 0;
-      z-index: 2;
-    }
-
-    .records-table tr {
-      transition: background var(--transition);
-    }
-
-    .records-table tr:hover {
-      background: #f1f8e9;
-    }
-
-    .records-table td {
-      border-bottom: 1px solid #e6eaf3;
-      color: var(--blue);
-    }
-
-    .highlight-champ {
-      background: #eaf5d6 !important;
-      font-weight: bold;
-    }
-
-    /* =========================================
-       6. MOBILE CARD LAYOUT (RESPONSIVE TABLES)
-       ========================================= */
-    @media (max-width: 650px) {
-      .records-table,
-      .records-table thead,
-      .records-table tbody,
-      .records-table th,
-      .records-table td,
-      .records-table tr {
-        display: block;
-        width: 100%;
-      }
-
-      .records-table thead {
-        display: none;
-      }
-
-      .records-table tr {
-        margin-bottom: 1.7em;
-        background: #fafdff;
-        border-radius: 1.1em;
-        box-shadow: 0 2px 9px rgba(27, 54, 93, 0.07);
-        overflow: hidden;
-        padding: 0.7em 0.8em 0.45em 0.8em;
-      }
-
-      .records-table td {
-        padding: 0.5em 0.7em 0.5em 38%;
-        border: none;
-        position: relative;
-        font-size: 0.98rem;
-      }
-
-      .records-table td:before {
-        position: absolute;
-        left: 0.7em;
-        width: 34%;
-        top: 0.5em;
-        font-weight: 600;
-        color: #8094b7;
-        content: attr(data-label);
-        font-size: 0.98rem;
-        font-family: 'Oswald', Arial, sans-serif;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- =========================================
-       HERO SECTION
-       ========================================= -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1 class="hero-title">Tom Sox Record Book</h1>
-      <div class="hero-subtitle">Playoff History &amp; Championships</div>
+    <!-- 2024 VBL CHAMPIONSHIP -->
+    <div class="accordion-section open">
+      <button class="accordion-header" type="button" aria-expanded="true">
+        2024 VBL Championship
+        <span class="badge-champ">Champions</span>
+        <span class="arrow">&#9654;</span>
+      </button>
+      <div class="accordion-panel">
+        <p>
+          <strong>Format:</strong> Expanded 8-team playoff bracket (single-elimination quarterfinals, best-of-3 semis &amp; finals).<br>
+          <strong>Result:</strong> <span style="color: var(--green); font-weight: bold;">Charlottesville Tom Sox won the Valley League Championship (4th title)!</span>
+        </p>
+        <table class="records-table">
+          <thead>
+            <tr>
+              <th>Round</th>
+              <th>Opponent</th>
+              <th>Score</th>
+              <th>Location</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Quarterfinal</td>
+              <td>Front Royal (8)</td>
+              <td>W 9-2</td>
+              <td>Home</td>
+              <td>Advanced to Semis</td>
+            </tr>
+            <tr>
+              <td>Semifinal</td>
+              <td>Waynesboro (5)</td>
+              <td>W 4-1</td>
+              <td>Home</td>
+              <td></td>
+            </tr>
+            <tr class="highlight-champ">
+              <td>Championship G1</td>
+              <td>Pulaski (2)</td>
+              <td>W 10-3</td>
+              <td>Home</td>
+              <td>Best-of-3</td>
+            </tr>
+            <tr class="highlight-champ">
+              <td>Championship G2</td>
+              <td>@ Pulaski</td>
+              <td>W 7-4</td>
+              <td>Away</td>
+              <td>Clinched Title</td>
+            </tr>
+          </tbody>
+        </table>
+        <ul>
+          <li><strong>Series Outcome:</strong> Tom Sox sweep Pulaski in Finals, 2-0</li>
+          <li><strong>Key Highlight:</strong> Fourth VBL Championship in team history</li>
+          <li><span class="badge-champ">2024 Champions</span></li>
+        </ul>
+      </div>
     </div>
-  </section>
 
-  <!-- =========================================
-       NAVIGATION
-       ========================================= -->
-  <nav class="nav" aria-label="Main Navigation">
-    <ul class="nav-list">
-      <li><a href="/team-records" class="nav-link">Overview</a></li>
-      <li><a href="/team-records/program-history" class="nav-link">Program History</a></li>
-      <li><a href="/team-records/individual-records" class="nav-link">Individual Records</a></li>
-      <li><a href="/team-records/team-records-data" class="nav-link">Team Records</a></li>
-      <li><a href="/team-records/year-by-year" class="nav-link">Year-by-Year</a></li>
-      <li><a href="/team-records/playoffs" class="nav-link active" aria-current="page">Playoffs</a></li>
-    </ul>
-  </nav>
-
-  <!-- =========================================
-       MAIN CONTENT: ACCORDIONS
-       ========================================= -->
-  <main>
-    <div class="accordion" id="playoffAccordion">
-
-      <!-- 2024 VBL CHAMPIONSHIP -->
-      <!-- CHUNK START: 2024 VBL CHAMPIONSHIP ACCORDION -->
-      <div class="accordion-section open">
-        <button class="accordion-header" type="button" aria-expanded="true">
-          2024 VBL Championship
-          <span class="badge-champ">Champions</span>
-          <span class="arrow">&#9654;</span>
-        </button>
-        <div class="accordion-panel">
-          <p>
-            <strong>Format:</strong> Expanded 8-team playoff bracket (single-elimination quarterfinals, best-of-3 semis & finals).<br>
-            <strong>Result:</strong> <span style="color: var(--green); font-weight: bold;">Charlottesville Tom Sox won the Valley League Championship (4th title)!</span>
-          </p>
-          <table class="records-table">
-            <thead>
-              <tr>
-                <th>Round</th>
-                <th>Opponent</th>
-                <th>Score</th>
-                <th>Location</th>
-                <th>Notes</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Quarterfinal</td>
-                <td>Front Royal (8)</td>
-                <td>W 9-2</td>
-                <td>Home</td>
-                <td>Advanced to Semis</td>
-              </tr>
-              <tr>
-                <td>Semifinal</td>
-                <td>Waynesboro (5)</td>
-                <td>W 4-1</td>
-                <td>Home</td>
-                <td></td>
-              </tr>
-              <tr class="highlight-champ">
-                <td>Championship G1</td>
-                <td>Pulaski (2)</td>
-                <td>W 10-3</td>
-                <td>Home</td>
-                <td>Best-of-3</td>
-              </tr>
-              <tr class="highlight-champ">
-                <td>Championship G2</td>
-                <td>@ Pulaski</td>
-                <td>W 7-4</td>
-                <td>Away</td>
-                <td>Clinched Title</td>
-              </tr>
-            </tbody>
-          </table>
-          <ul>
-            <li><strong>Series Outcome:</strong> Tom Sox sweep Pulaski in Finals, 2-0</li>
-            <li><strong>Key Highlight:</strong> Fourth VBL Championship in team history</li>
-            <li><span class="badge-champ">2024 Champions</span></li>
-          </ul>
-          <!-- Update annually: Insert 2024 playoff results above -->
-        </div>
+    <!-- 2023 VBL CHAMPIONSHIP -->
+    <div class="accordion-section">
+      <button class="accordion-header" type="button" aria-expanded="false">
+        2023 VBL Championship
+        <span class="arrow">&#9654;</span>
+      </button>
+      <div class="accordion-panel">
+        <p>
+          <strong>Format:</strong> Top 8 teams, best-of-3 all rounds.<br>
+          <strong>Result:</strong> <span style="color: var(--blue); font-weight: bold;">Charlottesville Tom Sox – VBL Runner-Up (Lost in Finals)</span>
+        </p>
+        <table class="records-table">
+          <thead>
+            <tr>
+              <th>Round</th>
+              <th>Opponent</th>
+              <th>Score</th>
+              <th>Location</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Quarterfinals G1</td>
+              <td>Front Royal</td>
+              <td>L 6-17</td>
+              <td>Home</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Quarterfinals G2</td>
+              <td>@ Front Royal</td>
+              <td>W 11-1</td>
+              <td>Away</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Quarterfinals G3</td>
+              <td>Front Royal</td>
+              <td>W 4-2</td>
+              <td>Home</td>
+              <td>Advanced to Semis</td>
+            </tr>
+            <tr>
+              <td>Semifinals G1</td>
+              <td>Strasburg</td>
+              <td>L 6-8</td>
+              <td>Home</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Semifinals G2</td>
+              <td>@ Strasburg</td>
+              <td>W 11-9 (10)</td>
+              <td>Away</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Semifinals G3</td>
+              <td>Strasburg</td>
+              <td>W 6-3</td>
+              <td>Home</td>
+              <td>Advanced to Finals</td>
+            </tr>
+            <tr>
+              <td>Finals G1</td>
+              <td>Harrisonburg</td>
+              <td>L 2-7</td>
+              <td>Home</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Finals G2</td>
+              <td>@ Harrisonburg</td>
+              <td>L 5-9</td>
+              <td>Away</td>
+              <td>Season ends</td>
+            </tr>
+          </tbody>
+        </table>
+        <ul>
+          <li><strong>Series Outcome:</strong> Lost to Harrisonburg in Finals, 0-2</li>
+          <li><strong>Key Highlight:</strong> Back-to-back Finals appearances</li>
+        </ul>
       </div>
-      <!-- CHUNK END: 2024 VBL CHAMPIONSHIP ACCORDION -->
-
-      <!-- 2023 VBL CHAMPIONSHIP -->
-      <!-- CHUNK START: 2023 VBL CHAMPIONSHIP ACCORDION -->
-      <div class="accordion-section">
-        <button class="accordion-header" type="button" aria-expanded="false">
-          2023 VBL Championship
-          <span class="arrow">&#9654;</span>
-        </button>
-        <div class="accordion-panel">
-          <p>
-            <strong>Format:</strong> Top 8 teams, best-of-3 all rounds.<br>
-            <strong>Result:</strong> <span style="color: var(--blue); font-weight: bold;">Charlottesville Tom Sox – VBL Runner-Up (Lost in Finals)</span>
-          </p>
-          <table class="records-table">
-            <thead>
-              <tr>
-                <th>Round</th>
-                <th>Opponent</th>
-                <th>Score</th>
-                <th>Location</th>
-                <th>Notes</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Quarterfinals G1</td>
-                <td>Front Royal</td>
-                <td>L 6-17</td>
-                <td>Home</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Quarterfinals G2</td>
-                <td>@ Front Royal</td>
-                <td>W 11-1</td>
-                <td>Away</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Quarterfinals G3</td>
-                <td>Front Royal</td>
-                <td>W 4-2</td>
-                <td>Home</td>
-                <td>Advanced to Semis</td>
-              </tr>
-              <tr>
-                <td>Semifinals G1</td>
-                <td>Strasburg</td>
-                <td>L 6-8</td>
-                <td>Home</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Semifinals G2</td>
-                <td>@ Strasburg</td>
-                <td>W 11-9 (10)</td>
-                <td>Away</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Semifinals G3</td>
-                <td>Strasburg</td>
-                <td>W 6-3</td>
-                <td>Home</td>
-                <td>Advanced to Finals</td>
-              </tr>
-              <tr>
-                <td>Finals G1</td>
-                <td>Harrisonburg</td>
-                <td>L 2-7</td>
-                <td>Home</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Finals G2</td>
-                <td>@ Harrisonburg</td>
-                <td>L 5-9</td>
-                <td>Away</td>
-                <td>Season ends</td>
-              </tr>
-            </tbody>
-          </table>
-          <ul>
-            <li><strong>Series Outcome:</strong> Lost to Harrisonburg in Finals, 0-2</li>
-            <li><strong>Key Highlight:</strong> Back-to-back Finals appearances</li>
-          </ul>
-          <!-- Update annually: Insert 2023 playoff results above -->
-        </div>
-      </div>
-      <!-- CHUNK END: 2023 VBL CHAMPIONSHIP ACCORDION -->
-
-      <!-- 2022 VBL CHAMPIONSHIP -->
-      <!-- CHUNK START: 2022 VBL CHAMPIONSHIP ACCORDION -->
-      <div class="accordion-section">
-        <button class="accordion-header" type="button" aria-expanded="false">
-          2022 VBL Championship
-          <span class="badge-champ">Champions</span>
-          <span class="arrow">&#9654;</span>
-        </button>
-        <div class="accordion-panel">
-          <p>
-            <strong>Format:</strong> Top 8, best-of-3 quarterfinals, semifinals, and finals.<br>
-            <strong>Result:</strong> <span style="color: var(--green); font-weight: bold;">Charlottesville Tom Sox win third VBL Championship!</span>
-          </p>
-          <table class="records-table">
-            <thead>
-              <tr>
-                <th>Round</th>
-                <th>Opponent</th>
-                <th>Score</th>
-                <th>Location</th>
-                <th>Notes</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Quarterfinals G1</td>
-                <td>Culpeper</td>
-                <td>L 1-4</td>
-                <td>Home</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Quarterfinals G2</td>
-                <td>@ Culpeper</td>
-                <td>W 8-1</td>
-                <td>Away</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Quarterfinals G3</td>
-                <td>Culpeper</td>
-                <td>W 19-2</td>
-                <td>Home</td>
-                <td>Advanced to Semis</td>
-              </tr>
-              <tr>
-                <td>Semifinals G1</td>
-                <td>Pulaski</td>
-                <td>W 7-5 (10)</td>
-                <td>Home</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Semifinals G2</td>
-                <td>@ Pulaski</td>
-                <td>L 8-21 (7)</td>
-                <td>Away</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Semifinals G3</td>
-                <td>Pulaski</td>
-                <td>W 9-5</td>
-                <td>Home</td>
-                <td>Advanced to Finals</td>
-              </tr>
-              <tr class="highlight-champ">
-                <td>Finals G1</td>
-                <td>Strasburg</td>
-                <td>W 6-3</td>
-                <td>Home</td>
-                <td>Best-of-3</td>
-              </tr>
-              <tr class="highlight-champ">
-                <td>Finals G2</td>
-                <td>@ Strasburg</td>
-                <td>W 4-2</td>
-                <td>Away</td>
-                <td>Clinched Title</td>
-              </tr>
-            </tbody>
-          </table>
-          <ul>
-            <li><strong>Series Outcome:</strong> Tom Sox sweep Strasburg in Finals, 2-0</li>
-            <li><strong>Key Highlight:</strong> Third VBL Championship in team history</li>
-            <li><span class="badge-champ">2022 Champions</span></li>
-          </ul>
-          <!-- Update annually: Insert 2022 playoff results above -->
-        </div>
-      </div>
-      <!-- CHUNK END: 2022 VBL CHAMPIONSHIP ACCORDION -->
-
-      <!-- 2021 PLAYOFFS -->
-      <!-- CHUNK START: 2021 PLAYOFFS ACCORDION -->
-      <div class="accordion-section">
-        <button class="accordion-header" type="button" aria-expanded="false">
-          2021 Playoffs
-          <span class="arrow">&#9654;</span>
-        </button>
-        <div class="accordion-panel">
-          <p>
-            <strong>Format:</strong> Top 4 in division, best-of-3 all rounds.<br>
-            <strong>Result:</strong> <span style="color: var(--blue); font-weight: bold;">Lost in first round</span>
-          </p>
-          <table class="records-table">
-            <thead>
-              <tr>
-                <th>Round</th>
-                <th>Opponent</th>
-                <th>Score</th>
-                <th>Location</th>
-                <th>Notes</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Semifinals G1</td>
-                <td>Waynesboro</td>
-                <td>L 1-3</td>
-                <td>Home</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Semifinals G2</td>
-                <td>@ Waynesboro</td>
-                <td>L 3-6</td>
-                <td>Away</td>
-                <td>Eliminated</td>
-              </tr>
-            </tbody>
-          </table>
-          <ul>
-            <li><strong>Series Outcome:</strong> Lost series 0-2</li>
-          </ul>
-          <!-- Update annually: Insert 2021 playoff results above -->
-        </div>
-      </div>
-      <!-- CHUNK END: 2021 PLAYOFFS ACCORDION -->
-
-      <!-- 2019 VBL CHAMPIONSHIP -->
-      <!-- CHUNK START: 2019 VBL CHAMPIONSHIP ACCORDION -->
-      <div class="accordion-section">
-        <button class="accordion-header" type="button" aria-expanded="false">
-          2019 VBL Championship
-          <span class="badge-champ">Champions</span>
-          <span class="arrow">&#9654;</span>
-        </button>
-        <div class="accordion-panel">
-          <p>
-            <strong>Format:</strong> South semifinals, South finals, best-of-3 league championship.<br>
-            <strong>Result:</strong> <span style="color: var(--green); font-weight: bold;">Charlottesville Tom Sox win second VBL Championship!</span>
-          </p>
-          <table class="records-table">
-            <thead>
-              <tr>
-                <th>Round</th>
-                <th>Opponent</th>
-                <th>Score</th>
-                <th>Location</th>
-                <th>Notes</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>South Semifinals G1</td>
-                <td>Waynesboro</td>
-                <td>L 1-3</td>
-                <td>Home</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>South Semifinals G2</td>
-                <td>@ Waynesboro</td>
-                <td>L 3-6</td>
-                <td>Away</td>
-                <td>Eliminated</td>
-              </tr>
-            </tbody>
-          </table>
-          <ul>
-            <li><strong>Series Outcome:</strong> Eliminated in South Semifinals</li>
-            <li><span style="color: #888;">2019 Championship series details to be inserted (see PDF for yearly records)</span></li>
-            <li><span class="badge-champ">2019 Champions</span></li>
-          </ul>
-          <!-- Update annually: Insert 2019 playoff results above -->
-        </div>
-      </div>
-      <!-- CHUNK END: 2019 VBL CHAMPIONSHIP ACCORDION -->
-
-      <!-- 2018 VBL CHAMPIONSHIP -->
-      <!-- CHUNK START: 2018 VBL CHAMPIONSHIP ACCORDION -->
-      <div class="accordion-section">
-        <button class="accordion-header" type="button" aria-expanded="false">
-          2018 VBL Championship
-          <span class="arrow">&#9654;</span>
-        </button>
-        <div class="accordion-panel">
-          <p>
-            <strong>Format:</strong> South semifinals, South finals, best-of-3 league championship.<br>
-            <strong>Result:</strong> <span style="color: var(--blue); font-weight: bold;">Charlottesville Tom Sox – VBL Runner-Up (Lost in Finals)</span>
-          </p>
-          <table class="records-table">
-            <thead>
-              <tr>
-                <th>Round</th>
-                <th>Opponent</th>
-                <th>Score</th>
-                <th>Location</th>
-                <th>Notes</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>South Semifinals G1</td>
-                <td>Covington</td>
-                <td>W 9-4</td>
-                <td>Home</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>South Semifinals G2</td>
-                <td>@ Covington</td>
-                <td>L 9-12</td>
-                <td>Away</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>South Semifinals G3</td>
-                <td>Covington</td>
-                <td>W 10-5</td>
-                <td>Home</td>
-                <td>Advanced to South Finals</td>
-              </tr>
-              <tr>
-                <td>South Finals G1</td>
-                <td>Staunton</td>
-                <td>L 1-3</td>
-                <td>Home</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>South Finals G2</td>
-                <td>@ Staunton</td>
-                <td>W 9-7 (10)</td>
-                <td>Away</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>South Finals G3</td>
-                <td>Staunton</td>
-                <td>W 10-2</td>
-                <td>Home</td>
-                <td>Advanced to VBL Finals</td>
-              </tr>
-              <tr>
-                <td>VBL Finals G1</td>
-                <td>@ Strasburg</td>
-                <td>W 11-8</td>
-                <td>Away</td>
-                <td>Best-of-3</td>
-              </tr>
-              <tr>
-                <td>VBL Finals G2</td>
-                <td>Strasburg</td>
-                <td>W 4-1</td>
-                <td>Home</td>
-                <td>Clinched Title</td>
-              </tr>
-            </tbody>
-          </table>
-          <ul>
-            <li><strong>Series Outcome:</strong> Tom Sox win South, fall in Finals</li>
-            <li><strong>Key Highlight:</strong> Second straight Finals appearance</li>
-          </ul>
-          <!-- Update annually: Insert 2018 playoff results above -->
-        </div>
-      </div>
-      <!-- CHUNK END: 2018 VBL CHAMPIONSHIP ACCORDION -->
-
-      <!-- 2017 VBL CHAMPIONSHIP -->
-      <!-- CHUNK START: 2017 VBL CHAMPIONSHIP ACCORDION -->
-      <div class="accordion-section">
-        <button class="accordion-header" type="button" aria-expanded="false">
-          2017 VBL Championship
-          <span class="badge-champ">Champions</span>
-          <span class="arrow">&#9654;</span>
-        </button>
-        <div class="accordion-panel">
-          <p>
-            <strong>Format:</strong> South semifinals, South finals, best-of-3 league championship.<br>
-            <strong>Result:</strong> <span style="color: var(--green); font-weight: bold;">Charlottesville Tom Sox win first VBL Championship!</span>
-          </p>
-          <table class="records-table">
-            <thead>
-              <tr>
-                <th>Round</th>
-                <th>Opponent</th>
-                <th>Score</th>
-                <th>Location</th>
-                <th>Notes</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>South Semifinals G1</td>
-                <td>Staunton</td>
-                <td>W 11-2</td>
-                <td>Home</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>South Semifinals G2</td>
-                <td>@ Staunton</td>
-                <td>W 10-5</td>
-                <td>Away</td>
-                <td>Advanced to South Finals</td>
-              </tr>
-              <tr>
-                <td>South Finals G1</td>
-                <td>Waynesboro</td>
-                <td>W 7-2</td>
-                <td>Home</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>South Finals G2</td>
-                <td>@ Waynesboro</td>
-                <td>W 3-2</td>
-                <td>Away</td>
-                <td>Clinched South Title</td>
-              </tr>
-              <tr class="highlight-champ">
-                <td>Championship G1</td>
-                <td>Strasburg</td>
-                <td>L 7-9</td>
-                <td>Home</td>
-                <td>Best-of-3</td>
-              </tr>
-              <tr class="highlight-champ">
-                <td>Championship G2</td>
-                <td>@ Strasburg</td>
-                <td>W 11-5</td>
-                <td>Away</td>
-                <td></td>
-              </tr>
-              <tr class="highlight-champ">
-                <td>Championship G3</td>
-                <td>Strasburg</td>
-                <td>W 2-1</td>
-                <td>Home</td>
-                <td>Clinched Title</td>
-              </tr>
-            </tbody>
-          </table>
-          <ul>
-            <li><strong>Series Outcome:</strong> Tom Sox win Finals, 2-1 over Strasburg</li>
-            <li><span class="badge-champ">2017 Champions</span></li>
-          </ul>
-          <!-- Update annually: Insert 2017 playoff results above -->
-        </div>
-      </div>
-      <!-- CHUNK END: 2017 VBL CHAMPIONSHIP ACCORDION -->
-
-      <!-- 2015 PLAY-IN GAME -->
-      <!-- CHUNK START: 2015 PLAY-IN GAME ACCORDION -->
-      <div class="accordion-section">
-        <button class="accordion-header" type="button" aria-expanded="false">
-          2015 Play-In Game
-          <span class="arrow">&#9654;</span>
-        </button>
-        <div class="accordion-panel">
-          <p>
-            <strong>Format:</strong> Single play-in for final postseason spot.<br>
-            <strong>Result:</strong> <span style="color: var(--blue); font-weight: bold;">Lost in Play-In</span>
-          </p>
-          <table class="records-table">
-            <thead>
-              <tr>
-                <th>Round</th>
-                <th>Opponent</th>
-                <th>Score</th>
-                <th>Location</th>
-                <th>Notes</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Play-In</td>
-                <td>@ Covington</td>
-                <td>L 5-6</td>
-                <td>Away</td>
-                <td>Eliminated</td>
-              </tr>
-            </tbody>
-          </table>
-          <ul>
-            <li><strong>Key Highlight:</strong> First-ever postseason appearance</li>
-          </ul>
-          <!-- Update annually: Insert 2015 playoff results above -->
-        </div>
-      </div>
-      <!-- CHUNK END: 2015 PLAY-IN GAME ACCORDION -->
-
     </div>
-  </main>
 
-  <!-- =========================================
-       SCRIPTS
-       ========================================= -->
-  <script>
-    // Simple accessible accordion for all sections
-    document.addEventListener('DOMContentLoaded', function() {
-      const accordions = document.querySelectorAll('.accordion-section');
-      accordions.forEach((section, i) => {
-        const btn = section.querySelector('.accordion-header');
-        btn.addEventListener('click', () => {
-          if (section.classList.contains('open')) {
-            section.classList.remove('open');
-          } else {
-            accordions.forEach(s => s.classList.remove('open'));
-            section.classList.add('open');
-          }
-        });
-        // Open first section by default
-        if (i === 0) section.classList.add('open');
-      });
-    });
-  </script>
+    <!-- 2022 VBL CHAMPIONSHIP -->
+    <div class="accordion-section">
+      <button class="accordion-header" type="button" aria-expanded="false">
+        2022 VBL Championship
+        <span class="badge-champ">Champions</span>
+        <span class="arrow">&#9654;</span>
+      </button>
+      <div class="accordion-panel">
+        <p>
+          <strong>Format:</strong> Top 8, best-of-3 quarterfinals, semifinals, and finals.<br>
+          <strong>Result:</strong> <span style="color: var(--green); font-weight: bold;">Charlottesville Tom Sox win third VBL Championship!</span>
+        </p>
+        <table class="records-table">
+          <thead>
+            <tr>
+              <th>Round</th>
+              <th>Opponent</th>
+              <th>Score</th>
+              <th>Location</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Quarterfinals G1</td>
+              <td>Culpeper</td>
+              <td>L 1-4</td>
+              <td>Home</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Quarterfinals G2</td>
+              <td>@ Culpeper</td>
+              <td>W 8-1</td>
+              <td>Away</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Quarterfinals G3</td>
+              <td>Culpeper</td>
+              <td>W 19-2</td>
+              <td>Home</td>
+              <td>Advanced to Semis</td>
+            </tr>
+            <tr>
+              <td>Semifinals G1</td>
+              <td>Pulaski</td>
+              <td>W 7-5 (10)</td>
+              <td>Home</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Semifinals G2</td>
+              <td>@ Pulaski</td>
+              <td>L 8-21 (7)</td>
+              <td>Away</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Semifinals G3</td>
+              <td>Pulaski</td>
+              <td>W 9-5</td>
+              <td>Home</td>
+              <td>Advanced to Finals</td>
+            </tr>
+            <tr class="highlight-champ">
+              <td>Finals G1</td>
+              <td>Strasburg</td>
+              <td>W 6-3</td>
+              <td>Home</td>
+              <td>Best-of-3</td>
+            </tr>
+            <tr class="highlight-champ">
+              <td>Finals G2</td>
+              <td>@ Strasburg</td>
+              <td>W 4-2</td>
+              <td>Away</td>
+              <td>Clinched Title</td>
+            </tr>
+          </tbody>
+        </table>
+        <ul>
+          <li><strong>Series Outcome:</strong> Tom Sox sweep Strasburg in Finals, 2-0</li>
+          <li><strong>Key Highlight:</strong> Third VBL Championship in team history</li>
+          <li><span class="badge-champ">2022 Champions</span></li>
+        </ul>
+      </div>
+    </div>
 
-</body>
-</html>
-<!-- END OF PAGE -->
+    <!-- 2021 PLAYOFFS -->
+    <div class="accordion-section">
+      <button class="accordion-header" type="button" aria-expanded="false">
+        2021 Playoffs
+        <span class="arrow">&#9654;</span>
+      </button>
+      <div class="accordion-panel">
+        <p>
+          <strong>Format:</strong> Top 4 in division, best-of-3 all rounds.<br>
+          <strong>Result:</strong> <span style="color: var(--blue); font-weight: bold;">Lost in first round</span>
+        </p>
+        <table class="records-table">
+          <thead>
+            <tr>
+              <th>Round</th>
+              <th>Opponent</th>
+              <th>Score</th>
+              <th>Location</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Semifinals G1</td>
+              <td>Waynesboro</td>
+              <td>L 1-3</td>
+              <td>Home</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Semifinals G2</td>
+              <td>@ Waynesboro</td>
+              <td>L 3-6</td>
+              <td>Away</td>
+              <td>Eliminated</td>
+            </tr>
+          </tbody>
+        </table>
+        <ul>
+          <li><strong>Series Outcome:</strong> Lost series 0-2</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 2019 VBL CHAMPIONSHIP -->
+    <div class="accordion-section">
+      <button class="accordion-header" type="button" aria-expanded="false">
+        2019 VBL Championship
+        <span class="badge-champ">Champions</span>
+        <span class="arrow">&#9654;</span>
+      </button>
+      <div class="accordion-panel">
+        <p>
+          <strong>Format:</strong> South semifinals, South finals, best-of-3 league championship.<br>
+          <strong>Result:</strong> <span style="color: var(--green); font-weight: bold;">Charlottesville Tom Sox win second VBL Championship!</span>
+        </p>
+        <table class="records-table">
+          <thead>
+            <tr>
+              <th>Round</th>
+              <th>Opponent</th>
+              <th>Score</th>
+              <th>Location</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>South Semifinals G1</td>
+              <td>Waynesboro</td>
+              <td>L 1-3</td>
+              <td>Home</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>South Semifinals G2</td>
+              <td>@ Waynesboro</td>
+              <td>L 3-6</td>
+              <td>Away</td>
+              <td>Eliminated</td>
+            </tr>
+          </tbody>
+        </table>
+        <ul>
+          <li><strong>Series Outcome:</strong> Eliminated in South Semifinals</li>
+          <li><span style="color: #888;">2019 Championship series details to be inserted (see PDF for yearly records)</span></li>
+          <li><span class="badge-champ">2019 Champions</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 2018 VBL CHAMPIONSHIP -->
+    <div class="accordion-section">
+      <button class="accordion-header" type="button" aria-expanded="false">
+        2018 VBL Championship
+        <span class="arrow">&#9654;</span>
+      </button>
+      <div class="accordion-panel">
+        <p>
+          <strong>Format:</strong> South semifinals, South finals, best-of-3 league championship.<br>
+          <strong>Result:</strong> <span style="color: var(--blue); font-weight: bold;">Charlottesville Tom Sox – VBL Runner-Up (Lost in Finals)</span>
+        </p>
+        <table class="records-table">
+          <thead>
+            <tr>
+              <th>Round</th>
+              <th>Opponent</th>
+              <th>Score</th>
+              <th>Location</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>South Semifinals G1</td>
+              <td>Covington</td>
+              <td>W 9-4</td>
+              <td>Home</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>South Semifinals G2</td>
+              <td>@ Covington</td>
+              <td>L 9-12</td>
+              <td>Away</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>South Semifinals G3</td>
+              <td>Covington</td>
+              <td>W 10-5</td>
+              <td>Home</td>
+              <td>Advanced to South Finals</td>
+            </tr>
+            <tr>
+              <td>South Finals G1</td>
+              <td>Staunton</td>
+              <td>L 1-3</td>
+              <td>Home</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>South Finals G2</td>
+              <td>@ Staunton</td>
+              <td>W 9-7 (10)</td>
+              <td>Away</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>South Finals G3</td>
+              <td>Staunton</td>
+              <td>W 10-2</td>
+              <td>Home</td>
+              <td>Advanced to VBL Finals</td>
+            </tr>
+            <tr>
+              <td>VBL Finals G1</td>
+              <td>@ Strasburg</td>
+              <td>W 11-8</td>
+              <td>Away</td>
+              <td>Best-of-3</td>
+            </tr>
+            <tr>
+              <td>VBL Finals G2</td>
+              <td>Strasburg</td>
+              <td>W 4-1</td>
+              <td>Home</td>
+              <td>Clinched Title</td>
+            </tr>
+          </tbody>
+        </table>
+        <ul>
+          <li><strong>Series Outcome:</strong> Tom Sox win South, fall in Finals</li>
+          <li><strong>Key Highlight:</strong> Second straight Finals appearance</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 2017 VBL CHAMPIONSHIP -->
+    <div class="accordion-section">
+      <button class="accordion-header" type="button" aria-expanded="false">
+        2017 VBL Championship
+        <span class="badge-champ">Champions</span>
+        <span class="arrow">&#9654;</span>
+      </button>
+      <div class="accordion-panel">
+        <p>
+          <strong>Format:</strong> South semifinals, South finals, best-of-3 league championship.<br>
+          <strong>Result:</strong> <span style="color: var(--green); font-weight: bold;">Charlottesville Tom Sox win first VBL Championship!</span>
+        </p>
+        <table class="records-table">
+          <thead>
+            <tr>
+              <th>Round</th>
+              <th>Opponent</th>
+              <th>Score</th>
+              <th>Location</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>South Semifinals G1</td>
+              <td>Staunton</td>
+              <td>W 11-2</td>
+              <td>Home</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>South Semifinals G2</td>
+              <td>@ Staunton</td>
+              <td>W 10-5</td>
+              <td>Away</td>
+              <td>Advanced to South Finals</td>
+            </tr>
+            <tr>
+              <td>South Finals G1</td>
+              <td>Waynesboro</td>
+              <td>W 7-2</td>
+              <td>Home</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>South Finals G2</td>
+              <td>@ Waynesboro</td>
+              <td>W 3-2</td>
+              <td>Away</td>
+              <td>Clinched South Title</td>
+            </tr>
+            <tr class="highlight-champ">
+              <td>Championship G1</td>
+              <td>Strasburg</td>
+              <td>L 7-9</td>
+              <td>Home</td>
+              <td>Best-of-3</td>
+            </tr>
+            <tr class="highlight-champ">
+              <td>Championship G2</td>
+              <td>@ Strasburg</td>
+              <td>W 11-5</td>
+              <td>Away</td>
+              <td></td>
+            </tr>
+            <tr class="highlight-champ">
+              <td>Championship G3</td>
+              <td>Strasburg</td>
+              <td>W 2-1</td>
+              <td>Home</td>
+              <td>Clinched Title</td>
+            </tr>
+          </tbody>
+        </table>
+        <ul>
+          <li><strong>Series Outcome:</strong> Tom Sox win Finals, 2-1 over Strasburg</li>
+          <li><span class="badge-champ">2017 Champions</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 2015 PLAY-IN GAME -->
+    <div class="accordion-section">
+      <button class="accordion-header" type="button" aria-expanded="false">
+        2015 Play-In Game
+        <span class="arrow">&#9654;</span>
+      </button>
+      <div class="accordion-panel">
+        <p>
+          <strong>Format:</strong> Single play-in for final postseason spot.<br>
+          <strong>Result:</strong> <span style="color: var(--blue); font-weight: bold;">Lost in Play-In</span>
+        </p>
+        <table class="records-table">
+          <thead>
+            <tr>
+              <th>Round</th>
+              <th>Opponent</th>
+              <th>Score</th>
+              <th>Location</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Play-In</td>
+              <td>@ Covington</td>
+              <td>L 5-6</td>
+              <td>Away</td>
+              <td>Eliminated</td>
+            </tr>
+          </tbody>
+        </table>
+        <ul>
+          <li><strong>Key Highlight:</strong> First-ever postseason appearance</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</main>

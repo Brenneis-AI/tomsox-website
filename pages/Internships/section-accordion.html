@@ -1,124 +1,15 @@
+<!--
+  File: section-accordion.html
+  Page: Internships
+  Section: Accordion list of all internship positions with modal application form
+  Last Updated: 2026-03-08
+-->
+
 <div class="internship-accordion-container">
-
-<style>
-    /* =========================================================
-       CORRECTED & SAFELY SCOPED ACCORDION CSS
-       ========================================================= */
-
-    .internship-accordion-container {
-        font-family: 'Open Sans', sans-serif;
-        background-color: #f4f4f9;
-        padding: 40px 0;
-    }
-
-    .internship-accordion-container .internship-accordion { max-width: 800px; margin: 2rem auto; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); }
-    .internship-accordion-container .internship-accordion details { background-color: #ffffff; border-bottom: 1px solid #e0e0e0; color: #333; }
-    .internship-accordion-container .internship-accordion details:last-of-type { border-bottom: none; }
-    .internship-accordion-container .internship-accordion summary { font-size: 1.1rem; font-weight: 600; padding: 1rem 1.5rem; cursor: pointer; list-style: none; position: relative; transition: background-color 0.2s ease-in-out; }
-    .internship-accordion-container .internship-accordion summary::-webkit-details-marker { display: none; }
-    .internship-accordion-container .internship-accordion summary:hover { background-color: #f9f9f9; }
-    .internship-accordion-container .internship-accordion summary::after { content: '+'; font-size: 1.5rem; font-weight: 400; position: absolute; right: 1.5rem; top: 50%; transform: translateY(-50%); transition: transform 0.2s ease-in-out; }
-    .internship-accordion-container .internship-accordion details[open] summary::after { content: '−'; }
-    .internship-accordion-container .internship-accordion details[open] summary { background-color: #f0f0f5; }
-    .internship-accordion-container .internship-content { padding: 0 1.5rem 1.5rem 1.5rem; line-height: 1.6; }
-    .internship-accordion-container .internship-content h4 { margin-top: 1.5rem; margin-bottom: 0.5rem; color: #1C355E; }
-    .internship-accordion-container .internship-content ul { padding-left: 20px; margin-top: 0.5rem; }
-    .internship-accordion-container .internship-content li { margin-bottom: 0.5rem; }
-    .internship-accordion-container .apply-btn { display: inline-block; background-color: #84BD00; color: #1C355E; font-weight: bold; text-align: center; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer; text-decoration: none; margin-top: 1.5rem; transition: background-color 0.3s ease, transform 0.2s ease; }
-    .internship-accordion-container .apply-btn:hover { background-color: #6a9700; transform: translateY(-2px); }
-    
-    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 1000; display: none; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box; }
-    .modal-overlay.active { display: flex; }
-    .modal-content { background: #ffffff; padding: 2rem; border-radius: 8px; width: 100%; max-width: 1000px; position: relative; box-shadow: 0 5px 15px rgba(0,0,0,0.3); max-height: 90vh; overflow-y: auto; box-sizing: border-box; display: flex; flex-direction: column; }
-    .modal-close-btn { position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 1.8rem; line-height: 1; cursor: pointer; color: #888; }
-    .modal-close-btn:hover { color: #333; }
-    .modal-content #modal-internship-title { margin-top: 0; margin-bottom: 1.5rem; color: #1C355E; padding-right: 30px; }
-
-    .modal-content #ghl-form-container {
-        flex-grow: 1;
-        display: flex;
-        width: 100% !important;
-    }
-
-    /* Force iframe height to allow modal scrolling */
-    .modal-content #ghl-form-container iframe {
-        height: 650px !important;
-        width: 100% !important;
-        min-width: 100% !important;
-  }
-
-    /* ============================================
-       CLOSED INTERNSHIP STYLING - UPDATED
-       ============================================ */
-    .internship-accordion-container .internship-accordion details.closed-internship {
-        opacity: 0.85 !important;
-        /* Removed pointer-events: none to allow accordion to open */
-        border-left-color: #cccccc !important;
-    }
-
-    .internship-accordion-container .internship-accordion details.closed-internship summary {
-        cursor: pointer !important; /* Changed from not-allowed to allow opening */
-        position: relative !important;
-        padding-right: 200px !important;
-    }
-
-    .internship-accordion-container .internship-accordion details.closed-internship summary::after {
-        color: #84BD00 !important; /* Changed back to green so +/- icon works */
-    }
-    
-    /* Disable the Apply button for closed internships */
-    .internship-accordion-container .internship-accordion details.closed-internship .apply-btn {
-        opacity: 0.5 !important;
-        cursor: not-allowed !important;
-        pointer-events: none !important;
-        background-color: #999999 !important;
-    }
-
-    .internship-accordion-container .closed-badge {
-        position: absolute !important;
-        right: 60px !important;
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-        background-color: #e74c3c !important;
-        color: #ffffff !important;
-        font-family: 'Open Sans', sans-serif !important;
-        font-size: 0.75rem !important;
-        font-weight: 700 !important;
-        text-transform: uppercase !important;
-        letter-spacing: 0.5px !important;
-        padding: 6px 12px !important;
-        border-radius: 4px !important;
-        white-space: nowrap !important;
-    }
-
-    /* Mobile adjustments for closed badge */
-    @media (max-width: 767px) {
-        .internship-accordion-container .internship-accordion details.closed-internship summary {
-            padding-right: 20px !important;
-            padding-bottom: 50px !important;
-        }
-        
-        .internship-accordion-container .closed-badge {
-            right: 20px !important;
-            top: auto !important;
-            bottom: 16px !important;
-            transform: none !important;
-            font-size: 0.7rem !important;
-            padding: 5px 10px !important;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .internship-accordion-container .closed-badge {
-            font-size: 0.65rem !important;
-            padding: 4px 8px !important;
-        }
-    }
-</style>
 
     <div class="internship-accordion">
         <details>
-            <summary>Field & Game Operations Internship</summary>
+            <summary>Field &amp; Game Operations Internship</summary>
             <div class="internship-content">
                 <p>The Tom Sox Game Operations Internship Program provides students with an interest in sports management an opportunity to learn more about the field by assisting players, coaches, and volunteers with game day duties.</p>
                 <h4>Required Qualifications:</h4>
@@ -137,9 +28,9 @@
         </details>
 
         <details>
-            <summary>Marketing & Fan Engagement Internship</summary>
+            <summary>Marketing &amp; Fan Engagement Internship</summary>
             <div class="internship-content">
-                <p>The Tom Sox Marketing & Promotions internship program provides students with an interest in marketing an opportunity to improve their craft. Interns will be responsible for managing on-field promotions, designing promotional days, and marketing the team in the local community.</p>
+                <p>The Tom Sox Marketing &amp; Promotions internship program provides students with an interest in marketing an opportunity to improve their craft. Interns will be responsible for managing on-field promotions, designing promotional days, and marketing the team in the local community.</p>
                 <h4>Required Qualifications:</h4>
                 <ul>
                     <li>High-energy individual</li>
@@ -187,12 +78,12 @@
                 <h4>Required Qualifications:</h4>
                 <ul>
                     <li>Enrolled in 2 or 4-year college degree program or active high school junior/senior seeking diploma</li>
-                    <li>Availability for majority of summer period, encompassing dates of May 25-August 3</li>
+                    <li>Availability for majority of summer period, encompassing dates of May 25–August 3</li>
                 </ul>
                 <h4>Preferred Qualifications:</h4>
                 <ul>
                     <li>Experience in front of the camera</li>
-                    <li>Strong written & oral communication skills</li>
+                    <li>Strong written &amp; oral communication skills</li>
                     <li>Basic understanding of baseball</li>
                 </ul>
                 <p>To apply, please click the "Apply Now" button below.</p>
@@ -224,7 +115,7 @@
 
         <details class="closed-internship">
             <summary>
-                Photography & Video Production Internship
+                Photography &amp; Video Production Internship
                 <span class="closed-badge">Closed for 2026 Applications</span>
             </summary>
             <div class="internship-content">
@@ -237,7 +128,7 @@
                 <ul>
                     <li>Experience with photography and/or videography</li>
                     <li>Knowledge of sports media fields</li>
-                    <li>Strong written & oral communication skills</li>
+                    <li>Strong written &amp; oral communication skills</li>
                 </ul>
                 <p>To apply, please click the "Apply Now" button below.</p>
                 <button class="apply-btn" data-internship="Photography & Video Production" disabled>Apply Now</button>
@@ -263,9 +154,10 @@
             </div>
         </details>
     </div>
+
     <div class="modal-overlay" id="form-modal">
         <div class="modal-content">
-            <button class="modal-close-btn" id="modal-close">×</button>
+            <button class="modal-close-btn" id="modal-close" aria-label="Close modal">&times;</button>
             <h3 id="modal-internship-title">Apply for Internship</h3>
             <div id="ghl-form-container">
                 <iframe src="about:blank" style="width:100%;height:100%;border:none;border-radius:4px" id="inline-ErqjcCIbp5rRwppGWey0" title="Internship Form"></iframe>
@@ -273,136 +165,4 @@
         </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const container = document.querySelector('.internship-accordion-container');
-            if (!container) return;
-            
-            const applyButtons = container.querySelectorAll('.apply-btn:not([disabled])');
-            const modalOverlay = container.querySelector('#form-modal');
-            const closeModalBtn = container.querySelector('#modal-close');
-            const modalTitle = container.querySelector('#modal-internship-title');
-            const formContainer = container.querySelector('#ghl-form-container');
-            const baseFormUrl = 'https://link.tomsox.org/widget/form/ErqjcCIbp5rRwppGWey0';
-            
-            let currentInternship = '';
-            let attemptCount = 0;
-            let maxAttempts = 20; // Try for up to 10 seconds (20 x 500ms)
-            
-            const tryToSelectDropdown = (iframe, internshipTitle) => {
-                attemptCount++;
-                
-                try {
-                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-                    
-                    // Try multiple possible selectors for the dropdown
-                    const dropdown = iframeDoc.querySelector('select[name="contact.intern_position_applying_for"]') ||
-                                   iframeDoc.querySelector('select[name="intern_position_applying_for"]') ||
-                                   iframeDoc.querySelector('select#intern_position_applying_for') ||
-                                   iframeDoc.querySelector('select') ||
-                                   iframeDoc.querySelector('[data-field="intern_position_applying_for"]');
-                    
-                    if (dropdown) {
-                        // Find and select the matching option
-                        const options = dropdown.querySelectorAll('option');
-                        for (let option of options) {
-                            if (option.value === internshipTitle || option.textContent.trim() === internshipTitle) {
-                                dropdown.value = option.value;
-                                option.selected = true;
-                                
-                                // Trigger change event
-                                const event = new Event('change', { bubbles: true });
-                                dropdown.dispatchEvent(event);
-                                
-                                console.log('✓ Successfully selected:', internshipTitle);
-                                attemptCount = 0; // Reset counter
-                                return true;
-                            }
-                        }
-                        console.log('Dropdown found but option not matched. Available options:', 
-                                  Array.from(options).map(o => o.textContent.trim()));
-                    }
-                } catch (e) {
-                    console.log('CORS blocked - cannot access iframe content. This is expected.');
-                    attemptCount = 0;
-                    return false;
-                }
-                
-                // If we haven't found it yet and haven't exceeded max attempts, try again
-                if (attemptCount < maxAttempts) {
-                    setTimeout(() => tryToSelectDropdown(iframe, internshipTitle), 500);
-                } else {
-                    console.log('Max attempts reached. Could not auto-select dropdown.');
-                    attemptCount = 0;
-                }
-                
-                return false;
-            };
-            
-            const openModal = (internshipTitle) => {
-                currentInternship = internshipTitle;
-                attemptCount = 0;
-                modalTitle.textContent = `Apply for: ${internshipTitle}`;
-                
-                // Load the form with URL parameter as fallback
-                const encodedTitle = encodeURIComponent(internshipTitle);
-                const urlWithParam = `${baseFormUrl}?contact.intern_position_applying_for=${encodedTitle}`;
-                
-                formContainer.innerHTML = `
-                    <iframe 
-                        src="${urlWithParam}" 
-                        style="width:100%;height:100%;border:none;border-radius:4px" 
-                        id="inline-ErqjcCIbp5rRwppGWey0" 
-                        title="Internship Form"
-                    ></iframe>
-                `;
-                
-                const iframe = formContainer.querySelector('iframe');
-                
-                // Wait for iframe to load, then try to auto-select
-                iframe.addEventListener('load', function() {
-                    setTimeout(() => tryToSelectDropdown(iframe, internshipTitle), 1000);
-                });
-                
-                modalOverlay.classList.add('active');
-            };
-            
-            const closeModal = () => {
-                modalOverlay.classList.remove('active');
-                currentInternship = '';
-                attemptCount = 0;
-                setTimeout(() => {
-                    formContainer.innerHTML = `
-                        <iframe 
-                            src="about:blank" 
-                            style="width:100%;height:100%;border:none;border-radius:4px" 
-                            id="inline-ErqjcCIbp5rRwppGWey0" 
-                            title="Internship Form"
-                        ></iframe>
-                    `;
-                }, 300);
-            };
-            
-            applyButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const internship = button.getAttribute('data-internship');
-                    openModal(internship);
-                });
-            });
-            
-            closeModalBtn.addEventListener('click', closeModal);
-            
-            modalOverlay.addEventListener('click', (event) => {
-                if (event.target === modalOverlay) {
-                    closeModal();
-                }
-            });
-            
-            document.addEventListener('keydown', (event) => {
-                if (event.key === 'Escape' && modalOverlay.classList.contains('active')) {
-                    closeModal();
-                }
-            });
-        });
-    </script>
 </div>

@@ -2,7 +2,7 @@
   File: page.css
   Page: Ballpark
   Section: Page-level styles — hero caption, stats, home records, accordion, directions
-  Last Updated: 2026-02-23
+  Last Updated: 2026-03-08
 */
 
 /* =========================================================
@@ -36,23 +36,32 @@ body {
 }
 
 /* =========================================================
-   HERO CAPTION
+   HERO
    ========================================================= */
-.ballpark-hero-caption {
+.ballpark-hero {
+    width: 100%;
+    min-height: 500px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url('https://assets.cdn.filesafe.space/Ro4CBx71xU0mNBfRkMkf/media/69ad8e15bfc81fccf6e43efb.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 70px 20px 0;
+    margin: 0;
+}
+
+.ballpark-hero-text {
     font-family: 'Arimo', sans-serif;
-    font-size: 1.125rem;
+    font-size: 1.294rem;
+    font-weight: 600;
     color: #ffffff !important;
-    background: rgba(27, 54, 93, 0.9);
-    padding: 24px 40px;
     text-align: center;
     font-style: italic;
     line-height: 1.7;
-    max-width: 1200px;
-    margin: -80px auto 0;
-    position: relative;
-    z-index: 10;
-    border-radius: 8px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
 }
 
 /* =========================================================
@@ -460,10 +469,13 @@ body {
    RESPONSIVE — TABLET (992px)
    ========================================================= */
 @media (max-width: 992px) {
-    .ballpark-hero-caption {
-        font-size: 1rem;
-        padding: 20px 30px;
-        margin: -60px 20px 0;
+    .ballpark-hero {
+        min-height: 420px;
+        padding-top: 60px;
+    }
+
+    .ballpark-hero-text {
+        font-size: 1.15rem;
     }
 
     .ballpark-stats-section,
@@ -530,10 +542,13 @@ body {
    RESPONSIVE — MOBILE (767px)
    ========================================================= */
 @media (max-width: 767px) {
-    .ballpark-hero-caption {
-        font-size: 1rem;
-        padding: 20px 24px;
-        margin: -60px 20px 0;
+    .ballpark-hero {
+        min-height: 360px;
+        padding-top: 50px;
+    }
+
+    .ballpark-hero-text {
+        font-size: 1.1rem;
     }
 
     .ballpark-stats-section,

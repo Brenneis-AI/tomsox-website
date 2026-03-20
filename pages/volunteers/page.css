@@ -1,0 +1,342 @@
+/*
+  File: page.css
+  Page: Volunteers
+  Section: All page-level styles — hero, intro, roles grid, form section
+  Last Updated: 2026-03-08
+*/
+
+/* =========================================================
+   GLOBAL STYLES & FONT IMPORTS
+   ========================================================= */
+
+/* 1. Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Open+Sans:wght@400;700&display=swap');
+
+/* 2. Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* 3. Body Baseline */
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+:root {
+    --brand-green: #84BD00;
+    --dark-blue-bg: #1b365d;
+    --light-text: #ffffff;
+    --subtle-text: #a9b3d1;
+    --error-red: #e74c3c;
+    --success-green: #2ecc71;
+}
+
+/* INFIELD DIRT */
+.infield-dirt {
+    background-color: #a1662f;
+    position: relative;
+    z-index: 0;
+}
+
+.infield-dirt::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://storage.googleapis.com/msgsndr/xPpGvlvaXWhYtIJUg0CZ/media/686e62f4879662a5cb44bef2.jpeg');
+    opacity: 0.15;
+    z-index: -1;
+}
+
+/* =========================================================
+   VOLUNTEER PAGE – ENHANCED VERSION
+   ========================================================= */
+
+/* ---------- HERO SECTION (FIXED IMAGE CUTOFF) ---------- */
+.volunteer-hero {
+    position: relative;
+    overflow: hidden;
+    background-image: linear-gradient(
+        to top, 
+        rgba(27, 54, 93, 0.82) 0%, 
+        rgba(27, 54, 93, 0.65) 40%,
+        rgba(27, 54, 93, 0.45) 70%,
+        rgba(27, 54, 93, 0.25) 100%
+    ),
+    url('https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/690ec6090269a37a78dc4fd8.jpg');
+    background-size: cover;
+    /* CRITICAL FIX: Adjusted to show faces properly */
+    background-position: center 15%;
+    background-repeat: no-repeat;
+    color: #ffffff;
+    text-align: center;
+    /* Increased min-height to prevent cutoff */
+    min-height: 600px;
+    padding: clamp(80px, 10vw, 140px) 20px clamp(60px, 8vw, 100px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.volunteer-hero .container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.volunteer-hero h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(2.5rem, 5.5vw, 4.2rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    line-height: 1.1;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    margin-bottom: 24px;
+}
+
+.volunteer-hero p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: clamp(1.05rem, 2vw, 1.35rem);
+    line-height: 1.7;
+    max-width: 850px;
+    margin: 0 auto;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* ---------- INTRODUCTION SECTION ---------- */
+.volunteer-intro {
+    padding: clamp(70px, 9vw, 100px) 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.volunteer-intro-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(40px, 6vw, 70px);
+    align-items: center;
+}
+
+.volunteer-intro h2 {
+    font-family: 'Oswald', sans-serif;
+    color: #1B365D;
+    text-transform: uppercase;
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    letter-spacing: 2px;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+/* Green underline accent */
+.volunteer-intro h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background-color: #84BD00;
+    border-radius: 2px;
+}
+
+.volunteer-intro p {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: #333333;
+    margin-bottom: 18px;
+    max-width: 65ch;
+}
+
+.volunteer-intro .col img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid rgba(27, 54, 93, 0.12);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.volunteer-intro .col img:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(132, 189, 0, 0.2);
+}
+
+/* ---------- ROLES SECTION (ENHANCED CARDS) ---------- */
+.volunteer-roles {
+    background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+    padding: clamp(70px, 9vw, 100px) 20px;
+}
+
+.roles-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.roles-container h2 {
+    font-family: 'Oswald', sans-serif;
+    color: #1B365D;
+    text-transform: uppercase;
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+}
+
+.roles-container .subtitle {
+    font-size: 1.1rem;
+    color: #555555;
+    max-width: 750px;
+    margin: 0 auto 50px auto;
+    line-height: 1.75;
+}
+
+.roles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: clamp(24px, 3vw, 36px);
+    text-align: left;
+}
+
+.role-card {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: clamp(28px, 3vw, 36px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    /* Green left border for brand consistency */
+    border-left: 5px solid #84BD00;
+    border-top: 1px solid rgba(27, 54, 93, 0.08);
+    border-right: 1px solid rgba(27, 54, 93, 0.08);
+    border-bottom: 1px solid rgba(27, 54, 93, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.role-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(132, 189, 0, 0.25);
+}
+
+.role-card h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    color: #1B365D;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 0 0 14px 0;
+}
+
+.role-card p {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #444444;
+    margin: 0;
+}
+
+/* ---------- FORM SECTION ---------- */
+.volunteer-form-section {
+    padding: clamp(70px, 9vw, 100px) 20px;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.volunteer-form-container {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.volunteer-form-container h2 {
+    font-family: 'Oswald', sans-serif;
+    color: #1B365D;
+    text-transform: uppercase;
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.volunteer-form-container p {
+    font-size: 1.1rem;
+    color: #555555;
+    line-height: 1.75;
+    margin: 0 auto 20px auto;
+    max-width: 70ch;
+}
+
+/* GHL form container - responsive */
+.ghl-form-placeholder {
+    width: 100%;
+}
+
+.ghl-form-placeholder > * {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* ---------- RESPONSIVE DESIGN ---------- */
+@media (max-width: 992px) {
+    .volunteer-intro-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .volunteer-hero {
+        background-position: center 55%;
+        min-height: 520px;
+    }
+
+    .volunteer-intro h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .volunteer-intro {
+        text-align: center;
+    }
+
+    .volunteer-intro p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .roles-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .volunteer-hero {
+        min-height: 480px;
+        background-position: center 50%;
+    }
+
+    .volunteer-hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .volunteer-hero p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .volunteer-hero {
+        min-height: 420px;
+        padding: 60px 20px;
+    }
+
+    .role-card {
+        padding: 24px;
+    }
+}

@@ -2,7 +2,7 @@
 /*
   File: page.js
   Page: Schedule
-  Last Updated: 2026-02-21
+  Last Updated: 2026-03-08
 */
 
 /* =========================================================
@@ -220,6 +220,46 @@ function buildMediaLinksHTML(game) {
 }
 
 /* =========================================================
+   ICS CALENDAR GENERATION
+   ========================================================= */
+
+function generateICSContent(games, today) {
+    const upcoming = games.filter(function(g) {
+        var d = parseGameDate(g.Date, g.Time);
+        return d && d >= today;
+    });
+    if (!upcoming.length) return null;
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+    function toICSDate(dateObj) {
+        return '' + dateObj.getFullYear() + pad(dateObj.getMonth() + 1) + pad(dateObj.getDate()) + 'T' + pad(dateObj.getHours()) + pad(dateObj.getMinutes()) + '00';
+    }
+
+    var lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Tom Sox//Schedule//EN', 'CALSCALE:GREGORIAN'];
+
+    upcoming.forEach(function(g) {
+        var start = parseGameDate(g.Date, g.Time);
+        if (!start) return;
+        var end = new Date(start.getTime() + 3 * 60 * 60 * 1000);
+        var isHome = (g.IsHomeGame || '').toUpperCase() === 'TRUE';
+        var summary = 'Tom Sox ' + (isHome ? 'vs' : 'at') + ' ' + g.OpponentName;
+        var location = g.LocationName ? g.LocationName.replace(/,/g, '\\,') : '';
+        var uid = 'tomsox-' + g.Date.replace(/\//g, '') + '-' + g.OpponentName.replace(/\s+/g, '-').toLowerCase() + '@tomsox';
+
+        lines.push('BEGIN:VEVENT');
+        lines.push('DTSTART:' + toICSDate(start));
+        lines.push('DTEND:' + toICSDate(end));
+        lines.push('SUMMARY:' + summary);
+        if (location) lines.push('LOCATION:' + location);
+        lines.push('UID:' + uid);
+        lines.push('END:VEVENT');
+    });
+
+    lines.push('END:VCALENDAR');
+    return lines.join('\r\n');
+}
+
+/* =========================================================
    GAME CARD RENDERING
    ========================================================= */
 
@@ -253,11 +293,14 @@ function createGameItemHTML(game, isNextGame) {
         ? `<div class="game-title-badge">${game.GameTitle}</div>`
         : '';
 
-    /* --- Date display: prefer Day column, fall back to formatted Date --- */
+    /* --- Date display: MM/DD prefix + prefer Day column, fall back to formatted Date --- */
     const parsedDate = parseGameDate(game.Date, game.Time);
+    const dateParts = game.Date ? game.Date.split('/') : [];
+    const mmdd = dateParts.length >= 2 ? `${dateParts[0]}/${dateParts[1]}` : '';
+    const mmddPrefix = mmdd ? `${mmdd} ` : '';
     const dateDisplay = game.Day && game.Day.trim()
-        ? `${game.Day}${game.Time ? ' &bull; ' + game.Time : ''}`
-        : `${formatDisplayDate(parsedDate)}${game.Time ? ' &bull; ' + game.Time : ''}`;
+        ? `${mmddPrefix}${game.Day}${game.Time ? ' &bull; ' + game.Time : ''}`
+        : `${mmddPrefix}${formatDisplayDate(parsedDate)}${game.Time ? ' &bull; ' + game.Time : ''}`;
 
     /* --- Rescheduled note --- */
     const reschedHTML = (status === 'POSTPONED' && game.RescheduledDate && game.RescheduledDate.trim())
@@ -390,6 +433,7 @@ function initSchedule() {
     const gameListContainer = document.getElementById('game-list-container');
     const jumpToGameBtn = document.getElementById('jump-to-game-btn');
     const printBtn = document.getElementById('print-schedule-btn');
+    const calBtn = document.getElementById('add-to-calendar-btn');
 
     if (printBtn) {
         printBtn.addEventListener('click', triggerCleanPrint);
@@ -447,6 +491,24 @@ function initSchedule() {
 
             gameListContainer.innerHTML = html;
             calculateAndDisplayStats(sorted);
+
+            if (calBtn) {
+                const icsContent = generateICSContent(sorted, today);
+                if (icsContent) {
+                    calBtn.disabled = false;
+                    calBtn.addEventListener('click', function() {
+                        const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+                        const url = URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = 'tomsox-schedule-2025.ics';
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                        URL.revokeObjectURL(url);
+                    });
+                }
+            }
 
             if (nextIdx !== -1 && jumpToGameBtn) {
                 jumpToGameBtn.style.display = 'inline-flex';

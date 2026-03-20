@@ -1,7 +1,7 @@
 /*
   File: page.css
   Page: Schedule
-  Last Updated: 2026-02-21
+  Last Updated: 2026-03-08
 */
 
 /* =========================================================
@@ -116,6 +116,12 @@
 .schedule-btn:hover {
     background-color: var(--brand-green-dark);
     border-color: var(--brand-green-dark);
+}
+
+.schedule-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
 }
 
 .schedule-btn svg {
