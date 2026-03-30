@@ -123,8 +123,9 @@ img {
    ============================================ */
 .ts-hero-v2 {
     position: relative;
-    height: 80vh;
-    min-height: 700px;
+    height: 0;
+    padding-bottom: 53.57%; /* matches 1400x750 image ratio (750/1400) */
+    min-height: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -138,7 +139,7 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('https://storage.googleapis.com/msgsndr/Ro4CBx71xU0mNBfRkMkf/media/6952fbb9659d9ecf84eab150.webp');
+    background-image: url('https://assets.cdn.filesafe.space/Ro4CBx71xU0mNBfRkMkf/media/69c9b4fa1d12911a523def91.webp');
     background-size: cover;
     background-position: center;
     z-index: 2;
@@ -150,7 +151,7 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(27, 54, 93, 0.85) 0%, rgba(27, 54, 93, 0.6) 50%, rgba(132, 189, 0, 0.3) 100%);
+    background: none;
     z-index: 3;
 }
 
@@ -199,11 +200,22 @@ img {
     margin-right: auto;
 }
 
+@keyframes cta-pulse {
+    0%, 100% { transform: translateY(-50%) scale(1); }
+    50%      { transform: translateY(-50%) scale(1.06); }
+}
+
 .ts-hero-cta {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    margin-bottom: 50px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    animation: cta-pulse 3s ease-in-out infinite;
+}
+
+.ts-hero-cta:hover {
+    animation-play-state: paused;
 }
 
 /* Currently hidden */
@@ -212,25 +224,30 @@ img {
 }
 
 .ts-btn-secondary {
-    display: inline-block;
-    padding: 16px 40px;
-    font-size: 1.1rem;
+    display: block;
+    padding: 30px 20px;
+    font-size: 1.15rem;
     font-weight: 700;
     text-decoration: none;
-    border-radius: 50px;
+    border-radius: 10px 0 0 10px;
     transition: all 0.3s ease;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    box-shadow: var(--shadow-md);
+    letter-spacing: 3px;
+    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.35);
     font-family: var(--font-heading);
-    background-color: transparent;
+    background-color: var(--navy);
     color: var(--white);
-    border: 3px solid var(--white);
+    border: none;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    white-space: nowrap;
 }
 
 .ts-btn-secondary:hover {
-    background-color: var(--white);
-    color: var(--navy);
+    background-color: #2a4a7a;
+    color: var(--white);
+    box-shadow: -8px 0 32px rgba(0, 0, 0, 0.45);
+    padding-right: 28px;
 }
 
 /* Currently hidden */
@@ -268,8 +285,13 @@ img {
 /* Hero — mobile */
 @media (max-width: 768px) {
     .ts-hero-v2 {
-        min-height: 95vh;
+        padding-bottom: 130%; /* portrait ratio for mobile flyer image */
+        min-height: 500px;
         height: auto;
+    }
+
+    .ts-hero-image {
+        background-image: url('https://assets.cdn.filesafe.space/Ro4CBx71xU0mNBfRkMkf/media/69c9b390d6187e9705bb0dac.webp');
     }
 
     .ts-hero-content-v2 {
@@ -292,15 +314,37 @@ img {
         margin-bottom: 30px;
     }
 
+    @keyframes cta-pulse-mobile {
+        0%, 100% { transform: translateX(-50%) scale(1); }
+        50%      { transform: translateX(-50%) scale(1.05); }
+    }
+
     .ts-hero-cta {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-        width: 100%;
-        max-width: 350px;
-        margin-bottom: 35px;
-        margin-left: auto;
-        margin-right: auto;
+        position: absolute;
+        right: auto;
+        top: auto;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: cta-pulse-mobile 3s ease-in-out infinite;
+    }
+
+    .ts-hero-cta:hover {
+        animation-play-state: paused;
+    }
+
+    .ts-btn-secondary {
+        writing-mode: horizontal-tb;
+        text-orientation: initial;
+        border-radius: 50px;
+        padding: 16px 40px;
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .ts-btn-secondary:hover {
+        padding-right: 40px;
     }
 
     .ts-hero-stats {

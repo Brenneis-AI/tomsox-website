@@ -1,7 +1,7 @@
 /*
   File: page.css
   Page: Roster
-  Last Updated: 2026-02-21
+  Last Updated: 2026-03-29
 */
 
 /* =========================================================
@@ -1445,6 +1445,103 @@
         font-size: 1.6rem;
     }
 }
+
+/* =========================================================
+   EMPTY ROSTER STATE
+   ========================================================= */
+
+.roster-empty-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    padding: 40px 20px;
+}
+
+.roster-empty-card {
+    background: var(--dark-blue-bg);
+    border: 3px solid var(--brand-green);
+    border-radius: 12px;
+    padding: 60px 50px;
+    max-width: 700px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 12px 40px rgba(27, 54, 93, 0.35);
+}
+
+.roster-empty-icon {
+    display: block;
+    font-size: 4rem;
+    margin-bottom: 24px;
+    line-height: 1;
+}
+
+.roster-empty-headline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--light-text);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.2;
+    margin: 0 0 24px 0;
+}
+
+.roster-empty-divider {
+    width: 80px;
+    height: 4px;
+    background: var(--brand-green);
+    margin: 0 auto 24px;
+    border-radius: 2px;
+}
+
+.roster-empty-sub {
+    font-family: 'Arimo', sans-serif;
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .roster-empty-state {
+        min-height: 50vh;
+        padding: 30px 15px;
+    }
+
+    .roster-empty-card {
+        padding: 40px 25px;
+    }
+
+    .roster-empty-icon {
+        font-size: 3rem;
+        margin-bottom: 18px;
+    }
+
+    .roster-empty-headline {
+        font-size: 1.75rem;
+    }
+
+    .roster-empty-sub {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .roster-empty-card {
+        padding: 30px 20px;
+    }
+
+    .roster-empty-headline {
+        font-size: 1.4rem;
+        letter-spacing: 0.5px;
+    }
+
+    .roster-empty-icon {
+        font-size: 2.5rem;
+    }
+}
+
 
 /* =========================================================
    UTILITY

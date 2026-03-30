@@ -3,7 +3,7 @@
 /*
   File: page.js
   Page: Roster
-  Last Updated: 2026-02-20
+  Last Updated: 2026-03-29
 */
 
 /* =========================================================
@@ -225,7 +225,8 @@ async function loadRosterData() {
             playersData.sort((a, b) => a.playerName.localeCompare(b.playerName));
 
             if (playersData.length === 0) {
-                showError('No player data available');
+                showEmptyRoster();
+                renderCoachingStaff();
                 return;
             }
 
@@ -247,6 +248,28 @@ function showError(message) {
         <div class="loading-container" style="justify-content: center; align-items: center;">
             <p style="color: #e74c3c; font-size: 1.2rem;">${message}</p>
             <p style="color: #777;">Please try refreshing the page</p>
+        </div>
+    `;
+}
+
+function showEmptyRoster() {
+    // Hide sidebar and nav — nothing to browse
+    if (playerMenu) playerMenu.style.display = 'none';
+    const navArrows = document.getElementById('navigation-arrows');
+    if (navArrows) navArrows.style.display = 'none';
+
+    // Expand content area to full width
+    const rightContent = document.querySelector('.roster-right-content');
+    if (rightContent) rightContent.style.flex = '1';
+
+    cardsContainer.innerHTML = `
+        <div class="roster-empty-state">
+            <div class="roster-empty-card">
+                <span class="roster-empty-icon" aria-hidden="true">\u26be</span>
+                <h2 class="roster-empty-headline">Roster Announcements for 2026 beginning on Wednesday April 1st!</h2>
+                <div class="roster-empty-divider"></div>
+                <p class="roster-empty-sub">Check back soon to meet the squad.</p>
+            </div>
         </div>
     `;
 }
