@@ -5,7 +5,11 @@
       "Bash(git commit:*)",
       "Bash(git push:*)",
       "WebFetch(domain:godeacs.com)",
-      "Bash(ls dir:*)"
+      "Bash(ls dir:*)",
+      "Bash(xargs grep:*)",
+      "WebFetch(domain:q7x4enwpcj.execute-api.us-east-1.amazonaws.com)",
+      "Bash(ls:*)",
+      "Bash(curl:*)"
     ]
   }
 }

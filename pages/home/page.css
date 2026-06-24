@@ -2,7 +2,7 @@
   File: page.css
   Page: Home
   Section: All page-level styles — hero, countdown, ticker, banner, CTA, gallery, summer camp, plan your visit, valley league
-  Last Updated: 2026-02-20
+  Last Updated: 2026-05-19
 */
 
 /* ============================================
@@ -139,7 +139,7 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('https://assets.cdn.filesafe.space/Ro4CBx71xU0mNBfRkMkf/media/69c9b4fa1d12911a523def91.webp');
+    background-image: url('https://assets.cdn.filesafe.space/Ro4CBx71xU0mNBfRkMkf/media/69ad8e15bfc81fccf6e43efb.webp');
     background-size: cover;
     background-position: center;
     z-index: 2;
@@ -151,22 +151,36 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
-    background: none;
+    background: rgba(0, 0, 0, 0.45);
     z-index: 3;
 }
 
 .ts-hero-content-v2 {
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 4;
+    width: 100%;
     max-width: 1200px;
     padding: 0 40px;
     text-align: center;
     color: var(--white);
 }
 
-/* Currently hidden */
 .ts-next-game-badge {
-    display: none !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 10px 22px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    backdrop-filter: blur(6px);
 }
 
 .badge-label {
@@ -175,7 +189,7 @@ img {
 }
 
 .badge-info {
-    font-size: 1.15rem;
+    font-size: 1.45rem;
     font-weight: 800;
 }
 
@@ -206,16 +220,7 @@ img {
 }
 
 .ts-hero-cta {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 5;
-    animation: cta-pulse 3s ease-in-out infinite;
-}
-
-.ts-hero-cta:hover {
-    animation-play-state: paused;
+    display: none !important;
 }
 
 /* Currently hidden */
@@ -250,9 +255,11 @@ img {
     padding-right: 28px;
 }
 
-/* Currently hidden */
 .ts-hero-stats {
-    display: none !important;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 24px;
 }
 
 .stat-item {
@@ -267,6 +274,7 @@ img {
     color: var(--white);
     line-height: 1;
     margin-bottom: 8px;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
 }
 
 .stat-label {
@@ -276,6 +284,7 @@ img {
     text-transform: uppercase;
     letter-spacing: 0.5px;
     opacity: 0.9;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
 }
 
 .ts-scroll-indicator {
@@ -291,10 +300,13 @@ img {
     }
 
     .ts-hero-image {
-        background-image: url('https://assets.cdn.filesafe.space/Ro4CBx71xU0mNBfRkMkf/media/69c9b390d6187e9705bb0dac.webp');
+        background-image: url('https://assets.cdn.filesafe.space/Ro4CBx71xU0mNBfRkMkf/media/69ad8e15bfc81fccf6e43efb.webp');
     }
 
     .ts-hero-content-v2 {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         padding: 0 25px;
         display: flex;
         flex-direction: column;
@@ -312,25 +324,6 @@ img {
     .ts-hero-subheadline {
         font-size: 1.25rem;
         margin-bottom: 30px;
-    }
-
-    @keyframes cta-pulse-mobile {
-        0%, 100% { transform: translateX(-50%) scale(1); }
-        50%      { transform: translateX(-50%) scale(1.05); }
-    }
-
-    .ts-hero-cta {
-        position: absolute;
-        right: auto;
-        top: auto;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        animation: cta-pulse-mobile 3s ease-in-out infinite;
-    }
-
-    .ts-hero-cta:hover {
-        animation-play-state: paused;
     }
 
     .ts-btn-secondary {

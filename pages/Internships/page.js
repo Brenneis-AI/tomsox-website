@@ -1,3 +1,4 @@
+<script>
 /*
   File: page.js
   Page: Internships
@@ -58,6 +59,7 @@ function init() {
     const openModal = (internshipTitle) => {
         currentInternship = internshipTitle;
         attemptCount = 0;
+        document.body.style.overflow = 'hidden';
         modalTitle.textContent = 'Apply for: ' + internshipTitle;
 
         const encodedTitle = encodeURIComponent(internshipTitle);
@@ -75,6 +77,7 @@ function init() {
 
     const closeModal = () => {
         modalOverlay.classList.remove('active');
+        document.body.style.overflow = '';
         currentInternship = '';
         attemptCount = 0;
         setTimeout(() => {
@@ -102,3 +105,4 @@ if (document.readyState === 'loading') {
 } else {
     init();
 }
+</script>
