@@ -197,6 +197,8 @@
     transition: 0.3s;
 }
 
+#tm-main-header .mobile-only-li { display: none; }
+
 /* --- 7. MOBILE RESPONSIVENESS --- */
 @media (max-width: 1024px) {
     #tm-main-header.site-header { padding: 10px 0; height: auto; }
@@ -291,6 +293,8 @@
         text-transform: uppercase;
     }
 
+    #tm-main-header .mobile-only-li { display: block; }
+
     /* Hamburger Animation */
     #tm-main-header .hamburger-menu.is-active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
     #tm-main-header .hamburger-menu.is-active span:nth-child(2) { opacity: 0; }
@@ -358,15 +362,15 @@
                 </li>
                 
                 <!-- Mobile Only Button (Visible only inside menu on phones) -->
-                <li class="mobile-only-li" style="display:none; @media(max-width:1024px){display:block;}">
-                    <a href="/get-tickets" class="mobile-ticket-btn">Buy Tickets</a>
+                <li class="mobile-only-li">
+                    <a href="/tickets" class="mobile-ticket-btn">Buy Tickets</a>
                 </li>
             </ul>
         </nav>
         
         <!-- Actions -->
         <div class="header-actions">
-            <a href="/get-tickets" class="header-cta">Buy Tickets</a>
+            <a href="/tickets" class="header-cta">Buy Tickets</a>
             <button class="hamburger-menu" aria-label="Open Navigation Menu">
                 <span></span><span></span><span></span>
             </button>

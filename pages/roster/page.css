@@ -1544,6 +1544,61 @@
 
 
 /* =========================================================
+   STATS LINK BUTTON
+   ========================================================= */
+
+.stats-link-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 18px;
+    margin-left: auto;
+    margin-right: 150px;
+    border: 2px solid var(--brand-green);
+    color: var(--brand-green);
+    text-decoration: none;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    align-self: center;
+}
+
+.stats-link-btn:hover {
+    background-color: var(--brand-green);
+    color: var(--dark-blue-bg);
+}
+
+.mobile-stats-cta { display: none; }
+
+@media (max-width: 768px) {
+    .stats-link-btn { display: none; }
+
+    .mobile-stats-cta {
+        display: block;
+        margin-top: 12px;
+        padding: 12px;
+        background: var(--brand-green);
+        color: var(--dark-blue-bg);
+        font-family: 'Oswald', sans-serif;
+        font-size: 0.95rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 6px;
+        letter-spacing: 0.05em;
+    }
+
+    .mobile-stats-cta:hover {
+        background: #96d400;
+    }
+}
+
+/* =========================================================
    UTILITY
    ========================================================= */
 

@@ -550,6 +550,14 @@ function buildRoster(currentSort = 'name-az') {
             collegeLinkHTML = `<a href="${player.collegeURL}" target="_blank" rel="noopener noreferrer" class="college-link">View at ${player.college} &rarr;</a>`;
         }
 
+        // Build stats page link
+        const statsLinkHTML = (player.statsURL && player.statsURL.trim())
+            ? `<a href="${player.statsURL}" target="_blank" rel="noopener noreferrer" class="stats-link-btn">2026 Stats &rarr;</a>`
+            : '';
+        const mobileStatsCTA = (player.statsURL && player.statsURL.trim())
+            ? `<a href="${player.statsURL}" target="_blank" rel="noopener noreferrer" class="mobile-stats-cta">View 2026 Stats &rarr;</a>`
+            : '';
+
         // Build stats for integrated banner
         const stats = [
             { value: player.keyStat1Value, label: player.keyStat1Label },
@@ -632,6 +640,7 @@ function buildRoster(currentSort = 'name-az') {
 
             <div class="player-stats-integrated">
                 ${statsHTML}
+                ${statsLinkHTML}
                 <div class="mobile-stats-row-1">
                     ${stats[0].label ? `
                         <div class="stat-item">
@@ -666,6 +675,7 @@ function buildRoster(currentSort = 'name-az') {
                         </div>
                     ` : ''}
                 </div>
+                ${mobileStatsCTA}
             </div>
 
             <div class="player-bio-bottom">
